@@ -4,8 +4,52 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="color-scheme" content="dark" />
-<title>Kittitas Digital — 3D Tours in Cle Elum, WA</title>
+<title>Kittitas Digital — Websites, Branding &amp; 3D Tours · Cle Elum, WA</title>
 <meta name="description" content="The small-business digital shop for the upper Kittitas Valley — websites, branding, IT, local SEO, and immersive 3D tours. Cle Elum, WA." />
+<link rel="canonical" href="https://kittitasdigital.com/" />
+<meta name="geo.region" content="US-WA" />
+<meta name="geo.placename" content="Cle Elum, Kittitas County" />
+<meta name="geo.position" content="47.1954;-120.9398" />
+<meta name="ICBM" content="47.1954, -120.9398" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Kittitas Digital — Websites, Branding &amp; 3D Tours · Cle Elum, WA" />
+<meta property="og:description" content="The small-business digital shop for Kittitas County — websites, branding, IT, local SEO, and immersive 3D tours." />
+<meta property="og:url" content="https://kittitasdigital.com/" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:card" content="summary_large_image" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Kittitas Digital",
+  "description": "Small-business digital shop in Cle Elum, WA — websites, branding, IT support, local SEO, and 3D virtual tours across Kittitas County.",
+  "url": "https://kittitasdigital.com/",
+  "telephone": "+1-253-987-6001",
+  "email": "hello@kittitasdigital.com",
+  "priceRange": "$$",
+  "address": { "@type": "PostalAddress", "addressLocality": "Cle Elum", "addressRegion": "WA", "postalCode": "98922", "addressCountry": "US" },
+  "geo": { "@type": "GeoCoordinates", "latitude": 47.1954, "longitude": -120.9398 },
+  "areaServed": [
+    { "@type": "AdministrativeArea", "name": "Kittitas County, WA" },
+    { "@type": "City", "name": "Cle Elum" },
+    { "@type": "City", "name": "Roslyn" },
+    { "@type": "City", "name": "South Cle Elum" },
+    { "@type": "City", "name": "Ronald" },
+    { "@type": "City", "name": "Suncadia" },
+    { "@type": "City", "name": "Easton" },
+    { "@type": "City", "name": "Ellensburg" },
+    { "@type": "City", "name": "Thorp" }
+  ],
+  "knowsAbout": ["Web design", "E-commerce", "Branding", "IT support", "Local SEO", "3D virtual tours", "Matterport"],
+  "makesOffer": [
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Websites & online stores" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Brand & identity" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "3D tours & virtual walkthroughs" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "IT setup & support" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Local SEO & Google Business Profile" } }
+  ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -262,6 +306,32 @@
   .cal-wrap{background:rgba(255,255,255,.04);border:1px solid var(--line-light);border-radius:6px;padding:8px;overflow:hidden}
   #cal-inline{width:100%;min-height:600px;overflow:auto}
 
+  .work-menu{display:flex;gap:.4em;flex-wrap:wrap;margin-bottom:1.5em}
+  .wm-tab{font-family:"JetBrains Mono";font-size:12px;letter-spacing:.04em;text-transform:uppercase;padding:.5em .95em;border-radius:40px;border:1px solid var(--line-strong);background:transparent;color:var(--body);cursor:pointer;transition:background .15s,color .15s,border-color .15s}
+  .wm-tab:hover{border-color:var(--fog)}
+  .wm-tab.on{background:var(--ember);color:#1a0f06;border-color:var(--ember);font-weight:600}
+  .work-empty{color:var(--mist);text-align:center;padding:34px 0;font-size:14.5px}
+
+  .work-grid{display:grid;grid-template-columns:1fr;gap:1.4em}
+  .work-card{display:grid;grid-template-columns:1.15fr 1fr;background:var(--surface);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+  .work-frame{background:#0f1a23;display:flex;flex-direction:column}
+  .work-bar{display:flex;align-items:center;gap:.7em;padding:.7em .9em;background:rgba(0,0,0,.3);border-bottom:1px solid rgba(255,255,255,.08)}
+  .work-bar .dots{display:flex;gap:.4em;flex:0 0 auto}
+  .work-bar .dots i{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.22);display:block}
+  .work-bar .url{font-family:"JetBrains Mono";font-size:11.5px;color:rgba(255,255,255,.6);background:rgba(255,255,255,.06);padding:.32em .8em;border-radius:40px;flex:1;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .work-preview{flex:1;background:linear-gradient(160deg,#2B3A52,#19222f);padding:30px 28px;display:flex;flex-direction:column;justify-content:center;min-height:240px}
+  .work-preview .pv-eyebrow{font-family:"JetBrains Mono";font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:.8em}
+  .work-preview .pv-title{font-family:"Bricolage Grotesque";font-weight:700;font-size:28px;color:#fff;line-height:1.04;margin-bottom:.55em;letter-spacing:-.02em}
+  .work-preview .pv-sub{color:rgba(255,255,255,.72);font-size:13.5px;max-width:32ch;line-height:1.45}
+  .work-info{padding:1.8em;display:flex;flex-direction:column;justify-content:center}
+  .work-info .cat{font-family:"JetBrains Mono";font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ember-ink);margin-bottom:.5em}
+  .work-info h3{font-size:24px;color:var(--ink);margin-bottom:.5em}
+  .work-info p{color:var(--body);font-size:15px;margin:0 0 1.2em}
+  .work-tags{display:flex;flex-wrap:wrap;gap:.45em;margin-bottom:1.4em}
+  .work-tags span{font-family:"JetBrains Mono";font-size:11px;padding:.4em .75em;border:1px solid var(--line-strong);border-radius:40px;color:var(--body)}
+  .work-info .btn{align-self:flex-start}
+  @media(max-width:760px){.work-card{grid-template-columns:1fr}}
+
   :focus-visible{outline:2px solid var(--ember);outline-offset:2px;border-radius:2px}
 
   @media(prefers-reduced-motion:reduce){
@@ -329,6 +399,7 @@
     </a>
     <nav class="nav-links" aria-label="Primary">
       <a href="#services">Services</a>
+      <a href="#portfolio">Our work</a>
       <a href="#work">3D tours</a>
       <a href="#how">How it works</a>
       <a href="#coverage">Coverage</a>
@@ -456,6 +527,45 @@
   </div>
 </section>
 
+<section class="sec" id="portfolio">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="loc"><span class="dot"></span>Our work</span>
+      <h2>Sites we've shipped.</h2>
+      <p>Real projects, built and launched end to end — brand, build, and the contact flow that brings the work in. Here's one you can click into.</p>
+    </div>
+    <div class="work-menu" id="workMenu" role="tablist" aria-label="Filter work">
+      <button type="button" class="wm-tab on" data-cat="all">All</button>
+      <button type="button" class="wm-tab" data-cat="websites">Websites</button>
+      <button type="button" class="wm-tab" data-cat="brand">Brand</button>
+      <button type="button" class="wm-tab" data-cat="tours">3D Tours</button>
+    </div>
+    <div class="work-grid">
+      <article class="work-card" data-cat="websites brand">
+        <div class="work-frame">
+          <div class="work-bar">
+            <div class="dots"><i></i><i></i><i></i></div>
+            <span class="url">lapierspaintingllc.com</span>
+          </div>
+          <div class="work-preview">
+            <div class="pv-eyebrow">Eastside · WA</div>
+            <div class="pv-title">Painted right,<br/>the first time.</div>
+            <div class="pv-sub">Owner-operated interior &amp; exterior house painting.</div>
+          </div>
+        </div>
+        <div class="work-info">
+          <span class="cat">Home services · Website</span>
+          <h3>Lapiers Painting</h3>
+          <p>A clean one-page site for an owner-operated painter — services, a five-step process, a service-area rundown, and a quote-request form that lands straight in his inbox.</p>
+          <div class="work-tags"><span>Website</span><span>Brand</span><span>Quote form</span></div>
+          <a class="btn btn--primary" href="https://www.lapierspaintingllc.com" target="_blank" rel="noopener">Visit the live site →</a>
+        </div>
+      </article>
+    </div>
+    <p class="work-empty" id="workEmpty" hidden>More projects in this category coming soon.</p>
+  </div>
+</section>
+
 <section class="sec band" id="how">
   <div class="wrap">
     <div class="sec-head">
@@ -523,6 +633,7 @@
         <span class="pill">Thorp</span>
       </div>
       <p style="font-size:14px;color:var(--mist);margin-top:1.4em;font-family:'JetBrains Mono';letter-spacing:.03em">Farther out? Ask — travel beyond the corridor is quoted per trip.</p>
+      <p style="font-size:14.5px;margin-top:1.1em"><a href="/web-design-kittitas-county.html">Web design in Kittitas County</a> · <a href="/3d-tours-cle-elum.html">3D tours in Cle Elum &amp; Suncadia</a></p>
     </div>
   </div>
 </section>
@@ -604,7 +715,7 @@
       <span class="loc"><span class="dot"></span>Book online</span>
       <h2>Pick a service and a time.</h2>
       <p class="lede">Choose what you need — a 3D shoot, a free consult, a project kickoff — and grab a slot that works. We'll confirm and follow up with any details.</p>
-      <div class="contact-line"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E8AC76" stroke-width="1.8" stroke-linecap="round"><path d="M22 16.9 V20 a2 2 0 0 1-2.2 2 A19 19 0 0 1 2 4.2 2 2 0 0 1 4 2 H7.1 a2 2 0 0 1 2 1.7 12 12 0 0 0 .7 2.8 2 2 0 0 1-.5 2.1 L8 10 a16 16 0 0 0 6 6 l1.4-1.3 a2 2 0 0 1 2.1-.5 12 12 0 0 0 2.8.7 2 2 0 0 1 1.7 2Z"/></svg><span>Call or text · <a href="tel:+15095550199">(509) 555-0199</a></span></div>
+      <div class="contact-line"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E8AC76" stroke-width="1.8" stroke-linecap="round"><path d="M22 16.9 V20 a2 2 0 0 1-2.2 2 A19 19 0 0 1 2 4.2 2 2 0 0 1 4 2 H7.1 a2 2 0 0 1 2 1.7 12 12 0 0 0 .7 2.8 2 2 0 0 1-.5 2.1 L8 10 a16 16 0 0 0 6 6 l1.4-1.3 a2 2 0 0 1 2.1-.5 12 12 0 0 0 2.8.7 2 2 0 0 1 1.7 2Z"/></svg><span>Call or text · <a href="tel:+12539876001">253.987.6001</a></span></div>
       <div class="contact-line"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E8AC76" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M3 6 L12 13 L21 6"/></svg><span><a href="mailto:hello@kittitasdigital.com">hello@kittitasdigital.com</a></span></div>
       <div class="contact-line"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E8AC76" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10 c0 6-9 12-9 12 s-9-6-9-12 a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Cle Elum, WA · upper Kittitas Valley</span></div>
     </div>
@@ -627,6 +738,7 @@
     </div>
     <div class="foot-links" aria-label="Footer">
       <a href="#services">Services</a>
+      <a href="#portfolio">Our work</a>
       <a href="#work">3D tours</a>
       <a href="#how">How it works</a>
       <a href="#coverage">Coverage</a>
@@ -848,6 +960,29 @@
 
     show(1);
   }
+})();
+</script>
+
+<!-- Our Work filter -->
+<script>
+(function(){
+  var menu = document.getElementById("workMenu");
+  if(!menu) return;
+  var cards = document.querySelectorAll("#portfolio .work-card");
+  var empty = document.getElementById("workEmpty");
+  menu.addEventListener("click", function(e){
+    var b = e.target.closest(".wm-tab"); if(!b) return;
+    var cat = b.getAttribute("data-cat");
+    menu.querySelectorAll(".wm-tab").forEach(function(x){ x.classList.toggle("on", x===b); });
+    var shown = 0;
+    cards.forEach(function(c){
+      var cats = (c.getAttribute("data-cat")||"").split(/\s+/);
+      var match = cat==="all" || cats.indexOf(cat) >= 0;
+      c.style.display = match ? "" : "none";
+      if(match) shown++;
+    });
+    if(empty) empty.hidden = shown > 0;
+  });
 })();
 </script>
 
