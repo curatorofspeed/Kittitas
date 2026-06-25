@@ -180,6 +180,13 @@
   .aud-card h3{font-size:21px;margin-bottom:.4em;color:var(--ink)}
   .aud-card p{margin:0;font-size:15.5px;color:var(--body)}
   .aud-card .tag{font-family:"JetBrains Mono";font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ember-ink);display:block;margin-top:1.1em}
+  .care-strip{display:flex;align-items:center;gap:1.3em;margin-top:1.4em;padding:1.4em 1.6em;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--ember);border-radius:5px}
+  .care-strip .ic{width:42px;height:42px;flex:0 0 auto;border-radius:4px;background:var(--ember);display:grid;place-items:center}
+  .care-strip .ic svg{stroke:#1a0f06}
+  .care-strip h3{font-size:18px;margin:0 0 .15em;color:var(--ink)}
+  .care-strip p{margin:0;font-size:14.5px;color:var(--body);max-width:72ch}
+  .care-strip .btn{flex:0 0 auto;margin-left:auto;white-space:nowrap}
+  @media(max-width:680px){.care-strip{flex-wrap:wrap}.care-strip .btn{margin-left:0;width:100%;justify-content:center}}
   @media(max-width:860px){.aud{grid-template-columns:1fr}}
 
   .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4em}
@@ -487,12 +494,14 @@
         <p>Show up when neighbors search. Google Business Profile, maps, reviews, and the local listings that bring in walk-ins.</p>
         <span class="tag">Google · Maps · Reviews</span>
       </article>
-      <article class="aud-card">
-        <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 l8 4 v6 c0 5-3.5 8-8 10 -4.5-2-8-5-8-10 V6Z"/><path d="M9 12 l2 2 4-4"/></svg></div>
-        <h3>Ongoing care</h3>
-        <p>A simple monthly plan for updates, hosting, small changes, and someone to call — so it all just stays handled.</p>
-        <span class="tag">Hosting · Updates · On call</span>
-      </article>
+    </div>
+    <div class="care-strip">
+      <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 l8 4 v6 c0 5-3.5 8-8 10 -4.5-2-8-5-8-10 V6Z"/><path d="M9 12 l2 2 4-4"/></svg></div>
+      <div>
+        <h3>Plus ongoing care</h3>
+        <p>Once it's live, keep it handled — a simple monthly plan covering hosting, updates, small changes, and someone to call when something breaks. Available on anything we build.</p>
+      </div>
+      <a class="btn btn--ghost" href="#book">Ask about a plan</a>
     </div>
   </div>
 </section>
