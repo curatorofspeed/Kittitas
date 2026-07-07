@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>City of Roslyn, Washington — Official Site</title>
+<meta name="description" content="Official website of the City of Roslyn, Washington. Pay utility bills, apply for permits, view meeting agendas, and learn about our historic coal-mining town, incorporated 1886.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hepta+Slab:wght@500;800;900&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --coal:#211d1a;
+  --coal-deep:#171412;
+  --brick:#8e3b2a;
+  --brick-dark:#6f2c1f;
+  --gold:#c9973a;
+  --gold-soft:#e2c07e;
+  --pine:#33503f;
+  --paper:#f5f3ee;
+  --paper-dim:#eae7df;
+  --ink:#2a2622;
+  --ink-soft:#5d564e;
+  --rule:#d8d3c8;
+  --max:1120px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+body{
+  font-family:'Public Sans',system-ui,sans-serif;
+  color:var(--ink);
+  background:var(--paper);
+  line-height:1.6;
+  font-size:16px;
+}
+a{color:var(--brick)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--gold);outline-offset:2px;border-radius:2px}
+img,svg{display:block;max-width:100%}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+/* ---------- utility bar ---------- */
+.utility{
+  background:var(--coal-deep);
+  color:#cfc8bd;
+  font-size:.8125rem;
+}
+.utility .wrap{
+  display:flex;justify-content:space-between;align-items:center;
+  padding-top:7px;padding-bottom:7px;gap:16px;flex-wrap:wrap;
+}
+.utility a{color:var(--gold-soft);text-decoration:none}
+.utility a:hover{text-decoration:underline}
+.utility .hours{letter-spacing:.02em}
+
+/* ---------- header / nav ---------- */
+header.site{
+  background:var(--coal);
+  color:var(--paper);
+  border-bottom:4px solid var(--gold);
+  position:sticky;top:0;z-index:50;
+}
+header.site .wrap{
+  display:flex;align-items:center;justify-content:space-between;
+  padding-top:14px;padding-bottom:14px;gap:20px;
+}
+.brand{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--paper)}
+.brand-seal{
+  width:46px;height:46px;flex:none;border:2px solid var(--gold);border-radius:50%;
+  display:grid;place-items:center;background:var(--coal-deep);
+}
+.brand-seal svg{width:28px;height:28px}
+.brand-text{line-height:1.15}
+.brand-text .city{font-family:'Hepta Slab',serif;font-weight:800;font-size:1.2rem;letter-spacing:.01em;display:block}
+.brand-text .state{font-size:.7rem;text-transform:uppercase;letter-spacing:.22em;color:var(--gold-soft)}
+nav.main ul{display:flex;list-style:none;gap:4px;flex-wrap:wrap}
+nav.main a{
+  color:var(--paper);text-decoration:none;font-weight:600;font-size:.9rem;
+  padding:9px 13px;border-radius:6px;display:block;
+}
+nav.main a:hover{background:rgba(255,255,255,.09)}
+.nav-toggle{
+  display:none;background:none;border:2px solid var(--gold);color:var(--paper);
+  font:inherit;font-weight:700;padding:7px 14px;border-radius:6px;cursor:pointer;
+}
+@media(max-width:860px){
+  .nav-toggle{display:block}
+  nav.main{display:none;width:100%}
+  nav.main.open{display:block}
+  nav.main ul{flex-direction:column;padding:8px 0 4px}
+  header.site .wrap{flex-wrap:wrap}
+}
+
+/* ---------- hero ---------- */
+.hero{
+  background:var(--coal);
+  color:var(--paper);
+  position:relative;
+  overflow:hidden;
+}
+.hero .wrap{
+  position:relative;z-index:2;
+  padding-top:72px;padding-bottom:0;
+  text-align:center;
+}
+.hero .est{
+  display:inline-flex;align-items:center;gap:12px;
+  text-transform:uppercase;letter-spacing:.3em;font-size:.75rem;font-weight:600;
+  color:var(--gold-soft);margin-bottom:18px;
+}
+.hero .est::before,.hero .est::after{content:"";width:36px;height:1px;background:var(--gold)}
+.hero h1{
+  font-family:'Hepta Slab',serif;font-weight:900;
+  font-size:clamp(2.6rem,7vw,4.6rem);
+  letter-spacing:.01em;line-height:1.05;
+  text-transform:uppercase;
+}
+.hero h1 .wa{display:block;font-size:clamp(1rem,2.4vw,1.4rem);font-weight:500;letter-spacing:.42em;color:var(--gold-soft);margin-top:10px}
+.hero p.lede{
+  max-width:620px;margin:22px auto 34px;color:#d9d3c8;font-size:1.05rem;
+}
+.hero .skyline{margin-top:8px;width:100%;color:var(--paper)}
+.hero .skyline svg{width:100%;height:auto}
+
+/* ---------- quick actions ---------- */
+.actions{
+  margin-top:-2px;
+  background:var(--paper);
+}
+.actions .wrap{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:16px;
+  transform:translateY(-42px);
+}
+.action{
+  background:#fff;border:1px solid var(--rule);border-top:4px solid var(--brick);
+  border-radius:10px;padding:20px 18px 18px;
+  text-decoration:none;color:var(--ink);
+  box-shadow:0 8px 20px rgba(23,20,18,.10);
+  transition:transform .15s ease, box-shadow .15s ease;
+}
+.action:hover{transform:translateY(-3px);box-shadow:0 14px 28px rgba(23,20,18,.14)}
+.action .icon{width:34px;height:34px;color:var(--brick);margin-bottom:10px}
+.action h3{font-family:'Hepta Slab',serif;font-weight:800;font-size:1rem;margin-bottom:4px}
+.action p{font-size:.85rem;color:var(--ink-soft);line-height:1.45}
+@media(max-width:860px){.actions .wrap{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.actions .wrap{grid-template-columns:1fr;transform:translateY(-26px)}}
+
+/* ---------- section headings ---------- */
+.section{padding:44px 0 64px}
+.section-head{margin-bottom:28px}
+.eyebrow{
+  text-transform:uppercase;letter-spacing:.24em;font-size:.72rem;font-weight:700;
+  color:var(--brick);display:block;margin-bottom:6px;
+}
+.section-head h2{
+  font-family:'Hepta Slab',serif;font-weight:800;
+  font-size:clamp(1.5rem,3.4vw,2.1rem);line-height:1.15;
+}
+
+/* ---------- notices ---------- */
+.notices{background:var(--paper-dim);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.notice-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:20px}
+@media(max-width:860px){.notice-grid{grid-template-columns:1fr}}
+.notice{
+  background:#fff;border:1px solid var(--rule);border-radius:10px;
+  padding:22px 24px;
+}
+.notice.feature{border-left:5px solid var(--gold)}
+.notice .tag{
+  display:inline-block;font-size:.68rem;font-weight:700;text-transform:uppercase;
+  letter-spacing:.14em;padding:3px 9px;border-radius:99px;margin-bottom:10px;
+  background:var(--paper-dim);color:var(--ink-soft);
+}
+.notice .tag.open{background:#e7efe9;color:var(--pine)}
+.notice .tag.rate{background:#f3e6d6;color:#8a6118}
+.notice h3{font-family:'Hepta Slab',serif;font-weight:800;font-size:1.08rem;margin-bottom:8px;line-height:1.3}
+.notice p{font-size:.92rem;color:var(--ink-soft);margin-bottom:10px}
+.notice p:last-child{margin-bottom:0}
+.notice ul{font-size:.92rem;color:var(--ink-soft);padding-left:20px;margin-bottom:10px}
+.notice a.more{font-weight:600;text-decoration:none}
+.notice a.more:hover{text-decoration:underline}
+.notice-stack{display:flex;flex-direction:column;gap:20px}
+
+/* ---------- history ---------- */
+.history .wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+@media(max-width:860px){.history .wrap{grid-template-columns:1fr;gap:28px}}
+.history p{margin-bottom:14px;font-size:.98rem}
+.history .facts{
+  background:var(--coal);color:var(--paper);border-radius:12px;padding:28px;
+  border-top:5px solid var(--gold);
+}
+.history .facts h3{font-family:'Hepta Slab',serif;font-weight:800;font-size:1.05rem;margin-bottom:16px;color:var(--gold-soft);text-transform:uppercase;letter-spacing:.08em}
+.fact{display:flex;gap:14px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.12)}
+.fact:last-child{border-bottom:none}
+.fact .yr{font-family:'Hepta Slab',serif;font-weight:800;color:var(--gold);min-width:58px;font-size:.95rem}
+.fact p{font-size:.88rem;color:#d9d3c8;margin:0;line-height:1.5}
+
+/* ---------- departments ---------- */
+.departments{background:var(--paper-dim);border-top:1px solid var(--rule)}
+.dept-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:860px){.dept-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.dept-grid{grid-template-columns:1fr}}
+.dept{
+  background:#fff;border:1px solid var(--rule);border-radius:10px;padding:20px;
+  text-decoration:none;color:var(--ink);display:block;
+  transition:border-color .15s ease;
+}
+.dept:hover{border-color:var(--brick)}
+.dept h3{font-family:'Hepta Slab',serif;font-weight:800;font-size:.98rem;margin-bottom:5px;color:var(--brick)}
+.dept p{font-size:.85rem;color:var(--ink-soft)}
+.dept .ext{font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:var(--ink-soft);display:inline-block;margin-top:8px}
+
+/* ---------- footer ---------- */
+footer{
+  background:var(--coal-deep);color:#cfc8bd;
+  border-top:5px solid var(--gold);
+  padding:52px 0 28px;font-size:.9rem;
+}
+.foot-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:36px;margin-bottom:36px}
+@media(max-width:860px){.foot-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.foot-grid{grid-template-columns:1fr}}
+footer h4{
+  font-family:'Hepta Slab',serif;font-weight:800;color:var(--paper);
+  font-size:.9rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:14px;
+}
+footer ul{list-style:none}
+footer li{margin-bottom:8px}
+footer a{color:#cfc8bd;text-decoration:none}
+footer a:hover{color:var(--gold-soft);text-decoration:underline}
+.foot-addr p{margin-bottom:6px}
+.foot-hours td{padding:2px 14px 2px 0;color:#cfc8bd}
+.foot-hours .closed{color:#8f887d}
+.copyright{
+  border-top:1px solid rgba(255,255,255,.12);padding-top:20px;
+  display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  font-size:.8rem;color:#8f887d;
+}
+.skip{
+  position:absolute;left:-9999px;top:0;background:var(--gold);color:var(--coal);
+  padding:10px 16px;font-weight:700;z-index:100;border-radius:0 0 8px 0;
+}
+.skip:focus{left:0}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to main content</a>
+
+<div class="utility">
+  <div class="wrap">
+    <span>201 S. First St, P.O. Box 451, Roslyn, WA 98941 · <a href="tel:+15096493105">(509) 649-3105</a></span>
+    <span class="hours">City Hall: Mon–Thu 9am–4pm · Closed Fri</span>
+  </div>
+</div>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="#">
+      <span class="brand-seal" aria-hidden="true">
+        <svg viewBox="0 0 28 28" fill="none" stroke="#c9973a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 20 L10 8 L14 14 L18 6 L25 20"/>
+          <path d="M3 20 H25"/>
+          <circle cx="14" cy="23" r="1.4" fill="#c9973a" stroke="none"/>
+        </svg>
+      </span>
+      <span class="brand-text">
+        <span class="city">City of Roslyn</span>
+        <span class="state">Washington · Est. 1886</span>
+      </span>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="mainnav" onclick="const n=document.getElementById('mainnav');const open=n.classList.toggle('open');this.setAttribute('aria-expanded',open)">Menu</button>
+    <nav class="main" id="mainnav" aria-label="Main navigation">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="https://www.ci.roslyn.wa.us/mayor-city-council">Mayor &amp; Council</a></li>
+        <li><a href="#departments">Departments</a></li>
+        <li><a href="https://www.ci.roslyn.wa.us/permits-licenses">Permits &amp; Licenses</a></li>
+        <li><a href="https://www.ci.roslyn.wa.us/visit">Visit</a></li>
+        <li><a href="#notices">Notices</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero">
+  <div class="wrap">
+    <span class="est">When coal was king</span>
+    <h1>City of Roslyn<span class="wa">Washington</span></h1>
+    <p class="lede">A historic coal-mining town in the Cascade foothills, 80 miles east of Seattle. Incorporated in 1886 — and still home to many of its original families.</p>
+  </div>
+  <div class="skyline" aria-hidden="true">
+    <svg viewBox="0 0 1200 190" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+      <!-- Cascade ridgeline -->
+      <path d="M0 120 L90 70 L160 105 L250 48 L330 100 L420 62 L500 108 L600 55 L690 100 L780 68 L870 105 L960 58 L1050 98 L1130 72 L1200 110 L1200 190 L0 190 Z" fill="#2b2622" opacity=".55"/>
+      <!-- town silhouette: headframe, storefronts, steeple -->
+      <g fill="#f5f3ee">
+        <!-- mine headframe -->
+        <path d="M120 190 V138 L150 96 L180 138 V190 H168 V144 L150 118 L132 144 V190 Z"/>
+        <rect x="146" y="88" width="8" height="14"/>
+        <!-- flat-front storefronts -->
+        <path d="M230 190 V128 H300 V190 Z M236 128 L265 116 L294 128 Z"/>
+        <rect x="244" y="142" width="14" height="20" fill="#211d1a"/>
+        <rect x="272" y="142" width="14" height="20" fill="#211d1a"/>
+        <path d="M320 190 V120 H370 V190 Z"/>
+        <rect x="332" y="134" width="12" height="18" fill="#211d1a"/>
+        <path d="M390 190 V132 H460 V190 Z M390 132 H460 L455 122 H395 Z"/>
+        <rect x="400" y="146" width="13" height="20" fill="#211d1a"/>
+        <rect x="428" y="146" width="13" height="20" fill="#211d1a"/>
+        <!-- church + steeple -->
+        <path d="M520 190 V130 H570 V190 Z M512 130 L545 108 L578 130 Z"/>
+        <path d="M538 108 V80 H552 V108 Z M536 80 L545 62 L554 80 Z"/>
+        <rect x="540" y="138" width="10" height="16" fill="#211d1a"/>
+        <!-- more storefronts -->
+        <path d="M600 190 V126 H660 V190 Z M596 126 H664 L658 114 H602 Z"/>
+        <rect x="610" y="140" width="12" height="18" fill="#211d1a"/>
+        <rect x="636" y="140" width="12" height="18" fill="#211d1a"/>
+        <path d="M680 190 V136 H730 V190 Z"/>
+        <rect x="692" y="148" width="11" height="16" fill="#211d1a"/>
+        <!-- water tower -->
+        <path d="M790 190 V150 M830 190 V150" stroke="#f5f3ee" stroke-width="7"/>
+        <rect x="778" y="118" width="64" height="34" rx="4"/>
+        <path d="M774 118 L810 100 L846 118 Z"/>
+        <!-- houses -->
+        <path d="M900 190 V148 H950 V190 Z M894 148 L925 128 L956 148 Z"/>
+        <rect x="916" y="158" width="12" height="16" fill="#211d1a"/>
+        <path d="M980 190 V152 H1024 V190 Z M974 152 L1002 134 L1030 152 Z"/>
+        <!-- trees -->
+        <path d="M1070 190 L1080 150 L1090 190 Z M1080 158 L1088 128 L1096 158 Z M1080 190 h0"/>
+        <path d="M1096 190 L1108 142 L1120 190 Z"/>
+        <path d="M60 190 L72 146 L84 190 Z"/>
+        <path d="M40 190 L50 158 L60 190 Z"/>
+      </g>
+      <!-- ground -->
+      <rect x="0" y="188" width="1200" height="2" fill="#f5f3ee"/>
+    </svg>
+  </div>
+</section>
+
+<section class="actions" aria-label="Popular services">
+  <div class="wrap">
+    <a class="action" href="https://www.invoicecloud.com/portal/roslynwaus">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+      <h3>Pay My Utility Bill</h3>
+      <p>View and pay water &amp; sewer bills online through Invoice Cloud.</p>
+    </a>
+    <a class="action" href="https://www.ci.roslyn.wa.us/permits-licenses">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 15l2 2 4-4"/></svg>
+      <h3>Permits &amp; Licenses</h3>
+      <p>Business, building, pet, and special event permits and applications.</p>
+    </a>
+    <a class="action" href="https://www.towncloud.io/go/roslyn-wa/">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+      <h3>Meeting Agendas</h3>
+      <p>Upcoming City Council and commission meeting agendas on TownCloud.</p>
+    </a>
+    <a class="action" href="https://forms.office.com/Pages/ResponsePage.aspx?id=Q-8Ilekg1UWnBML2RLcw77_NSd8IChNEldycbmoEIiJUN0VYU0ZYWTEwTFUyQTFQNEJKMlVUMzc5Sy4u&embed=true">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      <h3>Citizen Feedback</h3>
+      <p>Share comments, questions, or concerns with City Hall directly.</p>
+    </a>
+  </div>
+</section>
+
+<section class="section notices" id="notices">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">City Hall Notice Board</span>
+      <h2>Current Notices &amp; Public Comment</h2>
+    </div>
+    <div class="notice-grid">
+      <article class="notice feature">
+        <span class="tag open">Comment period open · through April 1, 2026</span>
+        <h3>Draft Parks Plan (PROS Plan) — Public Comment</h3>
+        <p>The City of Roslyn is accepting public comment on the draft Parks, Recreation &amp; Open Space Plan. Review the draft and share your input:</p>
+        <ul>
+          <li>In writing at City Hall, 201 S. First St, Mon–Thu 9am–4pm</li>
+          <li>Via the outside drop box at City Hall</li>
+          <li>By email to <a href="mailto:planner@ci.roslyn.wa.us">planner@ci.roslyn.wa.us</a></li>
+        </ul>
+        <a class="more" href="https://www.roslyndevelopment.com/projects-6">Read the draft Parks Plan →</a>
+      </article>
+      <div class="notice-stack">
+        <article class="notice">
+          <span class="tag rate">Utilities</span>
+          <h3>Water &amp; Sewer Rate Change</h3>
+          <p>The annual water/sewer rate change took effect with February 1st bills. <a class="more" href="https://www.ci.roslyn.wa.us/departments/finance.php">Rate details →</a></p>
+        </article>
+        <article class="notice">
+          <span class="tag">Community</span>
+          <h3>Kittitas County Economic Development Survey</h3>
+          <p>What does "economic development" mean to you? <a class="more" href="https://tally.so/r/nPkYPb">Take the 2-minute survey →</a></p>
+        </article>
+        <article class="notice">
+          <span class="tag">Wildlife</span>
+          <h3>Bear Awareness</h3>
+          <p><a class="more" href="https://youtu.be/-VxKQeVswl4">Living with black bears (video) →</a><br>
+          <a class="more" href="https://wdfw.medium.com/keep-bears-wild-by-cleaning-up-backyard-attractants-43cc492b207b">Clean up backyard attractants →</a></p>
+        </article>
+        <article class="notice">
+          <span class="tag">Notice</span>
+          <h3>Roslyn Urban Forest</h3>
+          <p><a class="more" href="https://www.ci.roslyn.wa.us/pdfs/Roslyn-Urban-Forest-Flyer.pdf">Urban forest information flyer (PDF) →</a></p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section history">
+  <div class="wrap">
+    <div>
+      <div class="section-head">
+        <span class="eyebrow">Our Story</span>
+        <h2>A Town Built on Coal</h2>
+      </div>
+      <p>Welcome to the City of Roslyn! Located 80 miles east of Seattle near Interstate 90 in sunny central Washington, Roslyn played an important role in Washington State history. The extensive coal fields in the area fueled the Northern Pacific Railroad's trains during construction and early operation of a direct rail line through the Cascade Mountains.</p>
+      <p>Men from coal mining regions in the United States, Europe, and elsewhere came to work in the mines. English, Italian, and Slavic immigrants were among the early settlers, and a significant proportion of the town's early residents were foreign born. In 1888, the Northern Pacific Coal Company recruited more than 300 African-American miners from Virginia, North Carolina, and Kentucky, who came with their families to work in the mines.</p>
+      <p>At one time, 24 ethnic groups and nationalities were living in Roslyn. Today, many of the original families continue to make Roslyn their home.</p>
+    </div>
+    <aside class="facts" aria-label="Roslyn at a glance">
+      <h3>Roslyn at a Glance</h3>
+      <div class="fact"><span class="yr">1886</span><p>Roslyn is incorporated as a coal-mining town serving the Northern Pacific Railroad.</p></div>
+      <div class="fact"><span class="yr">1888</span><p>More than 300 African-American miners and their families arrive from Virginia, North Carolina, and Kentucky.</p></div>
+      <div class="fact"><span class="yr">24</span><p>Ethnic groups and nationalities living in Roslyn at the town's peak — a legacy preserved in its historic cemeteries.</p></div>
+      <div class="fact"><span class="yr">Today</span><p>A National Register Historic District in the Cascade foothills, 80 miles east of Seattle off I-90.</p></div>
+    </aside>
+  </div>
+</section>
+
+<section class="section departments" id="departments">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">City Services</span>
+      <h2>Departments &amp; Commissions</h2>
+    </div>
+    <div class="dept-grid">
+      <a class="dept" href="https://www.ci.roslyn.wa.us/departments/finance.php"><h3>Finance &amp; Utilities</h3><p>Utility billing, payments, rates, and city finances.</p></a>
+      <a class="dept" href="https://www.ci.roslyn.wa.us/departments/planning-building.php"><h3>Planning &amp; Building</h3><p>Building permits, land use, short-term rentals, and development.</p></a>
+      <a class="dept" href="https://www.ci.roslyn.wa.us/departments/public-works.php"><h3>Public Works</h3><p>Streets, water, sewer, and city infrastructure.</p></a>
+      <a class="dept" href="https://www.ci.roslyn.wa.us/commissions/planning-historic-commission.php"><h3>Planning / Historic Commission</h3><p>Preserving Roslyn's historic district character.</p></a>
+      <a class="dept" href="https://www.ci.roslyn.wa.us/commissions/cemetery-commission.php"><h3>Cemetery Commission</h3><p>Stewardship of Roslyn's historic cemeteries.</p></a>
+      <a class="dept" href="https://www.ci.roslyn.wa.us/commissions/citizen-advisory-committee.php"><h3>Citizen Advisory Committee</h3><p>Resident input on city priorities and projects.</p></a>
+      <a class="dept" href="https://www.roslyn.lib.wa.us/"><h3>Library</h3><p>Roslyn Public Library programs and services.</p><span class="ext">External site ↗</span></a>
+      <a class="dept" href="http://cityofcleelum.com/city-services/police/"><h3>Police</h3><p>Law enforcement services via the City of Cle Elum.</p><span class="ext">External site ↗</span></a>
+      <a class="dept" href="https://www.roslynfire.org/"><h3>Roslyn Fire Department</h3><p>Fire protection and emergency response.</p><span class="ext">External site ↗</span></a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-addr">
+        <h4>City of Roslyn</h4>
+        <p>201 South 1st Street<br>P.O. Box 451<br>Roslyn, WA 98941</p>
+        <p><a href="tel:+15096493105">(509) 649-3105</a></p>
+      </div>
+      <div>
+        <h4>Administration Hours</h4>
+        <table class="foot-hours">
+          <tr><td>Mon–Thu</td><td>9am – 4pm</td></tr>
+          <tr><td>Friday</td><td class="closed">Closed</td></tr>
+        </table>
+      </div>
+      <div>
+        <h4>Quicklinks</h4>
+        <ul>
+          <li><a href="https://www.towncloud.io/go/roslyn-wa/">Meeting Agendas</a></li>
+          <li><a href="http://www.codepublishing.com/WA/roslyn">Municipal Code</a></li>
+          <li><a href="https://cityofroslyn.sharepoint.com/:f:/g/EizL02C-xYtNv6LtnIWfoVwBH3lixnVB3zUTZAGidclwXw?e=shV6Zp">Municipal Code Updates</a></li>
+          <li><a href="https://www.ci.roslyn.wa.us/pdfs/Roslyn Employment Application.pdf">Employment Application</a></li>
+          <li><a href="https://dor.wa.gov/manage-business/city-license-endorsements/roslyn">Business Licensing (DOR)</a></li>
+          <li><a href="https://www.roslyndevelopment.com/">Community Development</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Community</h4>
+        <ul>
+          <li><a href="http://www.roslynmuseum.com/">Roslyn Museum</a></li>
+          <li><a href="https://roslyndowntown.org/">Roslyn Downtown Association</a></li>
+          <li><a href="http://roslyncemeteries.org/">Roslyn Cemetery</a></li>
+          <li><a href="http://www.kittitascountychamber.com/">Kittitas County Chamber</a></li>
+          <li><a href="http://www.co.kittitas.wa.us/">Kittitas County</a></li>
+          <li><a href="https://dahp.wa.gov/historic-preservation/find-a-historic-place">Historic Preservation (DAHP)</a></li>
+          <li><a href="http://www.flickr.com/photos/roslynlibraryphotos/sets/72157625054916470/">Old City Hall Project</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <span>© 2026 City of Roslyn, Washington</span>
+      <span>Est. 1886 · When Coal Was King</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

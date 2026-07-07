@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>City of Cle Elum, Washington — Heart of the Cascades</title>
+<meta name="description" content="Official website of the City of Cle Elum, Washington. Pay your utility bill, apply for permits, view council agendas, and connect with city services.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bevan&family=Oswald:wght@400;500;600&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f0e9da;
+  --paper-deep:#e6ddc9;
+  --coal:#171a17;
+  --coal-2:#20241f;
+  --ink:#241f18;
+  --river:#2e7f78;
+  --river-deep:#1d5a55;
+  --amber:#e0a437;
+  --amber-deep:#b97f1d;
+  --oxide:#a5502f;
+  --stone:#77705f;
+  --line:#c9bfa8;
+  --maxw:1180px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Public Sans',system-ui,sans-serif;
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.6;
+  font-size:16px;
+}
+.display{font-family:'Bevan',serif}
+.util{font-family:'Oswald',sans-serif;letter-spacing:.1em;text-transform:uppercase}
+a{color:var(--river-deep);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+
+/* ---------- Notice ticker ---------- */
+.notice{
+  background:var(--oxide);
+  color:#f7ede3;
+  font-size:.85rem;
+  padding:9px 0;
+  border-bottom:3px solid var(--coal);
+}
+.notice .wrap{display:flex;gap:14px;align-items:baseline;flex-wrap:wrap}
+.notice .tag{
+  font-family:'Oswald',sans-serif;letter-spacing:.14em;text-transform:uppercase;
+  font-size:.72rem;font-weight:600;
+  background:var(--coal);color:var(--amber);
+  padding:2px 10px;border-radius:3px;white-space:nowrap;
+}
+.notice a{color:#fff;text-decoration:underline;text-underline-offset:3px}
+
+/* ---------- Header ---------- */
+header.site{
+  background:var(--coal);
+  color:#efe9dc;
+  position:sticky;top:0;z-index:60;
+  border-bottom:4px solid var(--amber);
+}
+header.site .wrap{display:flex;align-items:center;gap:26px;height:66px}
+.brand{display:flex;align-items:center;gap:12px;color:#efe9dc}
+.brand:hover{text-decoration:none}
+.marker-mini{
+  width:38px;height:38px;border-radius:50%;flex-shrink:0;
+  border:2px solid var(--amber);
+  display:grid;place-items:center;
+  font-family:'Oswald',sans-serif;font-size:.62rem;letter-spacing:.05em;
+  color:var(--amber);
+}
+.brand-name{font-family:'Bevan',serif;font-size:1rem;line-height:1.05}
+.brand-name small{
+  display:block;font-family:'Oswald',sans-serif;font-weight:400;
+  font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:#9aa598;
+}
+nav.main{margin-left:auto;display:flex;gap:2px;align-items:center}
+nav.main a{
+  color:#e8e4d6;font-family:'Oswald',sans-serif;font-weight:500;
+  font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;
+  padding:8px 13px;border-radius:4px;
+}
+nav.main a:hover{background:rgba(255,255,255,.08);text-decoration:none}
+.nav-cta{background:var(--amber);color:var(--coal)!important;font-weight:600}
+.nav-cta:hover{background:#ecb956!important}
+.menu-btn{display:none;margin-left:auto;background:none;border:1px solid rgba(255,255,255,.35);color:#efe9dc;border-radius:4px;padding:8px 12px;font-family:'Oswald',sans-serif;letter-spacing:.1em;text-transform:uppercase;font-size:.8rem;cursor:pointer}
+
+/* ---------- Hero: rail poster ---------- */
+.hero{
+  position:relative;
+  overflow:hidden;
+  padding:80px 0 0;
+  background:
+    repeating-linear-gradient(0deg, transparent 0 31px, rgba(36,31,24,.035) 31px 32px),
+    var(--paper);
+}
+.hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:start}
+.kicker{
+  font-family:'Oswald',sans-serif;font-weight:600;font-size:.78rem;
+  letter-spacing:.3em;text-transform:uppercase;color:var(--oxide);
+  display:flex;align-items:center;gap:14px;margin-bottom:20px;
+}
+.kicker::before,.kicker::after{content:"";height:2px;width:38px;background:var(--oxide)}
+.hero h1{
+  font-family:'Bevan',serif;font-weight:400;
+  font-size:clamp(2.6rem,6.4vw,4.7rem);
+  line-height:1.02;
+  color:var(--coal);
+  max-width:12ch;
+  text-transform:uppercase;
+}
+.hero h1 em{font-style:normal;color:var(--river-deep)}
+.hero p.lede{
+  max-width:50ch;font-size:1.05rem;color:#4c463a;
+  margin:22px 0 0;
+}
+.hero p.lede b{color:var(--ink)}
+
+/* survey marker medallion */
+.medallion{
+  width:170px;height:170px;flex-shrink:0;
+  animation:spin 40s linear infinite;
+  margin-top:8px;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.medallion .ring{fill:none;stroke:var(--coal);stroke-width:3}
+.medallion text{font-family:'Oswald',sans-serif;letter-spacing:.32em;font-size:10.5px;fill:var(--coal)}
+.medallion .core{fill:var(--coal)}
+.medallion .core-txt{fill:var(--amber);letter-spacing:.12em;font-size:13px;font-weight:600}
+
+/* ridgeline + water */
+.ridges{display:block;width:100%;margin-top:44px}
+.swift path{fill:none;stroke-linecap:round;stroke-dasharray:12 22;animation:flow 10s linear infinite}
+.swift .w1{stroke:var(--river);stroke-width:2.5}
+.swift .w2{stroke:var(--river-deep);stroke-width:1.8;opacity:.5;animation-duration:15s}
+@keyframes flow{to{stroke-dashoffset:-408}}
+
+/* ---------- Departures board (signature) ---------- */
+.depot{background:var(--coal);padding:0 0 60px;position:relative}
+.depot::before{
+  content:"";display:block;height:4px;
+  background:var(--amber);
+}
+.board-head{
+  display:flex;align-items:baseline;justify-content:space-between;
+  gap:16px;flex-wrap:wrap;
+  padding:38px 0 6px;
+}
+.board-head h2{
+  font-family:'Bevan',serif;font-weight:400;color:var(--paper);
+  font-size:clamp(1.5rem,3vw,2.1rem);text-transform:uppercase;letter-spacing:.03em;
+}
+.board-head .clock{
+  font-family:'Oswald',sans-serif;color:var(--amber);
+  letter-spacing:.2em;text-transform:uppercase;font-size:.8rem;
+}
+.board-sub{
+  font-family:'Oswald',sans-serif;color:#8b968a;font-size:.75rem;
+  letter-spacing:.22em;text-transform:uppercase;margin-bottom:22px;
+}
+.board{
+  border:1px solid #333a33;border-radius:8px;overflow:hidden;
+  background:#101310;
+  box-shadow:0 24px 50px -24px rgba(0,0,0,.7);
+}
+.board-cols{
+  display:grid;grid-template-columns:112px 1fr 150px 130px;
+  gap:0 18px;align-items:center;
+  padding:10px 20px;
+  background:#181c17;
+  font-family:'Oswald',sans-serif;font-size:.66rem;letter-spacing:.26em;
+  text-transform:uppercase;color:#6d7a6c;
+  border-bottom:1px solid #2a302a;
+}
+.dep{
+  display:grid;grid-template-columns:112px 1fr 150px 130px;
+  gap:0 18px;align-items:center;
+  padding:15px 20px;
+  border-bottom:1px solid #232823;
+  color:#e8e4d6;
+  transition:background .15s;
+}
+.dep:hover{background:#1a2019;text-decoration:none}
+.dep:last-child{border-bottom:0}
+.dep .track{
+  font-family:'Oswald',sans-serif;font-weight:600;font-size:.78rem;
+  letter-spacing:.14em;color:var(--amber);
+  border:1px solid rgba(224,164,55,.4);border-radius:4px;
+  text-align:center;padding:5px 0;
+}
+.dep .dest{display:flex;flex-direction:column;gap:1px}
+.dep .flap{
+  font-family:'Oswald',sans-serif;font-weight:500;font-size:1.02rem;
+  letter-spacing:.12em;text-transform:uppercase;
+  display:flex;gap:1px;flex-wrap:wrap;
+}
+.flap span{
+  display:inline-block;min-width:.68em;text-align:center;
+  background:linear-gradient(180deg,#242a23 48%, #1b201a 52%);
+  border-radius:2px;padding:1px 1px;
+  transform-origin:top;
+  animation:flip .5s ease backwards;
+}
+.flap span.sp{background:none}
+@keyframes flip{from{transform:rotateX(90deg);opacity:0}to{transform:rotateX(0);opacity:1}}
+.dep .dest small{font-size:.72rem;color:#7f8a7e;font-family:'Public Sans',sans-serif;letter-spacing:0}
+.dep .via{font-size:.74rem;color:#93a092;font-family:'Oswald',sans-serif;letter-spacing:.1em;text-transform:uppercase}
+.dep .status{
+  font-family:'Oswald',sans-serif;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
+  color:#79e0a3;text-align:right;
+}
+.dep .status.now{color:var(--amber)}
+.board-foot{
+  padding:10px 20px;background:#181c17;border-top:1px solid #2a302a;
+  font-family:'Oswald',sans-serif;font-size:.66rem;letter-spacing:.22em;
+  text-transform:uppercase;color:#5d685c;
+}
+
+/* ---------- Milepost section headers ---------- */
+section{padding:60px 0}
+.mp-head{display:flex;align-items:center;gap:18px;margin-bottom:30px}
+.mp{
+  flex-shrink:0;width:52px;height:64px;
+  background:var(--coal);color:var(--paper);
+  clip-path:polygon(0 0,100% 0,100% 78%,50% 100%,0 78%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  font-family:'Oswald',sans-serif;line-height:1;
+  padding-bottom:8px;
+}
+.mp b{font-size:1.15rem;color:var(--amber)}
+.mp span{font-size:.5rem;letter-spacing:.2em}
+.mp-head h2{
+  font-family:'Bevan',serif;font-weight:400;font-size:clamp(1.5rem,3vw,2rem);
+  text-transform:uppercase;color:var(--coal);
+}
+.mp-head a{margin-left:auto;font-family:'Oswald',sans-serif;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap}
+
+/* Services */
+.svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--line);border:2px solid var(--coal)}
+.svc{
+  background:var(--paper);
+  padding:20px 18px 22px;
+  color:var(--ink);
+  position:relative;
+  transition:background .15s;
+}
+.svc:hover{background:#fff;text-decoration:none}
+.svc:hover h3{color:var(--river-deep)}
+.svc .no{
+  font-family:'Oswald',sans-serif;font-size:.62rem;letter-spacing:.24em;
+  color:var(--stone);text-transform:uppercase;
+}
+.svc h3{
+  font-family:'Oswald',sans-serif;font-weight:600;font-size:1.05rem;
+  letter-spacing:.06em;text-transform:uppercase;color:var(--coal);
+  margin:6px 0 6px;transition:color .15s;
+}
+.svc p{font-size:.84rem;color:#5c5546;line-height:1.5}
+
+/* ---------- Ledger: news + meetings ---------- */
+.ledger{background:var(--paper-deep);border-top:2px solid var(--coal);border-bottom:2px solid var(--coal)}
+.ledger-grid{display:grid;grid-template-columns:1.45fr 1fr;gap:44px}
+.news-item{padding:18px 0;border-bottom:1px dashed #b3a88e}
+.news-item:first-of-type{padding-top:4px}
+.news-item .date-tag{
+  font-family:'Oswald',sans-serif;font-size:.68rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--oxide);font-weight:600;
+}
+.news-item h3{font-family:'Public Sans',sans-serif;font-weight:700;font-size:1.14rem;margin:5px 0 5px}
+.news-item h3 a{color:var(--coal)}
+.news-item h3 a:hover{color:var(--river-deep)}
+.news-item p{font-size:.9rem;color:#57503f}
+
+.meetings{
+  background:var(--coal);color:var(--paper);
+  border-radius:8px;padding:26px 24px;align-self:start;
+  border-top:6px solid var(--amber);
+}
+.meetings h3{font-family:'Bevan',serif;font-weight:400;font-size:1.15rem;text-transform:uppercase;margin-bottom:16px}
+.mtg{display:flex;gap:15px;padding:12px 0;border-bottom:1px solid rgba(240,233,218,.12)}
+.mtg:last-of-type{border-bottom:0}
+.mtg .date{
+  min-width:54px;height:54px;flex-shrink:0;
+  border:1px solid rgba(224,164,55,.45);border-radius:6px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  font-family:'Oswald',sans-serif;line-height:1.05;
+}
+.mtg .date b{font-size:1.3rem;color:var(--amber)}
+.mtg .date span{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:#9aa598}
+.mtg h4{font-size:.92rem;font-weight:700}
+.mtg p{font-size:.78rem;color:#a7b0a4}
+.meetings .all{
+  display:inline-block;margin-top:16px;color:var(--amber);
+  font-family:'Oswald',sans-serif;font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;
+}
+
+/* ---------- Timeline: the line ---------- */
+.line-sec{background:var(--paper);overflow:hidden}
+.rail{position:relative;margin-top:46px;padding-bottom:8px}
+.rail::before{
+  content:"";position:absolute;left:0;right:0;top:28px;height:10px;
+  background:
+    repeating-linear-gradient(90deg, var(--coal) 0 4px, transparent 4px 26px) 0 0/100% 100%,
+    linear-gradient(var(--stone),var(--stone)) 0 2px/100% 2px no-repeat,
+    linear-gradient(var(--stone),var(--stone)) 0 8px/100% 2px no-repeat;
+  background-repeat:repeat-x,no-repeat,no-repeat;
+}
+.stops{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;position:relative}
+.stop{padding-top:58px;position:relative}
+.stop::before{
+  content:"";position:absolute;top:22px;left:0;
+  width:20px;height:20px;border-radius:50%;
+  background:var(--amber);border:4px solid var(--coal);
+}
+.stop .yr{font-family:'Bevan',serif;font-size:1.5rem;color:var(--coal);line-height:1}
+.stop h4{font-family:'Oswald',sans-serif;font-weight:600;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;color:var(--oxide);margin:6px 0 4px}
+.stop p{font-size:.82rem;color:#5c5546;line-height:1.5;max-width:26ch}
+
+/* ---------- Explore ---------- */
+.exp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.exp{
+  border:2px solid var(--coal);border-radius:8px;
+  padding:24px 22px;min-height:180px;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  color:var(--paper);position:relative;overflow:hidden;
+  transition:transform .15s;
+}
+.exp:hover{text-decoration:none;transform:translateY(-3px)}
+.exp .stamp{
+  position:absolute;top:14px;right:16px;
+  font-family:'Oswald',sans-serif;font-size:.6rem;letter-spacing:.24em;
+  text-transform:uppercase;color:rgba(240,233,218,.55);
+  border:1px solid rgba(240,233,218,.35);border-radius:3px;padding:3px 8px;
+}
+.exp h3{font-family:'Bevan',serif;font-weight:400;font-size:1.3rem;text-transform:uppercase;margin-bottom:4px}
+.exp p{font-size:.84rem;color:rgba(240,233,218,.85)}
+.exp.history{background:linear-gradient(160deg,#4c3a24,#241b0f)}
+.exp.outdoors{background:linear-gradient(160deg,#2b5743,#152a20)}
+.exp.museums{background:linear-gradient(160deg,#31626d,#152e34)}
+
+/* ---------- Footer ---------- */
+footer{background:var(--coal);color:#b9c0b4;padding:0 0 30px;font-size:.9rem}
+footer .hazard{height:4px;background:var(--amber)}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:36px;padding:46px 0 36px}
+footer h4{
+  color:var(--paper);font-family:'Oswald',sans-serif;font-weight:600;
+  font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;margin-bottom:14px;
+}
+footer ul{list-style:none}
+footer li{margin-bottom:8px}
+footer a{color:#b9c0b4}
+footer a:hover{color:#fff}
+.foot-brand .brand-name{color:var(--paper)}
+.foot-brand p{max-width:32ch;font-size:.85rem;margin-top:12px}
+.foot-bottom{
+  border-top:1px solid rgba(240,233,218,.12);padding-top:20px;
+  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  font-family:'Oswald',sans-serif;font-size:.68rem;letter-spacing:.2em;
+  text-transform:uppercase;color:#77816f;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width:980px){
+  .hero .wrap{grid-template-columns:1fr}
+  .medallion{display:none}
+  .svc-grid{grid-template-columns:repeat(2,1fr)}
+  .ledger-grid{grid-template-columns:1fr}
+  .stops{grid-template-columns:1fr;gap:0}
+  .rail::before{left:9px;right:auto;top:0;bottom:0;width:10px;height:auto;
+    background:
+      repeating-linear-gradient(0deg, var(--coal) 0 4px, transparent 4px 26px),
+      linear-gradient(var(--stone),var(--stone)) 2px 0/2px 100% no-repeat,
+      linear-gradient(var(--stone),var(--stone)) 8px 0/2px 100% no-repeat;
+  }
+  .stop{padding:0 0 30px 46px}
+  .stop::before{top:2px;left:0}
+  .board-cols{display:none}
+  .dep{grid-template-columns:78px 1fr;grid-template-rows:auto auto;row-gap:6px}
+  .dep .via{grid-column:2}
+  .dep .status{grid-column:1/-1;text-align:left}
+  nav.main{display:none}
+  nav.main.open{
+    display:flex;flex-direction:column;align-items:stretch;
+    position:absolute;top:66px;left:0;right:0;
+    background:var(--coal);padding:12px 24px 18px;
+    border-bottom:4px solid var(--amber);
+  }
+  .menu-btn{display:block}
+  .exp-grid{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:560px){
+  .svc-grid{grid-template-columns:1fr 1fr}
+  .foot-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="notice" role="region" aria-label="City notice">
+  <div class="wrap">
+    <span class="tag">City Notice</span>
+    <span>Chapter 9 bankruptcy update: the City has filed to safeguard essential services and protect residents. <a href="https://cleelum.gov/chapter-9-bankruptcy-update/">Read the full update</a> · <a href="https://cleelum.gov/wp-content/uploads/2025/12/Probolsky-Research-Cle-Elum-Voter-Poll-Exec-Summary.pdf">Voter survey results</a></span>
+  </div>
+</div>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="#">
+      <span class="marker-mini" aria-hidden="true">1902</span>
+      <span class="brand-name">City of Cle Elum<small>Heart of the Cascades · Washington</small></span>
+    </a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="mainnav" onclick="const n=document.getElementById('mainnav');const o=n.classList.toggle('open');this.setAttribute('aria-expanded',o)">Menu</button>
+    <nav class="main" id="mainnav" aria-label="Primary">
+      <a href="#services">Services</a>
+      <a href="#news">News</a>
+      <a href="#meetings-anchor">Meetings</a>
+      <a href="#explore">Explore</a>
+      <a class="nav-cta" href="https://xpressbillpay.com/#/?org=Cleelum10569">Pay My Bill</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <div>
+      <div class="kicker">Official City Website · Est. 1902</div>
+      <h1>Swift water.<br><em>Steady</em> service.</h1>
+      <p class="lede"><b>Cle Elum</b> takes its name from the Kittitas word <b>Tle-el-Lum</b> — swift water. A coal and railroad town turned gateway to the Cascades, this city has run on hard work since the Northern Pacific arrived. This site is your direct line to its services, staff, and elected officials.</p>
+    </div>
+    <svg class="medallion" viewBox="0 0 170 170" aria-hidden="true">
+      <circle class="ring" cx="85" cy="85" r="82"/>
+      <circle class="ring" cx="85" cy="85" r="62" stroke-width="1.5"/>
+      <defs><path id="tc" d="M85,85 m-71,0 a71,71 0 1,1 142,0 a71,71 0 1,1 -142,0"/></defs>
+      <text><textPath href="#tc" startOffset="0%">CITY OF CLE ELUM · WASHINGTON · KITTITAS COUNTY · INC. FEB 12 1902 ·</textPath></text>
+      <circle class="core" cx="85" cy="85" r="52"/>
+      <text class="core-txt" x="85" y="76" text-anchor="middle">ELEV.</text>
+      <text class="core-txt" x="85" y="94" text-anchor="middle" style="font-size:19px">1,930</text>
+      <text class="core-txt" x="85" y="110" text-anchor="middle">FEET</text>
+    </svg>
+  </div>
+  <svg class="ridges" viewBox="0 0 1200 150" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,110 L140,58 L260,96 L400,34 L540,92 L660,52 L820,104 L960,44 L1080,86 L1200,60 L1200,150 L0,150 Z" fill="#241f18" opacity=".12"/>
+    <path d="M0,128 L180,84 L330,116 L480,70 L640,114 L800,78 L950,118 L1100,86 L1200,104 L1200,150 L0,150 Z" fill="#241f18" opacity=".22"/>
+    <g class="swift">
+      <path class="w1" d="M0,132 C150,112 250,148 400,132 C550,116 650,148 800,132 C950,116 1050,148 1200,132"/>
+      <path class="w2" d="M0,140 C150,122 250,154 400,140 C550,126 650,154 800,140 C950,126 1050,154 1200,140"/>
+    </g>
+  </svg>
+</div>
+
+<!-- ============ SIGNATURE: DEPARTURES BOARD ============ -->
+<div class="depot" id="depot">
+  <div class="wrap">
+    <div class="board-head">
+      <h2>City Hall Departures</h2>
+      <div class="clock util" id="clock">—</div>
+    </div>
+    <div class="board-sub">Every service leaves from here · All boarding, no waiting</div>
+    <div class="board" role="list">
+      <div class="board-cols" aria-hidden="true"><span>Track</span><span>Destination</span><span>Via</span><span style="text-align:right">Status</span></div>
+
+      <a class="dep" role="listitem" href="https://xpressbillpay.com/#/?org=Cleelum10569">
+        <span class="track">TRK 01</span>
+        <span class="dest"><span class="flap" data-text="PAY MY UTILITY BILL"></span><small>Water, sewer &amp; garbage — autopay available</small></span>
+        <span class="via">Xpress Bill Pay</span>
+        <span class="status">Boarding</span>
+      </a>
+
+      <a class="dep" role="listitem" href="https://cityofcleelum.portal.iworq.net/portalhome/cityofcleelum">
+        <span class="track">TRK 02</span>
+        <span class="dest"><span class="flap" data-text="REPORT AN ISSUE"></span><small>Potholes, streetlights, code concerns</small></span>
+        <span class="via">iWorQ Portal</span>
+        <span class="status now">Now Departing</span>
+      </a>
+
+      <a class="dep" role="listitem" href="https://cleelum.gov/forms-and-applications/">
+        <span class="track">TRK 03</span>
+        <span class="dest"><span class="flap" data-text="APPLY FOR A PERMIT"></span><small>Building, planning &amp; right-of-way</small></span>
+        <span class="via">Forms &amp; Applications</span>
+        <span class="status">Boarding</span>
+      </a>
+
+      <a class="dep" role="listitem" href="https://cleelumwa.portal.civicclerk.com/">
+        <span class="track">TRK 04</span>
+        <span class="dest"><span class="flap" data-text="AGENDAS AND MINUTES"></span><small>Council, commissions &amp; meeting video</small></span>
+        <span class="via">CivicClerk</span>
+        <span class="status">On Time</span>
+      </a>
+
+      <a class="dep" role="listitem" href="https://cleelum.nextrequest.com/">
+        <span class="track">TRK 05</span>
+        <span class="dest"><span class="flap" data-text="REQUEST PUBLIC RECORDS"></span><small>Submit and track records requests</small></span>
+        <span class="via">NextRequest</span>
+        <span class="status">On Time</span>
+      </a>
+
+      <a class="dep" role="listitem" href="https://cleelum.gov/employment-opportunities/">
+        <span class="track">TRK 06</span>
+        <span class="dest"><span class="flap" data-text="WORK FOR THE CITY"></span><small>Current openings &amp; applications</small></span>
+        <span class="via">Employment</span>
+        <span class="status">Now Hiring</span>
+      </a>
+    </div>
+    <div class="board-foot">City Hall · 119 W 1st St · (509) 674-2262 · Mon–Fri</div>
+  </div>
+</div>
+
+<section id="services">
+  <div class="wrap">
+    <div class="mp-head">
+      <div class="mp" aria-hidden="true"><b>12</b><span>DEPTS</span></div>
+      <h2>City Services</h2>
+      <a href="https://cleelum.gov/city-services/">All Departments →</a>
+    </div>
+    <div class="svc-grid">
+      <a class="svc" href="https://cleelum.gov/city-services/utilities/"><span class="no">Dept · UT</span><h3>Utilities</h3><p>Water, sewer, garbage, rates, and My Water Advisor usage tracking.</p></a>
+      <a class="svc" href="https://cleelum.gov/city-services/building-department/"><span class="no">Dept · BD</span><h3>Building</h3><p>Permits, fees, inspections, and electronic submittal instructions.</p></a>
+      <a class="svc" href="https://cleelum.gov/city-services/planning/"><span class="no">Dept · PL</span><h3>Planning</h3><p>Comprehensive plan, shoreline program, and development projects.</p></a>
+      <a class="svc" href="https://cleelum.gov/city-services/police/"><span class="no">Dept · PD</span><h3>Police</h3><p>Records, animal impound, winter parking, and community events.</p></a>
+      <a class="svc" href="https://cleelum.gov/city-services/fire/"><span class="no">Dept · FD</span><h3>Fire</h3><p>Fire protection and emergency services for the upper county.</p></a>
+      <a class="svc" href="https://cleelum.gov/public-works/"><span class="no">Dept · PW</span><h3>Public Works</h3><p>Streets, construction projects, and water &amp; wastewater treatment.</p></a>
+      <a class="svc" href="https://cleelum.gov/city-services/parks/"><span class="no">Dept · PK</span><h3>Parks</h3><p>Nine city parks, from Centennial Park to Hanson Ponds disc golf.</p></a>
+      <a class="svc" href="https://cleelum.gov/city-services/business-licenses/"><span class="no">Dept · BL</span><h3>Business Licenses</h3><p>Licensing requirements, fees, forms, and applications.</p></a>
+      <a class="svc" href="https://cleelum.gov/city-services/airport/"><span class="no">Dept · AP</span><h3>Airport</h3><p>Cle Elum Municipal Airport information and advisory committee.</p></a>
+      <a class="svc" href="http://www.carpenter.lib.wa.us"><span class="no">Dept · LB</span><h3>Library</h3><p>Carpenter Memorial Library programs, hours, and Friends group.</p></a>
+      <a class="svc" href="https://cleelum.gov/city-services/cemetery/"><span class="no">Dept · CM</span><h3>Cemetery</h3><p>Laurel Hill Memorial Park services and pricing information.</p></a>
+      <a class="svc" href="https://cleelum.gov/city-services/finance/"><span class="no">Dept · FN</span><h3>Finance</h3><p>City budget, fees &amp; rates, and financial reports.</p></a>
+    </div>
+  </div>
+</section>
+
+<section class="ledger" id="news">
+  <div class="wrap">
+    <div class="ledger-grid">
+      <div>
+        <div class="mp-head" style="margin-bottom:14px">
+          <div class="mp" aria-hidden="true"><b>26</b><span>LEDGER</span></div>
+          <h2>The City Ledger</h2>
+          <a href="https://us6.campaign-archive.com/home/?u=8cc171e8635a6e1b9b5f24ccb&id=1549b3dc0b">Newsletter Archive →</a>
+        </div>
+        <article class="news-item">
+          <span class="date-tag">Filed · June 2026</span>
+          <h3><a href="https://cleelum.gov/chapter-9-bankruptcy-update/">Chapter 9 bankruptcy update</a></h3>
+          <p>The City has filed Chapter 9 to safeguard essential services and protect residents. Follow the dedicated page for filings, FAQs, and what it means for city services.</p>
+        </article>
+        <article class="news-item">
+          <span class="date-tag">Utilities</span>
+          <h3><a href="https://cleelum.gov/my-water-advisor/">Track your water usage with My Water Advisor</a></h3>
+          <p>Set up alerts, spot leaks early, and monitor daily household usage through the city's water portal.</p>
+        </article>
+        <article class="news-item">
+          <span class="date-tag">Sanitation</span>
+          <h3><a href="https://cleelum.gov/recycling">Optional curbside recycling is here</a></h3>
+          <p>Learn what's accepted and sign up for optional curbside recycling service.</p>
+        </article>
+        <article class="news-item">
+          <span class="date-tag">Now Recruiting</span>
+          <h3><a href="https://cleelum.gov/board-and-commission-application/">Serve your city: board &amp; commission openings</a></h3>
+          <p>Openings are available on city boards and commissions — from Planning to the Tree Board. Learn more and apply.</p>
+        </article>
+      </div>
+      <aside class="meetings" id="meetings-anchor" aria-label="Upcoming public meetings">
+        <h3>Public Meetings</h3>
+        <div class="mtg">
+          <div class="date"><b>14</b><span>Jul</span></div>
+          <div><h4>City Council — Regular Meeting</h4><p>7:00 PM · Council Chambers, City Hall</p></div>
+        </div>
+        <div class="mtg">
+          <div class="date"><b>21</b><span>Jul</span></div>
+          <div><h4>Planning Commission</h4><p>6:00 PM · Council Chambers, City Hall</p></div>
+        </div>
+        <div class="mtg">
+          <div class="date"><b>28</b><span>Jul</span></div>
+          <div><h4>City Council — Regular Meeting</h4><p>7:00 PM · Council Chambers, City Hall</p></div>
+        </div>
+        <a class="all" href="https://cleelumwa.portal.civicclerk.com/">All agendas, minutes &amp; video →</a>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="line-sec" aria-label="Cle Elum history timeline">
+  <div class="wrap">
+    <div class="mp-head">
+      <div class="mp" aria-hidden="true"><b>MP</b><span>2026</span></div>
+      <h2>The Line So Far</h2>
+    </div>
+    <div class="rail">
+      <div class="stops">
+        <div class="stop">
+          <div class="yr">1886</div>
+          <h4>Rails &amp; Coal</h4>
+          <p>The Northern Pacific arrives and coal is struck — the town booms almost overnight.</p>
+        </div>
+        <div class="stop">
+          <div class="yr">1902</div>
+          <h4>Incorporation</h4>
+          <p>Cle Elum incorporates on February 12, 1902, at 1,930 feet in the upper Kittitas Valley.</p>
+        </div>
+        <div class="stop">
+          <div class="yr">1918</div>
+          <h4>The Great Fire</h4>
+          <p>Fire levels roughly 30 blocks. The town rebuilds — brick this time — within a few years.</p>
+        </div>
+        <div class="stop">
+          <div class="yr">1966</div>
+          <h4>Last Crank Call</h4>
+          <p>Among the last towns in America on hand-crank telephones — a story told at the Telephone Museum.</p>
+        </div>
+        <div class="stop">
+          <div class="yr">Today</div>
+          <h4>Heart of the Cascades</h4>
+          <p>Gateway to trails, rivers, and passes — with the Coal Mines Trail running where the trains once did.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="explore" style="padding-top:0">
+  <div class="wrap">
+    <div class="mp-head">
+      <div class="mp" aria-hidden="true"><b>3</b><span>ROUTES</span></div>
+      <h2>Explore Cle Elum</h2>
+      <a href="https://cleelum.gov/around-the-city/">Around the City →</a>
+    </div>
+    <div class="exp-grid">
+      <a class="exp history" href="https://cleelum.gov/around-the-city/">
+        <span class="stamp">Route · Past</span>
+        <h3>History</h3>
+        <p>A coal and rail town since the 1880s — and birthplace of Challenger commander Dick Scobee.</p>
+      </a>
+      <a class="exp outdoors" href="https://cleelum.gov/outdoors/">
+        <span class="stamp">Route · Trail</span>
+        <h3>Outdoors</h3>
+        <p>The Coal Mines Trail follows the old mining railway from Cle Elum to Roslyn and Ronald.</p>
+      </a>
+      <a class="exp museums" href="https://cleelum.gov/museums/">
+        <span class="stamp">Route · Museum</span>
+        <h3>Museums</h3>
+        <p>Ring up the past at the Telephone Museum, then step into 1914 at the Carpenter House.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="hazard" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <span class="brand-name">City of Cle Elum</span>
+        <p>119 West First Street<br>Cle Elum, WA 98922<br>(509) 674-2262</p>
+      </div>
+      <div>
+        <h4>Government</h4>
+        <ul>
+          <li><a href="https://cleelum.gov/city-council/">City Council</a></li>
+          <li><a href="https://cleelum.gov/mayors-office/">Mayor's Office</a></li>
+          <li><a href="https://cleelum.gov/boards-commissioners/">Boards &amp; Commissions</a></li>
+          <li><a href="https://cleelum.gov/city-services/administrative-services/public-notices/">Public Notices</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="https://cleelum.gov/city-services/finance/city-budget/">City Budget</a></li>
+          <li><a href="https://cleelum.gov/city-fees-rates/">Fees &amp; Rates</a></li>
+          <li><a href="http://www.codepublishing.com/WA/CleElum/">Municipal Code</a></li>
+          <li><a href="https://cleelum.gov/forms-and-applications/">Forms &amp; Applications</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="https://www.facebook.com/cityofcleelum">Facebook</a></li>
+          <li><a href="https://us6.campaign-archive.com/home/?u=8cc171e8635a6e1b9b5f24ccb&id=1549b3dc0b">Newsletter</a></li>
+          <li><a href="https://cleelum.gov/community-links/">Community Links</a></li>
+          <li><a href="https://cleelum.nextrequest.com/">Records Requests</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 City of Cle Elum, Washington</span>
+      <span>Tle-el-Lum · Swift Water · Elev. 1,930 ft</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Split-flap letters
+document.querySelectorAll('.flap').forEach(function(el){
+  var text = el.getAttribute('data-text') || '';
+  el.textContent = '';
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  for (var i=0;i<text.length;i++){
+    var s = document.createElement('span');
+    var ch = text[i];
+    if (ch === ' '){ s.className='sp'; s.innerHTML='&nbsp;'; }
+    else { s.textContent = ch; }
+    if (!reduce) s.style.animationDelay = (0.15 + i*0.035) + 's';
+    el.appendChild(s);
+  }
+});
+// Depot clock
+function tick(){
+  var d = new Date();
+  var opts = {hour:'2-digit', minute:'2-digit', second:'2-digit', hour12:false};
+  document.getElementById('clock').textContent = 'CLE ELUM · ' + d.toLocaleTimeString('en-US', opts) + ' PT';
+}
+tick(); setInterval(tick, 1000);
+</script>
+
+</body>
+</html>
