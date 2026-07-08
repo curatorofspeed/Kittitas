@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Town of Wilkeson, Washington — Official Town Website</title>
+<meta name="description" content="Official website of the Town of Wilkeson, Washington. Pay your utility bill, view Town Council meetings and public notices, contact Town Hall, and explore the history of the sandstone town at the gateway to Mount Rainier." />
+<link rel="canonical" href="https://www.townofwilkeson.com/" />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#2C3A31" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Town of Wilkeson" />
+<meta property="og:title" content="Town of Wilkeson, Washington" />
+<meta property="og:description" content="Pay your utility bill, view Council meetings and notices, and reach Town Hall — the sandstone town at the gateway to Mount Rainier." />
+<meta property="og:url" content="https://www.townofwilkeson.com/" />
+<meta name="twitter:card" content="summary" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&family=Zilla+Slab:wght@500;600;700&display=swap" rel="stylesheet" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "GovernmentOrganization",
+  "name": "Town of Wilkeson",
+  "url": "https://www.townofwilkeson.com/",
+  "telephone": "+1-360-829-0790",
+  "faxNumber": "+1-360-829-4292",
+  "foundingDate": "1909",
+  "slogan": "Explore the past, live the present, look to the future.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "540 Church Street",
+    "addressLocality": "Wilkeson",
+    "addressRegion": "WA",
+    "postalCode": "98396",
+    "addressCountry": "US"
+  },
+  "areaServed": "Wilkeson, Washington",
+  "openingHours": "Mo-Th 07:00-17:00"
+}
+</script>
+
+<style>
+  :root{
+    --pine:#2C3A31;       /* deep forest green — Rainier gateway, primary chrome */
+    --pine-900:#1E2A22;   /* deepest green */
+    --pine-700:#38473C;   /* raised green surface */
+    --sand:#C79A54;       /* Wilkeson sandstone gold — the one accent */
+    --sand-200:#E7D9BC;   /* pale stone */
+    --oxide:#9E5A33;      /* iron-oxide rust — sparing secondary accent */
+    --paper:#F6F3EC;      /* stone-dust off-white */
+    --paper-2:#EFEADF;    /* deeper stone for alt surfaces */
+    --card:#FFFFFF;
+    --ink:#1B1A17;        /* warm near-black text */
+    --ink-60:#57544B;     /* muted text */
+    --line:#DED7C6;       /* hairline on light */
+    --maxw:1140px;
+    --pad:clamp(1.2rem,4vw,2.1rem);
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:"Public Sans",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:"Zilla Slab",Georgia,serif;font-weight:700;line-height:1.08;letter-spacing:-.01em;margin:0}
+  a{color:var(--pine);text-decoration-thickness:1.5px;text-underline-offset:2px}
+  a:hover{color:var(--oxide)}
+  img{max-width:100%;display:block}
+
+  :focus-visible{outline:3px solid var(--oxide);outline-offset:2px;border-radius:2px}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--pad)}
+  .section{padding-block:clamp(3.4rem,6.5vw,5.6rem)}
+  .eyebrow{
+    font-weight:700;text-transform:uppercase;letter-spacing:.17em;font-size:.76rem;
+    color:var(--oxide);margin:0 0 .9rem
+  }
+  .section-title{font-size:clamp(1.7rem,3.6vw,2.5rem)}
+  .lead{color:var(--ink-60);max-width:46ch}
+
+  /* skip link */
+  .skip{position:absolute;left:-999px;top:0;z-index:200;background:var(--sand);color:var(--pine-900);
+    padding:.7rem 1.1rem;font-weight:700;border-radius:0 0 4px 0}
+  .skip:focus{left:0}
+
+  /* ---------- header ---------- */
+  header.site{position:sticky;top:0;z-index:100;background:var(--pine);
+    border-bottom:1px solid rgba(199,154,84,.28)}
+  .bar{display:flex;align-items:center;gap:1rem;height:74px}
+  .brand{display:flex;align-items:center;gap:.7rem;text-decoration:none;margin-right:auto}
+  .seal{width:44px;height:44px;flex:none}
+  .brand b{display:block;font-family:"Zilla Slab",serif;font-weight:700;color:var(--paper);
+    font-size:1.16rem;letter-spacing:.02em;line-height:1}
+  .brand span{display:block;color:var(--sand);font-size:.66rem;font-weight:700;
+    text-transform:uppercase;letter-spacing:.16em;margin-top:.28rem}
+  nav.primary{display:flex;align-items:center;gap:.35rem}
+  nav.primary a{color:var(--sand-200);text-decoration:none;font-weight:600;font-size:.95rem;
+    padding:.55rem .7rem;border-radius:3px;transition:color .15s,background .15s}
+  nav.primary a:hover{color:#fff;background:rgba(199,154,84,.14)}
+  .btn{display:inline-flex;align-items:center;gap:.5rem;font-family:inherit;font-weight:700;
+    font-size:.95rem;padding:.72em 1.25em;border-radius:2px;border:1.5px solid transparent;
+    cursor:pointer;text-decoration:none;transition:transform .12s,background .15s,color .15s,border-color .15s}
+  .btn:active{transform:translateY(1px)}
+  .btn-primary{background:var(--sand);color:var(--pine-900);border-color:var(--sand)}
+  .btn-primary:hover{background:#d7ab63;color:var(--pine-900)}
+  .btn-ghost{background:transparent;color:var(--paper);border-color:rgba(231,217,188,.5)}
+  .btn-ghost:hover{background:rgba(231,217,188,.12);color:#fff}
+  .btn-sec{background:var(--pine);color:var(--paper);border-color:var(--pine)}
+  .btn-sec:hover{background:var(--pine-900);color:#fff}
+  .btn svg{width:1.05em;height:1.05em}
+  .navtoggle{display:none;background:transparent;border:1.5px solid rgba(231,217,188,.5);
+    color:var(--paper);border-radius:3px;padding:.5rem .6rem;cursor:pointer;font-size:1rem;line-height:1}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;background:var(--pine);color:var(--paper);overflow:hidden;
+    padding-block:clamp(3.2rem,8vw,6rem)}
+  /* sandstone strata */
+  .hero::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+    background:repeating-linear-gradient(0deg,transparent 0 26px,rgba(0,0,0,.10) 26px 27px),
+               radial-gradient(120% 90% at 82% 12%,rgba(199,154,84,.16),transparent 55%)}
+  .hero .wrap{position:relative}
+  .hero .eyebrow{color:var(--sand)}
+  .wordmark{
+    font-family:"Zilla Slab",serif;font-weight:700;color:var(--sand);
+    font-size:clamp(3.3rem,13.5vw,9.2rem);line-height:.86;letter-spacing:.04em;
+    margin:.2rem 0 0;
+    text-shadow:0 1px 0 rgba(231,217,188,.35),0 -1px 0 rgba(0,0,0,.35),0 6px 22px rgba(0,0,0,.35);
+  }
+  .founded{display:flex;align-items:center;gap:.8rem;color:var(--sand-200);
+    font-weight:600;letter-spacing:.13em;text-transform:uppercase;font-size:.8rem;margin:1.1rem 0 1.4rem}
+  .founded .dot{width:5px;height:5px;border-radius:50%;background:var(--sand);flex:none}
+  .founded hr{flex:1;border:0;border-top:1px solid rgba(231,217,188,.28);max-width:180px}
+  .hero p.tag{font-size:clamp(1.02rem,1.6vw,1.24rem);max-width:52ch;color:#ece7db;margin:0 0 2rem}
+  .hero p.tag b{color:var(--sand-200);font-weight:600}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:.75rem}
+
+  /* arcade frieze */
+  .arcade{display:block;width:100%;height:34px;color:var(--sand)}
+  .arcade path{fill:none;stroke:currentColor;stroke-width:2;opacity:.85}
+
+  /* ---------- quick tasks ---------- */
+  .task-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.8rem}
+  .task{display:flex;gap:.95rem;align-items:flex-start;background:var(--card);
+    border:1px solid var(--line);border-radius:5px;padding:1.15rem 1.2rem;text-decoration:none;
+    color:var(--ink);transition:transform .14s,box-shadow .14s,border-color .14s;
+    box-shadow:0 1px 0 rgba(27,26,23,.03)}
+  .task:hover{transform:translateY(-3px);border-color:var(--sand);
+    box-shadow:0 14px 30px -18px rgba(27,26,23,.4)}
+  .task .ic{flex:none;width:42px;height:42px;border-radius:4px;display:grid;place-items:center;
+    background:var(--paper-2);color:var(--pine)}
+  .task .ic svg{width:22px;height:22px}
+  .task h3{font-family:"Public Sans",sans-serif;font-weight:700;font-size:1.02rem;letter-spacing:0}
+  .task p{margin:.15rem 0 0;color:var(--ink-60);font-size:.9rem;line-height:1.45}
+  .task.primary{background:var(--pine);border-color:var(--pine)}
+  .task.primary h3{color:#fff}
+  .task.primary p{color:var(--sand-200)}
+  .task.primary .ic{background:var(--sand);color:var(--pine-900)}
+  .task .arrow{margin-left:auto;color:var(--sand);font-weight:700;align-self:center;opacity:0;transition:opacity .14s,transform .14s;transform:translateX(-4px)}
+  .task:hover .arrow{opacity:1;transform:translateX(0)}
+  .task.primary .arrow{color:var(--sand)}
+
+  /* ---------- updates + meetings ---------- */
+  .split{display:grid;grid-template-columns:1.55fr .95fr;gap:clamp(1.6rem,4vw,3rem);align-items:start}
+  .updates{list-style:none;margin:1.4rem 0 0;padding:0}
+  .updates li{border-top:1px solid var(--line);padding:1.15rem 0}
+  .updates li:first-child{border-top:0;padding-top:.2rem}
+  .u-date{font-weight:700;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--oxide);margin-bottom:.35rem}
+  .updates h3{font-family:"Public Sans",sans-serif;font-weight:700;font-size:1.08rem;line-height:1.3}
+  .updates h3 a{text-decoration:none}
+  .updates h3 a:hover{text-decoration:underline}
+  .updates p{margin:.4rem 0 0;color:var(--ink-60);font-size:.94rem}
+  .more-link{display:inline-flex;align-items:center;gap:.4rem;margin-top:1.3rem;font-weight:700;text-decoration:none}
+  .more-link:hover{gap:.6rem}
+
+  .meetings{background:var(--pine);color:var(--paper);border-radius:7px;padding:1.5rem 1.5rem 1.7rem;
+    border:1px solid rgba(199,154,84,.3)}
+  .meetings h3{color:#fff;font-size:1.28rem}
+  .meetings .sub{color:var(--sand-200);font-size:.86rem;margin:.2rem 0 1.1rem}
+  .mrow{display:flex;gap:1rem;align-items:center;padding:.85rem 0;border-top:1px solid rgba(231,217,188,.16)}
+  .mrow:first-of-type{border-top:0}
+  .mdate{flex:none;width:52px;text-align:center;background:rgba(199,154,84,.16);border-radius:5px;padding:.4rem 0}
+  .mdate .mo{display:block;font-size:.62rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--sand)}
+  .mdate .day{display:block;font-family:"Zilla Slab",serif;font-weight:700;font-size:1.4rem;color:#fff;line-height:1}
+  .mrow .mwhat{font-weight:600;font-size:.98rem;color:#fff}
+  .mrow .mtime{color:var(--sand-200);font-size:.82rem}
+  .mnote{margin-top:1.1rem;font-size:.82rem;color:var(--sand-200);border-top:1px solid rgba(231,217,188,.16);padding-top:.9rem}
+  .mnote a{color:var(--sand);font-weight:600}
+
+  /* ---------- directory ---------- */
+  .directory{background:var(--pine-900);color:var(--paper);position:relative}
+  .directory .top-arcade{color:var(--sand);opacity:.5}
+  .dir-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.6rem,4vw,3rem);margin-top:1.9rem}
+  .dircol h3{font-size:1.22rem;color:#fff;padding-bottom:.7rem;margin-bottom:.5rem;
+    border-bottom:2px solid var(--sand);display:inline-block}
+  .dircol ul{list-style:none;margin:.3rem 0 0;padding:0}
+  .dircol li{margin:0}
+  .dircol a{display:block;color:var(--sand-200);text-decoration:none;padding:.5rem 0;
+    border-bottom:1px solid rgba(231,217,188,.1);font-size:.97rem;transition:color .13s,padding .13s}
+  .dircol a:hover{color:#fff;padding-left:.35rem}
+  .directory .eyebrow{color:var(--sand)}
+  .directory .section-title{color:#fff}
+  .directory .lead{color:var(--sand-200)}
+
+  /* ---------- heritage ---------- */
+  .heritage{background:var(--paper-2)}
+  .heritage-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(1.8rem,5vw,3.5rem);align-items:center}
+  .heritage h2{font-size:clamp(1.8rem,3.8vw,2.7rem);max-width:16ch}
+  .heritage p{color:var(--ink-60);margin:1.1rem 0 0}
+  .heritage .factbox{background:var(--card);border:1px solid var(--line);border-radius:7px;padding:1.5rem 1.6rem}
+  .heritage .factbox .k{font-family:"Zilla Slab",serif;font-weight:700;font-size:2.6rem;color:var(--oxide);line-height:1}
+  .heritage .factbox .kl{font-weight:700;color:var(--ink);margin:.2rem 0 1.1rem;font-size:.98rem}
+  .heritage .factbox ul{list-style:none;margin:0;padding:0}
+  .heritage .factbox li{display:flex;gap:.7rem;padding:.55rem 0;border-top:1px solid var(--line);font-size:.94rem;color:var(--ink-60)}
+  .heritage .factbox li:first-child{border-top:0}
+  .heritage .factbox li b{color:var(--ink);font-weight:600;flex:none}
+  .aside-note{margin-top:1.4rem;padding:1rem 1.2rem;border-left:3px solid var(--sand);background:rgba(199,154,84,.1);
+    border-radius:0 5px 5px 0;font-size:.94rem;color:var(--ink)}
+
+  /* ---------- subscribe ---------- */
+  .subscribe{background:var(--pine);color:var(--paper)}
+  .sub-grid{display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center}
+  .subscribe h2{color:#fff;font-size:clamp(1.5rem,3vw,2.1rem)}
+  .subscribe p{color:var(--sand-200);margin:.5rem 0 0;max-width:44ch}
+  .subform{display:flex;gap:.6rem;flex-wrap:wrap}
+  .subform input{font-family:inherit;font-size:1rem;padding:.8rem 1rem;border-radius:2px;border:1.5px solid rgba(231,217,188,.4);
+    background:var(--pine-900);color:#fff;min-width:250px}
+  .subform input::placeholder{color:#9fb0a3}
+  .subform input:focus{outline:3px solid var(--sand);outline-offset:1px;border-color:var(--sand)}
+  .subok{color:var(--sand);font-weight:600;margin-top:.6rem;font-size:.92rem}
+
+  /* ---------- footer ---------- */
+  footer.site{background:var(--pine-900);color:var(--sand-200);padding-block:clamp(2.6rem,5vw,3.6rem)}
+  .foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:2rem}
+  .foot-brand{display:flex;gap:.8rem;align-items:flex-start}
+  .foot-brand .seal{width:50px;height:50px}
+  .foot-brand b{font-family:"Zilla Slab",serif;color:#fff;font-size:1.3rem;display:block;line-height:1.05}
+  .foot-brand span{font-size:.8rem;display:block;margin-top:.3rem;color:var(--sand)}
+  footer h4{color:#fff;font-family:"Public Sans",sans-serif;font-size:.78rem;text-transform:uppercase;letter-spacing:.14em;margin:0 0 .9rem}
+  footer address{font-style:normal;line-height:1.75;font-size:.95rem}
+  footer address a{color:var(--sand-200)}
+  .hours-row{display:flex;justify-content:space-between;padding:.35rem 0;border-bottom:1px solid rgba(231,217,188,.12);font-size:.92rem}
+  .hours-row b{color:#fff;font-weight:600}
+  .foot-bottom{border-top:1px solid rgba(231,217,188,.16);margin-top:2.4rem;padding-top:1.4rem;
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:.8rem;font-size:.83rem;color:#93a598}
+  .foot-bottom a{color:#93a598}
+
+  /* ---------- responsive ---------- */
+  @media(max-width:920px){
+    .split{grid-template-columns:1fr}
+    .heritage-grid{grid-template-columns:1fr}
+    .sub-grid{grid-template-columns:1fr}
+  }
+  @media(max-width:820px){
+    .navtoggle{display:inline-flex;margin-left:auto}
+    .brand{margin-right:0}
+    nav.primary{display:none;position:absolute;top:74px;left:0;right:0;background:var(--pine-900);
+      flex-direction:column;align-items:stretch;padding:.6rem var(--pad) 1.1rem;gap:.15rem;
+      border-bottom:1px solid rgba(199,154,84,.28)}
+    nav.primary.open{display:flex}
+    nav.primary a{padding:.8rem .4rem;border-bottom:1px solid rgba(231,217,188,.1)}
+    nav.primary .btn{margin-top:.7rem;justify-content:center}
+    .header-cta{display:none}
+    .task-grid{grid-template-columns:1fr 1fr}
+    .dir-grid{grid-template-columns:1fr 1fr}
+    .foot-grid{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:560px){
+    .task-grid{grid-template-columns:1fr}
+    .dir-grid{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr}
+    .founded hr{display:none}
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+
+<!-- reusable seal -->
+<svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="seal" viewBox="0 0 100 100">
+    <circle cx="50" cy="50" r="47" fill="none" stroke="#C79A54" stroke-width="2.5"/>
+    <circle cx="50" cy="50" r="41" fill="none" stroke="#C79A54" stroke-width="1" opacity=".55"/>
+    <path d="M24 63 L41 33 L49 46 L56 36 L76 63 Z" fill="#C79A54"/>
+    <path d="M41 33 L46 41 L44 44 L41 40 Z" fill="#1E2A22" opacity=".4"/>
+    <path d="M22 63 H78" stroke="#C79A54" stroke-width="1.6"/>
+    <path d="M28 72 a6 5.4 0 0 1 12 0 M44 72 a6 5.4 0 0 1 12 0 M60 72 a6 5.4 0 0 1 12 0"
+          fill="none" stroke="#C79A54" stroke-width="1.6"/>
+    <text x="50" y="90" text-anchor="middle" font-family="Zilla Slab,serif" font-weight="700"
+          font-size="8.5" letter-spacing="1.5" fill="#C79A54">1877</text>
+  </symbol>
+</svg>
+
+<header class="site">
+  <div class="wrap bar">
+    <a class="brand" href="#top" aria-label="Town of Wilkeson home">
+      <svg class="seal"><use href="#seal"/></svg>
+      <span class="brand-text"><b>Town of Wilkeson</b><span>Pierce County · Washington</span></span>
+    </a>
+    <nav class="primary" id="nav" aria-label="Primary">
+      <a href="#services">Services</a>
+      <a href="#government">Government</a>
+      <a href="#updates">Updates</a>
+      <a href="#heritage">History</a>
+      <a href="#contact">Contact</a>
+      <a class="btn btn-primary" href="https://www.ncourt.com/x-press/x-onlinepayments.aspx?juris=5EB02757-E25D-4C90-9CB7-6A31EE8AE54E" target="_blank" rel="noopener">Pay Bill</a>
+    </nav>
+    <a class="btn btn-primary header-cta" href="https://www.ncourt.com/x-press/x-onlinepayments.aspx?juris=5EB02757-E25D-4C90-9CB7-6A31EE8AE54E" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+      Pay Utility Bill
+    </a>
+    <button class="navtoggle" id="navtoggle" aria-label="Menu" aria-expanded="false" aria-controls="nav">☰ Menu</button>
+  </div>
+</header>
+
+<a id="top"></a>
+<main id="main">
+
+  <!-- HERO -->
+  <section class="hero" aria-label="Welcome">
+    <div class="wrap">
+      <p class="eyebrow">Established 1877 · Incorporated 1909</p>
+      <h1 class="wordmark">Wilkeson</h1>
+      <div class="founded">
+        <span class="dot"></span> Gateway to Mount Rainier <hr>
+      </div>
+      <p class="tag">The historic coal-and-sandstone town in the foothills of the Carbon River — home to the <b>oldest sandstone quarry in the Pacific Northwest</b>, whose stone faces the dome of the Washington State Capitol. Explore the past, live the present, look to the future.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="https://www.ncourt.com/x-press/x-onlinepayments.aspx?juris=5EB02757-E25D-4C90-9CB7-6A31EE8AE54E" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+          Pay Utility Bill
+        </a>
+        <a class="btn btn-ghost" href="https://www.townofwilkeson.com/general-9">Council Meetings</a>
+        <a class="btn btn-ghost" href="#contact">Contact Town Hall</a>
+      </div>
+    </div>
+  </section>
+
+  <svg class="arcade" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 38 A50 30 0 0 0 100 38 A50 30 0 0 0 200 38 A50 30 0 0 0 300 38 A50 30 0 0 0 400 38 A50 30 0 0 0 500 38 A50 30 0 0 0 600 38 A50 30 0 0 0 700 38 A50 30 0 0 0 800 38 A50 30 0 0 0 900 38 A50 30 0 0 0 1000 38 A50 30 0 0 0 1100 38 A50 30 0 0 0 1200 38"/>
+  </svg>
+
+  <!-- QUICK TASKS -->
+  <section class="section" id="services">
+    <div class="wrap">
+      <p class="eyebrow">Resident Services</p>
+      <h2 class="section-title">Get it done at Town Hall</h2>
+      <p class="lead">The things people reach us for most — one tap away.</p>
+      <div class="task-grid reveal">
+        <a class="task primary" href="https://www.ncourt.com/x-press/x-onlinepayments.aspx?juris=5EB02757-E25D-4C90-9CB7-6A31EE8AE54E" target="_blank" rel="noopener">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></span>
+          <div><h3>Pay Utility Bill</h3><p>Water, sewer &amp; garbage — pay online, 24/7</p></div>
+          <span class="arrow">→</span>
+        </a>
+        <a class="task" href="https://www.townofwilkeson.com/general-9">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16v14H4z"/><path d="M8 3v4M16 3v4M4 9h16"/></svg></span>
+          <div><h3>Council Meetings</h3><p>Agendas, minutes &amp; the meeting schedule</p></div>
+          <span class="arrow">→</span>
+        </a>
+        <a class="task" href="https://www.townofwilkeson.com/copy-of-town-government">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h7M9 17h7"/></svg></span>
+          <div><h3>Public Notices</h3><p>Hearings, projects &amp; official announcements</p></div>
+          <span class="arrow">→</span>
+        </a>
+        <a class="task" href="https://www.townofwilkeson.com/town-forms">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 4h8l3 3v13H5V4z" transform="translate(0 0)"/><path d="M9 12h6M9 16h6M9 8h3"/></svg></span>
+          <div><h3>Town Forms</h3><p>Permits, applications &amp; requests</p></div>
+          <span class="arrow">→</span>
+        </a>
+        <a class="task" href="https://www.townofwilkeson.com/municpal-code">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5a2 2 0 0 1 2-2h9l5 5v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M8 12h8M8 16h5"/></svg></span>
+          <div><h3>Municipal Code</h3><p>Ordinances &amp; the town's governing rules</p></div>
+          <span class="arrow">→</span>
+        </a>
+        <a class="task" href="https://www.townofwilkeson.com/coming-soon-01">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16v11H8l-4 4z"/></svg></span>
+          <div><h3>Contact Town Hall</h3><p>Reach staff &amp; elected officials</p></div>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- UPDATES + MEETINGS -->
+  <section class="section" id="updates" style="background:var(--paper-2)">
+    <div class="wrap split">
+      <div>
+        <p class="eyebrow">From Town Hall</p>
+        <h2 class="section-title">Latest updates</h2>
+        <ul class="updates reveal">
+          <li>
+            <div class="u-date">June 8, 2026 · Council</div>
+            <h3><a href="https://www.townofwilkeson.com/copy-of-town-government">Special meeting: SR 165 bridge-closure mitigation</a></h3>
+            <p>The Council reviewed three proposals to manage the Fairfax / Wilkeson / Carbon River SR 165 bridge-closure mitigation project. Full submittals are posted with the public notices.</p>
+          </li>
+          <li>
+            <div class="u-date">March 9, 2026 · Council</div>
+            <h3><a href="https://www.townofwilkeson.com/post/council-study-session-this-week">Council study session recap</a></h3>
+            <p>Councilmembers met to work through priorities ahead of the spring agenda.</p>
+          </li>
+          <li>
+            <div class="u-date">February 24, 2026 · Municipal Code</div>
+            <h3><a href="https://www.townofwilkeson.com/post/study-session-2-25-at-5pm">Updating the Municipal Code</a></h3>
+            <p>The town planner is guiding Council through a review of the Wilkeson Municipal Code — which sections are required by law, and which can be tailored to the community.</p>
+          </li>
+        </ul>
+        <a class="more-link" href="https://www.townofwilkeson.com/news">All news &amp; announcements →</a>
+      </div>
+
+      <aside class="meetings" aria-label="Upcoming meetings">
+        <h3>Upcoming meetings</h3>
+        <p class="sub">540 Church St &amp; the Wilkeson Fire Station / Hub</p>
+        <div class="mrow">
+          <div class="mdate"><span class="mo">Jul</span><span class="day">8</span></div>
+          <div><div class="mwhat">Town Council Meeting</div><div class="mtime">6:00 PM · today</div></div>
+        </div>
+        <div class="mrow">
+          <div class="mdate"><span class="mo">Jul</span><span class="day">22</span></div>
+          <div><div class="mwhat">Town Council Meeting</div><div class="mtime">6:00 PM</div></div>
+        </div>
+        <div class="mrow">
+          <div class="mdate"><span class="mo">Aug</span><span class="day">8</span></div>
+          <div><div class="mwhat">Cemetery Planting Meeting</div><div class="mtime">6:00 PM · Fire Station / Hub</div></div>
+        </div>
+        <p class="mnote">Regular Council meetings are the 2nd &amp; 4th Tuesday. See the <a href="https://www.townofwilkeson.com/town-calendar">full town calendar →</a></p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- DIRECTORY -->
+  <section class="section directory" id="government">
+    <svg class="arcade top-arcade" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true" style="margin-bottom:2rem">
+      <path d="M0 38 A50 30 0 0 0 100 38 A50 30 0 0 0 200 38 A50 30 0 0 0 300 38 A50 30 0 0 0 400 38 A50 30 0 0 0 500 38 A50 30 0 0 0 600 38 A50 30 0 0 0 700 38 A50 30 0 0 0 800 38 A50 30 0 0 0 900 38 A50 30 0 0 0 1000 38 A50 30 0 0 0 1100 38 A50 30 0 0 0 1200 38"/>
+    </svg>
+    <div class="wrap">
+      <p class="eyebrow">Town Directory</p>
+      <h2 class="section-title">Your local government</h2>
+      <p class="lead">Everything the Town of Wilkeson provides, organized in one place.</p>
+      <div class="dir-grid">
+        <div class="dircol">
+          <h3>Government</h3>
+          <ul>
+            <li><a href="https://www.townofwilkeson.com/town-government">Town Government</a></li>
+            <li><a href="https://www.townofwilkeson.com/town-mayor">Mayor</a></li>
+            <li><a href="https://www.townofwilkeson.com/town-council">Town Council</a></li>
+            <li><a href="https://www.townofwilkeson.com/copy-of-town-mayor">Town Clerk</a></li>
+            <li><a href="https://www.townofwilkeson.com/municpal-code">Municipal Code</a></li>
+            <li><a href="https://www.townofwilkeson.com/comprehensive-plan">Comprehensive Plan</a></li>
+            <li><a href="https://www.townofwilkeson.com/transportation-benifet-distrct">Transportation Benefit District</a></li>
+            <li><a href="https://www.townofwilkeson.com/down-for-maintenance">Municipal Court</a></li>
+          </ul>
+        </div>
+        <div class="dircol">
+          <h3>Departments</h3>
+          <ul>
+            <li><a href="https://www.townofwilkeson.com/general-5">Administration</a></li>
+            <li><a href="https://www.townofwilkeson.com/general-9-1">Utilities</a></li>
+            <li><a href="https://www.townofwilkeson.com/building-zoning">Building &amp; Zoning</a></li>
+            <li><a href="https://www.townofwilkeson.com/emergency-services">Emergency Services</a></li>
+            <li><a href="https://www.townofwilkeson.com/animal-services">Animal Services</a></li>
+            <li><a href="https://www.townofwilkeson.com/cemetery">Cemetery</a></li>
+            <li><a href="https://www.townofwilkeson.com/projects-6">Projects</a></li>
+            <li><a href="https://www.townofwilkeson.com/copy-of-town-clerk">Maintenance Team</a></li>
+          </ul>
+        </div>
+        <div class="dircol">
+          <h3>Community &amp; Records</h3>
+          <ul>
+            <li><a href="https://www.townofwilkeson.com/services-4">Wilkeson Community</a></li>
+            <li><a href="https://www.townofwilkeson.com/about-1">Wilkeson History</a></li>
+            <li><a href="https://www.townofwilkeson.com/local-businesses-tourism">Businesses &amp; Tourism</a></li>
+            <li><a href="https://www.townofwilkeson.com/employment">Employment</a></li>
+            <li><a href="https://www.townofwilkeson.com/file-share">Town Documents</a></li>
+            <li><a href="https://www.townofwilkeson.com/courses">Utility Resources</a></li>
+            <li><a href="https://www.townofwilkeson.com/town-calendar">Town Calendar</a></li>
+            <li><a href="https://www.townofwilkeson.com/coming-soon-01">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HERITAGE -->
+  <section class="section heritage" id="heritage">
+    <div class="wrap heritage-grid">
+      <div>
+        <p class="eyebrow">Since 1877</p>
+        <h2>The stone that built the Capitol</h2>
+        <p>Wilkeson grew up around coal discovered in the Carbon River canyon, and around a sandstone quarry opened in the 1880s — the oldest in the Pacific Northwest. That warm, cream-colored stone was cut here and shipped out to face the dome and exterior of the Washington State Legislative Building in Olympia, along with landmarks across the region.</p>
+        <p>Down the valley, a half-mile row of beehive coke ovens once glowed day and night. What remains is now listed on the National Register of Historic Places — a reminder of the town that helped build Washington.</p>
+        <div class="aside-note">Fun fact the town still enjoys: the state's 1920s bill for that Capitol sandstone was never quite settled. With interest, Wilkeson jokes it's now worth about $5 million — though we'd happily call it even for a plaque.</div>
+      </div>
+      <div class="factbox">
+        <div class="k">1877</div>
+        <div class="kl">Established — incorporated 1909</div>
+        <ul>
+          <li><b>Elevation</b><span>~1,000 ft, in the Cascade foothills northwest of Mt. Rainier</span></li>
+          <li><b>Quarry</b><span>Oldest sandstone quarry in the Pacific Northwest, still operating</span></li>
+          <li><b>Landmark</b><span>Historic coke ovens — National Register of Historic Places</span></li>
+          <li><b>Gateway</b><span>To the Carbon River entrance of Mount Rainier National Park</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUBSCRIBE -->
+  <section class="section subscribe" aria-label="Sign up for updates">
+    <div class="wrap sub-grid">
+      <div>
+        <h2>Stay in the loop</h2>
+        <p>Get town notices, meeting reminders and closures by email. No spam — just Wilkeson.</p>
+      </div>
+      <div>
+        <!-- Swap the action to your FormSubmit / Web3Forms endpoint to go live -->
+        <form class="subform" id="subform" action="https://formsubmit.co/REPLACE-WITH-TOWN-EMAIL" method="POST">
+          <label for="subemail" style="position:absolute;left:-999px">Email address</label>
+          <input id="subemail" type="email" name="email" placeholder="you@example.com" required autocomplete="email" />
+          <button class="btn btn-primary" type="submit">Subscribe</button>
+        </form>
+        <div class="subok" id="subok" hidden>Thanks — you're on the list. Watch your inbox to confirm.</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- FOOTER -->
+<footer class="site" id="contact">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">
+          <svg class="seal"><use href="#seal"/></svg>
+          <div><b>Town of Wilkeson</b><span>Pierce County · Washington</span></div>
+        </div>
+        <p style="margin:1.1rem 0 0;font-size:.92rem;max-width:34ch">Explore the past, live the present, look to the future.</p>
+      </div>
+      <div>
+        <h4>Town Hall</h4>
+        <address>
+          540 Church Street<br>
+          P.O. Box 89<br>
+          Wilkeson, WA 98396<br><br>
+          <a href="tel:+13608290790">360-829-0790</a><br>
+          <span style="color:#93a598">Fax: 360-829-4292</span>
+        </address>
+      </div>
+      <div>
+        <h4>Hours</h4>
+        <div class="hours-row"><span>Mon – Thu</span><b>7 AM – 5 PM</b></div>
+        <div class="hours-row"><span>Friday</span><b>Closed</b></div>
+        <div class="hours-row"><span>Weekends</span><b>Closed</b></div>
+        <p style="font-size:.85rem;color:#93a598;margin:.9rem 0 0">Closed on federal holidays.</p>
+        <a class="btn btn-primary" style="margin-top:1rem" href="https://www.ncourt.com/x-press/x-onlinepayments.aspx?juris=5EB02757-E25D-4C90-9CB7-6A31EE8AE54E" target="_blank" rel="noopener">Pay Utility Bill</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="yr">2026</span> Town of Wilkeson, Washington. All rights reserved.</span>
+      <span><a href="#top">Back to top ↑</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // year
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // mobile nav
+  var tgl = document.getElementById('navtoggle'), nav = document.getElementById('nav');
+  tgl.addEventListener('click', function(){
+    var open = nav.classList.toggle('open');
+    tgl.setAttribute('aria-expanded', open ? 'true' : 'false');
+    tgl.textContent = open ? '✕ Close' : '☰ Menu';
+  });
+  nav.addEventListener('click', function(e){
+    if(e.target.tagName === 'A' && nav.classList.contains('open')){
+      nav.classList.remove('open'); tgl.setAttribute('aria-expanded','false'); tgl.textContent='☰ Menu';
+    }
+  });
+
+  // subscribe: graceful confirmation (works even before the endpoint is set)
+  var f = document.getElementById('subform');
+  f.addEventListener('submit', function(e){
+    if(f.action.indexOf('REPLACE-WITH-TOWN-EMAIL') > -1){
+      e.preventDefault();
+      f.hidden = true;
+      document.getElementById('subok').hidden = false;
+    }
+  });
+
+  // gentle scroll reveal (respects reduced motion)
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if('IntersectionObserver' in window && !reduce){
+    document.querySelectorAll('.reveal').forEach(function(el){
+      el.style.opacity = 0; el.style.transform = 'translateY(14px)';
+      el.style.transition = 'opacity .6s ease, transform .6s ease';
+    });
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ en.target.style.opacity=1; en.target.style.transform='none'; io.unobserve(en.target); }
+      });
+    }, {threshold:.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  }
+</script>
+</body>
+</html>

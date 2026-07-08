@@ -1,0 +1,689 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Town of Carbonado, Washington</title>
+<meta name="description" content="Official site of the Town of Carbonado, Pierce County, Washington — a historic coal-mining town on the Carbon River and the last stop before Mount Rainier. Pay your utility bill, read council minutes, and find town notices, permits, and services.">
+<meta name="theme-color" content="#0c281e">
+<link rel="canonical" href="https://www.carbonado.org/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Town of Carbonado">
+<meta property="og:title" content="Town of Carbonado, Washington">
+<meta property="og:description" content="Gateway to Mount Rainier on the Carbon River. Pay your utility bill, read council minutes, and find town notices and services.">
+<meta property="og:url" content="https://www.carbonado.org/">
+<meta name="twitter:card" content="summary">
+
+<!-- Fonts: display / body / data-label -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   TOWN OF CARBONADO — single-file build
+   Palette grounded in the town: spruce forest, coal, ember seam,
+   glacial river slate, on cool mountain stone.
+   ============================================================ */
+:root{
+  --coal:#161a19;
+  --spruce:#123a2c;
+  --spruce-deep:#0c281e;
+  --moss:#2c5f49;
+  --ember:#b8531f;
+  --ember-ink:#9c4419;
+  --ember-tint:#f6e9df;
+  --river:#356571;
+  --paper:#eef0eb;
+  --card:#fbfcf8;
+  --line:#d5dad0;
+  --line-strong:#c3c9be;
+  --muted:#4c564e;
+  --white:#ffffff;
+
+  --sans:"Bricolage Grotesque", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  --serif:"Newsreader", Georgia, "Times New Roman", serif;
+  --mono:"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --wrap:1140px;
+  --gut:clamp(1.15rem, 4vw, 2.75rem);
+  --radius:14px;
+  --radius-sm:9px;
+  --shadow:0 1px 2px rgba(12,40,30,.05), 0 10px 30px -18px rgba(12,40,30,.35);
+  --shadow-lift:0 2px 4px rgba(12,40,30,.06), 0 22px 46px -24px rgba(12,40,30,.45);
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--coal);
+  font-family:var(--serif);
+  font-size:clamp(1.02rem,.6vw + .95rem,1.12rem);
+  line-height:1.62;
+  font-optical-sizing:auto;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+img{max-width:100%;display:block}
+a{color:var(--spruce);text-decoration-thickness:1px;text-underline-offset:2px}
+a:hover{color:var(--ember-ink)}
+h1,h2,h3,h4{font-family:var(--sans);color:var(--spruce);line-height:1.05;font-weight:800;margin:0;letter-spacing:-.012em}
+p{margin:0 0 1rem}
+:focus-visible{outline:3px solid var(--ember);outline-offset:2px;border-radius:4px}
+
+.wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:var(--gut)}
+.eyebrow{
+  font-family:var(--mono);font-size:.72rem;font-weight:600;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--river);margin:0 0 .9rem;display:block;
+}
+.skip{position:absolute;left:-999px;top:.4rem;z-index:200;background:var(--spruce);color:#fff;
+  padding:.6rem 1rem;border-radius:8px;font-family:var(--sans);font-weight:700;text-decoration:none}
+.skip:focus{left:.6rem}
+
+/* ---------- utility strip ---------- */
+.util{background:var(--spruce-deep);color:#cfe0d6;font-family:var(--mono);font-size:.76rem}
+.util .wrap{display:flex;gap:1.3rem;flex-wrap:wrap;align-items:center;padding-block:.5rem}
+.util a{color:#eaf3ee;text-decoration:none}
+.util a:hover{color:#fff;text-decoration:underline}
+.util .sep{opacity:.35}
+.util .push{margin-left:auto}
+
+/* ---------- header / nav ---------- */
+.masthead{position:sticky;top:0;z-index:100;background:rgba(238,240,235,.86);
+  backdrop-filter:saturate(1.3) blur(10px);border-bottom:1px solid var(--line)}
+.masthead .bar{display:flex;align-items:center;gap:1rem;padding-block:.7rem;max-width:var(--wrap);margin-inline:auto;padding-inline:var(--gut)}
+.brand{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:var(--spruce);margin-right:auto}
+.brand .seal{width:44px;height:44px;flex:none}
+.brand b{font-family:var(--sans);font-weight:800;font-size:1.12rem;letter-spacing:-.02em;line-height:1;display:block}
+.brand span{font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--river);display:block;margin-top:.2rem}
+
+.nav{display:flex;align-items:center;gap:.15rem}
+.nav .item{position:relative}
+.nav .top{
+  font-family:var(--sans);font-weight:700;font-size:.95rem;color:var(--spruce);
+  background:none;border:0;cursor:pointer;padding:.55rem .7rem;border-radius:8px;
+  display:inline-flex;align-items:center;gap:.3rem;text-decoration:none;line-height:1;
+}
+.nav .top:hover{background:rgba(18,58,44,.08)}
+.nav .top[aria-expanded]::after{content:"";width:6px;height:6px;border-right:2px solid currentColor;
+  border-bottom:2px solid currentColor;transform:rotate(45deg) translateY(-1px);opacity:.6;transition:transform .18s}
+.nav .top[aria-expanded="true"]{background:rgba(18,58,44,.1)}
+.nav .top[aria-expanded="true"]::after{transform:rotate(-135deg) translateY(-1px)}
+.menu{
+  position:absolute;top:calc(100% + 8px);left:0;min-width:238px;background:var(--card);
+  border:1px solid var(--line);border-radius:var(--radius-sm);box-shadow:var(--shadow-lift);
+  padding:.4rem;display:none;z-index:60;
+}
+.menu.open{display:block}
+.menu a{display:block;font-family:var(--sans);font-weight:600;font-size:.92rem;color:var(--coal);
+  text-decoration:none;padding:.52rem .65rem;border-radius:7px}
+.menu a:hover{background:var(--paper);color:var(--spruce)}
+.menu a .ext{font-family:var(--mono);font-size:.62rem;color:var(--river);letter-spacing:.08em;margin-left:.3rem;vertical-align:middle}
+.nav .pay{margin-left:.5rem;background:var(--ember);color:#fff;font-family:var(--sans);font-weight:800;
+  font-size:.9rem;padding:.6rem 1rem;border-radius:8px;text-decoration:none;border:0;white-space:nowrap}
+.nav .pay:hover{background:var(--ember-ink);color:#fff}
+
+.burger{display:none;background:none;border:1px solid var(--line-strong);border-radius:9px;
+  width:44px;height:42px;cursor:pointer;padding:0;align-items:center;justify-content:center}
+.burger span,.burger span::before,.burger span::after{content:"";display:block;width:20px;height:2px;
+  background:var(--spruce);border-radius:2px;position:relative;transition:.2s}
+.burger span::before{position:absolute;top:-6px}
+.burger span::after{position:absolute;top:6px}
+.burger[aria-expanded="true"] span{background:transparent}
+.burger[aria-expanded="true"] span::before{top:0;transform:rotate(45deg)}
+.burger[aria-expanded="true"] span::after{top:0;transform:rotate(-45deg)}
+
+/* ---------- hero: coal seam ---------- */
+.hero{position:relative;overflow:hidden;background:var(--spruce-deep);color:#eaf3ee;isolation:isolate}
+.hero .seam{position:absolute;inset:0;width:100%;height:100%;z-index:-1}
+.hero .glow{position:absolute;inset:0;z-index:-1;
+  background:radial-gradient(120% 90% at 78% 8%, rgba(184,83,31,.22), transparent 55%),
+             radial-gradient(90% 70% at 12% 92%, rgba(53,101,113,.28), transparent 60%)}
+.hero .wrap{padding-block:clamp(3.4rem,9vw,6.2rem)}
+.hero .eyebrow{color:#e7b48f}
+.hero h1{color:#fff;font-size:clamp(2.9rem,8.2vw,5.6rem);font-weight:800;letter-spacing:-.03em;line-height:.94}
+.hero .sub{font-family:var(--serif);font-weight:400;font-style:italic;margin:1.1rem 0 0;
+  color:#c6ddd0;font-size:clamp(1.08rem,2.4vw,1.55rem);letter-spacing:0;max-width:34ch;line-height:1.42}
+.hero .cta{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:2rem}
+.btn{font-family:var(--sans);font-weight:800;font-size:1rem;text-decoration:none;border:0;cursor:pointer;
+  padding:.85rem 1.4rem;border-radius:10px;display:inline-flex;align-items:center;gap:.55rem;transition:transform .12s, background .15s}
+.btn svg{width:18px;height:18px}
+.btn-primary{background:var(--ember);color:#fff}
+.btn-primary:hover{background:#c96023;color:#fff;transform:translateY(-1px)}
+.btn-ghost{background:rgba(255,255,255,.08);color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.28)}
+.btn-ghost:hover{background:rgba(255,255,255,.15);color:#fff;transform:translateY(-1px)}
+.hero .facts{display:flex;flex-wrap:wrap;gap:.5rem 1.7rem;margin-top:2.4rem;padding-top:1.6rem;
+  border-top:1px solid rgba(255,255,255,.14);font-family:var(--mono);font-size:.8rem;color:#cfe0d6}
+.hero .facts b{color:#fff;font-weight:600}
+
+/* ---------- alert ---------- */
+.alert{background:var(--ember-tint);border-top:3px solid var(--ember)}
+.alert .wrap{display:flex;gap:1rem;align-items:flex-start;padding-block:1.15rem}
+.alert .ico{flex:none;width:34px;height:34px;color:var(--ember-ink);margin-top:.1rem}
+.alert h2{font-size:1.12rem;color:var(--ember-ink);margin-bottom:.25rem;letter-spacing:-.01em}
+.alert p{margin:0;font-size:.98rem;color:#5a3418;max-width:78ch}
+.alert a{color:var(--ember-ink);font-family:var(--sans);font-weight:700;text-decoration:none;
+  white-space:nowrap;border-bottom:2px solid rgba(184,83,31,.4)}
+.alert a:hover{border-color:var(--ember-ink)}
+
+/* ---------- section scaffold ---------- */
+.section{padding-block:clamp(3rem,7vw,5rem)}
+.section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:1.9rem}
+.section-head h2{font-size:clamp(1.7rem,3.8vw,2.5rem)}
+.section-head .lead{color:var(--muted);max-width:52ch;margin:.6rem 0 0;font-size:1.02rem}
+.rule{height:6px;border:0;margin:0;background:
+  linear-gradient(90deg,var(--spruce) 0 22%,var(--moss) 22% 40%,var(--river) 40% 58%,var(--ember) 58% 66%,var(--line-strong) 66% 100%)}
+
+/* ---------- services grid ---------- */
+.grid{display:grid;gap:1.1rem;grid-template-columns:repeat(4,1fr)}
+.svc{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:1.5rem 1.4rem;
+  text-decoration:none;color:var(--coal);display:flex;flex-direction:column;gap:.5rem;box-shadow:var(--shadow);
+  transition:transform .14s, box-shadow .14s, border-color .14s;position:relative;overflow:hidden}
+.svc::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--moss);transform:scaleY(0);transform-origin:top;transition:transform .18s}
+.svc:hover{transform:translateY(-3px);box-shadow:var(--shadow-lift);border-color:var(--line-strong)}
+.svc:hover::before{transform:scaleY(1)}
+.svc .ic{width:34px;height:34px;color:var(--spruce);margin-bottom:.35rem}
+.svc h3{font-size:1.16rem}
+.svc p{margin:0;font-size:.92rem;color:var(--muted);line-height:1.5}
+.svc .go{margin-top:auto;padding-top:.7rem;font-family:var(--sans);font-weight:700;font-size:.85rem;color:var(--ember-ink);display:inline-flex;align-items:center;gap:.35rem}
+.svc .go svg{width:14px;height:14px;transition:transform .16s}
+.svc:hover .go svg{transform:translateX(3px)}
+
+/* ---------- notices ---------- */
+.notices{background:var(--spruce-deep);color:#e9f2ec}
+.notices .section-head h2{color:#fff}
+.notices .section-head .lead{color:#a9c6ba}
+.notices .rule{opacity:.9}
+.nlist{display:flex;flex-direction:column;gap:0;border-top:1px solid rgba(255,255,255,.14)}
+.note{display:grid;grid-template-columns:130px 1fr auto;gap:1.4rem;align-items:baseline;
+  padding:1.35rem 0;border-bottom:1px solid rgba(255,255,255,.14)}
+.note time{font-family:var(--mono);font-size:.78rem;color:#e7b48f;letter-spacing:.03em;white-space:nowrap}
+.note .body h3{color:#fff;font-size:1.16rem;margin-bottom:.35rem}
+.note .body p{color:#bcd2c7;font-size:.95rem;margin:0;max-width:70ch}
+.note .body .tag{display:inline-block;font-family:var(--mono);font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;
+  color:#cfe0d6;border:1px solid rgba(255,255,255,.28);border-radius:20px;padding:.12rem .55rem;margin-bottom:.55rem}
+.note a.more{font-family:var(--sans);font-weight:700;font-size:.85rem;color:#fff;text-decoration:none;
+  white-space:nowrap;border-bottom:2px solid var(--ember)}
+.note a.more:hover{color:#f0d3bf}
+@media (max-width:720px){.note{grid-template-columns:1fr}.note a.more{justify-self:start}}
+
+/* ---------- about ---------- */
+.about{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(1.8rem,4vw,3.4rem);align-items:center}
+.about .prose p{font-size:1.08rem}
+.about .prose .drop::first-letter{font-family:var(--sans);font-weight:800;color:var(--ember-ink);
+  font-size:3.3rem;line-height:.72;float:left;margin:.35rem .55rem 0 0}
+.statcard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+.statcard .top{background:var(--spruce);color:#fff;padding:1.1rem 1.4rem;font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase}
+.statrow{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:1rem 1.4rem;border-bottom:1px solid var(--line)}
+.statrow:last-child{border-bottom:0}
+.statrow .k{font-family:var(--serif);color:var(--muted);font-size:.98rem}
+.statrow .v{font-family:var(--mono);font-weight:600;color:var(--spruce);font-size:1.05rem}
+@media (max-width:820px){.about{grid-template-columns:1fr}}
+
+/* ---------- explore / sitemap ---------- */
+.explore{background:linear-gradient(180deg,var(--paper),#e7ebe4)}
+.cols{display:grid;grid-template-columns:repeat(4,1fr);gap:1.6rem}
+.col h3{font-family:var(--mono);font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--river);margin-bottom:.9rem;padding-bottom:.6rem;border-bottom:1px solid var(--line-strong)}
+.col ul{list-style:none;margin:0;padding:0}
+.col li{margin-bottom:.15rem}
+.col a{display:block;font-family:var(--sans);font-weight:600;font-size:.94rem;color:var(--coal);text-decoration:none;padding:.35rem 0}
+.col a:hover{color:var(--ember-ink);transform:translateX(2px)}
+.col a .ext{font-family:var(--mono);font-size:.58rem;color:var(--river);letter-spacing:.06em;margin-left:.35rem;vertical-align:middle}
+
+/* ---------- contact ---------- */
+.contact{background:var(--spruce);color:#eaf3ee}
+.contact .grid3{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:2rem}
+.contact h2{color:#fff;font-size:clamp(1.7rem,3.8vw,2.4rem)}
+.contact .eyebrow{color:#e7b48f}
+.contact .prose p{color:#c9dccf;max-width:42ch}
+.contact .block h3{color:#fff;font-family:var(--mono);font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;margin-bottom:.8rem}
+.contact .block p{margin:0 0 .3rem;color:#e9f2ec;font-size:1.02rem}
+.contact .block a{color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.35)}
+.contact .block a:hover{border-color:#fff;color:#f0d3bf}
+.contact .hours{font-family:var(--mono);font-size:.92rem;color:#cfe0d6}
+@media (max-width:820px){.contact .grid3{grid-template-columns:1fr;gap:1.6rem}}
+
+/* ---------- footer ---------- */
+.foot{background:var(--spruce-deep);color:#9fbcae;font-size:.86rem}
+.foot .wrap{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;align-items:center;padding-block:1.6rem}
+.foot .brand2{display:flex;align-items:center;gap:.6rem;color:#eaf3ee;font-family:var(--sans);font-weight:700}
+.foot .brand2 svg{width:26px;height:26px}
+.foot a{color:#cfe0d6}
+.foot .mono{font-family:var(--mono);font-size:.74rem;color:#7fa091}
+
+/* ---------- responsive nav ---------- */
+@media (max-width:940px){
+  .burger{display:inline-flex}
+  .nav{position:fixed;inset:0 0 0 auto;width:min(340px,86vw);background:var(--card);
+    flex-direction:column;align-items:stretch;gap:0;padding:5.2rem 1.1rem 2rem;transform:translateX(100%);
+    transition:transform .24s ease;box-shadow:-20px 0 60px -20px rgba(12,40,30,.5);overflow-y:auto;z-index:90}
+  .nav.open{transform:translateX(0)}
+  .nav .item{border-bottom:1px solid var(--line)}
+  .nav .top{width:100%;justify-content:space-between;font-size:1.05rem;padding:.9rem .4rem;border-radius:0}
+  .nav .top:hover{background:none}
+  .menu{position:static;box-shadow:none;border:0;border-radius:0;padding:0 0 .6rem .5rem;min-width:0;background:none}
+  .menu a{font-size:.98rem;padding:.5rem .4rem}
+  .nav .pay{margin:1.1rem 0 0;width:100%;justify-content:center;text-align:center;padding:.9rem;font-size:1rem}
+  .scrim{position:fixed;inset:0;background:rgba(12,25,20,.5);opacity:0;visibility:hidden;transition:.24s;z-index:80}
+  .scrim.open{opacity:1;visibility:visible}
+}
+@media (min-width:941px){.scrim{display:none}}
+
+/* ---------- grids down ---------- */
+@media (max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}.cols{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.grid{grid-template-columns:1fr}.util .wrap{gap:.5rem 1.1rem}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+
+<!-- ================= UTILITY STRIP ================= -->
+<div class="util">
+  <div class="wrap">
+    <span>Town Hall · Mon–Thu, 9:00am–5:00pm</span>
+    <span class="sep">|</span>
+    <a href="tel:+13608290125">(360) 829-0125</a>
+    <span class="sep">|</span>
+    <a href="mailto:clerk@carbonado.org">clerk@carbonado.org</a>
+    <a class="push" href="https://www.ncourt.com/x-press/x-onlinepayments.aspx?juris=044E06D7-504E-431C-84C7-FCB4ABF04984" rel="noopener">Pay utility bill&nbsp;→</a>
+  </div>
+</div>
+
+<!-- ================= MASTHEAD / NAV ================= -->
+<header class="masthead">
+  <div class="bar">
+    <a class="brand" href="/" aria-label="Town of Carbonado home">
+      <!-- inline seal: Rainier peak + coal seam -->
+      <svg class="seal" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+        <circle cx="32" cy="32" r="31" fill="#0c281e"/>
+        <circle cx="32" cy="32" r="31" stroke="#b8531f" stroke-width="1.5"/>
+        <path d="M13 41 L27 20 L34 30 L41 22 L51 41 Z" fill="#2c5f49"/>
+        <path d="M27 20 L31 25.7 L28.5 29 L25 24.5 Z" fill="#eaf3ee"/>
+        <path d="M41 22 L44.5 27 L42 30 L38.5 25.4 Z" fill="#eaf3ee"/>
+        <rect x="10" y="43.5" width="44" height="3.4" rx="1.7" fill="#b8531f"/>
+        <rect x="10" y="48.6" width="44" height="2" rx="1" fill="#356571"/>
+      </svg>
+      <span>
+        <b>Carbonado</b>
+        <span>Pierce County · Washington</span>
+      </span>
+    </a>
+
+    <button class="burger" aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav"><span></span></button>
+
+    <nav class="nav" id="primary-nav" aria-label="Primary">
+      <div class="item">
+        <button class="top" aria-expanded="false" aria-controls="m-gov">Government</button>
+        <div class="menu" id="m-gov">
+          <a href="https://www.carbonado.org/government/electedofficials">Elected Officials</a>
+          <a href="https://www.carbonado.org/municipalcode">Municipal Code</a>
+          <a href="https://www.carbonado.org/publicnotices">Public Notices</a>
+          <a href="https://www.carbonado.org/taxes-rates-and-fees">Taxes, Rates &amp; Fees</a>
+          <a href="https://www.carbonado.org/employment">Employment</a>
+          <a href="https://www.carbonado.org/planning">Planning &amp; Permits</a>
+        </div>
+      </div>
+      <div class="item">
+        <button class="top" aria-expanded="false" aria-controls="m-pw">Public Works</button>
+        <div class="menu" id="m-pw">
+          <a href="https://www.carbonado.org/public-works-dept">Public Works Dept.</a>
+          <a href="https://www.carbonado.org/water-sewer-project">Water &amp; Sewer Project</a>
+          <a href="https://www.carbonado.org/meeting-minutes">Meeting Minutes</a>
+        </div>
+      </div>
+      <div class="item">
+        <button class="top" aria-expanded="false" aria-controls="m-com">Community</button>
+        <div class="menu" id="m-com">
+          <a href="https://www.carbonado.org/history">History</a>
+          <a href="https://www.carbonado.org/attractions">Attractions</a>
+          <a href="https://www.carbonado.org/community-resources">Community Resources</a>
+          <a href="https://www.carbonado.org/business-resources">Business Resources</a>
+          <a href="https://www.cityofbuckley.com/fire" rel="noopener">Fire Department<span class="ext">↗</span></a>
+          <a href="https://www.cityofbuckley.com/police" rel="noopener">Police (Buckley)<span class="ext">↗</span></a>
+        </div>
+      </div>
+      <a class="top" href="https://www.carbonado.org/contact">Contact</a>
+      <a class="pay" href="https://www.ncourt.com/x-press/x-onlinepayments.aspx?juris=044E06D7-504E-431C-84C7-FCB4ABF04984" rel="noopener">Pay Bill</a>
+    </nav>
+  </div>
+</header>
+<div class="scrim" hidden></div>
+
+<main id="main">
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <svg class="seam" viewBox="0 0 1440 620" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs>
+      <linearGradient id="s1" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#0f3226"/><stop offset="1" stop-color="#0a2119"/>
+      </linearGradient>
+    </defs>
+    <rect width="1440" height="620" fill="url(#s1)"/>
+    <!-- angled sedimentary strata -->
+    <path d="M0 470 L1440 350 L1440 620 L0 620 Z" fill="#0a1f17"/>
+    <path d="M0 420 L1440 300 L1440 330 L0 450 Z" fill="#123a2c" opacity=".55"/>
+    <path d="M0 360 L1440 250 L1440 275 L0 385 Z" fill="#2c5f49" opacity=".35"/>
+    <!-- the coal / carbonado seam -->
+    <path d="M0 505 L1440 388 L1440 400 L0 517 Z" fill="#b8531f" opacity=".9"/>
+    <path d="M0 517 L1440 400 L1440 405 L0 522 Z" fill="#e7b48f" opacity=".5"/>
+    <path d="M0 300 L1440 205 L1440 218 L0 313 Z" fill="#356571" opacity=".28"/>
+  </svg>
+  <div class="glow"></div>
+  <div class="wrap">
+    <span class="eyebrow">Gateway to Mount Rainier · On the Carbon River</span>
+    <h1>Town of Carbonado</h1>
+    <p class="sub">A historic coal-mining town of 755 — the last stop before Mount Rainier National Park.</p>
+    <div class="cta">
+      <a class="btn btn-primary" href="https://www.ncourt.com/x-press/x-onlinepayments.aspx?juris=044E06D7-504E-431C-84C7-FCB4ABF04984" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+        Pay utility bill
+      </a>
+      <a class="btn btn-ghost" href="https://www.carbonado.org/meeting-minutes">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="M8 9h8M8 13h8M8 17h5"/></svg>
+        Council minutes
+      </a>
+    </div>
+    <div class="facts">
+      <span>Population <b>~755</b></span>
+      <span>Elevation <b>1,191 ft</b></span>
+      <span>Incorporated <b>1948</b></span>
+      <span>Pierce County, WA <b>98323</b></span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ALERT ================= -->
+<aside class="alert" aria-label="Town alert">
+  <div class="wrap">
+    <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>
+    <div>
+      <h2>SR 165 — Fairfax Bridge closed indefinitely</h2>
+      <p>WSDOT has closed the 1921 Carbon River (Fairfax) Bridge to all vehicle and pedestrian traffic as a safety precaution. There is no public access from SR 165 to Mount Rainier’s Mowich Lake Entrance or the Carbon River Ranger Station. &nbsp;<a href="https://www.carbonado.org/publicnotices">Read the full notice →</a></p>
+    </div>
+  </div>
+</aside>
+
+<!-- ================= SERVICES ================= -->
+<section class="section" aria-labelledby="svc-h">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Residents</span>
+        <h2 id="svc-h">Do it online</h2>
+        <p class="lead">The things people need most from Town Hall — pay, read, and file without a trip to the office.</p>
+      </div>
+    </div>
+    <hr class="rule" aria-hidden="true" style="margin-bottom:1.9rem">
+    <div class="grid">
+      <a class="svc" href="https://www.ncourt.com/x-press/x-onlinepayments.aspx?juris=044E06D7-504E-431C-84C7-FCB4ABF04984" rel="noopener">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></svg>
+        <h3>Pay your utility bill</h3>
+        <p>Water and sewer payments online. Opens a secure third-party portal; a service fee applies.</p>
+        <span class="go">Go to payments <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="svc" href="https://www.carbonado.org/meeting-minutes">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="M8 9h8M8 13h8M8 17h5"/></svg>
+        <h3>Council minutes</h3>
+        <p>Agendas and minutes for regular meetings — held the second Monday each month at 6:30pm.</p>
+        <span class="go">View records <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="svc" href="https://www.carbonado.org/planning">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 21h18M6 21V8l6-4 6 4v13M10 21v-6h4v6"/></svg>
+        <h3>Building &amp; permits</h3>
+        <p>Planning a home, fence, or shed? Find permit requirements and the forms you’ll need to file.</p>
+        <span class="go">Start a permit <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="svc" href="https://www.carbonado.org/water-sewer-project">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11Z"/></svg>
+        <h3>Water &amp; sewer project</h3>
+        <p>Construction updates and documents for the town’s ongoing utility improvement project.</p>
+        <span class="go">Latest updates <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= NOTICES ================= -->
+<section class="section notices" aria-labelledby="not-h">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow" style="color:#e7b48f">Public record</span>
+        <h2 id="not-h">Town notices</h2>
+        <p class="lead">Elections, planning determinations, and official announcements. Questions on any item go to the town clerk.</p>
+      </div>
+    </div>
+    <hr class="rule" aria-hidden="true" style="margin-bottom:.4rem">
+    <div class="nlist">
+
+      <article class="note">
+        <time datetime="2026-05-05">Deadline<br>May 5, 2026</time>
+        <div class="body">
+          <span class="tag">Election · EMS Levy</span>
+          <h3>Renewal of the 6-year EMS levy — August Primary</h3>
+          <p>The Council intends to submit a proposition to renew the Town’s EMS levy at $0.50 per $1,000 of assessed value (2027–2032). Per RCW 29A.32.280, the Town must appoint “For” and “Against” committees for the voters’ pamphlet. To serve, email the clerk with your name, contact information, and committee choice.</p>
+        </div>
+        <a class="more" href="mailto:clerk@carbonado.org?subject=EMS%20Levy%20Committee">Email to serve</a>
+      </article>
+
+      <article class="note">
+        <time datetime="2024-11-11">Adopted<br>Nov 11, 2024</time>
+        <div class="body">
+          <span class="tag">Planning</span>
+          <h3>2024 Comprehensive Plan update</h3>
+          <p>The Town has updated its Comprehensive Plan. Read the full adopted document, and send questions or comments to the town clerk.</p>
+        </div>
+        <a class="more" href="https://www.carbonado.org/s/Att-C-Town-of-Carbonado-2024-Comprehensive-Plan-Update-FINAL-11-11-24.pdf" rel="noopener">Read the plan (PDF)</a>
+      </article>
+
+      <article class="note">
+        <time datetime="2025-05-29">Published<br>May 29, 2025</time>
+        <div class="body">
+          <span class="tag">SEPA Determination</span>
+          <h3>General Sewer / Wastewater Facility Plan — DNS-M</h3>
+          <p>A Determination of Nonsignificant Impact (Mitigated) was issued for the Town’s 20-year (2025–2045) wastewater facility plan. Comments may be submitted by mail to P.O. Box 91, Carbonado, WA 98323, or by email to the clerk.</p>
+        </div>
+        <a class="more" href="https://www.carbonado.org/publicnotices">View notice</a>
+      </article>
+
+    </div>
+    <p style="margin:1.6rem 0 0"><a href="https://www.carbonado.org/publicnotices" style="color:#fff;font-family:var(--sans);font-weight:700;text-decoration:none;border-bottom:2px solid var(--ember)">All public notices →</a></p>
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section class="section" aria-labelledby="ab-h">
+  <div class="wrap about">
+    <div class="prose">
+      <span class="eyebrow">Welcome</span>
+      <h2 id="ab-h" style="font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:1.2rem">A coal town in Rainier’s shadow</h2>
+      <p class="drop">Nestled near the Carbon River in northern Pierce County — about 50 miles southeast of Seattle — Carbonado is home to roughly 755 people and marks the last town before you enter Mount Rainier National Park.</p>
+      <p>In the late nineteenth and early twentieth centuries, Carbonado was a vital coal-mining community, running the largest coal mine in Pierce County. That heritage still shapes the town today.</p>
+      <p style="margin-bottom:0"><a href="https://www.carbonado.org/history" style="font-family:var(--sans);font-weight:700;text-decoration:none;border-bottom:2px solid var(--ember);color:var(--spruce)">Explore our history →</a></p>
+    </div>
+    <div class="statcard" aria-label="Town at a glance">
+      <div class="top">Carbonado at a glance</div>
+      <div class="statrow"><span class="k">Settled</span><span class="v">1880s</span></div>
+      <div class="statrow"><span class="k">Incorporated</span><span class="v">Sept 1948</span></div>
+      <div class="statrow"><span class="k">Population</span><span class="v">~755</span></div>
+      <div class="statrow"><span class="k">Elevation</span><span class="v">1,191 ft</span></div>
+      <div class="statrow"><span class="k">County</span><span class="v">Pierce</span></div>
+      <div class="statrow"><span class="k">Council meets</span><span class="v">2nd Mon · 6:30pm</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EXPLORE / SITEMAP ================= -->
+<section class="section explore" aria-labelledby="exp-h">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Directory</span>
+        <h2 id="exp-h">Find your way around</h2>
+      </div>
+    </div>
+    <div class="cols">
+      <div class="col">
+        <h3>Government</h3>
+        <ul>
+          <li><a href="https://www.carbonado.org/government/electedofficials">Elected Officials</a></li>
+          <li><a href="https://www.carbonado.org/municipalcode">Municipal Code</a></li>
+          <li><a href="https://www.carbonado.org/publicnotices">Public Notices</a></li>
+          <li><a href="https://www.carbonado.org/taxes-rates-and-fees">Taxes, Rates &amp; Fees</a></li>
+          <li><a href="https://www.carbonado.org/employment">Employment</a></li>
+          <li><a href="https://www.carbonado.org/planning">Planning &amp; Permits</a></li>
+        </ul>
+      </div>
+      <div class="col">
+        <h3>Public Works</h3>
+        <ul>
+          <li><a href="https://www.carbonado.org/public-works-dept">Public Works Dept.</a></li>
+          <li><a href="https://www.carbonado.org/water-sewer-project">Water &amp; Sewer Project</a></li>
+          <li><a href="https://www.carbonado.org/meeting-minutes">Meeting Minutes</a></li>
+          <li><a href="https://www.ncourt.com/x-press/x-onlinepayments.aspx?juris=044E06D7-504E-431C-84C7-FCB4ABF04984" rel="noopener">Pay Utility Bill<span class="ext">↗</span></a></li>
+        </ul>
+      </div>
+      <div class="col">
+        <h3>Community</h3>
+        <ul>
+          <li><a href="https://www.carbonado.org/history">History</a></li>
+          <li><a href="https://www.carbonado.org/attractions">Attractions</a></li>
+          <li><a href="https://www.carbonado.org/community-resources">Community Resources</a></li>
+          <li><a href="https://www.carbonado.org/business-resources">Business Resources</a></li>
+        </ul>
+      </div>
+      <div class="col">
+        <h3>Safety</h3>
+        <ul>
+          <li><a href="https://www.cityofbuckley.com/fire" rel="noopener">Volunteer Fire Dept.<span class="ext">↗</span></a></li>
+          <li><a href="https://www.cityofbuckley.com/police" rel="noopener">Buckley Police<span class="ext">↗</span></a></li>
+          <li><a href="tel:+13608290125">Town Hall — (360) 829-0125</a></li>
+          <li><a href="https://www.carbonado.org/contact">Contact the Town</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="section contact" id="contact" aria-labelledby="con-h">
+  <div class="wrap">
+    <div class="grid3">
+      <div class="prose">
+        <span class="eyebrow">Get in touch</span>
+        <h2 id="con-h">Carbonado Town Hall</h2>
+        <p>Reach the clerk’s office by phone or email during business hours, or write to us by mail. We’re glad to help.</p>
+      </div>
+      <div class="block">
+        <h3>Visit &amp; write</h3>
+        <p>P.O. Box 91</p>
+        <p>Carbonado, WA 98323</p>
+        <p class="hours" style="margin-top:.8rem">Mon–Thu · 9:00am–5:00pm</p>
+      </div>
+      <div class="block">
+        <h3>Contact</h3>
+        <p><a href="tel:+13608290125">(360) 829-0125</a></p>
+        <p><a href="mailto:clerk@carbonado.org">clerk@carbonado.org</a></p>
+        <p class="hours" style="margin-top:.8rem">Council · 2nd Monday, 6:30pm</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="brand2">
+      <svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><circle cx="32" cy="32" r="31" fill="#0f3226" stroke="#b8531f" stroke-width="1.5"/><path d="M13 41 L27 20 L34 30 L41 22 L51 41 Z" fill="#2c5f49"/><rect x="10" y="43.5" width="44" height="3" rx="1.5" fill="#b8531f"/></svg>
+      Town of Carbonado
+    </div>
+    <div>
+      <a href="https://www.carbonado.org/publicnotices">Notices</a> ·
+      <a href="https://www.carbonado.org/municipalcode">Municipal Code</a> ·
+      <a href="https://www.carbonado.org/contact">Contact</a>
+    </div>
+    <div class="mono">© <span id="yr">2026</span> Town of Carbonado, Washington · Pierce County</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var nav = document.getElementById('primary-nav');
+  var burger = document.querySelector('.burger');
+  var scrim = document.querySelector('.scrim');
+  var tops = Array.prototype.slice.call(document.querySelectorAll('.nav .top[aria-controls]'));
+
+  function closeAllMenus(except){
+    tops.forEach(function(b){
+      if(b === except) return;
+      b.setAttribute('aria-expanded','false');
+      var m = document.getElementById(b.getAttribute('aria-controls'));
+      if(m) m.classList.remove('open');
+    });
+  }
+
+  // dropdown disclosure (click / keyboard friendly, works on touch)
+  tops.forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      e.stopPropagation();
+      var open = btn.getAttribute('aria-expanded') === 'true';
+      closeAllMenus(btn);
+      btn.setAttribute('aria-expanded', String(!open));
+      var m = document.getElementById(btn.getAttribute('aria-controls'));
+      if(m) m.classList.toggle('open', !open);
+    });
+  });
+
+  // hover-to-open on real pointer devices (desktop nicety)
+  if(window.matchMedia('(hover:hover) and (min-width:941px)').matches){
+    document.querySelectorAll('.nav .item').forEach(function(item){
+      var btn = item.querySelector('.top[aria-controls]');
+      if(!btn) return;
+      var m = document.getElementById(btn.getAttribute('aria-controls'));
+      item.addEventListener('mouseenter', function(){ closeAllMenus(btn); btn.setAttribute('aria-expanded','true'); if(m) m.classList.add('open'); });
+      item.addEventListener('mouseleave', function(){ btn.setAttribute('aria-expanded','false'); if(m) m.classList.remove('open'); });
+    });
+  }
+
+  // mobile drawer
+  function setDrawer(open){
+    nav.classList.toggle('open', open);
+    scrim.classList.toggle('open', open);
+    scrim.hidden = !open;
+    burger.setAttribute('aria-expanded', String(open));
+    burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+  burger.addEventListener('click', function(){ setDrawer(!nav.classList.contains('open')); });
+  scrim.addEventListener('click', function(){ setDrawer(false); closeAllMenus(); });
+
+  // click outside closes desktop menus
+  document.addEventListener('click', function(e){
+    if(!e.target.closest('.nav')) closeAllMenus();
+  });
+
+  // escape closes everything
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape'){ closeAllMenus(); if(nav.classList.contains('open')) setDrawer(false); }
+  });
+
+  // close drawer when a link is tapped
+  nav.addEventListener('click', function(e){ if(e.target.closest('a') && nav.classList.contains('open')) setDrawer(false); });
+
+  // year
+  document.getElementById('yr').textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>

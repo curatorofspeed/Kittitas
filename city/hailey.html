@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>City of Hailey, Idaho — Services, Bills, Meetings &amp; News</title>
+<meta name="description" content="Official home of the City of Hailey, Idaho. Pay a utility bill, find a meeting agenda, apply for a permit, reserve a park, and stay current on city news. Serving the Wood River Valley since 1881.">
+<meta name="theme-color" content="#1E4535">
+<meta property="og:title" content="City of Hailey, Idaho">
+<meta property="og:description" content="Serving the Wood River Valley since 1881. City services, bills, meetings, and news in one place.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231E4535'/%3E%3Ccircle cx='16' cy='11' r='3.4' fill='%23C69A3E'/%3E%3Cpath d='M4 25 L12 14 L17 20 L21 15 L28 25 Z' fill='%23F3F4F1'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#18211C; --ink-soft:#414d44;
+    --spruce:#1E4535; --spruce-700:#163227; --spruce-300:#3d6a56;
+    --sage:#5E7A63; --sage-100:#e7ede6; --sage-50:#f0f4ee;
+    --granite:#F3F4F1; --surface:#ffffff; --line:#dbe2d9; --line-2:#c9d4c6;
+    --gold:#C69A3E; --gold-ink:#8a6419; --gold-sand:#e9dfc6; --gold-100:#f4ecd6;
+    --radius:16px; --radius-sm:11px; --radius-pill:999px;
+    --maxw:1160px;
+    --shadow-sm:0 1px 2px rgba(20,36,28,.05), 0 3px 10px rgba(20,36,28,.05);
+    --shadow-md:0 10px 30px rgba(20,36,28,.11);
+    --font-display:'Fraunces','Iowan Old Style',Georgia,'Times New Roman',serif;
+    --font-body:'Public Sans',system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; font-family:var(--font-body); color:var(--ink);
+    background:var(--granite); line-height:1.6; -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  h1,h2,h3{font-family:var(--font-display); font-weight:600; line-height:1.08; margin:0; letter-spacing:-.01em}
+  a{color:var(--spruce); text-decoration:none}
+  p{margin:0}
+  img,svg{display:block}
+  .wrap{width:100%; max-width:var(--maxw); margin-inline:auto; padding-inline:clamp(1.1rem,4vw,2.5rem)}
+  .sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0}
+  .ic{width:24px; height:24px; stroke:currentColor; stroke-width:1.6; fill:none; stroke-linecap:round; stroke-linejoin:round; flex:none}
+
+  /* focus */
+  a:focus-visible,button:focus-visible,input:focus-visible{
+    outline:3px solid var(--gold); outline-offset:2px; border-radius:6px;
+  }
+  .skip{
+    position:fixed; left:1rem; top:-70px; z-index:200; background:var(--spruce); color:#fff;
+    padding:.7rem 1.1rem; border-radius:0 0 10px 10px; font-weight:600; transition:top .2s;
+  }
+  .skip:focus{top:0}
+
+  /* buttons */
+  .btn{
+    display:inline-flex; align-items:center; gap:.5rem; font:inherit; font-weight:600;
+    padding:.7rem 1.15rem; border-radius:var(--radius-pill); border:1.5px solid transparent;
+    cursor:pointer; min-height:44px; transition:transform .15s ease, background .15s ease, border-color .15s ease, color .15s;
+    white-space:nowrap;
+  }
+  .btn-gold{background:var(--gold); color:#231a05}
+  .btn-gold:hover{background:#d5a848; transform:translateY(-1px)}
+  .btn-ghost{background:transparent; color:var(--spruce); border-color:var(--line-2)}
+  .btn-ghost:hover{border-color:var(--spruce); background:#fff}
+  .btn-light{background:#fff; color:var(--spruce)}
+  .btn-light:hover{transform:translateY(-1px); background:#fff}
+
+  /* alert bar */
+  .alertbar{background:var(--spruce-700); color:#eaf1ec; font-size:.86rem}
+  .alertbar .wrap{display:flex; flex-wrap:wrap; align-items:center; gap:.5rem 1.4rem; padding-block:.5rem}
+  .alertbar strong{color:#fff}
+  .alertbar .dot{width:7px; height:7px; border-radius:50%; background:var(--gold); display:inline-block; margin-right:.5rem; box-shadow:0 0 0 3px rgba(198,154,62,.25)}
+  .alertbar a{color:#d8e3d9; font-weight:600; margin-left:auto}
+  .alertbar a + a{margin-left:1.2rem}
+  .alertbar a:hover{color:#fff}
+  @media(max-width:640px){ .alertbar a{margin-left:0} .alertbar a:first-of-type{margin-left:auto} }
+
+  /* header */
+  .site{position:sticky; top:0; z-index:100; background:rgba(243,244,241,.86); backdrop-filter:saturate(1.2) blur(10px); border-bottom:1px solid transparent; transition:border-color .2s, box-shadow .2s, background .2s}
+  .site.is-scrolled{border-color:var(--line); box-shadow:var(--shadow-sm); background:rgba(243,244,241,.94)}
+  .header-inner{display:flex; align-items:center; gap:1.2rem; min-height:72px}
+  .brand{display:flex; align-items:center; gap:.7rem; color:var(--ink); flex:none}
+  .brand .mark{width:42px; height:42px; flex:none}
+  .brand .name{font-family:var(--font-display); font-weight:600; font-size:1.28rem; line-height:1; letter-spacing:-.015em}
+  .brand small{display:block; font-family:var(--font-body); font-weight:600; font-size:.62rem; letter-spacing:.14em; text-transform:uppercase; color:var(--sage); margin-top:.28rem}
+  .nav{display:flex; gap:.35rem; margin-left:.6rem}
+  .nav a{color:var(--ink-soft); font-weight:600; font-size:.95rem; padding:.5rem .7rem; border-radius:8px}
+  .nav a:hover{color:var(--spruce); background:#fff}
+  .header-cta{display:flex; gap:.55rem; margin-left:auto}
+  .menu-btn{display:none; margin-left:auto; background:#fff; border:1.5px solid var(--line-2); border-radius:10px; width:46px; height:46px; align-items:center; justify-content:center; cursor:pointer; color:var(--spruce)}
+  .mobilenav{display:none}
+
+  @media(max-width:920px){
+    .nav,.header-cta{display:none}
+    .menu-btn{display:inline-flex}
+    .mobilenav{display:block; max-height:0; overflow:hidden; background:#fff; border-bottom:1px solid var(--line); transition:max-height .28s ease}
+    .site[data-open="true"] .mobilenav{max-height:520px}
+    .mobilenav .wrap{padding-block:.6rem 1.1rem}
+    .mobilenav a{display:block; padding:.85rem .25rem; font-weight:600; color:var(--ink); border-bottom:1px solid var(--line)}
+    .mobilenav a:last-child{border-bottom:0}
+    .mobilenav .m-actions{display:flex; gap:.6rem; margin-top:.9rem}
+    .mobilenav .m-actions .btn{flex:1; justify-content:center}
+  }
+
+  /* hero */
+  .hero{position:relative; background:linear-gradient(178deg,#265240 0%, var(--spruce) 46%, var(--spruce-700) 100%); color:#f3f6f2; overflow:hidden; isolation:isolate}
+  .hero-inner{padding-top:clamp(3rem,7vw,5.5rem); padding-bottom:clamp(7rem,15vw,12rem); position:relative; z-index:2; max-width:820px}
+  .eyebrow{font-size:.78rem; font-weight:700; letter-spacing:.19em; text-transform:uppercase; color:var(--gold-sand); margin-bottom:1rem}
+  .hero h1{font-size:clamp(3rem,8.5vw,5.6rem); font-weight:600; letter-spacing:-.025em; line-height:.98}
+  .hero .lede{font-size:clamp(1.08rem,2.4vw,1.32rem); color:#dbe6dd; margin-top:1.15rem; max-width:44ch}
+  .search{display:flex; align-items:center; gap:.4rem; margin-top:2rem; background:#fff; border-radius:var(--radius-pill); padding:.4rem .4rem .4rem 1.1rem; box-shadow:var(--shadow-md); max-width:560px}
+  .search .ic{color:var(--sage)}
+  .search input{flex:1; border:0; outline:0; font:inherit; font-size:1rem; color:var(--ink); background:transparent; min-width:0; padding:.5rem 0}
+  .search input::placeholder{color:#7d897f}
+  .search .btn{padding-inline:1.3rem}
+  .chips{list-style:none; display:flex; flex-wrap:wrap; gap:.55rem; margin:1.4rem 0 0; padding:0}
+  .chips a{display:inline-block; font-size:.85rem; font-weight:600; color:#eaf1ec; padding:.4rem .85rem; border:1.5px solid rgba(255,255,255,.28); border-radius:var(--radius-pill); transition:background .15s, border-color .15s}
+  .chips a:hover{background:rgba(255,255,255,.14); border-color:rgba(255,255,255,.55)}
+  .ridge{position:absolute; bottom:-1px; left:0; width:100%; height:clamp(90px,15vw,210px); z-index:1; display:block}
+
+  /* section rhythm */
+  .section{padding-block:clamp(3.2rem,7vw,5.8rem); scroll-margin-top:88px}
+  .section.alt{background:var(--surface); border-block:1px solid var(--line)}
+  .section.band{background:var(--sage-100)}
+  .sec-head{max-width:640px; margin-bottom:2.2rem}
+  .kicker{font-size:.76rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--gold-ink); margin-bottom:.6rem}
+  .sec-head h2{font-size:clamp(1.8rem,4vw,2.6rem)}
+  .sec-head p.sub{color:var(--ink-soft); margin-top:.7rem; font-size:1.05rem}
+
+  /* task tiles */
+  .tiles{display:grid; grid-template-columns:repeat(3,1fr); gap:1rem}
+  .tile{background:#fff; border:1px solid var(--line); border-radius:var(--radius); padding:1.5rem 1.5rem 1.35rem; display:flex; flex-direction:column; gap:.85rem; transition:transform .18s ease, box-shadow .18s ease, border-color .18s; position:relative}
+  .tile:hover{transform:translateY(-3px); box-shadow:var(--shadow-md); border-color:var(--line-2)}
+  .tile .tico{width:48px; height:48px; border-radius:12px; background:var(--sage-50); color:var(--spruce); display:flex; align-items:center; justify-content:center}
+  .tile h3{font-size:1.22rem; font-weight:600}
+  .tile p{color:var(--ink-soft); font-size:.94rem; flex:1}
+  .tile .go{display:inline-flex; align-items:center; gap:.4rem; color:var(--spruce); font-weight:700; font-size:.9rem}
+  .tile .go .ic{width:18px; height:18px; transition:transform .18s ease}
+  .tile:hover .go .ic{transform:translateX(4px)}
+  .tile::after{content:""; position:absolute; inset:0; border-radius:var(--radius)}
+
+  /* department cards */
+  .depts{display:grid; grid-template-columns:repeat(3,1fr); gap:1rem}
+  .dept{display:flex; gap:1rem; align-items:flex-start; background:var(--granite); border:1px solid var(--line); border-radius:var(--radius); padding:1.35rem 1.4rem; transition:transform .18s, box-shadow .18s, border-color .18s; color:var(--ink)}
+  .dept:hover{transform:translateY(-3px); box-shadow:var(--shadow-md); border-color:var(--spruce-300)}
+  .dept .dico{width:46px; height:46px; border-radius:50%; background:var(--spruce); color:#fff; display:flex; align-items:center; justify-content:center; flex:none}
+  .dept h3{font-size:1.14rem; font-weight:600; margin-bottom:.25rem}
+  .dept p{color:var(--ink-soft); font-size:.9rem}
+
+  /* news + meetings */
+  .news-grid{display:grid; grid-template-columns:1.55fr 1fr; gap:2.6rem; align-items:start}
+  .news-head{display:flex; align-items:baseline; justify-content:space-between; gap:1rem; margin-bottom:1.4rem}
+  .news-head h2{font-size:clamp(1.7rem,3.6vw,2.3rem)}
+  .link-more{font-weight:700; font-size:.9rem; color:var(--spruce); white-space:nowrap}
+  .link-more:hover{color:var(--gold-ink)}
+  .feed{list-style:none; margin:0; padding:0; display:flex; flex-direction:column}
+  .feed li{border-top:1px solid var(--line)}
+  .feed li:last-child{border-bottom:1px solid var(--line)}
+  .feed a{display:grid; grid-template-columns:auto 1fr auto; gap:.4rem 1.3rem; align-items:center; padding:1.15rem .2rem; color:var(--ink); transition:background .15s}
+  .feed a:hover{background:#fff}
+  .feed .date{font-size:.76rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--sage); grid-row:1; align-self:start; padding-top:.15rem}
+  .feed .ftitle{font-family:var(--font-display); font-size:1.14rem; font-weight:600; line-height:1.25}
+  .feed .fdesc{grid-column:2; font-size:.9rem; color:var(--ink-soft); margin-top:.2rem}
+  .feed .fatag{grid-column:2; margin-top:.55rem}
+  .tag{display:inline-block; font-size:.68rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; padding:.22rem .55rem; border-radius:var(--radius-pill); background:var(--gold-100); color:var(--gold-ink)}
+  .tag.green{background:var(--sage-100); color:var(--spruce)}
+  .feed .chev{color:var(--line-2); grid-row:1}
+
+  .mtg{background:#fff; border:1px solid var(--line); border-radius:var(--radius); padding:1.5rem 1.5rem 1.2rem}
+  .mtg h3{font-size:1.15rem; margin-bottom:.2rem}
+  .mtg > p{font-size:.9rem; color:var(--ink-soft); margin-bottom:1.1rem}
+  .mtg ul{list-style:none; margin:0; padding:0}
+  .mtg li + li{margin-top:.2rem}
+  .mtg li a{display:flex; align-items:center; gap:.9rem; padding:.7rem .3rem; border-radius:9px; color:var(--ink); transition:background .15s}
+  .mtg li a:hover{background:var(--granite)}
+  .mtg .mname{font-weight:600; font-size:.98rem}
+  .mtg .mmeta{font-size:.8rem; color:var(--sage)}
+  .mtg li .ic{width:18px; height:18px; color:var(--spruce-300); margin-left:auto}
+  .mtg .foot-btn{margin-top:1.1rem}
+  .mtg .foot-btn .btn{width:100%; justify-content:center}
+
+  /* seasonal band */
+  .band .sec-head{margin-bottom:1.8rem}
+  .season{display:grid; grid-template-columns:repeat(3,1fr); gap:1rem}
+  .scard{background:#fff; border:1px solid var(--line); border-radius:var(--radius); padding:1.5rem; display:flex; flex-direction:column; gap:.7rem}
+  .scard .sic{width:44px; height:44px; border-radius:11px; background:var(--sage-100); color:var(--spruce); display:flex; align-items:center; justify-content:center}
+  .scard h3{font-size:1.14rem}
+  .scard p{font-size:.92rem; color:var(--ink-soft); flex:1}
+  .scard a{font-weight:700; font-size:.9rem; display:inline-flex; align-items:center; gap:.4rem}
+  .scard a .ic{width:17px; height:17px; transition:transform .18s}
+  .scard a:hover .ic{transform:translateX(3px)}
+
+  /* footer */
+  .site-foot{background:var(--spruce-700); color:#cdd8cf; scroll-margin-top:88px}
+  .foot-top{display:grid; grid-template-columns:1.3fr 2.4fr; gap:2.6rem; padding-block:clamp(3rem,6vw,4.5rem) 2.5rem}
+  .foot-brand .brand .name{color:#fff}
+  .foot-brand .brand small{color:var(--gold-sand)}
+  .foot-brand .brand .mark rect{fill:#2a5544}
+  .contact-block{margin-top:1.4rem; display:flex; flex-direction:column; gap:.85rem; font-size:.92rem}
+  .contact-block .row{display:flex; gap:.7rem; align-items:flex-start}
+  .contact-block .ic{width:19px; height:19px; color:var(--gold-sand); margin-top:.15rem}
+  .contact-block a{color:#e3ebe4}
+  .contact-block a:hover{color:#fff}
+  .socials{display:flex; gap:.6rem; margin-top:1.3rem}
+  .socials a{width:40px; height:40px; border:1.5px solid rgba(255,255,255,.22); border-radius:10px; display:flex; align-items:center; justify-content:center; color:#e3ebe4; transition:background .15s, border-color .15s}
+  .socials a:hover{background:rgba(255,255,255,.12); border-color:rgba(255,255,255,.5)}
+  .foot-cols{display:grid; grid-template-columns:repeat(4,1fr); gap:1.6rem}
+  .foot-cols h4{font-family:var(--font-body); font-size:.74rem; font-weight:700; letter-spacing:.13em; text-transform:uppercase; color:var(--gold-sand); margin:0 0 1rem}
+  .foot-cols ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:.6rem}
+  .foot-cols a{color:#c3cfc5; font-size:.92rem}
+  .foot-cols a:hover{color:#fff; text-decoration:underline; text-underline-offset:3px}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,.12); padding-block:1.5rem; display:flex; flex-wrap:wrap; gap:.6rem 1.4rem; align-items:center; font-size:.85rem; color:#a9b6ab}
+  .foot-bottom a{color:#c3cfc5}
+  .foot-bottom a:hover{color:#fff}
+  .foot-bottom .credit{margin-left:auto}
+  .foot-bottom .credit a{color:var(--gold-sand); font-weight:600}
+
+  /* load animation */
+  @keyframes rise{from{opacity:0; transform:translateY(16px)} to{opacity:1; transform:none}}
+  .hero-inner > *{animation:rise .7s cubic-bezier(.2,.7,.3,1) both}
+  .hero-inner > *:nth-child(2){animation-delay:.06s}
+  .hero-inner > *:nth-child(3){animation-delay:.12s}
+  .hero-inner > *:nth-child(4){animation-delay:.18s}
+  .hero-inner > *:nth-child(5){animation-delay:.24s}
+
+  /* responsive */
+  @media(max-width:900px){
+    .tiles,.depts,.season{grid-template-columns:repeat(2,1fr)}
+    .news-grid{grid-template-columns:1fr; gap:2.2rem}
+  }
+  @media(max-width:560px){
+    .tiles,.depts,.season{grid-template-columns:1fr}
+    .foot-top{grid-template-columns:1fr; gap:2rem}
+    .foot-cols{grid-template-columns:repeat(2,1fr); gap:1.6rem 1.2rem}
+    .search{flex-wrap:wrap; border-radius:20px; padding:.5rem}
+    .search input{width:100%; padding-inline:.6rem}
+    .search .btn{width:100%; justify-content:center}
+    .search .ic{display:none}
+    .foot-bottom .credit{margin-left:0; width:100%}
+  }
+
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none !important; transition:none !important; scroll-behavior:auto !important}
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+
+<!-- Alert / utility strip -->
+<div class="alertbar">
+  <div class="wrap">
+    <span><span class="dot" aria-hidden="true"></span>In an emergency, dial <strong>911</strong></span>
+    <a href="https://haileycityhall.org/announcements-and-news/">Alerts &amp; closures</a>
+    <a href="https://www.xpressbillpay.com/#/?org=hailey10037">Pay a bill</a>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="site" id="top">
+  <div class="wrap header-inner">
+    <a class="brand" href="https://haileycityhall.org/" aria-label="City of Hailey, Idaho — home">
+      <svg class="mark" viewBox="0 0 44 44" aria-hidden="true">
+        <rect width="44" height="44" rx="11" fill="#1E4535"/>
+        <circle cx="22" cy="15" r="4.4" fill="#C69A3E"/>
+        <path d="M5 34 L16 19 L23 27 L28 20 L39 34 Z" fill="#F3F4F1"/>
+        <path d="M5 34 L16 19 L23 27" fill="none" stroke="#2a5544" stroke-width="0"/>
+      </svg>
+      <span class="name">City of Hailey<small>Idaho · Est. 1881</small></span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a href="#tasks">Services</a>
+      <a href="#departments">Departments</a>
+      <a href="#news">News &amp; Meetings</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="header-cta">
+      <a class="btn btn-ghost" href="https://haileycityhall.org/public-meetings/">Meetings</a>
+      <a class="btn btn-gold" href="https://www.xpressbillpay.com/#/?org=hailey10037">Pay a bill</a>
+    </div>
+    <button class="menu-btn" aria-expanded="false" aria-controls="mobilenav" aria-label="Open menu">
+      <svg class="ic" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+  <div class="mobilenav" id="mobilenav">
+    <div class="wrap">
+      <a href="#tasks">Services</a>
+      <a href="#departments">Departments</a>
+      <a href="#news">News &amp; Meetings</a>
+      <a href="https://haileycityhall.org/public-meetings/">Public Meetings</a>
+      <a href="#contact">Contact</a>
+      <div class="m-actions">
+        <a class="btn btn-ghost" href="https://haileycityhall.org/employment/">Jobs</a>
+        <a class="btn btn-gold" href="https://www.xpressbillpay.com/#/?org=hailey10037">Pay a bill</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <!-- Hero -->
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <p class="eyebrow">Wood River Valley · Blaine County, Idaho</p>
+      <h1>City of Hailey</h1>
+      <p class="lede">Serving the valley since 1881. Pay a bill, find a meeting, or apply for a permit — start right here.</p>
+      <form class="search" action="https://haileycityhall.org/" method="get" role="search">
+        <svg class="ic" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg>
+        <label class="sr-only" for="site-search">Search the city website</label>
+        <input id="site-search" name="s" type="search" placeholder="Search services, permits, meetings…" autocomplete="off">
+        <button class="btn btn-gold" type="submit">Search</button>
+      </form>
+      <ul class="chips">
+        <li><a href="https://www.xpressbillpay.com/#/?org=hailey10037">Pay your bill</a></li>
+        <li><a href="https://haileycityhall.org/public-works/streets/snow-removal/">Snow removal</a></li>
+        <li><a href="https://haileycityhall.org/public-meetings/">Public meetings</a></li>
+        <li><a href="https://haileycityhall.org/community-development/building-services/">Building permits</a></li>
+        <li><a href="https://hailey.recdesk.com/">Park reservations</a></li>
+      </ul>
+    </div>
+    <svg class="ridge" viewBox="0 0 1440 260" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0,182 L120,110 L240,150 L380,80 L520,140 L660,72 L800,132 L940,92 L1080,142 L1220,102 L1340,150 L1440,120 L1440,260 L0,260 Z" fill="#163227" opacity="0.55"/>
+      <path d="M0,182 L120,110 L240,150 L380,80 L520,140 L660,72 L800,132 L940,92 L1080,142 L1220,102 L1340,150 L1440,120" fill="none" stroke="#C69A3E" stroke-width="1.5" opacity="0.4"/>
+      <path d="M0,212 L160,172 L300,202 L460,152 L600,196 L760,162 L900,202 L1060,166 L1200,206 L1340,176 L1440,200 L1440,260 L0,260 Z" fill="#F3F4F1"/>
+    </svg>
+  </section>
+
+  <!-- Popular services -->
+  <section class="section" id="tasks">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">How can we help?</p>
+        <h2>Popular services</h2>
+        <p class="sub">The things residents reach for most, one click away.</p>
+      </div>
+      <div class="tiles">
+        <a class="tile" href="https://www.xpressbillpay.com/#/?org=hailey10037">
+          <span class="tico"><svg class="ic" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2.5"/><line x1="2" y1="10" x2="22" y2="10"/><line x1="6" y1="15" x2="10" y2="15"/></svg></span>
+          <h3>Pay your utility bill</h3>
+          <p>View and pay your water, sewer, and trash bill online through Xpress Bill Pay.</p>
+          <span class="go">Pay now <svg class="ic" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13,6 19,12 13,18"/></svg></span>
+        </a>
+        <a class="tile" href="https://haileycityhall.org/public-meetings/">
+          <span class="tico"><svg class="ic" aria-hidden="true"><rect x="3" y="4.5" width="18" height="17" rx="2.5"/><line x1="3" y1="9.5" x2="21" y2="9.5"/><line x1="8" y1="2.5" x2="8" y2="6.5"/><line x1="16" y1="2.5" x2="16" y2="6.5"/></svg></span>
+          <h3>Find a meeting or agenda</h3>
+          <p>See upcoming council, commission, and board meetings with agendas and packets.</p>
+          <span class="go">View calendar <svg class="ic" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13,6 19,12 13,18"/></svg></span>
+        </a>
+        <a class="tile" href="https://haileycityhall.org/community-development/building-services/">
+          <span class="tico"><svg class="ic" aria-hidden="true"><rect x="5" y="4" width="14" height="18" rx="2"/><path d="M9 4V3.2A1.2 1.2 0 0 1 10.2 2h3.6A1.2 1.2 0 0 1 15 3.2V4"/><line x1="8.5" y1="11" x2="15.5" y2="11"/><line x1="8.5" y1="15" x2="13" y2="15"/></svg></span>
+          <h3>Apply for a building permit</h3>
+          <p>Start a building or land-use application and review fees, codes, and inspections.</p>
+          <span class="go">Get started <svg class="ic" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13,6 19,12 13,18"/></svg></span>
+        </a>
+        <a class="tile" href="https://haileycityhall.org/contact/">
+          <span class="tico"><svg class="ic" aria-hidden="true"><path d="M12 4 L21 19 L3 19 Z"/><line x1="12" y1="10" x2="12" y2="14"/><circle cx="12" cy="16.6" r=".7" fill="currentColor" stroke="none"/></svg></span>
+          <h3>Report a concern</h3>
+          <p>Flag a pothole, streetlight, water issue, or other problem for the right department.</p>
+          <span class="go">Contact the city <svg class="ic" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13,6 19,12 13,18"/></svg></span>
+        </a>
+        <a class="tile" href="https://hailey.recdesk.com/">
+          <span class="tico"><svg class="ic" aria-hidden="true"><path d="M12 2 L18.5 12 H5.5 Z"/><path d="M12 7 L17 15 H7 Z"/><line x1="12" y1="15" x2="12" y2="22"/></svg></span>
+          <h3>Reserve a park or facility</h3>
+          <p>Book a park, shelter, or Town Center West for your event through RecDesk.</p>
+          <span class="go">Check availability <svg class="ic" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13,6 19,12 13,18"/></svg></span>
+        </a>
+        <a class="tile" href="https://haileycityhall.org/employment/">
+          <span class="tico"><svg class="ic" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2.5"/><path d="M8 7V5.2A2.2 2.2 0 0 1 10.2 3h3.6A2.2 2.2 0 0 1 16 5.2V7"/><line x1="3" y1="12.5" x2="21" y2="12.5"/></svg></span>
+          <h3>Browse job openings</h3>
+          <p>Join the team — see current openings across city departments and how to apply.</p>
+          <span class="go">See jobs <svg class="ic" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13,6 19,12 13,18"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Departments -->
+  <section class="section alt" id="departments">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">Who does what</p>
+        <h2>City departments</h2>
+        <p class="sub">Every service the city provides, organized by the team that runs it.</p>
+      </div>
+      <div class="depts">
+        <a class="dept" href="https://haileycityhall.org/city-administration/">
+          <span class="dico"><svg class="ic" aria-hidden="true"><path d="M5 21V4.5A1.5 1.5 0 0 1 6.5 3h8A1.5 1.5 0 0 1 16 4.5V21"/><line x1="16" y1="21" x2="20" y2="21"/><path d="M16 9h2.5A1.5 1.5 0 0 1 20 10.5V21"/><line x1="8.5" y1="7" x2="12.5" y2="7"/><line x1="8.5" y1="11" x2="12.5" y2="11"/></svg></span>
+          <div><h3>City Administration</h3><p>Mayor, City Council, finance &amp; records, and elections.</p></div>
+        </a>
+        <a class="dept" href="https://haileycityhall.org/community-development/">
+          <span class="dico"><svg class="ic" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polygon points="16,8 12.5,12.5 8,16 11.5,11.5" fill="currentColor" stroke="none"/></svg></span>
+          <div><h3>Community Development</h3><p>Planning &amp; zoning, land use, building services, and housing.</p></div>
+        </a>
+        <a class="dept" href="https://haileycityhall.org/public-works/">
+          <span class="dico"><svg class="ic" aria-hidden="true"><path d="M15 6.5a3.8 3.8 0 0 0-5 5L4.5 17 7 19.5 12.5 14a3.8 3.8 0 0 0 5-5l-2.3 2.3-2-2z"/></svg></span>
+          <div><h3>Public Works</h3><p>Water, wastewater, streets &amp; snow, and parks.</p></div>
+        </a>
+        <a class="dept" href="https://haileycityhall.org/hailey-police-department/">
+          <span class="dico"><svg class="ic" aria-hidden="true"><path d="M12 3l7 2.8v4.7c0 4.4-3 7.3-7 8.5-4-1.2-7-4.1-7-8.5V5.8z"/></svg></span>
+          <div><h3>Police Department</h3><p>Non-emergency contact, records, and crime prevention.</p></div>
+        </a>
+        <a class="dept" href="https://haileycityhall.org/hailey-fire-department/">
+          <span class="dico"><svg class="ic" aria-hidden="true"><path d="M12 3c1 3 4 4.2 4 8a4 4 0 1 1-8 0c0-1.6.6-2.7 1.6-3.7C11 8 12 6.2 12 3z"/></svg></span>
+          <div><h3>Fire Department</h3><p>Emergency response, prevention, and community programs.</p></div>
+        </a>
+        <a class="dept" href="https://haileycityhall.org/community-development/housing/">
+          <span class="dico"><svg class="ic" aria-hidden="true"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><line x1="10" y1="20" x2="10" y2="14"/><line x1="14" y1="20" x2="14" y2="14"/></svg></span>
+          <div><h3>Community Housing</h3><p>Local housing programs, resources, and initiatives.</p></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- News + meetings -->
+  <section class="section" id="news">
+    <div class="wrap news-grid">
+      <div>
+        <div class="news-head">
+          <h2>Announcements &amp; news</h2>
+          <a class="link-more" href="https://haileycityhall.org/announcements-and-news/">All news →</a>
+        </div>
+        <ul class="feed">
+          <li>
+            <a href="https://haileycityhall.org/community-development/comp-plan-update/">
+              <span class="date">Adopted</span>
+              <span class="ftitle">2024–2025 Comprehensive Plan Update</span>
+              <svg class="ic chev" aria-hidden="true"><polyline points="9,6 15,12 9,18"/></svg>
+              <span class="fdesc">The city's updated long-range plan is now adopted — read the final document and supporting materials.</span>
+              <span class="fatag"><span class="tag green">Community Development</span></span>
+            </a>
+          </li>
+          <li>
+            <a href="https://haileycityhall.org/water-conservation-programs/">
+              <span class="date">Summer</span>
+              <span class="ftitle">Water conservation is in effect valley-wide</span>
+              <svg class="ic chev" aria-hidden="true"><polyline points="9,6 15,12 9,18"/></svg>
+              <span class="fdesc">Learn the current irrigation schedule and rebates that help the valley use water wisely.</span>
+              <span class="fatag"><span class="tag">Public Works</span></span>
+            </a>
+          </li>
+          <li>
+            <a href="https://hailey.recdesk.com/">
+              <span class="date">Now open</span>
+              <span class="ftitle">Park &amp; Town Center West reservations</span>
+              <svg class="ic chev" aria-hidden="true"><polyline points="9,6 15,12 9,18"/></svg>
+              <span class="fdesc">Reserve a park, shelter, or facility for the season through the city's booking portal.</span>
+              <span class="fatag"><span class="tag green">Parks</span></span>
+            </a>
+          </li>
+          <li>
+            <a href="https://haileycityhall.org/2022/12/newsletter-sign-up/">
+              <span class="date">Stay in touch</span>
+              <span class="ftitle">Sign up for the city newsletter</span>
+              <svg class="ic chev" aria-hidden="true"><polyline points="9,6 15,12 9,18"/></svg>
+              <span class="fdesc">Get city updates, project news, and event notices delivered to your inbox.</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <aside class="mtg">
+        <h3>Upcoming meetings</h3>
+        <p>Agendas and packets are posted ahead of every meeting.</p>
+        <ul>
+          <li><a href="https://haileycityhall.org/boards-and-commissions/city-council/city-council-agendas/">
+            <span><span class="mname">City Council</span><br><span class="mmeta">Agendas &amp; packets</span></span>
+            <svg class="ic" aria-hidden="true"><polyline points="9,6 15,12 9,18"/></svg>
+          </a></li>
+          <li><a href="https://haileycityhall.org/boards-and-commissions/pz-commission/planning-zoning-commission-agenda-packets/">
+            <span><span class="mname">Planning &amp; Zoning</span><br><span class="mmeta">Agendas &amp; packets</span></span>
+            <svg class="ic" aria-hidden="true"><polyline points="9,6 15,12 9,18"/></svg>
+          </a></li>
+          <li><a href="https://haileycityhall.org/boards-and-commissions/hahpc/arts-historic-preservation-commission-agendas/">
+            <span><span class="mname">Arts &amp; Historic Preservation</span><br><span class="mmeta">Agendas</span></span>
+            <svg class="ic" aria-hidden="true"><polyline points="9,6 15,12 9,18"/></svg>
+          </a></li>
+          <li><a href="https://haileycityhall.org/boards-and-commissions/parks-and-lands-board/parks-lands-board-agendas/">
+            <span><span class="mname">Parks &amp; Lands Board</span><br><span class="mmeta">Agendas</span></span>
+            <svg class="ic" aria-hidden="true"><polyline points="9,6 15,12 9,18"/></svg>
+          </a></li>
+        </ul>
+        <div class="foot-btn">
+          <a class="btn btn-ghost" href="https://haileycityhall.org/public-meetings/">All public meetings</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Seasonal / living in Hailey -->
+  <section class="section band">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">Living in Hailey</p>
+        <h2>Seasonal essentials</h2>
+      </div>
+      <div class="season">
+        <div class="scard">
+          <span class="sic"><svg class="ic" aria-hidden="true"><line x1="12" y1="3" x2="12" y2="21"/><line x1="4" y1="7.5" x2="20" y2="16.5"/><line x1="4" y1="16.5" x2="20" y2="7.5"/><line x1="12" y1="3" x2="9.5" y2="5.5"/><line x1="12" y1="3" x2="14.5" y2="5.5"/><line x1="12" y1="21" x2="9.5" y2="18.5"/><line x1="12" y1="21" x2="14.5" y2="18.5"/></svg></span>
+          <h3>Snow removal &amp; winter parking</h3>
+          <p>Know the plow schedule, parking rules, and how to keep sidewalks clear all winter.</p>
+          <a href="https://haileycityhall.org/public-works/streets/snow-removal/">Winter info <svg class="ic" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13,6 19,12 13,18"/></svg></a>
+        </div>
+        <div class="scard">
+          <span class="sic"><svg class="ic" aria-hidden="true"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/></svg></span>
+          <h3>Water, sewer &amp; irrigation</h3>
+          <p>Set up service, understand rates, and check water quality and conservation rules.</p>
+          <a href="https://haileycityhall.org/public-works/water/">Water services <svg class="ic" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13,6 19,12 13,18"/></svg></a>
+        </div>
+        <div class="scard">
+          <span class="sic"><svg class="ic" aria-hidden="true"><path d="M4 7h16"/><path d="M6 7l1 13h10l1-13"/><path d="M9 7V4.5A1.5 1.5 0 0 1 10.5 3h3A1.5 1.5 0 0 1 15 4.5V7"/><line x1="10" y1="11" x2="10" y2="16"/><line x1="14" y1="11" x2="14" y2="16"/></svg></span>
+          <h3>Trash &amp; compost</h3>
+          <p>Collection guidelines and the city's compost program for a cleaner valley.</p>
+          <a href="https://haileycityhall.org/compost/">Waste &amp; compost <svg class="ic" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13,6 19,12 13,18"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Footer -->
+<footer class="site-foot" id="contact">
+  <div class="wrap foot-top">
+    <div class="foot-brand">
+      <a class="brand" href="https://haileycityhall.org/" aria-label="City of Hailey, Idaho — home">
+        <svg class="mark" viewBox="0 0 44 44" aria-hidden="true">
+          <rect width="44" height="44" rx="11" fill="#2a5544"/>
+          <circle cx="22" cy="15" r="4.4" fill="#C69A3E"/>
+          <path d="M5 34 L16 19 L23 27 L28 20 L39 34 Z" fill="#F3F4F1"/>
+        </svg>
+        <span class="name">City of Hailey<small>Idaho · Est. 1881</small></span>
+      </a>
+      <div class="contact-block">
+        <div class="row">
+          <svg class="ic" aria-hidden="true"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+          <span><a href="https://maps.app.goo.gl/GzS8T81CtfbyDHbt5">115 Main Street South<br>Hailey, ID 83333</a></span>
+        </div>
+        <div class="row">
+          <svg class="ic" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12,7 12,12 16,14"/></svg>
+          <span>Mon–Thu 9:00–5:00 · Fri 9:00–12:00</span>
+        </div>
+        <div class="row">
+          <svg class="ic" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L16 12.5l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>
+          <span><a href="tel:+12087884221">208-788-4221</a></span>
+        </div>
+      </div>
+      <div class="socials">
+        <a href="https://www.facebook.com/profile.php?id=100064550808082" aria-label="City of Hailey on Facebook">
+          <svg class="ic" aria-hidden="true" style="fill:currentColor;stroke:none"><path d="M13.5 9H16V6h-2.5c-2 0-3.3 1.3-3.3 3.3V11H8v3h2.2v7h3v-7h2.3l.5-3h-2.8V9.6c0-.4.3-.6.8-.6z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/cityofhaileyidaho/" aria-label="City of Hailey on Instagram">
+          <svg class="ic" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".9" fill="currentColor" stroke="none"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <nav class="foot-cols" aria-label="Footer">
+      <div>
+        <h4>Government</h4>
+        <ul>
+          <li><a href="https://haileycityhall.org/city-administration/">City Administration</a></li>
+          <li><a href="https://haileycityhall.org/boards-and-commissions/city-council/">City Council</a></li>
+          <li><a href="https://haileycityhall.org/boards-and-commissions/">Boards &amp; Commissions</a></li>
+          <li><a href="https://haileycityhall.org/public-meetings/">Public Meetings</a></li>
+          <li><a href="https://haileycityhall.org/codes-and-plans/">Codes &amp; Plans</a></li>
+          <li><a href="https://haileycityhall.org/city-administration/election-information/">Elections</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Departments</h4>
+        <ul>
+          <li><a href="https://haileycityhall.org/community-development/">Community Development</a></li>
+          <li><a href="https://haileycityhall.org/public-works/">Public Works</a></li>
+          <li><a href="https://haileycityhall.org/hailey-police-department/">Police</a></li>
+          <li><a href="https://haileycityhall.org/hailey-fire-department/">Fire</a></li>
+          <li><a href="https://haileycityhall.org/community-development/housing/">Housing</a></li>
+          <li><a href="https://haileycityhall.org/community-development/building-services/">Building Services</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="https://www.xpressbillpay.com/#/?org=hailey10037">Pay a Bill</a></li>
+          <li><a href="https://haileycityhall.org/home/forms-fees/">Forms &amp; Fees</a></li>
+          <li><a href="https://hailey.recdesk.com/">Park Reservations</a></li>
+          <li><a href="https://haileycityhall.org/water-conservation-programs/">Water Conservation</a></li>
+          <li><a href="https://haileycityhall.org/public-works/streets/snow-removal/">Snow Removal</a></li>
+          <li><a href="https://haileycityhall.org/compost/">Compost</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>How do I?</h4>
+        <ul>
+          <li><a href="https://haileycityhall.org/public-meetings/">Find a Meeting</a></li>
+          <li><a href="https://haileycityhall.org/community-development/building-services/">Get a Permit</a></li>
+          <li><a href="https://haileycityhall.org/contact/">Report a Concern</a></li>
+          <li><a href="https://haileycityhall.org/home/forms-fees/public-records-request/">Request Records</a></li>
+          <li><a href="https://haileycityhall.org/2022/12/newsletter-sign-up/">Join the Newsletter</a></li>
+          <li><a href="https://haileycityhall.org/employment/">See Job Openings</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <div class="wrap foot-bottom">
+    <span>© 2026 City of Hailey, Idaho</span>
+    <a href="https://haileycityhall.org/contact/">Contact</a>
+    <a href="https://haileycityhall.org/home/forms-fees/public-records-request/">Public Records</a>
+    <a href="#main">Accessibility</a>
+    <span class="credit">Rebuilt by <a href="https://kittitasdigital.com">Kittitas Digital</a></span>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var header = document.getElementById('top');
+    var btn = header.querySelector('.menu-btn');
+
+    // Mobile menu
+    btn.addEventListener('click', function(){
+      var open = header.getAttribute('data-open') === 'true';
+      header.setAttribute('data-open', String(!open));
+      btn.setAttribute('aria-expanded', String(!open));
+      btn.setAttribute('aria-label', open ? 'Open menu' : 'Close menu');
+    });
+    // Close mobile menu when a link is tapped
+    header.querySelectorAll('.mobilenav a').forEach(function(a){
+      a.addEventListener('click', function(){
+        header.setAttribute('data-open','false');
+        btn.setAttribute('aria-expanded','false');
+        btn.setAttribute('aria-label','Open menu');
+      });
+    });
+
+    // Scrolled state for subtle header shadow
+    var onScroll = function(){
+      header.classList.toggle('is-scrolled', window.scrollY > 10);
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, {passive:true});
+  })();
+</script>
+</body>
+</html>

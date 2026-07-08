@@ -1,0 +1,1551 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Town of South Prairie, Washington — Official Website</title>
+<meta name="description" content="Official website of the Town of South Prairie, Washington. Pay your utility bill, view council agendas, sign up for emergency alerts, and connect with Town Hall. A plateau community at the gateway to Mount Rainier, incorporated 1909.">
+<meta name="theme-color" content="#12271e">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Town of South Prairie, Washington">
+<meta property="og:description" content="A plateau town at the gateway to Mount Rainier. Pay utilities, view council agendas, and connect with Town Hall.">
+<meta property="og:url" content="https://www.townofsp.com/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2312271e'/%3E%3Cpath d='M6 23 L14 9 L20 18 L24 12 L27 23 Z' fill='none' stroke='%23c99a4a' stroke-width='1.6' stroke-linejoin='round'/%3E%3Cpath d='M12 12.5 L14 9 L16 12.5' fill='none' stroke='%23f2f4ef' stroke-width='1.6' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   TOKENS
+   ============================================================ */
+:root{
+  --spruce-deep:#12271e;
+  --spruce:#1b3d2e;
+  --spruce-2:#234a38;
+  --moss:#35624a;
+  --sage:#6f8f7a;
+  --sage-dim:#9db4a6;
+  --wheat:#c99a4a;
+  --wheat-2:#b98935;
+  --wheat-soft:#e6d3a3;
+  --glacier:#8fb0b8;
+  --glacier-soft:#d4e2e4;
+  --paper:#f2f4ef;
+  --paper-2:#e8ebe2;
+  --card:#fbfcf9;
+  --ink:#16211b;
+  --ink-soft:#4b5a51;
+  --ink-faint:#7b8981;
+  --line:rgba(27,61,46,.15);
+  --line-soft:rgba(27,61,46,.09);
+  --shadow-sm:0 1px 2px rgba(18,39,30,.06), 0 4px 14px rgba(18,39,30,.05);
+  --shadow-md:0 2px 6px rgba(18,39,30,.07), 0 18px 40px -14px rgba(18,39,30,.18);
+  --shadow-lg:0 30px 70px -24px rgba(18,39,30,.32);
+  --r-sm:8px; --r:14px; --r-lg:22px; --r-xl:30px;
+  --maxw:1180px;
+  --pad-x:clamp(1.15rem,5vw,3rem);
+  --sec-y:clamp(3.75rem,8vw,7rem);
+  --ff-display:"Fraunces",Georgia,"Times New Roman",serif;
+  --ff-body:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --ff-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+
+/* ============================================================
+   RESET / BASE
+   ============================================================ */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:var(--ff-body);
+  font-size:clamp(1rem,.97rem + .18vw,1.075rem);
+  line-height:1.62;
+  color:var(--ink);
+  background:var(--paper);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+img,svg{display:block;max-width:100%}
+a{color:var(--moss);text-decoration:none}
+button{font-family:inherit}
+h1,h2,h3,h4{margin:0;font-family:var(--ff-display);font-weight:500;line-height:1.06;letter-spacing:-.015em;color:var(--spruce-deep)}
+p{margin:0}
+::selection{background:var(--wheat-soft);color:var(--spruce-deep)}
+
+:focus-visible{outline:2.5px solid var(--wheat-2);outline-offset:3px;border-radius:4px}
+
+.skip{position:absolute;left:-999px;top:0;z-index:200;background:var(--spruce-deep);color:#fff;padding:.8rem 1.2rem;border-radius:0 0 10px 0;font-weight:600}
+.skip:focus{left:0}
+
+.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--pad-x)}
+
+/* eyebrow / labels */
+.eyebrow{
+  font-family:var(--ff-mono);
+  font-size:.72rem;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--moss);
+  display:inline-flex;align-items:center;gap:.6rem;
+  font-weight:500;
+}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--wheat-2);flex:none}
+.eyebrow--plain::before{display:none}
+
+.section-head{max-width:56rem;margin-bottom:clamp(2rem,4vw,3.25rem)}
+.section-head h2{font-size:clamp(1.9rem,1.3rem + 2.7vw,3.15rem);margin:.85rem 0 0}
+.section-head p{margin-top:1.1rem;color:var(--ink-soft);font-size:1.08rem;max-width:44rem}
+
+/* topo divider */
+.topo-rule{width:100%;height:24px;color:var(--line);opacity:.9}
+.topo-rule svg{width:100%;height:100%}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn{
+  display:inline-flex;align-items:center;gap:.55rem;
+  font-family:var(--ff-body);font-weight:600;font-size:.95rem;
+  padding:.82rem 1.35rem;border-radius:999px;border:1.5px solid transparent;
+  cursor:pointer;transition:transform .18s ease,background .18s ease,border-color .18s ease,box-shadow .18s ease,color .18s ease;
+  line-height:1;letter-spacing:.005em;white-space:nowrap;text-align:center;
+}
+.btn svg{width:1.05em;height:1.05em;flex:none}
+.btn-primary{background:var(--wheat);color:var(--spruce-deep);box-shadow:0 6px 18px -6px rgba(201,154,74,.6)}
+.btn-primary:hover{background:var(--wheat-2);transform:translateY(-2px);box-shadow:0 12px 26px -8px rgba(201,154,74,.7)}
+.btn-dark{background:var(--spruce-deep);color:#fff}
+.btn-dark:hover{background:var(--spruce);transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:var(--spruce-deep);border-color:var(--line)}
+.btn-ghost:hover{border-color:var(--spruce);background:rgba(27,61,46,.04);transform:translateY(-2px)}
+.btn--on-dark.btn-ghost{color:#f2f4ef;border-color:rgba(242,244,239,.35)}
+.btn--on-dark.btn-ghost:hover{background:rgba(255,255,255,.08);border-color:rgba(242,244,239,.65)}
+.btn--lg{padding:1rem 1.7rem;font-size:1rem}
+
+.txtlink{display:inline-flex;align-items:center;gap:.4rem;font-weight:600;color:var(--moss);border-bottom:1.5px solid transparent;transition:border-color .18s,gap .18s,color .18s;padding-bottom:1px}
+.txtlink svg{width:1em;height:1em;transition:transform .18s}
+.txtlink:hover{border-color:var(--wheat-2);color:var(--spruce)}
+.txtlink:hover svg{transform:translateX(3px)}
+.txtlink--light{color:var(--wheat-soft)}
+.txtlink--light:hover{color:#fff;border-color:var(--wheat)}
+
+/* ============================================================
+   ALERT BAR
+   ============================================================ */
+.alert{background:var(--spruce-deep);color:#eef2ec;border-bottom:1px solid rgba(255,255,255,.08)}
+.alert__row{display:flex;align-items:center;gap:1rem;padding:.6rem var(--pad-x);max-width:calc(var(--maxw) + 6vw);margin-inline:auto}
+.alert__tag{font-family:var(--ff-mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;background:var(--wheat);color:var(--spruce-deep);padding:.28rem .55rem;border-radius:5px;font-weight:500;flex:none;display:inline-flex;align-items:center;gap:.4rem}
+.alert__tag svg{width:.85em;height:.85em}
+.alert__msg{font-size:.86rem;line-height:1.4;flex:1;min-width:0}
+.alert__msg a{color:var(--wheat-soft);border-bottom:1px solid rgba(230,211,163,.45)}
+.alert__msg a:hover{color:#fff}
+.alert__close{margin-left:auto;background:transparent;border:0;color:#cfe0d5;cursor:pointer;padding:.35rem;border-radius:6px;display:inline-flex;flex:none}
+.alert__close:hover{background:rgba(255,255,255,.1);color:#fff}
+.alert.is-hidden{display:none}
+
+/* ============================================================
+   HEADER / NAV
+   ============================================================ */
+.site-header{position:sticky;top:0;z-index:100;background:rgba(242,244,239,.85);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line-soft);transition:box-shadow .25s,background .25s}
+.site-header.is-stuck{box-shadow:0 6px 24px -14px rgba(18,39,30,.28);background:rgba(242,244,239,.95)}
+.nav{display:flex;align-items:center;gap:1.5rem;padding-block:.7rem;max-width:calc(var(--maxw) + 6vw);margin-inline:auto;padding-inline:var(--pad-x)}
+
+.brand{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:inherit;flex:none}
+.brand__crest{width:42px;height:42px;flex:none}
+.brand__txt{display:flex;flex-direction:column;line-height:1}
+.brand__name{font-family:var(--ff-display);font-weight:600;font-size:1.06rem;letter-spacing:-.01em;color:var(--spruce-deep)}
+.brand__sub{font-family:var(--ff-mono);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);margin-top:.28rem}
+
+.nav__menu{display:flex;align-items:center;gap:.15rem;margin-left:auto}
+.nav__link{position:relative;font-weight:500;font-size:.92rem;color:var(--ink-soft);padding:.55rem .7rem;border-radius:8px;background:transparent;border:0;cursor:pointer;transition:color .16s,background .16s;font-family:inherit}
+.nav__link:hover{color:var(--spruce-deep);background:rgba(27,61,46,.05)}
+.nav__link.is-active{color:var(--spruce-deep)}
+.nav__link.is-active::after{content:"";position:absolute;left:.7rem;right:.7rem;bottom:.28rem;height:2px;background:var(--wheat);border-radius:2px}
+
+.nav__actions{display:flex;align-items:center;gap:.6rem;margin-left:.6rem}
+.nav__toggle{display:none;background:transparent;border:1.5px solid var(--line);border-radius:10px;width:44px;height:44px;cursor:pointer;color:var(--spruce-deep);align-items:center;justify-content:center;margin-left:auto}
+.nav__toggle svg{width:22px;height:22px}
+.nav__toggle .ic-close{display:none}
+.nav__toggle[aria-expanded="true"] .ic-menu{display:none}
+.nav__toggle[aria-expanded="true"] .ic-close{display:block}
+
+/* ============================================================
+   VIEWS
+   ============================================================ */
+.view{animation:none}
+.js .view.is-hidden{display:none}
+@keyframes viewIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.js .view.is-entering{animation:viewIn .5s cubic-bezier(.2,.7,.2,1)}
+
+.section{padding-block:var(--sec-y)}
+.section--tight{padding-block:clamp(2.75rem,5vw,4.5rem)}
+.section--paper2{background:var(--paper-2)}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal.is-in{opacity:1;transform:none}
+.reveal[data-d="1"]{transition-delay:.08s}
+.reveal[data-d="2"]{transition-delay:.16s}
+.reveal[data-d="3"]{transition-delay:.24s}
+.reveal[data-d="4"]{transition-delay:.32s}
+.reveal[data-d="5"]{transition-delay:.4s}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{position:relative;overflow:hidden;background:
+    radial-gradient(120% 90% at 82% 8%,rgba(53,98,74,.55),transparent 60%),
+    radial-gradient(90% 70% at 8% 100%,rgba(20,45,33,.6),transparent 55%),
+    linear-gradient(160deg,#163427 0%,#12271e 55%,#0e1f18 100%);
+  color:#eef3ee;padding-top:clamp(3.5rem,7vw,6rem);padding-bottom:0}
+.hero__contours{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.hero__contours svg{position:absolute;right:-6%;top:-8%;width:min(120vh,1000px);height:auto;opacity:.5}
+.hero__glow{position:absolute;width:520px;height:520px;right:6%;top:-14%;background:radial-gradient(circle,rgba(143,176,184,.22),transparent 66%);filter:blur(10px);pointer-events:none}
+
+.hero__inner{position:relative;z-index:2;display:grid;gap:2.4rem;padding-bottom:clamp(3rem,6vw,5rem)}
+.hero__eyebrow{color:var(--wheat-soft)}
+.hero__eyebrow::before{background:var(--wheat)}
+.hero__coord{font-family:var(--ff-mono);font-size:.74rem;letter-spacing:.14em;color:var(--sage-dim);margin-top:.7rem}
+.hero h1{color:#fff;font-size:clamp(3.1rem,1.6rem + 7.4vw,6.6rem);font-weight:500;letter-spacing:-.028em;margin-top:1.1rem;line-height:.94}
+.hero__lede{font-family:var(--ff-display);font-weight:400;font-size:clamp(1.25rem,1rem + 1.1vw,1.72rem);line-height:1.3;color:#dbe6dd;max-width:34ch;margin-top:1.3rem}
+.hero__body{margin-top:1.15rem;color:#b7c9bd;max-width:46ch;font-size:1.03rem}
+.hero__cta{display:flex;flex-wrap:wrap;gap:.85rem;align-items:center;margin-top:1.9rem}
+
+/* quick action tiles overlapping hero base */
+.quick{position:relative;z-index:3;margin-top:calc(-1 * clamp(2rem,4vw,3.5rem))}
+.quick__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.qtile{position:relative;overflow:hidden;background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);padding:1.5rem 1.4rem 1.4rem;text-align:left;cursor:pointer;display:flex;flex-direction:column;gap:.55rem;min-height:170px;box-shadow:var(--shadow-md);transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;color:inherit;font-family:inherit}
+.qtile:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);border-color:rgba(201,154,74,.5)}
+.qtile__contour{position:absolute;right:-30px;bottom:-30px;width:130px;height:130px;color:var(--line);opacity:0;transition:opacity .3s,transform .4s;transform:scale(.9)}
+.qtile:hover .qtile__contour{opacity:1;transform:scale(1)}
+.qtile__ic{width:42px;height:42px;border-radius:11px;background:linear-gradient(150deg,var(--spruce),var(--moss));color:var(--wheat-soft);display:flex;align-items:center;justify-content:center;flex:none;box-shadow:0 6px 14px -6px rgba(27,61,46,.5)}
+.qtile__ic svg{width:22px;height:22px}
+.qtile__t{font-family:var(--ff-display);font-weight:600;font-size:1.12rem;color:var(--spruce-deep);margin-top:.3rem}
+.qtile__d{font-size:.86rem;color:var(--ink-soft);line-height:1.45;flex:1}
+.qtile__go{display:inline-flex;align-items:center;gap:.35rem;font-family:var(--ff-mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--moss);font-weight:500}
+.qtile__go svg{width:.9em;height:.9em;transition:transform .2s}
+.qtile:hover .qtile__go svg{transform:translateX(3px)}
+
+/* ============================================================
+   STATS STRIP
+   ============================================================ */
+.stats{border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft)}
+.stats__grid{display:grid;grid-template-columns:repeat(5,1fr);gap:0}
+.stat{padding:1.6rem 1rem;text-align:center;border-right:1px solid var(--line-soft)}
+.stat:last-child{border-right:0}
+.stat__n{font-family:var(--ff-display);font-weight:600;font-size:clamp(1.6rem,1.2rem + 1.6vw,2.35rem);color:var(--spruce);line-height:1;letter-spacing:-.02em}
+.stat__l{font-family:var(--ff-mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin-top:.6rem}
+
+/* ============================================================
+   WELCOME
+   ============================================================ */
+.welcome__grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
+.welcome__body p+p{margin-top:1.15rem;color:var(--ink-soft)}
+.welcome__body p:first-of-type{font-size:1.1rem;color:var(--ink)}
+.welcome__cta{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2rem}
+.scene{position:relative;border-radius:var(--r-xl);overflow:hidden;box-shadow:var(--shadow-md);border:1px solid var(--line);background:linear-gradient(#dbe7e6,#eef2ea)}
+.scene svg{width:100%;height:auto;display:block}
+.scene__cap{position:absolute;left:1.1rem;bottom:1rem;font-family:var(--ff-mono);font-size:.64rem;letter-spacing:.13em;text-transform:uppercase;color:var(--spruce-deep);background:rgba(251,252,249,.82);backdrop-filter:blur(4px);padding:.4rem .7rem;border-radius:7px}
+
+/* ============================================================
+   CARDS / SERVICES
+   ============================================================ */
+.group+.group{margin-top:clamp(2.5rem,5vw,4rem)}
+.group__head{display:flex;align-items:baseline;gap:1rem;margin-bottom:1.5rem;flex-wrap:wrap}
+.group__head h3{font-size:clamp(1.35rem,1.1rem + 1vw,1.7rem);font-weight:600}
+.group__num{font-family:var(--ff-mono);font-size:.75rem;letter-spacing:.1em;color:var(--wheat-2)}
+.group__line{flex:1;height:1px;background:var(--line);min-width:30px}
+
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:1rem}
+.lcard{position:relative;display:flex;flex-direction:column;gap:.5rem;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:1.35rem 1.4rem;text-decoration:none;color:inherit;transition:transform .18s,box-shadow .18s,border-color .18s;box-shadow:var(--shadow-sm)}
+.lcard:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:rgba(201,154,74,.5)}
+.lcard__top{display:flex;align-items:center;justify-content:space-between;gap:.5rem}
+.lcard__ic{width:38px;height:38px;border-radius:10px;background:var(--paper-2);color:var(--moss);display:flex;align-items:center;justify-content:center;flex:none}
+.lcard__ic svg{width:20px;height:20px}
+.lcard:hover .lcard__ic{background:var(--spruce);color:var(--wheat-soft)}
+.lcard__ext{color:var(--ink-faint)}
+.lcard__ext svg{width:16px;height:16px}
+.lcard h4{font-family:var(--ff-display);font-size:1.1rem;font-weight:600;margin-top:.35rem}
+.lcard p{font-size:.87rem;color:var(--ink-soft);line-height:1.45}
+.lcard__tag{font-family:var(--ff-mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);margin-top:.2rem}
+
+/* ============================================================
+   GOVERNMENT / COUNCIL
+   ============================================================ */
+.council{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.gov-card{position:relative;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:1.5rem;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:.35rem}
+.gov-card--mayor{grid-column:span 1;background:linear-gradient(158deg,var(--spruce),var(--spruce-deep));color:#eef3ee;border-color:transparent}
+.gov-card__role{font-family:var(--ff-mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--moss)}
+.gov-card--mayor .gov-card__role{color:var(--wheat-soft)}
+.gov-card__name{font-family:var(--ff-display);font-size:1.32rem;font-weight:600;color:var(--spruce-deep);margin-top:.15rem}
+.gov-card--mayor .gov-card__name{color:#fff}
+.gov-card__term{font-size:.82rem;color:var(--ink-faint);display:flex;align-items:center;gap:.4rem;margin-top:.2rem}
+.gov-card--mayor .gov-card__term{color:var(--sage-dim)}
+.gov-card__term svg{width:.95em;height:.95em}
+.gov-card__mail{margin-top:auto;padding-top:.9rem}
+.gov-card__mail a{font-weight:600;font-size:.85rem;color:var(--moss);display:inline-flex;align-items:center;gap:.4rem;word-break:break-all}
+.gov-card--mayor .gov-card__mail a{color:var(--wheat-soft)}
+.gov-card__mail svg{width:1em;height:1em;flex:none}
+.gov-card--vacant{border-style:dashed;border-color:rgba(27,61,46,.28);background:transparent;box-shadow:none}
+.gov-card--vacant .gov-card__name{color:var(--ink-faint)}
+.vac-note{font-size:.83rem;color:var(--ink-soft);margin-top:.3rem}
+
+.gov-info{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:clamp(2rem,4vw,3rem)}
+
+/* ============================================================
+   HISTORY
+   ============================================================ */
+.history__grid{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:clamp(2rem,5vw,4rem);align-items:start}
+.prose{max-width:64ch}
+.prose>p{margin-top:1.15rem;color:var(--ink-soft)}
+.prose>p:first-child{margin-top:0}
+.prose .lead{font-family:var(--ff-display);font-size:1.3rem;font-weight:400;line-height:1.4;color:var(--ink);margin-top:0}
+.prose h3{font-family:var(--ff-display);font-size:1.5rem;font-weight:600;margin-top:2.6rem;color:var(--spruce-deep)}
+.prose h3 .prose__ey{display:block;font-family:var(--ff-mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--wheat-2);margin-bottom:.5rem;font-weight:500}
+.prose strong{color:var(--spruce-deep);font-weight:600}
+.pullquote{margin:2.4rem 0;padding:1.4rem 0 1.4rem 1.6rem;border-left:3px solid var(--wheat);font-family:var(--ff-display);font-style:italic;font-size:1.3rem;line-height:1.35;color:var(--spruce)}
+.pullquote cite{display:block;font-style:normal;font-family:var(--ff-mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);margin-top:.9rem}
+
+.timeline{position:sticky;top:100px}
+.timeline__title{font-family:var(--ff-mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--moss);margin-bottom:1.2rem;padding-bottom:.8rem;border-bottom:1px solid var(--line)}
+.tl{position:relative;padding-left:1.5rem;border-left:2px solid var(--line);display:flex;flex-direction:column;gap:1.35rem}
+.tl__item{position:relative}
+.tl__item::before{content:"";position:absolute;left:calc(-1.5rem - 1px);top:.35rem;width:11px;height:11px;border-radius:50%;background:var(--paper);border:2.5px solid var(--wheat-2);transform:translateX(-50%)}
+.tl__yr{font-family:var(--ff-mono);font-weight:500;font-size:.92rem;color:var(--spruce);letter-spacing:.02em}
+.tl__ev{font-size:.85rem;color:var(--ink-soft);margin-top:.2rem;line-height:1.4}
+
+/* ============================================================
+   PAY / STEPS / FAQ
+   ============================================================ */
+.pay-hero{background:linear-gradient(158deg,var(--spruce),var(--spruce-deep));color:#eef3ee;border-radius:var(--r-xl);padding:clamp(2rem,5vw,3.5rem);position:relative;overflow:hidden}
+.pay-hero__contour{position:absolute;right:-40px;top:-40px;width:340px;height:340px;color:rgba(255,255,255,.06);pointer-events:none}
+.pay-hero__inner{position:relative;z-index:1;display:grid;grid-template-columns:1.3fr .7fr;gap:2rem;align-items:center}
+.pay-hero h2{color:#fff;font-size:clamp(1.8rem,1.3rem + 2vw,2.7rem);margin-top:.8rem}
+.pay-hero p{color:#c2d3c7;margin-top:1rem;max-width:42ch}
+.pay-hero__cta{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.6rem}
+.pay-hero__aside{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:var(--r);padding:1.3rem}
+.pay-hero__aside .k{font-family:var(--ff-mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--sage-dim)}
+.pay-hero__aside .v{font-size:.95rem;color:#eef3ee;margin-top:.25rem}
+.pay-hero__aside .row+.row{margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,.1)}
+.pay-hero__aside a{color:var(--wheat-soft)}
+
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.step{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:1.5rem;box-shadow:var(--shadow-sm)}
+.step__n{font-family:var(--ff-mono);font-size:.85rem;font-weight:500;color:var(--wheat-2);letter-spacing:.05em}
+.step h4{font-family:var(--ff-display);font-size:1.15rem;font-weight:600;margin-top:.7rem}
+.step p{font-size:.9rem;color:var(--ink-soft);margin-top:.5rem;line-height:1.5}
+
+.dl-row{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.5rem}
+
+.faq{max-width:52rem}
+.faq__item{border-bottom:1px solid var(--line)}
+.faq__item:first-child{border-top:1px solid var(--line)}
+.faq__q{width:100%;text-align:left;background:transparent;border:0;cursor:pointer;padding:1.25rem .4rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;font-family:var(--ff-display);font-weight:600;font-size:1.08rem;color:var(--spruce-deep)}
+.faq__q:hover{color:var(--moss)}
+.faq__ic{flex:none;width:24px;height:24px;position:relative;transition:transform .25s}
+.faq__ic::before,.faq__ic::after{content:"";position:absolute;background:var(--wheat-2);border-radius:2px;top:50%;left:50%}
+.faq__ic::before{width:14px;height:2px;transform:translate(-50%,-50%)}
+.faq__ic::after{width:2px;height:14px;transform:translate(-50%,-50%);transition:transform .25s}
+.faq__item.is-open .faq__ic::after{transform:translate(-50%,-50%) scaleY(0)}
+.faq__a{overflow:hidden;max-height:0;transition:max-height .3s ease}
+.faq__a-inner{padding:0 .4rem 1.3rem;color:var(--ink-soft);font-size:.96rem;line-height:1.6}
+.faq__a-inner a{font-weight:600}
+
+/* ============================================================
+   NEWSLETTERS
+   ============================================================ */
+.nl-feature{display:flex;flex-wrap:wrap;align-items:center;gap:1.5rem;background:linear-gradient(150deg,var(--paper-2),var(--paper));border:1px solid var(--line);border-radius:var(--r-lg);padding:1.6rem 1.8rem;margin-bottom:clamp(2rem,4vw,3rem)}
+.nl-feature__ic{width:52px;height:52px;border-radius:13px;background:var(--spruce);color:var(--wheat-soft);display:flex;align-items:center;justify-content:center;flex:none}
+.nl-feature__ic svg{width:26px;height:26px}
+.nl-feature__txt{flex:1;min-width:200px}
+.nl-feature__k{font-family:var(--ff-mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--moss)}
+.nl-feature__t{font-family:var(--ff-display);font-size:1.3rem;font-weight:600;margin-top:.2rem}
+
+.nl-year+.nl-year{margin-top:2.4rem}
+.nl-year__head{display:flex;align-items:center;gap:1rem;margin-bottom:1rem}
+.nl-year__y{font-family:var(--ff-display);font-size:1.5rem;font-weight:600;color:var(--spruce-deep)}
+.nl-year__c{font-family:var(--ff-mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint)}
+.nl-year__line{flex:1;height:1px;background:var(--line)}
+.nl-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:.7rem}
+.nl-chip{display:flex;flex-direction:column;gap:.15rem;padding:.75rem .85rem;border-radius:var(--r-sm);border:1px solid var(--line);background:var(--card);text-decoration:none;color:inherit;transition:transform .16s,border-color .16s,box-shadow .16s}
+a.nl-chip:hover{transform:translateY(-3px);border-color:rgba(201,154,74,.55);box-shadow:var(--shadow-sm)}
+.nl-chip__m{font-weight:600;font-size:.92rem;color:var(--spruce-deep);display:flex;align-items:center;justify-content:space-between;gap:.3rem}
+.nl-chip__m svg{width:14px;height:14px;color:var(--wheat-2)}
+.nl-chip__s{font-family:var(--ff-mono);font-size:.62rem;letter-spacing:.06em;color:var(--moss);text-transform:uppercase}
+.nl-chip.is-empty{background:transparent;border-style:dashed;border-color:var(--line-soft);cursor:default}
+.nl-chip.is-empty .nl-chip__m{color:var(--ink-faint);font-weight:500}
+.nl-chip.is-empty .nl-chip__s{color:var(--ink-faint)}
+
+/* ============================================================
+   CONTACT
+   ============================================================ */
+.contact__grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,4vw,3.5rem);align-items:start}
+.staff{display:grid;gap:1rem;margin-bottom:2rem}
+.staff-card{display:flex;gap:1rem;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:1.3rem;box-shadow:var(--shadow-sm)}
+.staff-card__av{width:52px;height:52px;border-radius:13px;background:linear-gradient(150deg,var(--moss),var(--spruce));color:var(--wheat-soft);display:flex;align-items:center;justify-content:center;font-family:var(--ff-display);font-weight:600;font-size:1.2rem;flex:none}
+.staff-card__name{font-family:var(--ff-display);font-size:1.15rem;font-weight:600}
+.staff-card__role{font-size:.85rem;color:var(--ink-soft);margin-top:.1rem}
+.staff-card__mail{margin-top:.5rem}
+.staff-card__mail a{font-weight:600;font-size:.85rem;display:inline-flex;align-items:center;gap:.4rem;word-break:break-all}
+.staff-card__mail svg{width:1em;height:1em;flex:none}
+
+.info-block{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:1.5rem;box-shadow:var(--shadow-sm)}
+.info-row{display:flex;gap:.9rem;align-items:flex-start;padding:.9rem 0;border-bottom:1px solid var(--line-soft)}
+.info-row:last-child{border-bottom:0;padding-bottom:0}
+.info-row:first-child{padding-top:0}
+.info-row__ic{width:36px;height:36px;border-radius:9px;background:var(--paper-2);color:var(--moss);display:flex;align-items:center;justify-content:center;flex:none}
+.info-row__ic svg{width:18px;height:18px}
+.info-row__k{font-family:var(--ff-mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint)}
+.info-row__v{font-size:.98rem;color:var(--ink);margin-top:.15rem}
+.info-row__v a{color:var(--moss);font-weight:600}
+
+.form{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:clamp(1.4rem,3vw,2rem);box-shadow:var(--shadow-sm)}
+.form__note{font-size:.85rem;color:var(--ink-soft);background:var(--paper-2);border-radius:var(--r-sm);padding:.8rem 1rem;margin-bottom:1.4rem;line-height:1.5}
+.field{margin-bottom:1.1rem}
+.field label{display:block;font-family:var(--ff-mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:.45rem;font-weight:500}
+.field input,.field textarea{width:100%;font-family:var(--ff-body);font-size:1rem;color:var(--ink);background:var(--paper);border:1.5px solid var(--line);border-radius:10px;padding:.75rem .9rem;transition:border-color .16s,box-shadow .16s}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--moss);box-shadow:0 0 0 3px rgba(53,98,74,.14)}
+.field textarea{resize:vertical;min-height:130px}
+.form__submit{width:100%;justify-content:center}
+.form__ok{display:none;margin-top:1rem;padding:.9rem 1rem;background:rgba(53,98,74,.1);border:1px solid rgba(53,98,74,.3);border-radius:10px;font-size:.9rem;color:var(--spruce)}
+.form__ok.show{display:block}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer{background:var(--spruce-deep);color:#c7d6cb;padding-top:clamp(3rem,6vw,5rem);position:relative;overflow:hidden}
+.footer__contour{position:absolute;left:-60px;bottom:-80px;width:420px;height:420px;color:rgba(255,255,255,.04);pointer-events:none}
+.footer__top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:2rem;position:relative;z-index:1;padding-bottom:2.6rem;border-bottom:1px solid rgba(255,255,255,.1)}
+.footer__brand .brand__name{color:#fff}
+.footer__brand .brand__sub{color:var(--sage-dim)}
+.footer__tag{margin-top:1.1rem;font-size:.9rem;color:#9db4a6;max-width:32ch;line-height:1.5}
+.footer__social{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.3rem;color:#c7d6cb;font-weight:600;font-size:.88rem}
+.footer__social:hover{color:#fff}
+.footer__social svg{width:20px;height:20px}
+.footer__col h4{font-family:var(--ff-mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--wheat-soft);font-weight:500;margin-bottom:1.1rem}
+.footer__col ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.7rem}
+.footer__col a,.footer__col button{color:#b8cabe;font-size:.9rem;background:transparent;border:0;cursor:pointer;padding:0;text-align:left;font-family:inherit;transition:color .16s}
+.footer__col a:hover,.footer__col button:hover{color:#fff}
+.footer__addr{font-style:normal;font-size:.9rem;line-height:1.7;color:#b8cabe}
+.footer__addr a{color:var(--wheat-soft);font-weight:600}
+.footer__alert{margin-top:1rem;display:inline-flex;align-items:center;gap:.5rem;font-size:.82rem;color:var(--wheat-soft);border:1px solid rgba(230,211,163,.3);border-radius:8px;padding:.5rem .8rem;font-weight:600}
+.footer__alert svg{width:1em;height:1em}
+.footer__bottom{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between;padding-block:1.6rem;font-size:.78rem;color:#8ba394}
+.footer__bottom a{color:#a9bfb2}
+.footer__totop{background:transparent;border:1px solid rgba(255,255,255,.18);color:#c7d6cb;border-radius:8px;padding:.5rem .85rem;cursor:pointer;font-family:var(--ff-mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;display:inline-flex;align-items:center;gap:.5rem;transition:border-color .16s,color .16s}
+.footer__totop:hover{border-color:rgba(255,255,255,.5);color:#fff}
+.footer__totop svg{width:14px;height:14px}
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+@media (max-width:940px){
+  .quick__grid{grid-template-columns:repeat(2,1fr)}
+  .stats__grid{grid-template-columns:repeat(3,1fr)}
+  .stat:nth-child(3){border-right:0}
+  .stat:nth-child(n+4){border-top:1px solid var(--line-soft)}
+  .welcome__grid{grid-template-columns:1fr;gap:2.5rem}
+  .scene{order:-1}
+  .council{grid-template-columns:repeat(2,1fr)}
+  .gov-info{grid-template-columns:1fr}
+  .history__grid{grid-template-columns:1fr}
+  .timeline{position:static;margin-top:1rem;padding-top:2rem;border-top:1px solid var(--line)}
+  .pay-hero__inner{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  .nl-grid{grid-template-columns:repeat(4,1fr)}
+  .contact__grid{grid-template-columns:1fr}
+  .form{order:-1}
+  .footer__top{grid-template-columns:1fr 1fr}
+}
+@media (max-width:760px){
+  .nav__menu{position:fixed;inset:0 0 0 auto;width:min(84vw,340px);flex-direction:column;align-items:stretch;justify-content:flex-start;gap:.3rem;background:var(--paper);padding:5.5rem 1.4rem 2rem;box-shadow:-20px 0 60px -20px rgba(18,39,30,.4);transform:translateX(110%);transition:transform .3s cubic-bezier(.2,.7,.2,1);margin-left:0;z-index:120;border-left:1px solid var(--line)}
+  .nav__menu.is-open{transform:translateX(0)}
+  .nav__link{font-size:1.05rem;padding:.9rem 1rem;border-radius:10px}
+  .nav__link.is-active::after{left:1rem;bottom:.6rem}
+  .nav__actions{flex-direction:column;align-items:stretch;margin:1rem 0 0;padding-top:1rem;border-top:1px solid var(--line)}
+  .nav__actions .btn{width:100%;justify-content:center}
+  .nav__toggle{display:inline-flex}
+  .nav__backdrop{position:fixed;inset:0;background:rgba(18,39,30,.4);opacity:0;visibility:hidden;transition:opacity .3s;z-index:110}
+  .nav__backdrop.is-open{opacity:1;visibility:visible}
+  .council{grid-template-columns:1fr}
+  .footer__top{grid-template-columns:1fr}
+}
+@media (max-width:480px){
+  .quick__grid{grid-template-columns:1fr}
+  .stats__grid{grid-template-columns:repeat(2,1fr)}
+  .stat{border-right:0}
+  .stat:nth-child(odd){border-right:1px solid var(--line-soft)}
+  .stat:nth-child(n+3){border-top:1px solid var(--line-soft)}
+  .nl-grid{grid-template-columns:repeat(3,1fr)}
+  .hero__cta{flex-direction:column;align-items:stretch}
+  .hero__cta .btn{width:100%;justify-content:center}
+}
+
+/* reduced motion */
+.reduce *,.reduce *::before,.reduce *::after{animation:none!important;transition:none!important}
+.reduce .reveal{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  .contour-anim>*{animation:none!important;opacity:.5}
+}
+
+/* contour draw animation */
+.contour-anim>*{opacity:0;transform-box:fill-box;transform-origin:center;animation:ringDraw 1.3s cubic-bezier(.25,.8,.3,1) forwards}
+@keyframes ringDraw{from{opacity:0;transform:scale(.55)}to{opacity:var(--ro,.6);transform:scale(1)}}
+.contour-drift{animation:drift 26s ease-in-out infinite alternate}
+@keyframes drift{from{transform:translate(0,0)}to{transform:translate(-18px,14px)}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- ===================== ALERT ===================== -->
+<div class="alert" id="alert" role="region" aria-label="Town announcement">
+  <div class="alert__row">
+    <span class="alert__tag">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>
+      Notice
+    </span>
+    <p class="alert__msg">Town Hall will be <strong>closed August 26–27</strong> for staff training. For emergencies, sign up for <a href="https://southprairiewa.genasys.com/portal/en" target="_blank" rel="noopener">Genasys alerts</a>.</p>
+    <button class="alert__close" id="alertClose" aria-label="Dismiss announcement">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+</div>
+
+<!-- ===================== HEADER ===================== -->
+<header class="site-header" id="siteHeader">
+  <nav class="nav" aria-label="Primary">
+    <a class="brand" href="#home" data-view="home" aria-label="Town of South Prairie — home">
+      <svg class="brand__crest" viewBox="0 0 44 44" aria-hidden="true">
+        <rect width="44" height="44" rx="10" fill="#12271e"/>
+        <circle cx="22" cy="22" r="15" fill="none" stroke="#35624a" stroke-width="1"/>
+        <circle cx="22" cy="22" r="10.5" fill="none" stroke="#35624a" stroke-width="1"/>
+        <path d="M8 30 L18 14 L25 25 L30 17 L36 30 Z" fill="none" stroke="#c99a4a" stroke-width="1.7" stroke-linejoin="round"/>
+        <path d="M15.5 19 L18 14 L20.5 19" fill="none" stroke="#f2f4ef" stroke-width="1.7" stroke-linejoin="round"/>
+      </svg>
+      <span class="brand__txt">
+        <span class="brand__name">South Prairie</span>
+        <span class="brand__sub">Washington · Est. 1909</span>
+      </span>
+    </a>
+
+    <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navMenu">
+      <svg class="ic-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      <svg class="ic-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+
+    <div class="nav__menu" id="navMenu">
+      <button class="nav__link" data-view="home">Home</button>
+      <button class="nav__link" data-view="government">Government</button>
+      <button class="nav__link" data-view="services">Services</button>
+      <button class="nav__link" data-view="history">History</button>
+      <button class="nav__link" data-view="newsletters">News</button>
+      <button class="nav__link" data-view="contact">Contact</button>
+      <div class="nav__actions">
+        <a class="btn btn-ghost" href="https://southprairiewa.genasys.com/portal/en" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 0 1-3.4 0"/></svg>
+          Alerts
+        </a>
+        <button class="btn btn-primary" data-view="pay">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+          Pay Bill
+        </button>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="nav__backdrop" id="navBackdrop"></div>
+
+<main id="main">
+
+<!-- ============================================================
+     VIEW: HOME
+     ============================================================ -->
+<section class="view" id="home">
+  <div class="hero">
+    <div class="hero__glow"></div>
+    <div class="hero__contours" aria-hidden="true">
+      <svg viewBox="-260 -260 520 520" class="contour-drift">
+        <g fill="none" stroke="#c99a4a" stroke-width="1.1" class="contour-anim">
+          <path style="--ro:.55" d="M0,-60 C30,-62 58,-38 58,-8 C58,22 36,46 6,54 C-24,62 -56,42 -58,10 C-60,-22 -34,-58 0,-60Z"/>
+          <path style="--ro:.5;animation-delay:.09s" d="M2,-95 C46,-98 92,-64 92,-18 C92,26 62,66 14,84 C-34,102 -84,66 -92,16 C-100,-34 -50,-92 2,-95Z"/>
+          <path style="--ro:.42;animation-delay:.18s" stroke="#8fb0b8" d="M-2,-132 C50,-136 126,-92 128,-30 C130,26 92,92 20,116 C-44,138 -118,92 -128,26 C-138,-40 -60,-128 -2,-132Z"/>
+          <path style="--ro:.34;animation-delay:.27s" stroke="#8fb0b8" d="M4,-170 C70,-172 160,-120 162,-40 C164,34 118,120 26,150 C-52,176 -150,120 -162,32 C-174,-52 -70,-166 4,-170Z"/>
+          <path style="--ro:.24;animation-delay:.36s" stroke="#6f8f7a" d="M-4,-210 C78,-214 198,-150 200,-52 C202,40 148,150 30,186 C-64,216 -186,148 -200,44 C-214,-60 -86,-206 -4,-210Z"/>
+          <path style="--ro:.16;animation-delay:.45s" stroke="#6f8f7a" d="M6,-250 C96,-254 238,-182 240,-64 C242,48 178,182 36,224 C-76,258 -224,178 -240,52 C-256,-72 -104,-248 6,-250Z"/>
+        </g>
+      </svg>
+    </div>
+    <div class="wrap hero__inner">
+      <div>
+        <span class="eyebrow hero__eyebrow">Pierce County, Washington</span>
+        <div class="hero__coord">47.1393° N · 122.0982° W · ELEV 430 FT</div>
+        <h1>South Prairie</h1>
+        <p class="hero__lede">A plateau town at the gateway to Mount Rainier — small-town quiet and the wild beauty of Western Washington.</p>
+        <p class="hero__body">Perched above the Puyallup River valley on ground shaped by glaciers and volcanoes, South Prairie has kept its unhurried pace since 1909. The creek still runs clear and the tall trees still stand.</p>
+        <div class="hero__cta">
+          <button class="btn btn-primary btn--lg" data-view="pay">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+            Pay utility bill
+          </button>
+          <button class="btn btn-ghost btn--on-dark btn--lg" data-view="government">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V10l7-5 7 5v11M9 21v-6h6v6"/></svg>
+            Council &amp; meetings
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- quick actions -->
+  <div class="wrap quick">
+    <div class="quick__grid">
+      <button class="qtile reveal" data-view="pay">
+        <svg class="qtile__contour" viewBox="-130 -130 260 260" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M0,-60 C40,-60 60,-30 60,0 C60,40 30,60 0,60 C-40,60 -60,30 -60,0 C-60,-40 -30,-60 0,-60Z"/><path d="M0,-100 C60,-100 100,-50 100,0 C100,60 50,100 0,100 C-60,100 -100,50 -100,0 C-100,-60 -50,-100 0,-100Z"/></svg>
+        <span class="qtile__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></svg></span>
+        <span class="qtile__t">Pay utility bill</span>
+        <span class="qtile__d">Pay water and utilities online with Xpress Bill Pay in minutes.</span>
+        <span class="qtile__go">Pay now <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </button>
+
+      <button class="qtile reveal" data-d="1" data-view="government">
+        <svg class="qtile__contour" viewBox="-130 -130 260 260" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M0,-60 C40,-60 60,-30 60,0 C60,40 30,60 0,60 C-40,60 -60,30 -60,0 C-60,-40 -30,-60 0,-60Z"/><path d="M0,-100 C60,-100 100,-50 100,0 C100,60 50,100 0,100 C-60,100 -100,50 -100,0 C-100,-60 -50,-100 0,-100Z"/></svg>
+        <span class="qtile__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V10l7-5 7 5v11M9 21v-6h6v6"/></svg></span>
+        <span class="qtile__t">Council &amp; agendas</span>
+        <span class="qtile__d">Meeting agendas, minutes, and your elected officials.</span>
+        <span class="qtile__go">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </button>
+
+      <button class="qtile reveal" data-d="2" data-view="services">
+        <svg class="qtile__contour" viewBox="-130 -130 260 260" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M0,-60 C40,-60 60,-30 60,0 C60,40 30,60 0,60 C-40,60 -60,30 -60,0 C-60,-40 -30,-60 0,-60Z"/><path d="M0,-100 C60,-100 100,-50 100,0 C100,60 50,100 0,100 C-60,100 -100,50 -100,0 C-100,-60 -50,-100 0,-100Z"/></svg>
+        <span class="qtile__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg></span>
+        <span class="qtile__t">Permits &amp; development</span>
+        <span class="qtile__d">Building permits, land use, and doing business in town.</span>
+        <span class="qtile__go">Browse <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </button>
+
+      <a class="qtile reveal" data-d="3" href="https://southprairiewa.genasys.com/portal/en" target="_blank" rel="noopener">
+        <svg class="qtile__contour" viewBox="-130 -130 260 260" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M0,-60 C40,-60 60,-30 60,0 C60,40 30,60 0,60 C-40,60 -60,30 -60,0 C-60,-40 -30,-60 0,-60Z"/><path d="M0,-100 C60,-100 100,-50 100,0 C100,60 50,100 0,100 C-60,100 -100,50 -100,0 C-100,-60 -50,-100 0,-100Z"/></svg>
+        <span class="qtile__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 0 1-3.4 0"/></svg></span>
+        <span class="qtile__t">Emergency alerts</span>
+        <span class="qtile__d">Sign up for Genasys alerts and county preparedness.</span>
+        <span class="qtile__go">Sign up <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></span>
+      </a>
+    </div>
+  </div>
+
+  <!-- stats -->
+  <div class="stats section--tight" style="margin-top:clamp(3rem,6vw,5rem)">
+    <div class="wrap">
+      <div class="stats__grid">
+        <div class="stat"><div class="stat__n">1909</div><div class="stat__l">Incorporated</div></div>
+        <div class="stat"><div class="stat__n">373</div><div class="stat__l">Population · 2020</div></div>
+        <div class="stat"><div class="stat__n">430 ft</div><div class="stat__l">Elevation</div></div>
+        <div class="stat"><div class="stat__n">0.39 mi²</div><div class="stat__l">Land area</div></div>
+        <div class="stat"><div class="stat__n">Pierce</div><div class="stat__l">County</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- welcome -->
+  <div class="section">
+    <div class="wrap welcome__grid">
+      <div class="welcome__body reveal">
+        <div class="section-head" style="margin-bottom:1.4rem">
+          <span class="eyebrow">Welcome</span>
+          <h2>A quiet place, steadily good</h2>
+        </div>
+        <p>South Prairie is one of Pierce County's plateau communities, perched above the Puyallup River valley on ground forged from glacial retreat and volcanic activity. The area abounds with small-town charm, rural living, and outdoor recreation, with Mount Rainier and Lake Tapps framing the horizon.</p>
+        <p>In many places the town looks much as it did a hundred years ago. South Prairie Creek runs clear through the meadows and tall trees, making this a peaceful spot where the outside world's hectic pace feels far away.</p>
+        <div class="welcome__cta">
+          <button class="btn btn-dark" data-view="history">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            Our history
+          </button>
+          <button class="btn btn-ghost" data-view="contact">Contact Town Hall</button>
+        </div>
+      </div>
+      <div class="scene reveal" data-d="1" aria-hidden="true">
+        <svg viewBox="0 0 600 400" role="img">
+          <defs>
+            <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d3e2e3"/><stop offset="1" stop-color="#eef3ec"/></linearGradient>
+            <linearGradient id="mtn" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8fb0b8"/><stop offset="1" stop-color="#6f8f7a"/></linearGradient>
+            <linearGradient id="hill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#35624a"/><stop offset="1" stop-color="#274a38"/></linearGradient>
+          </defs>
+          <rect width="600" height="400" fill="url(#sky)"/>
+          <circle cx="150" cy="120" r="46" fill="#f5efe0" opacity=".8"/>
+          <!-- Rainier -->
+          <path d="M330 250 L430 90 L470 140 L500 100 L560 250 Z" fill="url(#mtn)"/>
+          <path d="M405 128 L430 90 L455 128 L440 140 L425 130 L415 140 Z" fill="#fbfcf9"/>
+          <path d="M470 140 L500 100 L520 150 L505 145 L492 155 Z" fill="#fbfcf9" opacity=".9"/>
+          <path d="M330 250 L385 168 L400 250 Z" fill="#6f8f7a" opacity=".7"/>
+          <!-- mid hills -->
+          <path d="M0 250 C120 210 200 240 300 235 C420 229 500 250 600 240 L600 400 L0 400 Z" fill="url(#hill)"/>
+          <!-- creek -->
+          <path d="M180 400 C230 340 250 330 270 300 C288 273 280 260 300 250 C322 239 340 250 350 275 C360 300 350 330 380 360 C398 378 410 388 420 400 Z" fill="#b6d0d4" opacity=".85"/>
+          <path d="M300 250 C322 239 340 250 350 275" fill="none" stroke="#d4e2e4" stroke-width="3" opacity=".7"/>
+          <!-- trees -->
+          <g fill="#1b3d2e">
+            <path d="M60 400 L80 300 L100 400 Z"/><path d="M70 340 L80 300 L90 340 Z" fill="#274a38"/>
+            <path d="M110 400 L126 320 L142 400 Z"/><path d="M118 350 L126 320 L134 350 Z" fill="#274a38"/>
+            <path d="M20 400 L36 330 L52 400 Z"/>
+            <path d="M470 400 L490 310 L510 400 Z"/><path d="M478 348 L490 310 L502 348 Z" fill="#274a38"/>
+            <path d="M520 400 L538 335 L556 400 Z"/>
+            <path d="M430 400 L444 345 L458 400 Z"/>
+          </g>
+        </svg>
+        <span class="scene__cap">Gateway to Mount Rainier</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- home services teaser -->
+  <div class="section section--paper2">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Town Hall, at a glance</span>
+        <h2>Find what you came for</h2>
+        <p>The essentials from Town Hall, plus the county and community services that keep South Prairie running.</p>
+      </div>
+      <div class="card-grid">
+        <button class="lcard reveal" data-view="pay">
+          <div class="lcard__top"><span class="lcard__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></span></div>
+          <h4>Utility payments</h4>
+          <p>Pay your water and utility bill online, by mail, or in person.</p>
+        </button>
+        <button class="lcard reveal" data-d="1" data-view="government">
+          <div class="lcard__top"><span class="lcard__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V10l7-5 7 5v11"/></svg></span></div>
+          <h4>Council &amp; agendas</h4>
+          <p>Your mayor and council, meeting agendas, and minutes.</p>
+        </button>
+        <button class="lcard reveal" data-d="2" data-view="services">
+          <div class="lcard__top"><span class="lcard__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></span></div>
+          <h4>Permits &amp; land use</h4>
+          <p>Building permits, community development, and business.</p>
+        </button>
+        <a class="lcard reveal" data-d="3" href="https://southprairie.municipal.codes/" target="_blank" rel="noopener">
+          <div class="lcard__top"><span class="lcard__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span><span class="lcard__ext"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></span></div>
+          <h4>Municipal code</h4>
+          <p>Read the ordinances and regulations that govern the town.</p>
+          <span class="lcard__tag">External · municipal.codes</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     VIEW: GOVERNMENT
+     ============================================================ -->
+<section class="view is-hidden" id="government">
+  <div class="section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Governance</span>
+        <h2>Mayor &amp; Town Council</h2>
+        <p>South Prairie operates under a mayor–council government. Residents elect a mayor and five council members who set town policy and adopt the annual budget.</p>
+      </div>
+
+      <div class="council">
+        <div class="gov-card gov-card--mayor reveal">
+          <span class="gov-card__role">Mayor</span>
+          <span class="gov-card__name">Carolyn Norris</span>
+          <span class="gov-card__term"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Term through Dec 31, 2025</span>
+          <span class="gov-card__mail"><a href="mailto:cnorris@townofsp.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>cnorris@townofsp.com</a></span>
+        </div>
+
+        <div class="gov-card reveal" data-d="1">
+          <span class="gov-card__role">Deputy Mayor · Position 1</span>
+          <span class="gov-card__name">Jeff Robbins</span>
+          <span class="gov-card__term"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Term through Dec 31, 2027</span>
+          <span class="gov-card__mail"><a href="mailto:jrobbins@townofsp.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>jrobbins@townofsp.com</a></span>
+        </div>
+
+        <div class="gov-card reveal" data-d="2">
+          <span class="gov-card__role">Councilmember · Position 2</span>
+          <span class="gov-card__name">Shane Norris</span>
+          <span class="gov-card__term"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Term through Dec 31, 2027</span>
+          <span class="gov-card__mail"><a href="mailto:snorris@townofsp.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>snorris@townofsp.com</a></span>
+        </div>
+
+        <div class="gov-card reveal">
+          <span class="gov-card__role">Councilmember · Position 4</span>
+          <span class="gov-card__name">Catherine Harris</span>
+          <span class="gov-card__term"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Term through Dec 31, 2027</span>
+          <span class="gov-card__mail"><a href="mailto:charris@townofsp.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>charris@townofsp.com</a></span>
+        </div>
+
+        <div class="gov-card gov-card--vacant reveal" data-d="1">
+          <span class="gov-card__role">Council · Position 3</span>
+          <span class="gov-card__name">Seat vacant</span>
+          <p class="vac-note">This council seat is currently open. Residents interested in serving can contact Town Hall to learn about appointment.</p>
+        </div>
+
+        <div class="gov-card gov-card--vacant reveal" data-d="2">
+          <span class="gov-card__role">Council · Position 5</span>
+          <span class="gov-card__name">Seat vacant</span>
+          <p class="vac-note">This council seat is currently open. Residents interested in serving can contact Town Hall to learn about appointment.</p>
+        </div>
+      </div>
+
+      <div class="gov-info">
+        <a class="lcard reveal" href="https://www.townofsp.com/file-share" target="_blank" rel="noopener">
+          <div class="lcard__top"><span class="lcard__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h4"/></svg></span><span class="lcard__ext"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></span></div>
+          <h4>Agendas &amp; minutes</h4>
+          <p>Meeting agendas, minutes, and public documents in the town file share.</p>
+        </a>
+        <a class="lcard reveal" data-d="1" href="https://southprairie.municipal.codes/" target="_blank" rel="noopener">
+          <div class="lcard__top"><span class="lcard__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span><span class="lcard__ext"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></span></div>
+          <h4>Municipal code</h4>
+          <p>The full set of ordinances and regulations for the Town of South Prairie.</p>
+        </a>
+        <button class="lcard reveal" data-d="2" data-view="contact">
+          <div class="lcard__top"><span class="lcard__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></span></div>
+          <h4>Public records</h4>
+          <p>Request public records from the Town Clerk-Treasurer's office.</p>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     VIEW: SERVICES
+     ============================================================ -->
+<section class="view is-hidden" id="services">
+  <div class="section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Departments &amp; Services</span>
+        <h2>Services &amp; resources</h2>
+        <p>Everything you need from Town Hall, plus the county and community partners that serve South Prairie residents.</p>
+      </div>
+
+      <!-- Town Hall -->
+      <div class="group">
+        <div class="group__head reveal">
+          <span class="group__num">01</span>
+          <h3>Town Hall services</h3>
+          <span class="group__line"></span>
+        </div>
+        <div class="card-grid">
+          <button class="lcard reveal" data-view="pay">
+            <div class="lcard__top"><span class="lcard__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></span></div>
+            <h4>Utility payments</h4>
+            <p>Pay your water and utility bill online, by mail, or in person.</p>
+          </button>
+          <a class="lcard reveal" data-d="1" href="https://www.townofsp.com/buildingpermitting" target="_blank" rel="noopener">
+            <div class="lcard__top"><span class="lcard__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 9h.01M9 13h.01M9 17h.01M15 9h.01M15 13h.01M15 17h.01"/></svg></span><span class="lcard__ext"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></span></div>
+            <h4>Building permits</h4>
+            <p>Apply for building permits and find inspection requirements.</p>
+          </a>
+          <a class="lcard reveal" data-d="2" href="https://www.townofsp.com/communitydevelopment" target="_blank" rel="noopener">
+            <div class="lcard__top"><span class="lcard__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20M4 20V8l6-4v16M14 20V4l6 4v12M8 9h.01M8 13h.01M8 17h.01"/></svg></span><span class="lcard__ext"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></span></div>
+            <h4>Community development</h4>
+            <p>Land use, planning, and development in the Town of South Prairie.</p>
+          </a>
+          <a class="lcard reveal" data-d="3" href="https://www.townofsp.com/doing-business-in-southprairie" target="_blank" rel="noopener">
+            <div class="lcard__top"><span class="lcard__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-6 9 6v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></span><span class="lcard__ext"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></span></div>
+            <h4>Doing business in town</h4>
+            <p>Business licensing and what you need to operate in South Prairie.</p>
+          </a>
+          <a class="lcard reveal" href="https://www.townofsp.com/file-share" target="_blank" rel="noopener">
+            <div class="lcard__top"><span class="lcard__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></span><span class="lcard__ext"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></span></div>
+            <h4>Agendas &amp; minutes</h4>
+            <p>Council meeting agendas, minutes, and public documents.</p>
+          </a>
+          <a class="lcard reveal" data-d="1" href="https://southprairie.municipal.codes/" target="_blank" rel="noopener">
+            <div class="lcard__top"><span class="lcard__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span><span class="lcard__ext"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></span></div>
+            <h4>Municipal code</h4>
+            <p>Ordinances and regulations governing the town.</p>
+          </a>
+        </div>
+      </div>
+
+      <!-- Public safety -->
+      <div class="group">
+        <div class="group__head reveal">
+          <span class="group__num">02</span>
+          <h3>Public safety &amp; emergency</h3>
+          <span class="group__line"></span>
+        </div>
+        <div class="card-grid">
+          <a class="lcard reveal" href="https://southprairiewa.genasys.com/portal/en" target="_blank" rel="noopener">
+            <div class="lcard__top"><span class="lcard__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 0 1-3.4 0"/></svg></span><span class="lcard__ext"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></span></div>
+            <h4>Genasys alert portal</h4>
+            <p>Sign up for emergency alerts and evacuation notices for the area.</p>
+          </a>
+          <a class="lcard reveal" data-d="1" href="http://www.eastpiercefire.org/" target="_blank" rel="noopener">
+            <div class="lcard__top"><span class="lcard__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2s5 4 5 9a5 5 0 0 1-10 0c0-1.5.5-2.5.5-2.5S9 10 9 12a3 3 0 0 0 3 3c1.5 0 2-1 2-2 0-3-2-5-2-5"/></svg></span><span class="lcard__ext"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></span></div>
+            <h4>East Pierce Fire &amp; Rescue</h4>
+            <p>Fire protection and emergency medical services for South Prairie.</p>
+          </a>
+          <a class="lcard reveal" data-d="2" href="https://www.piercecountywa.gov/121/Sheriff" target="_blank" rel="noopener">
+            <div class="lcard__top"><span class="lcard__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6z"/></svg></span><span class="lcard__ext"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></span></div>
+            <h4>Pierce County Sheriff</h4>
+            <p>Law enforcement services for the town and surrounding county.</p>
+          </a>
+          <a class="lcard reveal" data-d="3" href="https://www.piercecountywa.gov/104/Emergency-Management" target="_blank" rel="noopener">
+            <div class="lcard__top"><span class="lcard__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M12 8v4M12 16h.01"/></svg></span><span class="lcard__ext"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></span></div>
+            <h4>Emergency management</h4>
+            <p>County preparedness, hazards, and disaster response resources.</p>
+          </a>
+          <a class="lcard reveal" href="https://www.piercecountywa.gov/3966/Animal-Control-Home" target="_blank" rel="noopener">
+            <div class="lcard__top"><span class="lcard__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="4" r="2"/><circle cx="18" cy="8" r="2"/><circle cx="4" cy="8" r="2"/><circle cx="8" cy="14" r="3"/><path d="M12 17c3 0 5 2 5 4H7c0-2 2-4 5-4z"/></svg></span><span class="lcard__ext"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></span></div>
+            <h4>Animal control</h4>
+            <p>Pierce County animal services, licensing, and lost pets.</p>
+          </a>
+        </div>
+      </div>
+
+      <!-- County & community -->
+      <div class="group">
+        <div class="group__head reveal">
+          <span class="group__num">03</span>
+          <h3>County &amp; community</h3>
+          <span class="group__line"></span>
+        </div>
+        <div class="card-grid">
+          <a class="lcard reveal" href="https://www.piercecountywa.gov/1384/Foothills-Trail" target="_blank" rel="noopener">
+            <div class="lcard__top"><span class="lcard__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 4v16M13 4l6 3-6 3M6 8v12"/><circle cx="6" cy="5" r="1.6"/></svg></span><span class="lcard__ext"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></span></div>
+            <h4>Foothills Trail</h4>
+            <p>The regional rail-trail for walking and cycling through the foothills.</p>
+          </a>
+          <a class="lcard reveal" data-d="1" href="https://www.piercecountywa.gov/97/Human-Services" target="_blank" rel="noopener">
+            <div class="lcard__top"><span class="lcard__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></span><span class="lcard__ext"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></span></div>
+            <h4>Human services</h4>
+            <p>County programs for housing, aging, behavioral health, and more.</p>
+          </a>
+          <a class="lcard reveal" data-d="2" href="https://www.townofsp.com/_files/ugd/52cef7_70d184911aef47e2b6fafb38a3430312.docx" target="_blank" rel="noopener">
+            <div class="lcard__top"><span class="lcard__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2zM22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span><span class="lcard__ext"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></span></div>
+            <h4>NE Pierce resource guide</h4>
+            <p>A guide to food, health, and support resources in northeast Pierce County.</p>
+          </a>
+          <a class="lcard reveal" data-d="3" href="https://www.murreysdisposal.com/" target="_blank" rel="noopener">
+            <div class="lcard__top"><span class="lcard__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4h8v2M6 6l1 14a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2l1-14M10 11v6M14 11v6"/></svg></span><span class="lcard__ext"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></span></div>
+            <h4>Murrey's Disposal</h4>
+            <p>Garbage, recycling, and yard waste collection service.</p>
+          </a>
+          <a class="lcard reveal" href="https://us-postoffice.com/wa/south-prairie/south-prairie-post-office" target="_blank" rel="noopener">
+            <div class="lcard__top"><span class="lcard__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5h20v14H2zM2 7l10 6 10-6"/></svg></span><span class="lcard__ext"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></span></div>
+            <h4>South Prairie Post Office</h4>
+            <p>Hours and services for the local United States Post Office.</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     VIEW: HISTORY
+     ============================================================ -->
+<section class="view is-hidden" id="history">
+  <div class="section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Since 1854 · Incorporated 1909</span>
+        <h2>A brief history of South Prairie</h2>
+        <p>With thanks to Geanellen Kuranko for preserving the town's story.</p>
+      </div>
+
+      <div class="history__grid">
+        <div class="prose reveal">
+          <p class="lead">The story of South Prairie is one of steady, quiet growth — from a single land claim in the wilderness to a railroad and coal town, to the peaceful community it remains today.</p>
+
+          <p>In 1854, <strong>Paul Emery</strong> filed a donation land claim and became the first permanent settler in the area, farming the fertile prairie south of Connell's and Porter's prairies — the location that would give the town its name. For years the little settlement grew slowly, tucked into the tall trees above South Prairie Creek.</p>
+
+          <p>Everything changed with <strong>coal</strong>. When deposits were discovered in the surrounding hills around 1875, the promise of mining drew people, capital, and — most importantly — a railroad. The Northern Pacific reached the area, and South Prairie became a junction and shipping point for coal hauled down from Wilkeson, Burnett, and the mines beyond.</p>
+
+          <h3><span class="prose__ey">Turn of the century</span>Steadily developing into something good</h3>
+          <p>By the 1880s the town had a store, platted streets, and a growing population. <strong>Frank Bisson</strong> platted South Prairie in 1888, and the town took shape around the rail line and the creek. A post office, schools, churches, and businesses followed as families put down roots.</p>
+
+          <p>For a time the town was briefly renamed "Cascade Junction," but residents resisted the change. On <strong>February 17, 1909</strong>, the community was officially incorporated as the Town of South Prairie — the name it has carried proudly ever since.</p>
+
+          <div class="pullquote">
+            A peaceful spot where the outside world's hectic pace seems but a bad dream.
+            <cite>— On life in South Prairie</cite>
+          </div>
+
+          <h3><span class="prose__ey">Famous folks</span>Home of a big-league ballplayer</h3>
+          <p>South Prairie's proudest sporting son is <strong>Paul Strand</strong>, who grew up in the town and went on to a professional baseball career. He pitched and played for the Boston Braves and later became one of the most prolific hitters in the minor leagues, helping win a pennant in the years around 1912–1913. For a town this small, a genuine big-league ballplayer is a point of lasting pride.</p>
+
+          <h3><span class="prose__ey">Notes of interest</span>A town shaped by its landscape</h3>
+          <p>Much of what makes South Prairie special is unchanged from a century ago. The creek still runs clear, the meadows are still ringed with tall evergreens, and Mount Rainier still stands watch to the southeast. The mines are long quiet and the railroad's heyday has passed, but the plateau, the water, and the small-town character remain — the reasons people have called this place home for well over a century.</p>
+        </div>
+
+        <aside class="timeline reveal" data-d="1" aria-label="Timeline of key dates">
+          <div class="timeline__title">Key dates</div>
+          <div class="tl">
+            <div class="tl__item"><div class="tl__yr">1854</div><div class="tl__ev">Paul Emery files the first land claim and settles the prairie.</div></div>
+            <div class="tl__item"><div class="tl__yr">c. 1875</div><div class="tl__ev">Coal is discovered nearby, drawing the railroad and new residents.</div></div>
+            <div class="tl__item"><div class="tl__yr">1888</div><div class="tl__ev">Frank Bisson plats the town of South Prairie.</div></div>
+            <div class="tl__item"><div class="tl__yr">1909</div><div class="tl__ev">South Prairie is officially incorporated on February 17.</div></div>
+            <div class="tl__item"><div class="tl__yr">1912–13</div><div class="tl__ev">Hometown ballplayer Paul Strand reaches the big leagues.</div></div>
+            <div class="tl__item"><div class="tl__yr">Today</div><div class="tl__ev">A quiet plateau town at the gateway to Mount Rainier.</div></div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     VIEW: PAY
+     ============================================================ -->
+<section class="view is-hidden" id="pay">
+  <div class="section">
+    <div class="wrap">
+      <div class="pay-hero reveal">
+        <svg class="pay-hero__contour" viewBox="-170 -170 340 340" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M0,-60 C40,-60 60,-30 60,0 C60,40 30,60 0,60 C-40,60 -60,30 -60,0 C-60,-40 -30,-60 0,-60Z"/>
+          <path d="M0,-100 C60,-100 100,-50 100,0 C100,60 50,100 0,100 C-60,100 -100,50 -100,0 C-100,-60 -50,-100 0,-100Z"/>
+          <path d="M0,-140 C80,-140 140,-70 140,0 C140,80 70,140 0,140 C-80,140 -140,70 -140,0 C-140,-80 -70,-140 0,-140Z"/>
+        </svg>
+        <div class="pay-hero__inner">
+          <div>
+            <span class="eyebrow hero__eyebrow" style="color:var(--wheat-soft)">Utility Payments</span>
+            <h2>Pay your utility bill</h2>
+            <p>The easiest way to handle your water and utility bill — no checks, no stamps. South Prairie uses Xpress Bill Pay for secure online payments.</p>
+            <div class="pay-hero__cta">
+              <a class="btn btn-primary btn--lg" href="https://www.xpressbillpay.com/" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+                Pay with Xpress Bill Pay
+              </a>
+            </div>
+          </div>
+          <div class="pay-hero__aside">
+            <div class="row">
+              <div class="k">Pay by mail</div>
+              <div class="v">Town of South Prairie<br>PO Box 870<br>South Prairie, WA 98385</div>
+            </div>
+            <div class="row">
+              <div class="k">Pay in person</div>
+              <div class="v">121 Washington Street<br>South Prairie, WA 98385</div>
+            </div>
+            <div class="row">
+              <div class="k">Utility questions</div>
+              <div class="v"><a href="mailto:deputyclerk@townofsp.com">deputyclerk@townofsp.com</a><br><a href="tel:+13608978878">360-897-8878</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- steps -->
+      <div style="margin-top:clamp(2.5rem,5vw,4rem)">
+        <div class="section-head reveal" style="margin-bottom:1.8rem">
+          <span class="eyebrow">Getting started</span>
+          <h2 style="font-size:clamp(1.6rem,1.2rem + 1.6vw,2.3rem)">How online payment works</h2>
+        </div>
+        <div class="steps">
+          <div class="step reveal">
+            <div class="step__n">Step 01</div>
+            <h4>Create your account</h4>
+            <p>Go to Xpress Bill Pay and register with your email. You'll set a password and verify your account.</p>
+          </div>
+          <div class="step reveal" data-d="1">
+            <div class="step__n">Step 02</div>
+            <h4>Link your utility</h4>
+            <p>Add South Prairie as your biller and enter the account number printed on your utility statement.</p>
+          </div>
+          <div class="step reveal" data-d="2">
+            <div class="step__n">Step 03</div>
+            <h4>Pay &amp; automate</h4>
+            <p>Pay by card or bank transfer, view your history, and set up auto-pay so you never miss a due date.</p>
+          </div>
+        </div>
+        <div class="dl-row reveal">
+          <a class="btn btn-ghost" href="https://www.townofsp.com/_files/ugd/52cef7_3d7b464b994b4f8198ac5c476052d561.pdf" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M12 18v-6M9 15l3 3 3-3"/></svg>
+            Instructions (English) · PDF
+          </a>
+          <a class="btn btn-ghost" href="https://www.townofsp.com/_files/ugd/52cef7_7f2028144da9467bb5acb1a8fff430d6.pdf" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M12 18v-6M9 15l3 3 3-3"/></svg>
+            Instrucciones (Español) · PDF
+          </a>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <div style="margin-top:clamp(2.5rem,5vw,4rem)">
+        <div class="section-head reveal" style="margin-bottom:1.5rem">
+          <span class="eyebrow">Questions</span>
+          <h2 style="font-size:clamp(1.6rem,1.2rem + 1.6vw,2.3rem)">Common questions</h2>
+        </div>
+        <div class="faq reveal">
+          <div class="faq__item">
+            <button class="faq__q" aria-expanded="false"><span>Do I have to pay online?</span><span class="faq__ic" aria-hidden="true"></span></button>
+            <div class="faq__a"><div class="faq__a-inner">No. Online payment through Xpress Bill Pay is offered as a convenience. You can still pay by mail to PO Box 870, or in person at Town Hall at 121 Washington Street.</div></div>
+          </div>
+          <div class="faq__item">
+            <button class="faq__q" aria-expanded="false"><span>Is there a fee to pay online?</span><span class="faq__ic" aria-hidden="true"></span></button>
+            <div class="faq__a"><div class="faq__a-inner">Payment processors may charge a small convenience fee, which is shown before you confirm. Paying directly from a bank account is typically the lowest-cost option.</div></div>
+          </div>
+          <div class="faq__item">
+            <button class="faq__q" aria-expanded="false"><span>Where do I find my account number?</span><span class="faq__ic" aria-hidden="true"></span></button>
+            <div class="faq__a"><div class="faq__a-inner">Your utility account number is printed on your paper statement. If you can't locate it, contact the Deputy Town Clerk at <a href="mailto:deputyclerk@townofsp.com">deputyclerk@townofsp.com</a> or call 360-897-8878.</div></div>
+          </div>
+          <div class="faq__item">
+            <button class="faq__q" aria-expanded="false"><span>Can I set up automatic payments?</span><span class="faq__ic" aria-hidden="true"></span></button>
+            <div class="faq__a"><div class="faq__a-inner">Yes. Once your account is set up in Xpress Bill Pay, you can enroll in auto-pay so your bill is paid automatically each cycle.</div></div>
+          </div>
+          <div class="faq__item">
+            <button class="faq__q" aria-expanded="false"><span>Who do I contact about my bill?</span><span class="faq__ic" aria-hidden="true"></span></button>
+            <div class="faq__a"><div class="faq__a-inner">For billing and utility questions, reach the Deputy Town Clerk, who handles utilities and permitting, at <a href="mailto:deputyclerk@townofsp.com">deputyclerk@townofsp.com</a> or 360-897-8878.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     VIEW: NEWSLETTERS
+     ============================================================ -->
+<section class="view is-hidden" id="newsletters">
+  <div class="section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Town News</span>
+        <h2>Newsletter archive</h2>
+        <p>Monthly news from Town Hall — meetings, projects, and community notes. Browse and download past issues below.</p>
+      </div>
+
+      <div class="nl-feature reveal" id="nlFeature" hidden>
+        <div class="nl-feature__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4zM8 8h8M8 12h8M8 16h5"/></svg></div>
+        <div class="nl-feature__txt">
+          <div class="nl-feature__k">Latest issue</div>
+          <div class="nl-feature__t" id="nlFeatureTitle">South Prairie Newsletter</div>
+        </div>
+        <a class="btn btn-primary" id="nlFeatureLink" href="#" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M12 18v-6M9 15l3 3 3-3"/></svg>
+          Read latest
+        </a>
+      </div>
+
+      <div id="nlArchive" class="reveal"></div>
+      <noscript>
+        <p style="margin-top:1rem">View the full newsletter archive on the <a href="https://www.townofsp.com/whats-happening" target="_blank" rel="noopener">town's What's Happening page</a>.</p>
+      </noscript>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     VIEW: CONTACT
+     ============================================================ -->
+<section class="view is-hidden" id="contact">
+  <div class="section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Get in touch</span>
+        <h2>Contact Town Hall</h2>
+        <p>Questions, public records requests, or utility help — reach the people who run South Prairie directly.</p>
+      </div>
+
+      <div class="contact__grid">
+        <!-- left: info -->
+        <div>
+          <div class="staff">
+            <div class="staff-card reveal">
+              <div class="staff-card__av">TB</div>
+              <div>
+                <div class="staff-card__name">Terri Berry, MMC</div>
+                <div class="staff-card__role">Town Clerk-Treasurer</div>
+                <div class="staff-card__mail"><a href="mailto:clerk@townofsp.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>clerk@townofsp.com</a></div>
+              </div>
+            </div>
+            <div class="staff-card reveal" data-d="1">
+              <div class="staff-card__av">MO</div>
+              <div>
+                <div class="staff-card__name">Meagan Olds</div>
+                <div class="staff-card__role">Deputy Town Clerk · Utilities &amp; Permitting</div>
+                <div class="staff-card__mail"><a href="mailto:deputyclerk@townofsp.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>deputyclerk@townofsp.com</a></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="info-block reveal" data-d="1">
+            <div class="info-row">
+              <span class="info-row__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+              <div><div class="info-row__k">Town Hall</div><div class="info-row__v">121 Washington Street<br>PO Box 870 · South Prairie, WA 98385</div></div>
+            </div>
+            <div class="info-row">
+              <span class="info-row__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.4-1.2a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></span>
+              <div><div class="info-row__k">Telephone</div><div class="info-row__v"><a href="tel:+13608978878">360-897-8878</a></div></div>
+            </div>
+            <div class="info-row">
+              <span class="info-row__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></span>
+              <div><div class="info-row__k">General email</div><div class="info-row__v"><a href="mailto:clerk@townofsp.com">clerk@townofsp.com</a></div></div>
+            </div>
+            <div class="info-row">
+              <span class="info-row__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span>
+              <div><div class="info-row__k">Office hours</div><div class="info-row__v">Please call ahead at 360-897-8878 to confirm current hours.</div></div>
+            </div>
+            <div class="info-row">
+              <span class="info-row__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13M9 9l12-2"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></span>
+              <div><div class="info-row__k">Directions</div><div class="info-row__v"><a href="https://www.google.com/maps/search/?api=1&query=121+Washington+Street+South+Prairie+WA+98385" target="_blank" rel="noopener">Open in Google Maps →</a></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- right: form -->
+        <div>
+          <form class="form reveal" id="contactForm" novalidate>
+            <p class="form__note">Use this form for general questions and public records requests. Note: anonymous complaints will not be investigated. This opens a pre-filled message in your email app.</p>
+            <div class="field">
+              <label for="cname">Your name</label>
+              <input id="cname" name="name" type="text" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="cemail">Email address</label>
+              <input id="cemail" name="email" type="email" autocomplete="email" required>
+            </div>
+            <div class="field">
+              <label for="csubject">Subject</label>
+              <input id="csubject" name="subject" type="text" required>
+            </div>
+            <div class="field">
+              <label for="cmessage">Message</label>
+              <textarea id="cmessage" name="message" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn--lg form__submit">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg>
+              Send message
+            </button>
+            <div class="form__ok" id="formOk">Your email app should now be open with your message ready to send. If it didn't open, email us directly at <a href="mailto:clerk@townofsp.com">clerk@townofsp.com</a>.</div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer">
+  <svg class="footer__contour" viewBox="-210 -210 420 420" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+    <path d="M0,-60 C40,-60 60,-30 60,0 C60,40 30,60 0,60 C-40,60 -60,30 -60,0 C-60,-40 -30,-60 0,-60Z"/>
+    <path d="M0,-110 C70,-110 110,-55 110,0 C110,70 55,110 0,110 C-70,110 -110,55 -110,0 C-110,-70 -55,-110 0,-110Z"/>
+    <path d="M0,-160 C100,-160 160,-80 160,0 C160,100 80,160 0,160 C-100,160 -160,80 -160,0 C-160,-100 -80,-160 0,-160Z"/>
+  </svg>
+  <div class="wrap">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <a class="brand" href="#home" data-view="home" aria-label="Town of South Prairie — home">
+          <svg class="brand__crest" viewBox="0 0 44 44" aria-hidden="true">
+            <rect width="44" height="44" rx="10" fill="#0e1f18"/>
+            <circle cx="22" cy="22" r="15" fill="none" stroke="#35624a" stroke-width="1"/>
+            <path d="M8 30 L18 14 L25 25 L30 17 L36 30 Z" fill="none" stroke="#c99a4a" stroke-width="1.7" stroke-linejoin="round"/>
+            <path d="M15.5 19 L18 14 L20.5 19" fill="none" stroke="#f2f4ef" stroke-width="1.7" stroke-linejoin="round"/>
+          </svg>
+          <span class="brand__txt">
+            <span class="brand__name">South Prairie</span>
+            <span class="brand__sub">Washington · Est. 1909</span>
+          </span>
+        </a>
+        <p class="footer__tag">The official website of the Town of South Prairie, Washington — a plateau community at the gateway to Mount Rainier.</p>
+        <a class="footer__social" href="https://www.facebook.com/TownofSP/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12a12 12 0 1 0-13.9 11.9v-8.4H7.1V12h3V9.4c0-3 1.8-4.6 4.5-4.6 1.3 0 2.6.2 2.6.2v2.9h-1.5c-1.4 0-1.9.9-1.9 1.8V12h3.3l-.5 3.5h-2.8v8.4A12 12 0 0 0 24 12z"/></svg>
+          Follow on Facebook
+        </a>
+      </div>
+
+      <div class="footer__col">
+        <h4>Explore</h4>
+        <ul>
+          <li><button data-view="home">Home</button></li>
+          <li><button data-view="government">Government</button></li>
+          <li><button data-view="services">Services</button></li>
+          <li><button data-view="history">History</button></li>
+          <li><button data-view="newsletters">News</button></li>
+          <li><button data-view="contact">Contact</button></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h4>Residents</h4>
+        <ul>
+          <li><button data-view="pay">Pay utility bill</button></li>
+          <li><a href="https://www.townofsp.com/file-share" target="_blank" rel="noopener">Agendas &amp; minutes</a></li>
+          <li><a href="https://southprairie.municipal.codes/" target="_blank" rel="noopener">Municipal code</a></li>
+          <li><a href="https://www.townofsp.com/buildingpermitting" target="_blank" rel="noopener">Building permits</a></li>
+          <li><a href="https://southprairiewa.genasys.com/portal/en" target="_blank" rel="noopener">Emergency alerts</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h4>Town Hall</h4>
+        <address class="footer__addr">
+          121 Washington Street<br>
+          PO Box 870<br>
+          South Prairie, WA 98385<br><br>
+          <a href="tel:+13608978878">360-897-8878</a><br>
+          <a href="mailto:clerk@townofsp.com">clerk@townofsp.com</a>
+        </address>
+        <a class="footer__alert" href="https://southprairiewa.genasys.com/portal/en" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 0 1-3.4 0"/></svg>
+          Sign up for emergency alerts
+        </a>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <span>© <span id="year">2025</span> Town of South Prairie, Washington · Official municipal website</span>
+      <button class="footer__totop" id="toTop">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+        Back to top
+      </button>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var root = document.documentElement;
+  root.classList.remove("no-js");
+  root.classList.add("js");
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if(reduce) root.classList.add("reduce");
+
+  /* ---------- view router ---------- */
+  var VIEWS = ["home","government","services","history","pay","newsletters","contact"];
+  var TITLES = {
+    home:"Town of South Prairie, Washington — Official Website",
+    government:"Government — Town of South Prairie, WA",
+    services:"Services & Resources — Town of South Prairie, WA",
+    history:"History — Town of South Prairie, WA",
+    pay:"Pay Utility Bill — Town of South Prairie, WA",
+    newsletters:"Newsletter Archive — Town of South Prairie, WA",
+    contact:"Contact Town Hall — Town of South Prairie, WA"
+  };
+  var views = {};
+  VIEWS.forEach(function(v){ views[v] = document.getElementById(v); });
+
+  function setActiveNav(view){
+    document.querySelectorAll("[data-view]").forEach(function(el){
+      var on = el.getAttribute("data-view") === view;
+      if(el.classList.contains("nav__link")){
+        el.classList.toggle("is-active", on);
+        el.setAttribute("aria-current", on ? "page" : "false");
+      }
+    });
+  }
+
+  function showView(view, push){
+    if(VIEWS.indexOf(view) === -1) view = "home";
+    VIEWS.forEach(function(v){
+      var el = views[v];
+      if(!el) return;
+      var hidden = v !== view;
+      el.classList.toggle("is-hidden", hidden);
+      if(!hidden){
+        el.classList.remove("is-entering");
+        void el.offsetWidth;
+        if(!reduce) el.classList.add("is-entering");
+      }
+    });
+    setActiveNav(view);
+    document.title = TITLES[view] || TITLES.home;
+    window.scrollTo(0,0);
+    if(push){
+      try{ history.pushState({view:view}, "", "#"+view); }catch(e){}
+    }
+    revealIn(views[view]);
+    if(view === "newsletters") buildNewsletters();
+  }
+
+  document.addEventListener("click", function(e){
+    var trigger = e.target.closest("[data-view]");
+    if(trigger){
+      e.preventDefault();
+      closeNav();
+      showView(trigger.getAttribute("data-view"), true);
+    }
+  });
+
+  window.addEventListener("popstate", function(){
+    var v = (location.hash || "").replace("#","");
+    showView(VIEWS.indexOf(v) > -1 ? v : "home", false);
+  });
+
+  /* ---------- reveal on scroll ---------- */
+  var io = null;
+  if("IntersectionObserver" in window && !reduce){
+    io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add("is-in"); io.unobserve(en.target); }
+      });
+    }, {rootMargin:"0px 0px -8% 0px", threshold:0.05});
+  }
+  function observeAll(scope){
+    var els = (scope||document).querySelectorAll(".reveal:not(.is-in)");
+    els.forEach(function(el){
+      if(io){ io.observe(el); } else { el.classList.add("is-in"); }
+    });
+  }
+  function revealIn(scope){
+    if(!scope) return;
+    if(!io){ scope.querySelectorAll(".reveal").forEach(function(el){el.classList.add("is-in");}); return; }
+    // reveal anything already in viewport, observe the rest
+    scope.querySelectorAll(".reveal:not(.is-in)").forEach(function(el){
+      var r = el.getBoundingClientRect();
+      if(r.top < window.innerHeight * 0.95){ el.classList.add("is-in"); }
+      else { io.observe(el); }
+    });
+  }
+
+  /* ---------- header shadow ---------- */
+  var header = document.getElementById("siteHeader");
+  var onScroll = function(){ header.classList.toggle("is-stuck", window.scrollY > 8); };
+  onScroll();
+  window.addEventListener("scroll", onScroll, {passive:true});
+
+  /* ---------- mobile nav ---------- */
+  var toggle = document.getElementById("navToggle");
+  var menu = document.getElementById("navMenu");
+  var backdrop = document.getElementById("navBackdrop");
+  function openNav(){ toggle.setAttribute("aria-expanded","true"); toggle.setAttribute("aria-label","Close menu"); menu.classList.add("is-open"); backdrop.classList.add("is-open"); }
+  function closeNav(){ toggle.setAttribute("aria-expanded","false"); toggle.setAttribute("aria-label","Open menu"); menu.classList.remove("is-open"); backdrop.classList.remove("is-open"); }
+  toggle.addEventListener("click", function(){
+    (toggle.getAttribute("aria-expanded") === "true") ? closeNav() : openNav();
+  });
+  backdrop.addEventListener("click", closeNav);
+  document.addEventListener("keydown", function(e){ if(e.key === "Escape") closeNav(); });
+
+  /* ---------- alert dismiss ---------- */
+  var alertClose = document.getElementById("alertClose");
+  if(alertClose){ alertClose.addEventListener("click", function(){ document.getElementById("alert").classList.add("is-hidden"); }); }
+
+  /* ---------- FAQ accordion ---------- */
+  document.querySelectorAll(".faq__q").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var item = btn.closest(".faq__item");
+      var panel = item.querySelector(".faq__a");
+      var open = item.classList.toggle("is-open");
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
+      panel.style.maxHeight = open ? (panel.scrollHeight + "px") : "0px";
+    });
+  });
+
+  /* ---------- year ---------- */
+  var y = document.getElementById("year");
+  if(y) y.textContent = new Date().getFullYear();
+
+  /* ---------- back to top ---------- */
+  document.getElementById("toTop").addEventListener("click", function(){
+    window.scrollTo({top:0, behavior: reduce ? "auto" : "smooth"});
+  });
+
+  /* ---------- contact form -> mailto ---------- */
+  var form = document.getElementById("contactForm");
+  if(form){
+    var fName = document.getElementById("cname");
+    var fEmail = document.getElementById("cemail");
+    var fSubject = document.getElementById("csubject");
+    var fMessage = document.getElementById("cmessage");
+    var required = [fName, fEmail, fMessage];
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
+      var name = fName.value.trim();
+      var email = fEmail.value.trim();
+      var subject = fSubject.value.trim() || "Message from the town website";
+      var message = fMessage.value.trim();
+      if(!name || !email || !message){
+        required.forEach(function(f){ if(!f.value.trim()) f.style.borderColor = "#b04a3a"; });
+        return;
+      }
+      var body = message + "\n\n— " + name + "\n" + email;
+      var href = "mailto:clerk@townofsp.com?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+      window.location.href = href;
+      document.getElementById("formOk").classList.add("show");
+    });
+    required.forEach(function(f){
+      f.addEventListener("input", function(){ f.style.borderColor = ""; });
+    });
+  }
+
+  /* ---------- newsletters ---------- */
+  var NL_BASE = "https://www.townofsp.com/_files/ugd/52cef7_";
+  var MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  // year -> array of 12 (index 0 = Jan): PDF hash if published that month, else null
+  var NEWSLETTERS = {
+    2025: [null,"45f33ca2d419467a9e659db9e3f6ab28","21ad3514790a461e9c8ca49ecadd5d48","5e10037504db46358dfbcde1ed6ce708",null,"367151f1a6b94b539f0873d4dc388325",null,"5f4b67571c554003abb3f61a3dcdc260",null,"03c4fa149350436db8bc93a14cc29461",null,null],
+    2024: ["8a3168abf3c248f1ba1a79328b70a4bb","d4cfd40e807c432a934418fc253e0c8f","8ba70ee198c949e6948ebbaf8a799e69","a3bbd15912574b2eba4a0aff7f0dbf0c","31bc6524c17a415f9c7dc599acbd72e3","0fcb672581e64e5e967457cb4f15ad83","2aa846b1d8254979bf732813fdd502c4","f55e11e0e9d84ba4b962020935680153","24aa74b8c22041bba0daa9462fcf3562","c484dce4857a4cf5a210e4ba77c412cf","98a40047c0314680b403b833755499b4","b91639f285d34c2b84eae9c9d412b071"],
+    2023: ["94109519f90f4bacad6502d192ed03df","f7b848d9196a4b35ba49f03c511d86e6","16ec96646e0b4dcc99918b6b6149bef1","e008e4fd5d274b60b7253c7880bfa2a3","c57c26b719b34dc0bdf62a64adb2c9cd","dc27fee7d396498ab220836910faf256","62201c45fec84670b51c52cb0b760a97","dd813f361ff64fa99188abb84eeeb9a1","286fc8e2df2640fd84d7d387b349d367","915404087c1642c9bd5ed98711f8bfe5","ed61f8541d044750a399b6f478b9c492","4f13d3471cf54f82891bbacf00d35327"],
+    2022: [null,"b7971e7d8a0d4bffbbd6e92d00a74314","d361c8012bf04762af34a9aac8981919","c7c6abc73370421e9bf09c98e95192e4","678926c40af24262891274af0632e26d","98db4a1d8e9a4f05ae4d41b57726c11a","251abef36e2b4c52bfdc5a08f26020f8","9bfdbacf25a045d281571d9008e4d4ad","6e7712a33b6b40658d9bc14ac353fd3e","289ad32f506e4ac5bf8724d562e33676","3aa55ccc63054940914b643757f139ad",null],
+    2021: ["f05edfce153a4db38775b861507a253d","366922cee4944e7cb68a0a4cf4832613",null,"9ca42f0887614776b7920f8b5ee0fd5b","97441290fee74eb1bb942026cc769326","ec20406634f641c5bd897ce0fb7a2372","505ebd612cf047abbc5ecc743e96939e","14278a99d971469f9c78b3738f6a3a82","c7cf66172f334138971d4a29e804c4ef","b7313a7bb08b462eaed4cb372dd3cf73","bf05d473c3844e4bad8d373177827520","084e2376496047b19b26f6b5f6c96b1c"]
+  };
+
+  var nlBuilt = false;
+  function buildNewsletters(){
+    if(nlBuilt) return; nlBuilt = true;
+    var archive = document.getElementById("nlArchive");
+    if(!archive) return;
+    var years = Object.keys(NEWSLETTERS).map(Number).sort(function(a,b){return b-a;});
+    var latest = null;
+
+    var frag = document.createDocumentFragment();
+    years.forEach(function(yr){
+      var arr = NEWSLETTERS[yr];
+      var count = arr.filter(function(h){return !!h;}).length;
+
+      var block = document.createElement("div");
+      block.className = "nl-year";
+
+      var head = document.createElement("div");
+      head.className = "nl-year__head";
+      head.innerHTML = '<span class="nl-year__y">'+yr+'</span><span class="nl-year__c">'+count+' issue'+(count===1?"":"s")+'</span><span class="nl-year__line"></span>';
+      block.appendChild(head);
+
+      var grid = document.createElement("div");
+      grid.className = "nl-grid";
+
+      arr.forEach(function(hash, mi){
+        if(hash){
+          var a = document.createElement("a");
+          a.className = "nl-chip";
+          a.href = NL_BASE + hash + ".pdf";
+          a.target = "_blank"; a.rel = "noopener";
+          a.innerHTML = '<span class="nl-chip__m">'+MONTHS[mi]+' <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></span><span class="nl-chip__s">PDF</span>';
+          grid.appendChild(a);
+          if(!latest){ latest = {label: MONTHS[mi]+" "+yr, url: NL_BASE + hash + ".pdf"}; }
+        } else {
+          var s = document.createElement("span");
+          s.className = "nl-chip is-empty";
+          s.setAttribute("title","Not published");
+          s.innerHTML = '<span class="nl-chip__m">'+MONTHS[mi]+'</span><span class="nl-chip__s">—</span>';
+          grid.appendChild(s);
+        }
+      });
+
+      block.appendChild(grid);
+      frag.appendChild(block);
+    });
+
+    archive.appendChild(frag);
+
+    if(latest){
+      var f = document.getElementById("nlFeature");
+      document.getElementById("nlFeatureTitle").textContent = "South Prairie Newsletter · " + latest.label;
+      document.getElementById("nlFeatureLink").href = latest.url;
+      f.hidden = false;
+    }
+    observeAll(archive);
+    revealIn(document.getElementById("newsletters"));
+  }
+
+  /* ---------- init ---------- */
+  observeAll(document);
+  var initial = (location.hash || "").replace("#","");
+  showView(VIEWS.indexOf(initial) > -1 ? initial : "home", false);
+})();
+</script>
+</body>
+</html>

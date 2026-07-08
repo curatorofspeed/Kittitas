@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>City of Kittitas, Washington</title>
+<meta name="description" content="Official website for the City of Kittitas, Washington — a four-season railroad town in the Kittitas Valley, established 1883. Pay bills, find forms and permits, and follow the City Council.">
+<meta name="keywords" content="Kittitas, City of Kittitas, Kittitas Valley, Washington, city hall, utility payment, city council">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23204536'/%3E%3Cpath d='M14 42l10-16 7 10 5-7 14 13z' fill='%23D6A84A'/%3E%3Cpath d='M24 26l3.5 5-3 4.5-4-6z' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@600;700;800&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#17251d;
+    --pine:#204536;
+    --pine-deep:#16342a;
+    --pine-line:#2c5544;
+    --sky:#38678f;
+    --sky-deep:#2c5170;
+    --hay:#b8862e;
+    --hay-text:#8a6420;
+    --hay-bright:#d6a84a;
+    --hay-soft:#ecdcb4;
+    --paper:#f3f5f0;
+    --surface:#ffffff;
+    --line:#e2e5dd;
+    --line-soft:#eceee7;
+    --muted:#586159;
+    --shadow:0 1px 2px rgba(22,52,42,.05), 0 8px 24px rgba(22,52,42,.06);
+    --shadow-lift:0 2px 4px rgba(22,52,42,.06), 0 16px 40px rgba(22,52,42,.12);
+    --r:14px;
+    --r-sm:10px;
+    --maxw:1200px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Public Sans",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  h1,h2,h3,h4{font-family:"Bitter",Georgia,serif;line-height:1.15;margin:0;color:var(--pine);letter-spacing:-.01em}
+  a{color:var(--sky);text-decoration:none}
+  a:hover{color:var(--sky-deep)}
+  p{margin:0 0 1em}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .eyebrow{
+    font-family:"Public Sans",sans-serif;font-weight:700;font-size:.74rem;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--hay-text);margin:0 0 14px;
+    display:inline-flex;align-items:center;gap:10px;
+  }
+  .eyebrow::before{content:"";width:26px;height:2px;background:var(--hay-bright);display:inline-block}
+  .skip{position:absolute;left:-999px;top:0;background:var(--pine);color:#fff;padding:12px 18px;border-radius:0 0 8px 0;z-index:200}
+  .skip:focus{left:0}
+  :focus-visible{outline:3px solid var(--sky);outline-offset:2px;border-radius:4px}
+
+  /* buttons */
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:1rem;
+    padding:13px 22px;border-radius:var(--r-sm);border:1.5px solid transparent;cursor:pointer;
+    transition:transform .15s ease, background .15s ease, box-shadow .15s ease, border-color .15s ease;
+    line-height:1;white-space:nowrap;
+  }
+  .btn svg{width:17px;height:17px}
+  .btn-primary{background:var(--pine);color:#fff;box-shadow:0 6px 18px rgba(32,69,54,.22)}
+  .btn-primary:hover{background:var(--pine-deep);color:#fff;transform:translateY(-2px);box-shadow:0 10px 26px rgba(32,69,54,.28)}
+  .btn-ghost{background:transparent;color:var(--pine);border-color:var(--pine)}
+  .btn-ghost:hover{background:var(--pine);color:#fff;transform:translateY(-2px)}
+
+  /* ---------- utility bar ---------- */
+  .util{background:var(--pine-deep);color:#dfe8e2;font-size:.86rem}
+  .util .wrap{display:flex;align-items:center;gap:8px 22px;flex-wrap:wrap;min-height:42px;padding-top:7px;padding-bottom:7px}
+  .util a{color:#e9f1ec}
+  .util a:hover{color:#fff}
+  .util-item{display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
+  .util-item svg{width:14px;height:14px;opacity:.8;flex:none}
+  .util-sep{width:1px;height:15px;background:rgba(255,255,255,.16)}
+  .util-right{margin-left:auto;display:inline-flex;align-items:center;gap:18px}
+  .util-alert{color:var(--hay-bright);font-weight:600;display:inline-flex;align-items:center;gap:7px}
+  .util-alert:hover{color:#fff}
+
+  /* ---------- masthead ---------- */
+  .masthead{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:saturate(1.6) blur(10px);border-bottom:1px solid var(--line)}
+  .masthead .wrap{display:flex;align-items:center;gap:22px;min-height:78px}
+  .brand{display:inline-flex;align-items:center;gap:14px;color:var(--pine)}
+  .brand:hover{color:var(--pine)}
+  .brand svg{width:46px;height:46px;flex:none}
+  .brand-txt{display:flex;flex-direction:column;line-height:1.05}
+  .brand-txt b{font-family:"Bitter",serif;font-weight:800;font-size:1.28rem;letter-spacing:-.02em}
+  .brand-txt span{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--hay);font-weight:600}
+  .mainnav{margin-left:auto;display:flex;align-items:center;gap:2px}
+  .mainnav a{color:var(--ink);font-weight:500;font-size:.97rem;padding:9px 13px;border-radius:8px;transition:background .15s,color .15s}
+  .mainnav a:hover{background:var(--line-soft);color:var(--pine)}
+  .mainnav .nav-pay{margin-left:8px;background:var(--pine);color:#fff;padding:10px 18px}
+  .mainnav .nav-pay:hover{background:var(--pine-deep);color:#fff}
+  .navtoggle{display:none;margin-left:auto;background:none;border:1.5px solid var(--line);border-radius:9px;padding:9px 11px;cursor:pointer;color:var(--pine)}
+  .navtoggle svg{width:22px;height:22px;display:block}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;overflow:hidden;background:linear-gradient(180deg,#e6eef2 0%,#eef2ee 46%,var(--paper) 100%)}
+  .hero .wrap{position:relative;z-index:3;padding-top:76px;padding-bottom:220px}
+  .hero-inner{max-width:660px}
+  .hero h1{font-size:clamp(2.7rem,6vw,4.5rem);font-weight:800;letter-spacing:-.03em;margin:0 0 20px}
+  .hero h1 .sub{display:block;font-size:.34em;font-weight:600;letter-spacing:.02em;color:var(--sky-deep);margin-top:14px}
+  .hero p{font-size:1.16rem;color:#33413a;max-width:560px;margin:0 0 30px}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+  .ridge{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:auto;display:block;z-index:1}
+  .hero-load{opacity:0;transform:translateY(16px);animation:rise .9s cubic-bezier(.2,.7,.2,1) forwards}
+  .hero-load.d1{animation-delay:.06s}
+  .hero-load.d2{animation-delay:.16s}
+  .hero-load.d3{animation-delay:.26s}
+  @keyframes rise{to{opacity:1;transform:none}}
+  .ridge path{opacity:0;animation:fadein 1.1s ease .1s forwards}
+  @keyframes fadein{to{opacity:1}}
+  @media (prefers-reduced-motion:reduce){
+    .hero-load{animation:none;opacity:1;transform:none}
+    .ridge path{animation:none;opacity:1}
+  }
+
+  /* ---------- section frame ---------- */
+  .band{padding:76px 0}
+  .band-alt{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .band-head{max-width:640px;margin:0 0 40px}
+  .band-head h2{font-size:clamp(1.8rem,3.6vw,2.5rem);font-weight:700}
+  .band-head p{color:var(--muted);font-size:1.08rem;margin:14px 0 0}
+
+  /* ---------- quick services ---------- */
+  .tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .tile{
+    display:flex;flex-direction:column;gap:0;background:var(--surface);border:1px solid var(--line);
+    border-radius:var(--r);padding:26px 24px 24px;position:relative;overflow:hidden;
+    transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;box-shadow:var(--shadow);
+  }
+  .tile::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--hay-bright);transform:scaleY(0);transform-origin:top;transition:transform .2s ease}
+  .tile:hover{transform:translateY(-4px);box-shadow:var(--shadow-lift);border-color:#d5dbd1}
+  .tile:hover::before{transform:scaleY(1)}
+  .tile-ic{width:46px;height:46px;border-radius:12px;background:#eef3ee;color:var(--pine);display:grid;place-items:center;margin-bottom:18px}
+  .tile-ic svg{width:23px;height:23px}
+  .tile h3{font-size:1.24rem;font-weight:700;margin:0 0 6px}
+  .tile p{color:var(--muted);font-size:.96rem;margin:0}
+  .tile .go{margin-top:16px;color:var(--sky);font-weight:600;font-size:.94rem;display:inline-flex;align-items:center;gap:6px}
+  .tile .go svg{width:15px;height:15px;transition:transform .18s ease}
+  .tile:hover .go svg{transform:translateX(3px)}
+  .tile a.stretch{position:absolute;inset:0}
+
+  /* ---------- notices ---------- */
+  .notices{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .notice{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:26px;display:flex;flex-direction:column;box-shadow:var(--shadow);transition:transform .18s ease,box-shadow .18s ease}
+  .notice:hover{transform:translateY(-3px);box-shadow:var(--shadow-lift)}
+  .notice.feat{grid-column:span 2;background:linear-gradient(160deg,var(--pine) 0%,var(--pine-deep) 100%);border-color:var(--pine-deep);color:#eaf1ec}
+  .notice.feat h3,.notice.feat .tag{color:#fff}
+  .notice.feat a{color:var(--hay-bright)}
+  .notice.feat a:hover{color:#fff}
+  .notice.feat p{color:#cfdcd4}
+  .notice.feat strong{color:#fff}
+  .tag{display:inline-flex;align-items:center;gap:7px;align-self:flex-start;font-size:.72rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--hay-text);background:var(--hay-soft);padding:5px 11px;border-radius:99px;margin-bottom:16px}
+  .notice.feat .tag{background:rgba(255,255,255,.14);color:#fff}
+  .notice h3{font-size:1.3rem;font-weight:700;margin:0 0 10px}
+  .notice.feat h3{font-size:1.6rem}
+  .notice p{color:var(--muted);font-size:.98rem;margin:0 0 14px}
+  .notice .more{margin-top:auto;font-weight:600;display:inline-flex;align-items:center;gap:7px}
+  .notice .more svg{width:15px;height:15px}
+  .kbd{font-family:"Public Sans",monospace;font-weight:700;background:rgba(255,255,255,.16);padding:1px 8px;border-radius:6px;color:#fff}
+
+  /* ---------- info split ---------- */
+  .split{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:start}
+  .reslist{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:2px 34px}
+  .reslist a{display:flex;align-items:center;gap:12px;padding:13px 6px;color:var(--ink);font-weight:500;border-bottom:1px solid var(--line-soft);transition:color .15s,padding .15s}
+  .reslist a:hover{color:var(--pine);padding-left:12px}
+  .reslist a svg{width:16px;height:16px;color:var(--hay);flex:none}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden}
+  .card-top{background:var(--pine);color:#fff;padding:22px 26px;display:flex;align-items:center;gap:14px}
+  .card-top svg{width:26px;height:26px;flex:none;color:var(--hay-bright)}
+  .card-top h3{color:#fff;font-size:1.32rem;margin:0}
+  .card-body{padding:24px 26px}
+  .fact{display:flex;gap:14px;padding:12px 0;border-bottom:1px solid var(--line-soft)}
+  .fact:last-child{border-bottom:0}
+  .fact svg{width:19px;height:19px;color:var(--pine);flex:none;margin-top:3px}
+  .fact b{display:block;font-family:"Bitter",serif;font-size:.82rem;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:1px}
+  .fact span{color:var(--ink)}
+  .fact a{font-weight:600}
+  .mayor{background:#f7f9f5;border:1px solid var(--line);border-left:4px solid var(--hay-bright);border-radius:var(--r-sm);padding:22px 24px;margin-top:22px}
+  .mayor .q{font-family:"Bitter",serif;font-size:1.18rem;font-weight:600;color:var(--pine);line-height:1.4;margin:0 0 10px}
+  .mayor .by{font-size:.86rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;font-weight:600}
+  .mayor a{margin-left:8px}
+
+  /* ---------- support ---------- */
+  .support{background:var(--pine-deep);color:#dbe6df}
+  .support h2{color:#fff}
+  .support .band-head p{color:#aec4b8}
+  .support-grid{display:grid;grid-template-columns:2fr 1fr;gap:44px;align-items:start}
+  .chips{display:flex;flex-wrap:wrap;gap:12px}
+  .chip{display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:#eaf1ec;padding:11px 17px;border-radius:99px;font-weight:500;font-size:.96rem;transition:background .15s,border-color .15s,transform .15s}
+  .chip:hover{background:rgba(214,168,74,.16);border-color:var(--hay-bright);color:#fff;transform:translateY(-2px)}
+  .chip svg{width:15px;height:15px;color:var(--hay-bright)}
+  .crisis{background:linear-gradient(160deg,#8a2f2f,#6f2323);border:1px solid #6f2323;border-radius:var(--r);padding:26px}
+  .crisis .tag{background:rgba(255,255,255,.16);color:#fff}
+  .crisis h3{color:#fff;font-size:1.3rem;margin:0 0 8px}
+  .crisis p{color:#f3dede;font-size:.96rem;margin:0 0 14px}
+  .crisis a.call{display:inline-flex;align-items:center;gap:9px;background:#fff;color:#7a2626;font-weight:700;padding:11px 20px;border-radius:var(--r-sm)}
+  .crisis a.call:hover{background:#ffeaea}
+  .crisis a.call svg{width:17px;height:17px}
+
+  /* ---------- footer ---------- */
+  .foot{background:var(--pine);color:#c8d6cd;padding:60px 0 0}
+  .foot-top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;padding-bottom:46px;border-bottom:1px solid var(--pine-line)}
+  .foot-brand svg{width:52px;height:52px;margin-bottom:16px}
+  .foot-brand b{font-family:"Bitter",serif;font-weight:800;font-size:1.35rem;color:#fff;display:block;letter-spacing:-.02em}
+  .foot-brand p{color:#a9bcb0;font-size:.94rem;margin:10px 0 0;max-width:280px}
+  .foot-col{display:block}
+  .foot-col h4{color:#fff;font-family:"Bitter",serif;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;margin:0 0 16px;font-weight:700}
+  .foot-col a{display:block;color:#c8d6cd;padding:5px 0;font-size:.96rem;transition:color .15s,padding-left .15s}
+  .foot-col a:hover{color:#fff;padding-left:5px}
+  .foot-bar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;padding:22px 0;font-size:.86rem;color:#9db1a5}
+  .foot-bar a{color:#c8d6cd}
+  .foot-bar a:hover{color:var(--hay-bright)}
+  .foot-social{display:inline-flex;gap:10px}
+  .foot-social a{width:38px;height:38px;border:1px solid var(--pine-line);border-radius:9px;display:grid;place-items:center;color:#c8d6cd;padding:0}
+  .foot-social a:hover{background:var(--hay-bright);border-color:var(--hay-bright);color:var(--pine-deep)}
+  .foot-social svg{width:18px;height:18px}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:1000px){
+    .tiles,.notices{grid-template-columns:repeat(2,1fr)}
+    .notice.feat{grid-column:span 2}
+    .split{grid-template-columns:1fr;gap:40px}
+    .support-grid{grid-template-columns:1fr;gap:32px}
+    .foot-top{grid-template-columns:1fr 1fr;gap:32px}
+    .foot-brand{grid-column:span 2}
+  }
+  @media (max-width:760px){
+    body{font-size:16px}
+    .mainnav{
+      position:fixed;inset:78px 0 auto 0;flex-direction:column;align-items:stretch;gap:0;
+      background:var(--surface);border-bottom:1px solid var(--line);padding:10px 18px 18px;
+      box-shadow:0 20px 40px rgba(22,52,42,.14);
+      transform:translateY(-140%);transition:transform .28s cubic-bezier(.2,.7,.2,1);margin:0;
+    }
+    .mainnav.open{transform:translateY(0)}
+    .mainnav a{padding:13px 8px;border-bottom:1px solid var(--line-soft);font-size:1.02rem}
+    .mainnav .nav-pay{margin:12px 0 0;justify-content:center;border-radius:var(--r-sm)}
+    .navtoggle{display:inline-flex}
+    .util .wrap{gap:6px 14px}
+    .util-item.hide-sm,.util-sep.hide-sm{display:none}
+    .util-right{width:100%;margin:0;justify-content:space-between}
+    .hero .wrap{padding-top:52px;padding-bottom:150px}
+    .band{padding:56px 0}
+    .tiles,.notices{grid-template-columns:1fr}
+    .notice.feat{grid-column:span 1}
+    .reslist{grid-template-columns:1fr}
+    .foot-top{grid-template-columns:1fr 1fr}
+    .hero-cta .btn{flex:1;justify-content:center}
+  }
+  @media (max-width:440px){
+    .foot-top{grid-template-columns:1fr}
+    .foot-brand{grid-column:span 1}
+    .brand-txt b{font-size:1.12rem}
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+
+<!-- utility bar -->
+<div class="util">
+  <div class="wrap">
+    <span class="util-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:15099680220">(509)&nbsp;968-0220</a></span>
+    <span class="util-sep"></span>
+    <span class="util-item hide-sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Mon–Thu&nbsp;8 AM–6 PM</span>
+    <span class="util-sep hide-sm"></span>
+    <span class="util-item hide-sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>207 N. Main St, Kittitas</span>
+    <span class="util-right">
+      <a class="util-alert" href="#alerts"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>Text alerts</a>
+      <a href="employee_index.php" class="hide-sm">Staff login</a>
+    </span>
+  </div>
+</div>
+
+<!-- masthead -->
+<header class="masthead">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="City of Kittitas home">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="#204536"/><circle cx="32" cy="32" r="30" fill="none" stroke="#d6a84a" stroke-width="1.5"/><path d="M12 44l11-18 7 11 5-8 17 15z" fill="#d6a84a"/><path d="M23 26l3.6 5.5-3 4.5-4.2-6z" fill="#fff"/><circle cx="46" cy="20" r="4" fill="#eef3ee"/></svg>
+      <span class="brand-txt"><b>City of Kittitas</b><span>Washington</span></span>
+    </a>
+    <button class="navtoggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mainnav">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+    <nav class="mainnav" id="mainnav" aria-label="Primary">
+      <a href="government.html">Government</a>
+      <a href="departments.html">Departments</a>
+      <a href="business.html">Businesses</a>
+      <a href="community.html">Community</a>
+      <a href="council.html">City Council</a>
+      <a href="events.html">Events</a>
+      <a class="nav-pay" href="payment.html">Pay a bill</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <!-- hero -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-inner">
+        <p class="eyebrow hero-load">Kittitas Valley · Central Washington</p>
+        <h1 class="hero-load d1">City of Kittitas<span class="sub">A four-season railroad town, established 1883.</span></h1>
+        <p class="hero-load d2">Settled along the historic Milwaukee Road, Kittitas sits in the heart of the valley — crisp cold winters, warm dry summers, and the Stuart Range on the horizon. Come check us out.</p>
+        <div class="hero-cta hero-load d3">
+          <a class="btn btn-primary" href="payment.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>Pay a utility bill</a>
+          <a class="btn btn-ghost" href="council.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V8l7-5 7 5v13"/><path d="M9 21v-6h6v6"/></svg>Council &amp; agendas</a>
+        </div>
+      </div>
+    </div>
+    <!-- ridgeline signature -->
+    <svg class="ridge" viewBox="0 0 1440 300" fill="none" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+      <path d="M0,205 L120,168 L240,196 L360,112 L442,82 L520,142 L640,104 L760,162 L880,122 L1000,182 L1120,132 L1240,192 L1360,150 L1440,182 L1440,300 L0,300 Z" fill="#cdd9cf"/>
+      <path d="M360,112 L392,155 L336,155 Z" fill="#f2f6f2"/>
+      <path d="M442,82 L480,133 L406,133 Z" fill="#f2f6f2"/>
+      <path d="M0,250 L160,214 L300,244 L442,184 L560,224 L700,176 L840,236 L980,196 L1120,244 L1280,206 L1440,244 L1440,300 L0,300 Z" fill="#7f9c86"/>
+      <path d="M0,286 L200,270 L400,285 L620,266 L820,286 L1040,268 L1260,286 L1440,272 L1440,300 L0,300 Z" fill="#204536"/>
+    </svg>
+  </section>
+
+  <!-- quick services -->
+  <section class="band" aria-labelledby="svc-h">
+    <div class="wrap">
+      <div class="band-head">
+        <p class="eyebrow">City services</p>
+        <h2 id="svc-h">Get what you need, fast</h2>
+        <p>The most-used services for residents and businesses — a click away, no runaround.</p>
+      </div>
+      <div class="tiles">
+        <div class="tile">
+          <div class="tile-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></svg></div>
+          <h3>Pay a bill</h3>
+          <p>Utilities and online payments for your household or business.</p>
+          <span class="go">Go to payments <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          <a class="stretch" href="payment.html" aria-label="Pay a bill"></a>
+        </div>
+        <div class="tile">
+          <div class="tile-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h4"/></svg></div>
+          <h3>Forms &amp; permits</h3>
+          <p>Applications, documents, and permits for the City of Kittitas.</p>
+          <span class="go">Browse forms <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          <a class="stretch" href="forms.html" aria-label="Forms and permits"></a>
+        </div>
+        <div class="tile">
+          <div class="tile-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V8l7-5 7 5v13"/><path d="M9 21v-6h6v6"/></svg></div>
+          <h3>City Council</h3>
+          <p>Members, agendas, and minutes. Meets the 2nd &amp; 4th Tuesday at 6 PM.</p>
+          <span class="go">See the council <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          <a class="stretch" href="council.html" aria-label="City Council"></a>
+        </div>
+        <div class="tile">
+          <div class="tile-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg></div>
+          <h3>Public Works</h3>
+          <p>Water, wastewater treatment, streets, and utility services.</p>
+          <span class="go">Public Works <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          <a class="stretch" href="public_works.html" aria-label="Public Works"></a>
+        </div>
+        <div class="tile">
+          <div class="tile-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></div>
+          <h3>Employment</h3>
+          <p>Current job openings and how to apply with the city.</p>
+          <span class="go">View openings <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          <a class="stretch" href="employment.html" aria-label="Employment opportunities"></a>
+        </div>
+        <div class="tile">
+          <div class="tile-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v12H5.2L4 17.2z"/><path d="M8 9h8M8 12h5"/></svg></div>
+          <h3>Contact City Hall</h3>
+          <p>Questions? Reach the front office, Monday through Thursday.</p>
+          <span class="go">Send a message <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          <a class="stretch" href="mailto:Brandy.Harris@cityofkittitas.com" aria-label="Contact City Hall"></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- notices / news -->
+  <section class="band band-alt" id="alerts" aria-labelledby="news-h">
+    <div class="wrap">
+      <div class="band-head">
+        <p class="eyebrow">In the news</p>
+        <h2 id="news-h">Notices &amp; announcements</h2>
+        <p>What's happening around town — surveys, services, and public meetings.</p>
+      </div>
+      <div class="notices">
+        <article class="notice feat">
+          <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>New service</span>
+          <h3>Sign up for city text alerts</h3>
+          <p>The City of Kittitas is launching an improved text alert system for local emergencies, utility disruptions, and community updates. Your first message may come from <span class="kbd">91896</span> — that's us. Opt out anytime by texting <span class="kbd">STOP</span>. Message rates may apply.</p>
+          <p>Questions? Call the office Mon–Thu, 8 AM–6 PM at (509)&nbsp;968-0220.</p>
+          <a class="more" href="tel:15099680220">Call to learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </article>
+        <article class="notice">
+          <span class="tag">Public survey</span>
+          <h3>Water Service Line Inventory</h3>
+          <p>Help the city complete its Lead Service Line Inventory by filling out the customer survey form.</p>
+          <a class="more" href="docs/331-746 LSI customer survey.docx">Download the survey <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 3v12M7 11l5 5 5-5M5 21h14"/></svg></a>
+        </article>
+        <article class="notice">
+          <span class="tag">Get involved</span>
+          <h3>Comprehensive Plan survey</h3>
+          <p>Review information on the city's Comprehensive Plan and share your input on Kittitas's future.</p>
+          <a class="more" href="comprehensive_survey.html">Read &amp; take the survey <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </article>
+        <article class="notice">
+          <span class="tag">For business</span>
+          <h3>Business license renewals</h3>
+          <p>Renew your Kittitas city business license through Washington's one-stop Business Licensing Service.</p>
+          <a class="more" href="https://dor.wa.gov/manage-business/city-license-endorsements/kittitas" target="_blank" rel="noopener">Renew through BLS <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+        </article>
+        <article class="notice">
+          <span class="tag">Public meeting</span>
+          <h3>Council meetings</h3>
+          <p>The City Council meets the 2nd and 4th Tuesday of each month at 6:00 PM. The public is invited to attend.</p>
+          <a class="more" href="https://www.towncloud.io/go/kittitas-wa/" target="_blank" rel="noopener">View the agenda <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- resources + city hall -->
+  <section class="band" aria-labelledby="res-h">
+    <div class="wrap">
+      <div class="split">
+        <div>
+          <p class="eyebrow">Useful resources</p>
+          <h2 id="res-h" style="font-size:clamp(1.8rem,3.6vw,2.5rem);margin-bottom:26px">Documents &amp; departments</h2>
+          <ul class="reslist">
+            <li><a href="faqs.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.4 2.3c-.8.4-1.4 1-1.4 1.9v.3"/><circle cx="12" cy="17" r="1" fill="currentColor" stroke="none"/></svg>Frequently Asked Questions</a></li>
+            <li><a href="minutes.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>Council Meeting Minutes</a></li>
+            <li><a href="code.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6l9-4 9 4M4 10v8l8 4 8-4v-8M12 6v16"/></svg>Municipal Code</a></li>
+            <li><a href="staff_directory.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0M16 6a3 3 0 0 1 0 6M18 20a6 6 0 0 0-3-5"/></svg>Staff Directory</a></li>
+            <li><a href="police.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V5z"/></svg>Police &amp; Emergency Services</a></li>
+            <li><a href="https://www.co.kittitas.wa.us/public-works/flood/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 14c2 0 2 1.5 4.5 1.5S10 14 12 14s2 1.5 4.5 1.5S19 14 21 14M3 18c2 0 2 1.5 4.5 1.5S10 18 12 18s2 1.5 4.5 1.5S19 18 21 18M8 10l4-7 4 7"/></svg>Flood Information</a></li>
+            <li><a href="public_works.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg>Public Works / Wastewater</a></li>
+            <li><a href="https://forecast7.com/en/46d98n120d42/kittitas/?unit=us" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="9" r="3.5"/><path d="M12 2v2M12 14v2M5 9H3M21 9h-2M6 3l1.4 1.4M16.6 4.4L18 3M6 15l1.4-1.4"/></svg>Local Forecast</a></li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-5h6v5M9 11h.01M15 11h.01"/></svg>
+            <h3>City Hall</h3>
+          </div>
+          <div class="card-body">
+            <div class="fact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span><b>Address</b>207 N. Main Street · PO Box 719<br>Kittitas, WA 98934 · <a href="https://maps.google.com/?q=207+N+Main+St+Kittitas+WA" target="_blank" rel="noopener">Map</a></span></div>
+            <div class="fact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.8 19.8 0 0 1 3 5.18 2 2 0 0 1 5 3h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span><b>Phone</b><a href="tel:15099680220">(509) 968-0220</a></span></div>
+            <div class="fact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M4 7l8 6 8-6"/></svg><span><b>Email</b><a href="mailto:Brandy.Harris@cityofkittitas.com">Brandy.Harris@cityofkittitas.com</a></span></div>
+            <div class="fact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span><b>Office hours</b>Monday–Thursday, 8 AM–6 PM<br><span style="color:var(--muted)">Closed Fridays</span></span></div>
+            <div class="fact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span><b>Council meets</b>2nd &amp; 4th Tuesday · 6:00 PM<br><span style="color:var(--muted)">Public welcome</span></span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mayor">
+        <p class="q">"I'd like to personally welcome you to the City of Kittitas."</p>
+        <span class="by">From the Mayor's Desk <a href="mayors_corner.html">Read more →</a></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- community support -->
+  <section class="band support" aria-labelledby="sup-h">
+    <div class="wrap">
+      <div class="band-head">
+        <p class="eyebrow">Community</p>
+        <h2 id="sup-h">Local support &amp; resources</h2>
+        <p>Help and services for neighbors across Kittitas and the surrounding county.</p>
+      </div>
+      <div class="support-grid">
+        <div class="chips">
+          <a class="chip" href="http://www.kittitascountyaa.org/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>Alcoholics Anonymous</a>
+          <a class="chip" href="http://carenetellensburg.org/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8z"/></svg>Care Net</a>
+          <a class="chip" href="http://kvfish.org/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12s3-5 9-5 9 5 9 5-3 5-9 5-9-5-9-5z"/><circle cx="15" cy="12" r="1" fill="currentColor" stroke="none"/></svg>F.I.S.H. Food Bank</a>
+          <a class="chip" href="http://www.hopesource.us/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a7 7 0 0 0-4 12.7V19h8v-4.3A7 7 0 0 0 12 2zM9 22h6"/></svg>HopeSource</a>
+          <a class="chip" href="docs/ASPEN.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>Aspen</a>
+          <a class="chip" href="https://www.co.kittitas.wa.us/health/default.aspx" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4v16M4 12h16"/><circle cx="12" cy="12" r="9"/></svg>County Public Health</a>
+          <a class="chip" href="https://www.co.kittitas.wa.us/health/resources.aspx" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>More county resources</a>
+        </div>
+        <div class="crisis">
+          <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9L1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>Crisis support</span>
+          <h3>You're not alone</h3>
+          <p>If you or someone you know is struggling, help is available 24/7. Call or text the Suicide &amp; Crisis Lifeline.</p>
+          <a class="call" href="tel:988"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.8 19.8 0 0 1 3 5.18 2 2 0 0 1 5 3h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call or text 988</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- footer -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="#16342a"/><circle cx="32" cy="32" r="30" fill="none" stroke="#d6a84a" stroke-width="1.5"/><path d="M12 44l11-18 7 11 5-8 17 15z" fill="#d6a84a"/><path d="M23 26l3.6 5.5-3 4.5-4.2-6z" fill="#fff"/><circle cx="46" cy="20" r="4" fill="#eef3ee"/></svg>
+        <b>City of Kittitas</b>
+        <p>Established 1883 in the heart of the Kittitas Valley, Central Washington. 207 N. Main Street, Kittitas, WA 98934.</p>
+      </div>
+      <div class="foot-col">
+        <h4>City</h4>
+        <a href="index.html">Home</a>
+        <a href="government.html">Government</a>
+        <a href="departments.html">Departments</a>
+        <a href="council.html">City Council</a>
+        <a href="events.html">Events Calendar</a>
+      </div>
+      <div class="foot-col">
+        <h4>Residents</h4>
+        <a href="payment.html">Pay a bill</a>
+        <a href="forms.html">Forms &amp; permits</a>
+        <a href="code.html">Municipal Code</a>
+        <a href="employment.html">Employment</a>
+        <a href="business.html">Businesses</a>
+      </div>
+      <div class="foot-col">
+        <h4>Community</h4>
+        <a href="community.html">Community</a>
+        <a href="churches.html">Churches</a>
+        <a href="http://www.ksd403.org/" target="_blank" rel="noopener">Schools</a>
+        <a href="https://www.facebook.com/kittitaslibrary/" target="_blank" rel="noopener">Library</a>
+        <a href="mailto:Brandy.Harris@cityofkittitas.com">Contact</a>
+      </div>
+    </div>
+    <div class="foot-bar">
+      <span>© 2026 City of Kittitas, Washington · <a href="employee_index.php">Staff login</a></span>
+      <span class="foot-social">
+        <a href="https://www.facebook.com/City-of-Kittitas-493869294038555" target="_blank" rel="noopener" aria-label="City of Kittitas on Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H7v3h3v6h3v-6h3l1-3h-4v-2c0-.6.4-1 1-1z"/></svg></a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var t = document.getElementById('navToggle');
+    var n = document.getElementById('mainnav');
+    if(!t||!n) return;
+    t.addEventListener('click', function(){
+      var open = n.classList.toggle('open');
+      t.setAttribute('aria-expanded', open ? 'true' : 'false');
+      t.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    });
+    // close menu after tapping a link (mobile)
+    n.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){
+        if(n.classList.contains('open')){
+          n.classList.remove('open');
+          t.setAttribute('aria-expanded','false');
+          t.setAttribute('aria-label','Open menu');
+        }
+      });
+    });
+  })();
+</script>
+</body>
+</html>

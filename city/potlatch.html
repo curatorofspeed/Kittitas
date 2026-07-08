@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>City of Potlatch, Idaho</title>
+<meta name="description" content="Official website of the City of Potlatch, Idaho — a historic white-pine town on the Palouse. Pay your utility bill, view council agendas, apply for permits, and stay connected with your community." />
+<meta name="theme-color" content="#1e3a29" />
+<link rel="canonical" href="https://www.cityofpotlatch.org/" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="City of Potlatch, Idaho" />
+<meta property="og:description" content="Rooted in history, united in community. Pay your bill, view agendas, apply for permits, and stay connected." />
+<meta property="og:url" content="https://www.cityofpotlatch.org/" />
+<meta property="og:site_name" content="City of Potlatch, Idaho" />
+
+<!-- Favicon: white-pine conifer -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231e3a29'/%3E%3Cpath d='M16 5l6 9h-3l4 6h-4l3 5H10l3-5H9l4-6h-3z' fill='%23cf9a34'/%3E%3Crect x='14.6' y='24' width='2.8' height='4' fill='%23cf9a34'/%3E%3C/svg%3E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Zilla+Slab:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+  :root{
+    --pine:#1e3a29;
+    --pine-2:#16291d;
+    --pine-3:#0f1f16;
+    --pine-line:#31543f;
+    --wheat:#cf9a34;
+    --wheat-2:#e7b955;
+    --bark:#6f4d31;
+    --loess:#f2eee1;
+    --paper:#fbf9f2;
+    --sage:#e2e8df;
+    --ink:#20201a;
+    --ink-2:#57564a;
+    --line:#e2dbc9;
+    --line-2:#d3cbb4;
+    --ok:#2f6b47;
+
+    --wrap:1160px;
+    --gutter:clamp(20px, 5vw, 56px);
+    --r-sm:10px;
+    --r:16px;
+    --r-lg:22px;
+    --shadow-sm:0 1px 2px rgba(20,30,22,.05), 0 2px 6px rgba(20,30,22,.05);
+    --shadow:0 12px 34px -18px rgba(15,31,22,.35);
+    --shadow-lg:0 30px 60px -28px rgba(15,31,22,.45);
+    --ease:cubic-bezier(.2,.7,.2,1);
+
+    --fs-display:clamp(2.7rem, 7vw, 5.1rem);
+    --fs-h2:clamp(1.7rem, 3.4vw, 2.5rem);
+    --fs-h3:clamp(1.15rem, 1.6vw, 1.35rem);
+    --fs-eyebrow:.74rem;
+  }
+
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  html{-webkit-text-size-adjust:100%}
+
+  body{
+    margin:0;
+    background:var(--loess);
+    color:var(--ink);
+    font-family:"Public Sans", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    font-size:1.02rem;
+    line-height:1.62;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    overflow-x:hidden;
+  }
+
+  h1,h2,h3,h4{font-family:"Zilla Slab", Georgia, serif; line-height:1.06; margin:0; letter-spacing:-.01em; color:var(--pine)}
+  a{color:inherit; text-decoration:none}
+  img,svg{display:block; max-width:100%}
+  button{font:inherit; cursor:pointer; border:none; background:none; color:inherit}
+
+  .wrap{max-width:var(--wrap); margin-inline:auto; padding-inline:var(--gutter)}
+
+  .eyebrow{
+    font-family:"Public Sans"; font-weight:700; font-size:var(--fs-eyebrow);
+    letter-spacing:.18em; text-transform:uppercase; color:var(--bark);
+    display:inline-flex; align-items:center; gap:.6em; margin:0 0 .9rem;
+  }
+  .eyebrow::before{content:""; width:26px; height:2px; background:var(--wheat); display:inline-block}
+  .eyebrow.on-dark{color:var(--wheat-2)}
+  .eyebrow.on-dark::before{background:var(--wheat)}
+
+  :where(a,button,input,summary,[tabindex]):focus-visible{
+    outline:3px solid var(--wheat); outline-offset:3px; border-radius:6px;
+  }
+
+  .skip{
+    position:absolute; left:12px; top:-60px; z-index:200;
+    background:var(--pine); color:#fff; padding:.7rem 1.1rem; border-radius:8px;
+    font-weight:600; transition:top .18s var(--ease);
+  }
+  .skip:focus{top:12px}
+
+  /* ---------- Alert bar ---------- */
+  .alert{
+    background:var(--wheat); color:#3a2b08;
+    font-weight:600; font-size:.92rem;
+  }
+  .alert .wrap{display:flex; align-items:center; gap:1rem; padding-top:.6rem; padding-bottom:.6rem}
+  .alert__dot{width:9px; height:9px; border-radius:50%; background:#3a2b08; flex:none;
+    box-shadow:0 0 0 0 rgba(58,43,8,.5); animation:pulse 2.4s var(--ease) infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(58,43,8,.45)}70%{box-shadow:0 0 0 8px rgba(58,43,8,0)}100%{box-shadow:0 0 0 0 rgba(58,43,8,0)}}
+  @media (prefers-reduced-motion:reduce){.alert__dot{animation:none}}
+  .alert p{margin:0; flex:1 1 auto}
+  .alert a{text-decoration:underline; text-underline-offset:3px; white-space:nowrap; font-weight:700}
+  .alert__x{flex:none; width:32px; height:32px; border-radius:8px; display:grid; place-items:center; color:#3a2b08}
+  .alert__x:hover{background:rgba(58,43,8,.12)}
+
+  /* ---------- Header ---------- */
+  header.site{
+    position:sticky; top:0; z-index:100;
+    background:color-mix(in srgb, var(--loess) 88%, transparent);
+    backdrop-filter:saturate(1.3) blur(10px);
+    -webkit-backdrop-filter:saturate(1.3) blur(10px);
+    border-bottom:1px solid transparent;
+    transition:border-color .25s var(--ease), box-shadow .25s var(--ease), background .25s var(--ease);
+  }
+  header.site.scrolled{border-color:var(--line); box-shadow:0 6px 20px -16px rgba(15,31,22,.5)}
+  .bar{display:flex; align-items:center; justify-content:space-between; gap:1rem; height:76px}
+
+  .brand{display:flex; align-items:center; gap:.7rem}
+  .brand__mark{width:40px; height:40px; flex:none; border-radius:10px; background:var(--pine); display:grid; place-items:center}
+  .brand__mark svg{width:24px; height:24px}
+  .brand__name{display:flex; flex-direction:column; line-height:1}
+  .brand__name b{font-family:"Zilla Slab"; font-weight:700; font-size:1.16rem; color:var(--pine); letter-spacing:-.01em}
+  .brand__name span{font-size:.66rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--bark); margin-top:.2rem}
+
+  nav.primary{display:flex; align-items:center; gap:.15rem}
+  nav.primary a{
+    padding:.55rem .8rem; border-radius:9px; font-weight:600; font-size:.95rem; color:var(--ink);
+    position:relative; transition:color .18s var(--ease), background .18s var(--ease);
+  }
+  nav.primary a:hover{background:rgba(30,58,41,.07); color:var(--pine)}
+  .header__cta{
+    margin-left:.4rem; display:inline-flex; align-items:center; gap:.5rem;
+    background:var(--pine); color:#fff !important; padding:.62rem 1.05rem !important; border-radius:10px;
+    font-weight:700; box-shadow:var(--shadow-sm); transition:transform .18s var(--ease), background .18s var(--ease)}
+  .header__cta:hover{background:var(--pine-2) !important; transform:translateY(-1px)}
+  .header__cta svg{width:16px; height:16px}
+
+  .navtoggle{display:none; width:46px; height:46px; border-radius:11px; border:1px solid var(--line-2);
+    background:var(--paper); place-items:center}
+  .navtoggle svg{width:24px; height:24px; color:var(--pine)}
+
+  /* ---------- Hero ---------- */
+  .hero{position:relative; background:linear-gradient(180deg,#122720 0%, var(--pine-2) 46%, #22402d 100%); color:#f4f0e6; overflow:hidden; isolation:isolate}
+  .hero__sky{position:absolute; inset:0; z-index:-2; overflow:hidden}
+  .hero__sun{position:absolute; left:50%; bottom:20%; width:min(78vw,720px); aspect-ratio:1; transform:translateX(-50%);
+    background:radial-gradient(circle at center, rgba(231,185,85,.5), rgba(231,185,85,.14) 42%, transparent 66%);
+    filter:blur(2px)}
+  .hero__hills{position:absolute; left:0; right:0; bottom:-1px; z-index:-1; width:100%; height:min(46vh,340px)}
+  .hero__hills svg{width:100%; height:100%}
+
+  .hero__inner{padding-top:clamp(3.4rem,8vw,6.2rem); padding-bottom:clamp(9rem,20vw,13rem); position:relative; max-width:860px}
+  .locator{display:inline-flex; align-items:center; gap:.6rem; flex-wrap:wrap;
+    font-size:.78rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--wheat-2); margin-bottom:1.4rem}
+  .locator span{opacity:.5}
+  h1.hero__title{color:#fff; font-size:var(--fs-display); font-weight:700; letter-spacing:-.02em}
+  h1.hero__title em{font-style:normal; color:var(--wheat-2); display:block}
+  .hero__lede{font-size:clamp(1.08rem,1.9vw,1.32rem); max-width:33ch; margin:1.4rem 0 2.1rem; color:#e6e1d3; line-height:1.5}
+
+  .hero__cta{display:flex; flex-wrap:wrap; gap:.8rem}
+  .btn{display:inline-flex; align-items:center; gap:.6rem; font-weight:700; padding:.9rem 1.35rem; border-radius:12px;
+    transition:transform .18s var(--ease), background .18s var(--ease), box-shadow .18s var(--ease); font-size:1rem}
+  .btn svg{width:18px; height:18px}
+  .btn--gold{background:var(--wheat); color:#3a2b08; box-shadow:0 14px 30px -14px rgba(207,154,52,.7)}
+  .btn--gold:hover{background:var(--wheat-2); transform:translateY(-2px)}
+  .btn--ghost{background:rgba(255,255,255,.08); color:#fff; border:1px solid rgba(255,255,255,.28)}
+  .btn--ghost:hover{background:rgba(255,255,255,.16); transform:translateY(-2px)}
+
+  /* ---------- Section scaffolding ---------- */
+  .section{padding-block:clamp(3.6rem,7vw,6rem)}
+  .section--tight{padding-block:clamp(2.6rem,5vw,4rem)}
+  .section-head{max-width:640px; margin-bottom:2.4rem}
+  .section-head h2{font-size:var(--fs-h2); font-weight:700}
+  .section-head p{margin:.9rem 0 0; color:var(--ink-2); font-size:1.06rem}
+
+  /* Services (task tiles) — pulled up over the hero */
+  .services{position:relative; margin-top:clamp(-6rem,-9vw,-4.5rem); z-index:5}
+  .tiles{display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(.7rem,1.4vw,1rem)}
+  .tile{
+    background:var(--paper); border:1px solid var(--line); border-radius:var(--r);
+    padding:1.25rem 1.15rem 1.15rem; display:flex; flex-direction:column; gap:.75rem; min-height:148px;
+    box-shadow:var(--shadow); transition:transform .2s var(--ease), box-shadow .2s var(--ease), border-color .2s var(--ease);
+  }
+  .tile:hover{transform:translateY(-4px); box-shadow:var(--shadow-lg); border-color:var(--line-2)}
+  .tile__ico{width:44px; height:44px; border-radius:12px; background:rgba(30,58,41,.08); color:var(--pine); display:grid; place-items:center; flex:none}
+  .tile__ico svg{width:23px; height:23px}
+  .tile b{font-family:"Zilla Slab"; font-weight:600; font-size:1.12rem; color:var(--pine); line-height:1.12}
+  .tile small{color:var(--ink-2); font-size:.86rem; line-height:1.4; margin-top:-.35rem}
+  .tile .go{margin-top:auto; display:inline-flex; align-items:center; gap:.35rem; color:var(--bark); font-weight:700; font-size:.85rem}
+  .tile .go svg{width:15px; height:15px; transition:transform .2s var(--ease)}
+  .tile:hover .go svg{transform:translateX(3px)}
+  .tile--feature{background:var(--pine); border-color:var(--pine)}
+  .tile--feature b, .tile--feature .go{color:#fff}
+  .tile--feature small{color:rgba(255,255,255,.72)}
+  .tile--feature .tile__ico{background:rgba(255,255,255,.12); color:var(--wheat-2)}
+  .tile--feature .go{color:var(--wheat-2)}
+
+  /* Events */
+  .events-grid{display:grid; grid-template-columns:1.15fr .85fr; gap:1.1rem}
+  .event-hero{
+    position:relative; overflow:hidden; border-radius:var(--r-lg); color:#fff;
+    background:linear-gradient(135deg,#20402c, #16291d); padding:clamp(1.8rem,3.5vw,2.6rem);
+    display:flex; flex-direction:column; justify-content:flex-end; min-height:300px; isolation:isolate;
+  }
+  .event-hero::after{content:""; position:absolute; inset:0; z-index:-1;
+    background:radial-gradient(120% 80% at 85% 15%, rgba(207,154,52,.32), transparent 55%)}
+  .event-hero .tag{align-self:flex-start; background:var(--wheat); color:#3a2b08; font-weight:700; font-size:.76rem;
+    letter-spacing:.1em; text-transform:uppercase; padding:.4rem .75rem; border-radius:999px; margin-bottom:1rem}
+  .event-hero h3{color:#fff; font-size:clamp(2rem,4.5vw,3rem); font-weight:700; margin-bottom:.3rem}
+  .event-hero .when{color:var(--wheat-2); font-weight:700; font-size:1.05rem; letter-spacing:.02em}
+  .event-hero p{color:#e6e1d3; margin:.9rem 0 1.4rem; max-width:44ch}
+  .event-side{display:flex; flex-direction:column; gap:1.1rem}
+  .mini-event{background:var(--paper); border:1px solid var(--line); border-radius:var(--r); padding:1.25rem 1.35rem; display:flex; gap:1rem; box-shadow:var(--shadow-sm); align-items:flex-start}
+  .datechip{flex:none; width:58px; text-align:center; border-radius:12px; overflow:hidden; border:1px solid var(--line-2); background:var(--loess)}
+  .datechip .m{background:var(--pine); color:#fff; font-size:.66rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; padding:.2rem 0}
+  .datechip .d{font-family:"Zilla Slab"; font-weight:700; font-size:1.5rem; color:var(--pine); padding:.15rem 0 .25rem}
+  .mini-event b{font-family:"Zilla Slab"; font-size:1.1rem; color:var(--pine); font-weight:600; display:block; line-height:1.15}
+  .mini-event small{color:var(--ink-2); font-size:.88rem}
+
+  /* About + City Hall */
+  .split{display:grid; grid-template-columns:1.25fr .9fr; gap:clamp(1.4rem,3vw,2.6rem); align-items:start}
+  .prose p{margin:0 0 1rem; color:#33322a; font-size:1.08rem}
+  .prose p:last-child{margin-bottom:0}
+  .pull{font-family:"Zilla Slab"; font-size:clamp(1.3rem,2.4vw,1.75rem); font-weight:500; color:var(--pine); line-height:1.25;
+    border-left:4px solid var(--wheat); padding-left:1.15rem; margin:1.8rem 0}
+  .fact-strip{display:flex; gap:1.6rem; flex-wrap:wrap; margin-top:1.9rem; padding-top:1.6rem; border-top:1px solid var(--line)}
+  .fact b{font-family:"Zilla Slab"; font-size:1.7rem; color:var(--pine); font-weight:700; display:block; line-height:1}
+  .fact span{font-size:.82rem; color:var(--ink-2); font-weight:600; letter-spacing:.02em}
+
+  .hallcard{background:var(--pine); color:#f0ede2; border-radius:var(--r-lg); padding:clamp(1.6rem,3vw,2rem); box-shadow:var(--shadow); position:relative; overflow:hidden}
+  .hallcard::before{content:""; position:absolute; right:-40px; top:-40px; width:160px; height:160px; border-radius:50%;
+    background:radial-gradient(circle,rgba(207,154,52,.25),transparent 70%)}
+  .hallcard h3{color:#fff; font-size:1.5rem; font-weight:700; margin-bottom:.3rem}
+  .hallcard .sub{color:var(--wheat-2); font-weight:700; font-size:.78rem; letter-spacing:.14em; text-transform:uppercase; margin-bottom:1.4rem}
+  .hallrow{display:flex; gap:.85rem; padding:.7rem 0; border-top:1px solid var(--pine-line); align-items:flex-start}
+  .hallrow:first-of-type{border-top:none}
+  .hallrow svg{width:20px; height:20px; color:var(--wheat-2); flex:none; margin-top:.15rem}
+  .hallrow a, .hallrow span{color:#f0ede2; font-size:.98rem}
+  .hallrow a:hover{color:#fff; text-decoration:underline; text-underline-offset:3px}
+  .hallrow .lab{display:block; font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; color:rgba(240,237,226,.55); font-weight:700; margin-bottom:.1rem}
+  .hallcard .btn{margin-top:1.4rem; width:100%; justify-content:center}
+
+  /* Government index */
+  .gov{background:var(--paper); border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
+  .gov-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:.4rem 2.4rem}
+  .gov-col h4{font-size:.76rem; letter-spacing:.14em; text-transform:uppercase; color:var(--bark); margin:1.4rem 0 .4rem; padding-bottom:.5rem; border-bottom:1px solid var(--line)}
+  .gov-col:nth-child(-n+3) h4{margin-top:0}
+  .gov-link{display:flex; align-items:center; justify-content:space-between; gap:.5rem; padding:.62rem .1rem; border-bottom:1px solid var(--line);
+    color:var(--ink); font-weight:500; transition:color .16s var(--ease), padding .16s var(--ease)}
+  .gov-link:last-child{border-bottom:none}
+  .gov-link svg{width:16px; height:16px; color:var(--line-2); flex:none; transition:transform .18s var(--ease), color .18s var(--ease)}
+  .gov-link:hover{color:var(--pine); padding-left:.35rem}
+  .gov-link:hover svg{color:var(--wheat); transform:translateX(2px)}
+
+  /* News / newsletters */
+  .news-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:1.1rem}
+  .news-card{background:var(--paper); border:1px solid var(--line); border-radius:var(--r-lg); padding:clamp(1.5rem,3vw,2rem); box-shadow:var(--shadow-sm);
+    display:flex; flex-direction:column; transition:transform .2s var(--ease), box-shadow .2s var(--ease)}
+  .news-card:hover{transform:translateY(-3px); box-shadow:var(--shadow)}
+  .news-card .kicker{display:inline-flex; align-items:center; gap:.5rem; font-weight:700; font-size:.74rem; letter-spacing:.12em; text-transform:uppercase; color:var(--bark); margin-bottom:.9rem}
+  .news-card .kicker svg{width:16px; height:16px; color:var(--wheat)}
+  .news-card h3{font-size:1.35rem; font-weight:700; margin-bottom:.6rem}
+  .news-card p{color:var(--ink-2); font-size:.98rem; margin:0 0 1.3rem}
+  .news-card .btn{margin-top:auto; align-self:flex-start; background:var(--loess); color:var(--pine); border:1px solid var(--line-2)}
+  .news-card .btn:hover{background:#fff; transform:translateY(-2px)}
+
+  /* Visit / RV park */
+  .visit{position:relative; background:linear-gradient(160deg,#16291d, var(--pine-3)); color:#f0ede2; overflow:hidden; isolation:isolate}
+  .visit::before{content:""; position:absolute; inset:0; z-index:-1; opacity:.5;
+    background:radial-gradient(90% 120% at 100% 0%, rgba(207,154,52,.22), transparent 50%)}
+  .visit__grid{display:grid; grid-template-columns:1fr 1fr; gap:clamp(1.6rem,3vw,3rem); align-items:center}
+  .visit h2{color:#fff; font-size:var(--fs-h2); font-weight:700; margin-bottom:1rem}
+  .visit p{color:#dcd7c9; font-size:1.08rem; margin:0 0 1.6rem; max-width:46ch}
+  .visit .eyebrow{color:var(--wheat-2)}
+  .visit .eyebrow::before{background:var(--wheat)}
+  .amenities{display:grid; grid-template-columns:1fr 1fr; gap:.75rem}
+  .amenity{background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.12); border-radius:14px; padding:1rem 1.1rem; display:flex; gap:.75rem; align-items:center}
+  .amenity svg{width:22px; height:22px; color:var(--wheat-2); flex:none}
+  .amenity b{color:#fff; font-weight:600; font-size:.98rem; font-family:"Public Sans"}
+  .amenity small{display:block; color:rgba(240,237,226,.6); font-size:.8rem}
+
+  /* Footer */
+  footer.site{background:var(--pine-3); color:#cfd6cb; padding-block:clamp(3rem,5vw,4.2rem) 0}
+  .foot-grid{display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr; gap:2rem}
+  .foot-brand .brand__mark{background:var(--pine)}
+  .foot-brand p{color:#9fb0a2; font-size:.95rem; margin:1.1rem 0 0; max-width:34ch}
+  .foot h5{color:#fff; font-family:"Public Sans"; font-weight:700; font-size:.78rem; letter-spacing:.14em; text-transform:uppercase; margin:0 0 1.1rem}
+  .foot ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:.6rem}
+  .foot a{color:#c2cdc2; font-size:.96rem; transition:color .16s var(--ease)}
+  .foot a:hover{color:var(--wheat-2)}
+  .foot .contact-line{display:flex; gap:.6rem; align-items:flex-start; color:#c2cdc2; font-size:.96rem; margin-bottom:.6rem}
+  .foot .contact-line svg{width:17px; height:17px; color:var(--wheat-2); flex:none; margin-top:.2rem}
+  .foot-bottom{margin-top:clamp(2.4rem,4vw,3.2rem); border-top:1px solid rgba(255,255,255,.1); padding:1.5rem 0;
+    display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap; color:#8fa093; font-size:.85rem}
+  .foot-bottom a{color:#8fa093}
+  .foot-bottom a:hover{color:#c2cdc2}
+  .foot-bottom .tree{display:inline-flex; align-items:center; gap:.5rem; font-weight:600}
+  .foot-bottom .tree svg{width:16px; height:16px; color:var(--wheat)}
+
+  /* ---------- Mobile nav ---------- */
+  .mobile-nav{position:fixed; inset:0; z-index:150; background:var(--pine-2); color:#fff; display:none; flex-direction:column;
+    padding:1.4rem var(--gutter) 2rem; opacity:0; transform:translateY(-8px); transition:opacity .22s var(--ease), transform .22s var(--ease)}
+  .mobile-nav.open{display:flex; opacity:1; transform:translateY(0)}
+  .mobile-nav__top{display:flex; align-items:center; justify-content:space-between; height:76px; margin-bottom:1rem}
+  .mobile-nav__top .brand__name b, .mobile-nav__top .brand__name span{color:#fff}
+  .mobile-nav__top .brand__mark{background:rgba(255,255,255,.1)}
+  .mn-close{width:46px; height:46px; border-radius:11px; border:1px solid rgba(255,255,255,.2); display:grid; place-items:center}
+  .mn-close svg{width:24px; height:24px; color:#fff}
+  .mobile-nav a.mn-link{display:flex; align-items:center; justify-content:space-between; padding:1.05rem .2rem; font-family:"Zilla Slab"; font-size:1.5rem; font-weight:600; color:#fff; border-bottom:1px solid var(--pine-line)}
+  .mobile-nav a.mn-link svg{width:20px; height:20px; color:var(--wheat-2)}
+  .mobile-nav .mn-cta{margin-top:1.6rem; background:var(--wheat); color:#3a2b08; justify-content:center}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:960px){
+    .tiles{grid-template-columns:repeat(2,1fr)}
+    .events-grid{grid-template-columns:1fr}
+    .split{grid-template-columns:1fr}
+    .gov-grid{grid-template-columns:repeat(2,1fr)}
+    .gov-col:nth-child(-n+3) h4{margin-top:1.4rem}
+    .gov-col:nth-child(-n+2) h4{margin-top:0}
+    .news-grid{grid-template-columns:1fr}
+    .visit__grid{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr 1fr}
+    .foot-brand{grid-column:1 / -1}
+  }
+  @media (max-width:720px){
+    nav.primary, .header__cta{display:none}
+    .navtoggle{display:grid}
+    .services{margin-top:-3.5rem}
+    .amenities{grid-template-columns:1fr}
+  }
+  @media (max-width:480px){
+    .tiles{grid-template-columns:1fr}
+    .gov-grid{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr}
+    .fact-strip{gap:1.2rem}
+    .alert p{font-size:.84rem}
+  }
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip">Skip to main content</a>
+
+<!-- Alert -->
+<div class="alert" id="alert" role="region" aria-label="City announcement">
+  <div class="wrap">
+    <span class="alert__dot" aria-hidden="true"></span>
+    <p>Potlatch Days returns July&nbsp;18–20 — vendor applications are now open.</p>
+    <a href="#events">Event details</a>
+    <button class="alert__x" id="alertClose" aria-label="Dismiss announcement">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="site" id="top">
+  <div class="wrap bar">
+    <a href="#top" class="brand" aria-label="City of Potlatch, Idaho — home">
+      <span class="brand__mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32"><path d="M16 4l6.5 9.5h-3.2l4.3 6.3h-4l3.2 4.9H9.2l3.2-4.9h-4l4.3-6.3H9.5z" fill="#cf9a34"/><rect x="14.6" y="24.5" width="2.8" height="4.5" fill="#cf9a34"/></svg>
+      </span>
+      <span class="brand__name">
+        <b>Potlatch</b>
+        <span>Idaho</span>
+      </span>
+    </a>
+
+    <nav class="primary" aria-label="Primary">
+      <a href="#services">Services</a>
+      <a href="#government">Government</a>
+      <a href="#events">Events</a>
+      <a href="#news">News</a>
+      <a href="#visit">Visit</a>
+      <a href="https://www.cityofpotlatch.org/contact-us">Contact</a>
+      <a href="https://potlatch.billingdoc.net/login" class="header__cta">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+        Pay Bill
+      </a>
+    </nav>
+
+    <button class="navtoggle" id="navOpen" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile nav -->
+<div class="mobile-nav" id="mobileNav" aria-hidden="true">
+  <div class="mobile-nav__top">
+    <div class="brand">
+      <span class="brand__mark" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M16 4l6.5 9.5h-3.2l4.3 6.3h-4l3.2 4.9H9.2l3.2-4.9h-4l4.3-6.3H9.5z" fill="#cf9a34"/><rect x="14.6" y="24.5" width="2.8" height="4.5" fill="#cf9a34"/></svg></span>
+      <span class="brand__name"><b>Potlatch</b><span>Idaho</span></span>
+    </div>
+    <button class="mn-close" id="navClose" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <a href="#services" class="mn-link">Services <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
+  <a href="#government" class="mn-link">Government <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
+  <a href="#events" class="mn-link">Events <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
+  <a href="#news" class="mn-link">News <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
+  <a href="#visit" class="mn-link">Visit <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
+  <a href="https://www.cityofpotlatch.org/contact-us" class="mn-link">Contact <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
+  <a href="https://potlatch.billingdoc.net/login" class="btn btn--gold mn-cta">Pay Utility Bill</a>
+</div>
+
+<main id="main">
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="hero__sky" aria-hidden="true">
+      <div class="hero__sun"></div>
+    </div>
+    <div class="hero__hills" aria-hidden="true">
+      <svg viewBox="0 0 1440 340" preserveAspectRatio="none">
+        <path d="M0,150 C220,104 430,132 660,120 C900,108 1160,150 1440,116 L1440,340 L0,340 Z" fill="#5c7a5a" opacity="0.45"/>
+        <path d="M0,196 C240,158 470,190 720,178 C960,167 1200,200 1440,168 L1440,340 L0,340 Z" fill="#8a7a3c" opacity="0.55"/>
+        <path d="M0,244 C260,214 520,244 770,236 C1020,228 1230,256 1440,232 L1440,340 L0,340 Z" fill="#193024" opacity="0.92"/>
+        <path d="M0,290 C300,270 560,292 820,286 C1080,280 1250,300 1440,286 L1440,340 L0,340 Z" fill="#0f1f16"/>
+      </svg>
+    </div>
+
+    <div class="wrap hero__inner">
+      <p class="locator">On the Palouse <span aria-hidden="true">◇</span> Highway&nbsp;95 <span aria-hidden="true">◇</span> Established&nbsp;1903</p>
+      <h1 class="hero__title">City of Potlatch<em>Idaho</em></h1>
+      <p class="hero__lede">Rooted in history, united in community. Everything you need from City Hall, in one place.</p>
+      <div class="hero__cta">
+        <a href="https://potlatch.billingdoc.net/login" class="btn btn--gold">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+          Pay Your Utility Bill
+        </a>
+        <a href="#services" class="btn btn--ghost">
+          Explore City Services
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services / task tiles -->
+  <section class="services wrap" id="services" aria-label="Quick services">
+    <div class="tiles">
+      <a class="tile tile--feature" href="https://potlatch.billingdoc.net/login">
+        <span class="tile__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></svg></span>
+        <b>Pay Utility Bill</b>
+        <small>Water, sewer &amp; sanitation — pay online anytime.</small>
+        <span class="go">Open payment portal <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+      </a>
+
+      <a class="tile" href="https://www.cityofpotlatch.org/agendas-minutes-1">
+        <span class="tile__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3v3M16 3v3"/><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M8 11h8M8 15h5"/></svg></span>
+        <b>Agendas &amp; Minutes</b>
+        <small>Council packets and meeting records.</small>
+        <span class="go">View documents <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></span>
+      </a>
+
+      <a class="tile" href="https://www.cityofpotlatch.org/permits-1">
+        <span class="tile__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m15 5 4 4M3 21l1-5 12-12 4 4L8 20z"/></svg></span>
+        <b>Building Permits</b>
+        <small>Apply and review requirements before you build.</small>
+        <span class="go">Start a permit <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></span>
+      </a>
+
+      <a class="tile" href="https://www.cityofpotlatch.org/2026-city-council-meeting-schedule">
+        <span class="tile__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13A4 4 0 0 1 16 11"/></svg></span>
+        <b>Council Meetings</b>
+        <small>2026 meeting schedule and how to attend.</small>
+        <span class="go">See schedule <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></span>
+      </a>
+
+      <a class="tile" href="https://www.cityofpotlatch.org/city-codes-ordiances">
+        <span class="tile__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>
+        <b>Codes &amp; Ordinances</b>
+        <small>Municipal code and current ordinances.</small>
+        <span class="go">Browse the code <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></span>
+      </a>
+
+      <a class="tile" href="https://www.cityofpotlatch.org/job-opportunities">
+        <span class="tile__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2M2 13h20"/></svg></span>
+        <b>Job Openings</b>
+        <small>Work for the City of Potlatch.</small>
+        <span class="go">View openings <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></span>
+      </a>
+
+      <a class="tile" href="https://www.cityofpotlatch.org/public-records-request">
+        <span class="tile__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 15l2 2 4-4"/></svg></span>
+        <b>Public Records</b>
+        <small>Submit a public records request.</small>
+        <span class="go">Make a request <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></span>
+      </a>
+
+      <a class="tile" href="https://www.cityofpotlatch.org/copy-of-business-directory">
+        <span class="tile__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/><path d="M21 16.5c-1.5-1-2-2.8-2-5.5a7 7 0 1 0-14 0c0 2.7-.5 4.5-2 5.5z"/></svg></span>
+        <b>Emergency Alerts</b>
+        <small>Sign up for community notifications.</small>
+        <span class="go">Get notified <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Events -->
+  <section class="section" id="events">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">What's happening</p>
+        <h2>Events &amp; community life</h2>
+        <p>From the summer festival to splash days at the pool, here's what's coming up in town.</p>
+      </div>
+
+      <div class="events-grid">
+        <article class="event-hero">
+          <span class="tag">Signature Event</span>
+          <h3>Potlatch Days</h3>
+          <span class="when">July 18–20, 2026</span>
+          <p>Three days of parades, food, live music, and the traditions that bring the whole town together. Vendor applications are open now.</p>
+          <a href="https://www.cityofpotlatch.org/contact-us" class="btn btn--gold">Become a Vendor</a>
+        </article>
+
+        <div class="event-side">
+          <div class="mini-event">
+            <div class="datechip"><div class="m">Jul</div><div class="d">15</div></div>
+            <div>
+              <b>Splash Day at the Pool</b>
+              <small>Games, prizes, and open swim for all ages at the community pool.</small>
+            </div>
+          </div>
+          <div class="mini-event">
+            <div class="datechip"><div class="m">Jul</div><div class="d">21</div></div>
+            <div>
+              <b>City Council Meeting</b>
+              <small>Regular session at City Hall. Public welcome — see the 2026 schedule.</small>
+            </div>
+          </div>
+          <div class="mini-event">
+            <div class="datechip"><div class="m">Aug</div><div class="d">04</div></div>
+            <div>
+              <b>Summer Camp Sessions</b>
+              <small>Activities for kids continue through the summer months.</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About + City Hall -->
+  <section class="section" id="about" style="background:var(--paper); border-top:1px solid var(--line)">
+    <div class="wrap">
+      <div class="split">
+        <div>
+          <p class="eyebrow">Our town</p>
+          <h2 style="font-size:var(--fs-h2)">A company town with deep roots</h2>
+          <div class="prose" style="margin-top:1.4rem">
+            <p>Nestled on the edge of the Palouse along Highway&nbsp;95 between Moscow and Coeur&nbsp;d'Alene, Potlatch is a historic company town built by the timber industry. Founded in 1903 with the Potlatch Lumber Company, our community takes pride in its heritage and its strong sense of togetherness.</p>
+            <p class="pull">Though the mill is gone, our spirit remains — rooted in history, united in community.</p>
+            <p>Today Potlatch is a place where neighbors know one another, the pace is unhurried, and the surrounding hills turn gold every summer. Whether you're a lifelong resident or just passing through on Scenic&nbsp;Byway&nbsp;6, you're welcome here.</p>
+          </div>
+          <div class="fact-strip">
+            <div class="fact"><b>1903</b><span>Year founded</span></div>
+            <div class="fact"><b>ID&nbsp;95</b><span>On the highway</span></div>
+            <div class="fact"><b>Palouse</b><span>Region</span></div>
+            <div class="fact"><b>83855</b><span>ZIP code</span></div>
+          </div>
+        </div>
+
+        <aside class="hallcard" id="cityhall" aria-label="City Hall contact information">
+          <h3>Potlatch City Hall</h3>
+          <p class="sub">Here to help</p>
+
+          <div class="hallrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span><span class="lab">Visit</span>195 6th Street<br>Potlatch, ID 83855</span>
+          </div>
+          <div class="hallrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.4-1.4a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+            <span><span class="lab">Call</span><a href="tel:+12088750708">(208) 875-0708</a></span>
+          </div>
+          <div class="hallrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+            <span><span class="lab">Email</span><a href="mailto:CityHall@cityofpotlatch.org">CityHall@cityofpotlatch.org</a></span>
+          </div>
+          <div class="hallrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            <span><span class="lab">Hours</span>Mon–Fri, 10:00&nbsp;AM – 5:00&nbsp;PM<br><small style="color:rgba(240,237,226,.6)">Closed 12:30–1:30 for lunch &amp; on major holidays</small></span>
+          </div>
+
+          <a href="https://www.cityofpotlatch.org/contact-us" class="btn btn--gold">Contact City Hall</a>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- Government index -->
+  <section class="section gov" id="government">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">City Government</p>
+        <h2>Find what you need</h2>
+        <p>Records, plans, and services from every corner of city government — organized so you can get there in one click.</p>
+      </div>
+
+      <div class="gov-grid">
+        <div class="gov-col">
+          <h4>Meetings &amp; Records</h4>
+          <a class="gov-link" href="https://www.cityofpotlatch.org/agendas-minutes-1">Agendas &amp; Minutes <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
+          <a class="gov-link" href="https://www.cityofpotlatch.org/2026-city-council-meeting-schedule">2026 Meeting Schedule <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
+          <a class="gov-link" href="https://www.cityofpotlatch.org/public-hearings">Public Hearings <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
+          <a class="gov-link" href="https://www.cityofpotlatch.org/public-records-request">Public Records Request <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
+        </div>
+
+        <div class="gov-col">
+          <h4>Leadership &amp; Planning</h4>
+          <a class="gov-link" href="https://www.cityofpotlatch.org/mayor-city-council">Mayor &amp; City Council <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
+          <a class="gov-link" href="https://www.cityofpotlatch.org/comprehensive-plan">Comprehensive Plan <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
+          <a class="gov-link" href="https://www.cityofpotlatch.org/copy-of-permits">Planning &amp; Zoning <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
+          <a class="gov-link" href="https://www.cityofpotlatch.org/financials">Financials <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
+        </div>
+
+        <div class="gov-col">
+          <h4>Services &amp; Utilities</h4>
+          <a class="gov-link" href="https://www.cityofpotlatch.org/utility-rates">Utility Rates <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
+          <a class="gov-link" href="https://www.cityofpotlatch.org/copy-of-utility-rates">Public Works <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
+          <a class="gov-link" href="https://www.cityofpotlatch.org/trash-recycling">Trash &amp; Recycling <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
+          <a class="gov-link" href="https://www.cityofpotlatch.org/city-hall">About City Hall <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
+          <a class="gov-link" href="https://www.cityofpotlatch.org/history-of-potlatch">History of Potlatch <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- News / newsletters -->
+  <section class="section" id="news">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Stay in the loop</p>
+        <h2>News &amp; newsletters</h2>
+        <p>Two long-running newsletters keep the community informed every month.</p>
+      </div>
+
+      <div class="news-grid">
+        <article class="news-card">
+          <span class="kicker"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8M15 18h-5M10 6h8v4h-8z"/></svg> City Newsletter</span>
+          <h3>Potlatch Press</h3>
+          <p>Included monthly with city utility bills. Upcoming events, seasonal reminders, and utility updates — from pool openings to snow-plow notices.</p>
+          <a href="https://www.cityofpotlatch.org/_files/ugd/b70f42_1c1d164ce69d419aab12b0e7195edb64.pdf" class="btn">
+            Read this month <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
+          </a>
+        </article>
+
+        <article class="news-card">
+          <span class="kicker"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> Community Newsletter</span>
+          <h3>Community Information Agency</h3>
+          <p>Published monthly by the CIA, this long-standing newsletter features local updates, educational articles, and small-business ads — all centered on life in and around Potlatch. Available by mail or email.</p>
+          <a href="https://www.cityofpotlatch.org/_files/ugd/b70f42_27f2237e80584d2dae2e1dbba7dd3722.pdf" class="btn">
+            Read this month <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
+          </a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Visit / RV park -->
+  <section class="section visit" id="visit">
+    <div class="wrap">
+      <div class="visit__grid">
+        <div>
+          <p class="eyebrow">Visit Potlatch</p>
+          <h2>Scenic 6 RV Park &amp; Cabin Rentals</h2>
+          <p>Stay a while on the Palouse. The city's Scenic&nbsp;6 park offers RV sites and cozy cabin rentals — a quiet basecamp for exploring the region's rolling hills and small-town charm.</p>
+          <a href="https://www.cityofpotlatch.org/copy-of-trash-recycling" class="btn btn--gold">
+            Rates &amp; Reservations
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+
+        <div class="amenities">
+          <div class="amenity">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 17h20l-2-5H8L4 6H2M6 21a1 1 0 1 0 0-2 1 1 0 0 0 0 2zM18 21a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/></svg>
+            <div><b>RV Sites</b><small>Full hookups available</small></div>
+          </div>
+          <div class="amenity">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg>
+            <div><b>Cabin Rentals</b><small>Comfortable &amp; simple</small></div>
+          </div>
+          <div class="amenity">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l7 4v6c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6z"/></svg>
+            <div><b>Quiet &amp; Safe</b><small>Small-town setting</small></div>
+          </div>
+          <div class="amenity">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></svg>
+            <div><b>On the Palouse</b><small>Golden-hour views</small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot foot-brand">
+        <div class="brand">
+          <span class="brand__mark" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M16 4l6.5 9.5h-3.2l4.3 6.3h-4l3.2 4.9H9.2l3.2-4.9h-4l4.3-6.3H9.5z" fill="#cf9a34"/><rect x="14.6" y="24.5" width="2.8" height="4.5" fill="#cf9a34"/></svg></span>
+          <span class="brand__name"><b style="color:#fff">City of Potlatch</b><span style="color:#9fb0a2">Idaho · Est. 1903</span></span>
+        </div>
+        <p>A historic white-pine town on the Palouse. Rooted in history, united in community.</p>
+      </div>
+
+      <div class="foot">
+        <h5>Do it online</h5>
+        <ul>
+          <li><a href="https://potlatch.billingdoc.net/login">Pay Utility Bill</a></li>
+          <li><a href="https://www.cityofpotlatch.org/agendas-minutes-1">Agendas &amp; Minutes</a></li>
+          <li><a href="https://www.cityofpotlatch.org/permits-1">Building Permits</a></li>
+          <li><a href="https://www.cityofpotlatch.org/public-records-request">Public Records</a></li>
+          <li><a href="https://www.cityofpotlatch.org/job-opportunities">Job Openings</a></li>
+        </ul>
+      </div>
+
+      <div class="foot">
+        <h5>Government</h5>
+        <ul>
+          <li><a href="https://www.cityofpotlatch.org/mayor-city-council">Mayor &amp; Council</a></li>
+          <li><a href="https://www.cityofpotlatch.org/comprehensive-plan">Comprehensive Plan</a></li>
+          <li><a href="https://www.cityofpotlatch.org/financials">Financials</a></li>
+          <li><a href="https://www.cityofpotlatch.org/city-codes-ordiances">Codes &amp; Ordinances</a></li>
+          <li><a href="https://www.cityofpotlatch.org/history-of-potlatch">Town History</a></li>
+        </ul>
+      </div>
+
+      <div class="foot">
+        <h5>City Hall</h5>
+        <div class="contact-line">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>195 6th Street<br>Potlatch, ID 83855</span>
+        </div>
+        <div class="contact-line">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.4-1.4a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+          <a href="tel:+12088750708">(208) 875-0708</a>
+        </div>
+        <div class="contact-line">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+          <a href="mailto:CityHall@cityofpotlatch.org">CityHall@cityofpotlatch.org</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="foot-bottom">
+      <span class="tree">
+        <svg viewBox="0 0 32 32"><path d="M16 4l6.5 9.5h-3.2l4.3 6.3h-4l3.2 4.9H9.2l3.2-4.9h-4l4.3-6.3H9.5z" fill="#cf9a34"/><rect x="14.6" y="24.5" width="2.8" height="4.5" fill="#cf9a34"/></svg>
+        © <span id="year">2026</span> City of Potlatch, Idaho
+      </span>
+      <span>
+        <a href="https://www.cityofpotlatch.org/contact-us">Contact</a> &nbsp;·&nbsp;
+        <a href="https://www.cityofpotlatch.org/public-records-request">Public Records</a> &nbsp;·&nbsp;
+        <a href="#top">Back to top</a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var doc = document;
+
+  // Header shadow on scroll
+  var header = doc.querySelector("header.site");
+  var onScroll = function(){
+    if(window.scrollY > 8){ header.classList.add("scrolled"); }
+    else { header.classList.remove("scrolled"); }
+  };
+  window.addEventListener("scroll", onScroll, {passive:true});
+  onScroll();
+
+  // Mobile nav
+  var mobileNav = doc.getElementById("mobileNav");
+  var openBtn = doc.getElementById("navOpen");
+  var closeBtn = doc.getElementById("navClose");
+  var setNav = function(open){
+    mobileNav.classList.toggle("open", open);
+    mobileNav.setAttribute("aria-hidden", open ? "false" : "true");
+    openBtn.setAttribute("aria-expanded", open ? "true" : "false");
+    doc.body.style.overflow = open ? "hidden" : "";
+  };
+  openBtn.addEventListener("click", function(){ setNav(true); });
+  closeBtn.addEventListener("click", function(){ setNav(false); });
+  mobileNav.querySelectorAll("a").forEach(function(a){
+    a.addEventListener("click", function(){ setNav(false); });
+  });
+  doc.addEventListener("keydown", function(e){
+    if(e.key === "Escape" && mobileNav.classList.contains("open")){ setNav(false); }
+  });
+
+  // Alert dismiss (persisted when storage is available)
+  var alert = doc.getElementById("alert");
+  var alertClose = doc.getElementById("alertClose");
+  var KEY = "potlatch-alert-days2026";
+  try { if(window.localStorage && localStorage.getItem(KEY) === "1"){ alert.style.display = "none"; } } catch(_){}
+  alertClose.addEventListener("click", function(){
+    alert.style.display = "none";
+    try { if(window.localStorage){ localStorage.setItem(KEY, "1"); } } catch(_){}
+  });
+
+  // Footer year
+  var y = doc.getElementById("year");
+  if(y){ y.textContent = new Date().getFullYear(); }
+})();
+</script>
+</body>
+</html>
