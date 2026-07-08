@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>City of Connell, Washington — Official Website</title>
+<meta name="description" content="Official website of the City of Connell, Franklin County, Washington. Pay utility bills, view council agendas, apply for permits, sign up for emergency alerts, and contact City Hall.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#122F3D;          /* basalt navy — primary structure */
+    --ink-900:#0C2029;
+    --ink-800:#0E2833;
+    --ink-700:#1B4152;
+    --paper:#F5F1E8;        /* warm high-desert paper */
+    --paper-2:#EFE8D9;
+    --card:#FFFFFF;
+    --line:#E3DCCB;         /* warm hairline */
+    --line-strong:#D3C9B2;
+    --wheat:#C6912E;        /* harvest gold — accent/graphics */
+    --wheat-deep:#875812;   /* accessible gold for text on light */
+    --wheat-glow:#E7C46A;   /* gold on dark */
+    --sage:#5E7353;         /* sagebrush — secondary category */
+    --sage-deep:#41522F;
+    --alert:#AF2229;        /* emergency red */
+    --alert-dark:#8A171D;
+    --text:#232D2B;         /* warm near-black body */
+    --text-2:#56605B;       /* muted */
+    --text-inv:#F3EEE3;     /* body on dark */
+    --text-inv-2:#C4CBC9;
+    --focus:#2E86D6;
+    --radius:14px;
+    --radius-sm:10px;
+    --shadow-sm:0 1px 2px rgba(18,47,61,.06), 0 2px 6px rgba(18,47,61,.05);
+    --shadow-md:0 6px 18px rgba(18,47,61,.10), 0 2px 6px rgba(18,47,61,.06);
+    --shadow-lg:0 18px 44px rgba(12,32,41,.18);
+    --maxw:1180px;
+    --ease:cubic-bezier(.22,.61,.36,1);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} }
+
+  body{
+    margin:0;
+    font-family:"Public Sans", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    color:var(--text);
+    background:var(--paper);
+    line-height:1.6;
+    font-size:17px;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  h1,h2,h3,h4{margin:0 0 .4em;line-height:1.12;font-weight:800;letter-spacing:-.02em;color:var(--ink);}
+  p{margin:0 0 1em;}
+  a{color:var(--ink-700);text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1.5px;}
+  a:hover{color:var(--wheat-deep);}
+  ul{margin:0;padding:0;list-style:none;}
+  img,svg{max-width:100%;}
+
+  /* ---- Focus: highly visible on light and dark ---- */
+  :focus{outline:none;}
+  :focus-visible{
+    outline:3px solid var(--focus);
+    outline-offset:3px;
+    border-radius:5px;
+    box-shadow:0 0 0 6px rgba(46,134,214,.22);
+  }
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+  .eyebrow{
+    font-size:.74rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--wheat-deep);margin:0 0 .7em;display:inline-flex;align-items:center;gap:.55em;
+  }
+  .eyebrow::before{content:"";width:26px;height:2px;background:var(--wheat);display:inline-block;}
+  .eyebrow.on-dark{color:var(--wheat-glow);}
+  .eyebrow.on-dark::before{background:var(--wheat-glow);}
+
+  .btn{
+    display:inline-flex;align-items:center;gap:.55em;justify-content:center;
+    font-family:inherit;font-weight:700;font-size:.98rem;letter-spacing:-.01em;
+    padding:12px 22px;border-radius:999px;border:2px solid transparent;cursor:pointer;
+    text-decoration:none;transition:transform .18s var(--ease), background .18s, box-shadow .18s, border-color .18s;
+    min-height:46px;
+  }
+  .btn svg{width:18px;height:18px;flex:none;}
+  .btn-primary{background:var(--wheat);color:#2A1D06;border-color:var(--wheat);box-shadow:var(--shadow-sm);}
+  .btn-primary:hover{background:var(--wheat-glow);border-color:var(--wheat-glow);color:#2A1D06;transform:translateY(-2px);box-shadow:var(--shadow-md);}
+  .btn-ghost{background:transparent;color:var(--text-inv);border-color:rgba(243,238,227,.4);}
+  .btn-ghost:hover{border-color:var(--wheat-glow);color:#fff;transform:translateY(-2px);}
+  .btn-solid{background:var(--ink);color:var(--text-inv);border-color:var(--ink);}
+  .btn-solid:hover{background:var(--ink-700);border-color:var(--ink-700);color:#fff;transform:translateY(-2px);box-shadow:var(--shadow-md);}
+
+  /* ================= GOV BANNER ================= */
+  .govbar{background:var(--ink-900);color:var(--text-inv-2);font-size:.78rem;}
+  .govbar .wrap{display:flex;align-items:center;gap:8px;min-height:34px;padding-top:6px;padding-bottom:6px;}
+  .govbar svg{width:15px;height:15px;color:var(--wheat-glow);flex:none;}
+  .govbar strong{color:var(--text-inv);font-weight:600;}
+  .govbar .sep{opacity:.4;}
+
+  /* ================= ALERT BAR ================= */
+  .alertbar{background:var(--alert);color:#fff;}
+  .alertbar[hidden]{display:none;}
+  .alertbar .wrap{display:flex;align-items:center;gap:14px;padding-top:10px;padding-bottom:10px;}
+  .alertbar .ico{width:30px;height:30px;flex:none;display:grid;place-items:center;background:rgba(255,255,255,.16);border-radius:50%;}
+  .alertbar .ico svg{width:17px;height:17px;}
+  .alertbar p{margin:0;font-size:.92rem;font-weight:500;flex:1;}
+  .alertbar p strong{font-weight:800;}
+  .alertbar a{color:#fff;font-weight:800;text-underline-offset:3px;text-decoration-thickness:2px;white-space:nowrap;}
+  .alertbar a:hover{color:#fff;text-decoration:none;background:rgba(255,255,255,.16);padding:2px 6px;border-radius:6px;}
+  .alert-x{background:rgba(255,255,255,.12);border:0;color:#fff;width:34px;height:34px;border-radius:8px;cursor:pointer;flex:none;display:grid;place-items:center;transition:background .15s;}
+  .alert-x:hover{background:rgba(255,255,255,.28);}
+  .alert-x svg{width:16px;height:16px;}
+
+  /* ================= HEADER ================= */
+  .masthead{background:var(--paper);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:60;transition:box-shadow .2s, padding .2s;}
+  .masthead.stuck{box-shadow:var(--shadow-md);}
+  .masthead .wrap{display:flex;align-items:center;gap:20px;padding-top:14px;padding-bottom:14px;transition:padding .2s;}
+  .masthead.stuck .wrap{padding-top:9px;padding-bottom:9px;}
+
+  .brand{display:flex;align-items:center;gap:13px;text-decoration:none;flex:none;}
+  .brand .seal{width:48px;height:48px;flex:none;transition:width .2s,height .2s;}
+  .masthead.stuck .brand .seal{width:42px;height:42px;}
+  .brand .name{display:flex;flex-direction:column;line-height:1.05;}
+  .brand .name .t1{font-weight:800;font-size:1.24rem;color:var(--ink);letter-spacing:-.02em;}
+  .brand .name .t2{font-size:.72rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--text-2);}
+
+  .mainnav{margin-left:auto;display:flex;align-items:center;gap:4px;}
+  .mainnav a{
+    text-decoration:none;color:var(--ink);font-weight:600;font-size:.96rem;padding:9px 13px;border-radius:9px;
+    position:relative;transition:background .15s,color .15s;
+  }
+  .mainnav a:hover{background:var(--paper-2);color:var(--ink);}
+  .mainnav a.active{color:var(--wheat-deep);}
+  .mainnav a.active::after{content:"";position:absolute;left:13px;right:13px;bottom:2px;height:2.5px;background:var(--wheat);border-radius:2px;}
+
+  .header-tools{display:flex;align-items:center;gap:10px;flex:none;}
+
+  /* search */
+  .search{position:relative;}
+  .search-field{display:flex;align-items:center;background:var(--card);border:1.5px solid var(--line-strong);border-radius:999px;padding:0 6px 0 14px;transition:border-color .15s, box-shadow .15s;width:210px;}
+  .search-field:focus-within{border-color:var(--focus);box-shadow:0 0 0 4px rgba(46,134,214,.16);}
+  .search-field svg{width:17px;height:17px;color:var(--text-2);flex:none;}
+  .search-field input{border:0;outline:none;background:transparent;font-family:inherit;font-size:.92rem;color:var(--text);padding:9px 8px;width:100%;}
+  .search-field input::placeholder{color:var(--text-2);}
+  .search-go{border:0;background:var(--ink);color:#fff;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;cursor:pointer;flex:none;transition:background .15s;}
+  .search-go:hover{background:var(--wheat-deep);}
+  .search-go svg{width:15px;height:15px;color:#fff;}
+  .results{
+    position:absolute;top:calc(100% + 8px);right:0;width:340px;background:var(--card);border:1px solid var(--line);
+    border-radius:var(--radius-sm);box-shadow:var(--shadow-lg);padding:7px;z-index:80;max-height:60vh;overflow:auto;
+  }
+  .results[hidden]{display:none;}
+  .results .rlabel{font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--text-2);font-weight:700;padding:8px 10px 4px;}
+  .results button{
+    display:flex;flex-direction:column;gap:1px;width:100%;text-align:left;background:transparent;border:0;cursor:pointer;
+    padding:9px 11px;border-radius:8px;font-family:inherit;
+  }
+  .results button:hover,.results button.hl{background:var(--paper-2);}
+  .results button .r1{font-weight:700;color:var(--ink);font-size:.94rem;}
+  .results button .r2{font-size:.8rem;color:var(--text-2);}
+  .results .empty{padding:14px 11px;color:var(--text-2);font-size:.9rem;}
+
+  .menu-btn{display:none;background:var(--ink);border:0;color:#fff;width:46px;height:46px;border-radius:10px;cursor:pointer;place-items:center;}
+  .menu-btn svg{width:22px;height:22px;}
+
+  /* ================= HERO ================= */
+  .hero{position:relative;background:var(--ink);color:var(--text-inv);overflow:hidden;}
+  .hero::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 100% at 82% -10%, rgba(198,145,46,.20), transparent 55%);pointer-events:none;}
+  .hero-lines{position:absolute;inset:0;width:100%;height:100%;opacity:.5;pointer-events:none;}
+  .hero .wrap{position:relative;z-index:2;padding-top:66px;padding-bottom:56px;}
+  .hero-top{max-width:660px;}
+  .hero h1{color:#fff;font-size:clamp(2.3rem,5vw,3.6rem);line-height:1.03;letter-spacing:-.03em;margin-bottom:.32em;}
+  .hero h1 .hl{color:var(--wheat-glow);}
+  .hero .lede{font-family:"Source Serif 4",Georgia,serif;font-size:clamp(1.08rem,2vw,1.32rem);line-height:1.5;color:var(--text-inv);opacity:.92;font-weight:400;max-width:560px;margin-bottom:0;}
+
+  .tasks-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin:44px 0 16px;flex-wrap:wrap;}
+  .tasks-head h2{color:#fff;font-size:1.15rem;letter-spacing:-.01em;margin:0;}
+  .tasks-head .sub{color:var(--text-inv-2);font-size:.9rem;}
+
+  .tasks{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  .task{
+    display:flex;flex-direction:column;gap:12px;text-decoration:none;background:rgba(255,255,255,.055);
+    border:1px solid rgba(243,238,227,.16);border-radius:var(--radius);padding:20px;color:#fff;
+    transition:transform .2s var(--ease),background .2s,border-color .2s;position:relative;overflow:hidden;
+  }
+  .task::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--wheat);transform:scaleY(0);transform-origin:top;transition:transform .25s var(--ease);}
+  .task:hover{background:rgba(255,255,255,.11);border-color:rgba(231,196,106,.5);transform:translateY(-3px);color:#fff;}
+  .task:hover::before{transform:scaleY(1);}
+  .task .ic{width:44px;height:44px;border-radius:11px;background:rgba(231,196,106,.16);display:grid;place-items:center;flex:none;}
+  .task .ic svg{width:23px;height:23px;color:var(--wheat-glow);}
+  .task .tt{font-weight:800;font-size:1.06rem;color:#fff;letter-spacing:-.01em;}
+  .task .td{font-size:.86rem;color:var(--text-inv-2);line-height:1.45;}
+  .task .arrow{margin-top:auto;display:inline-flex;align-items:center;gap:6px;font-size:.82rem;font-weight:700;color:var(--wheat-glow);letter-spacing:.02em;}
+  .task .arrow svg{width:14px;height:14px;transition:transform .2s;}
+  .task:hover .arrow svg{transform:translateX(4px);}
+
+  /* junction divider */
+  .divider{height:34px;background:var(--paper);position:relative;}
+  .divider svg{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:180px;height:20px;color:var(--line-strong);}
+
+  /* ================= SECTIONS ================= */
+  section{padding:66px 0;}
+  .sec-head{max-width:720px;margin-bottom:34px;}
+  .sec-head h2{font-size:clamp(1.7rem,3.4vw,2.3rem);}
+  .sec-head p{color:var(--text-2);font-size:1.06rem;margin-bottom:0;}
+
+  /* two column: notices + meetings */
+  .colwrap{display:grid;grid-template-columns:1.1fr 1fr;gap:44px;}
+
+  .notices{display:flex;flex-direction:column;gap:2px;}
+  .notice{display:flex;gap:16px;padding:18px 4px;border-bottom:1px solid var(--line);text-decoration:none;color:inherit;transition:padding .15s;}
+  .notice:last-child{border-bottom:0;}
+  .notice:hover{padding-left:8px;}
+  .notice .tag{flex:none;font-size:.68rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;padding:5px 10px;border-radius:6px;height:fit-content;}
+  .tag.info{background:rgba(94,115,83,.14);color:var(--sage-deep);}
+  .tag.svc{background:rgba(198,145,46,.16);color:var(--wheat-deep);}
+  .tag.mtg{background:rgba(18,47,61,.09);color:var(--ink-700);}
+  .notice .n-body h3{font-size:1.06rem;margin:0 0 3px;color:var(--ink);letter-spacing:-.01em;}
+  .notice .n-body p{margin:0;font-size:.92rem;color:var(--text-2);}
+  .notice .n-body .date{font-size:.78rem;color:var(--text-2);font-weight:600;margin-top:5px;display:block;}
+
+  .meetings-panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);overflow:hidden;align-self:start;}
+  .mp-head{background:var(--ink);color:#fff;padding:18px 22px;display:flex;align-items:center;gap:11px;}
+  .mp-head svg{width:20px;height:20px;color:var(--wheat-glow);}
+  .mp-head h3{color:#fff;margin:0;font-size:1.08rem;}
+  .meeting{display:flex;gap:16px;padding:17px 22px;border-bottom:1px solid var(--line);align-items:center;}
+  .meeting:last-of-type{border-bottom:0;}
+  .m-date{flex:none;width:54px;text-align:center;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:7px 4px;}
+  .m-date .mo{font-size:.66rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--alert);display:block;line-height:1;}
+  .m-date .dy{font-size:1.32rem;font-weight:800;color:var(--ink);line-height:1.15;}
+  .m-info{flex:1;min-width:0;}
+  .m-info h4{margin:0 0 2px;font-size:1rem;color:var(--ink);}
+  .m-info .m-meta{font-size:.83rem;color:var(--text-2);}
+  .m-info .m-meta b{color:var(--text);font-weight:700;}
+  .mp-foot{padding:16px 22px;background:var(--paper);display:flex;flex-direction:column;gap:6px;}
+  .mp-foot a{font-weight:700;font-size:.9rem;display:inline-flex;align-items:center;gap:7px;text-decoration:none;color:var(--ink-700);}
+  .mp-foot a:hover{color:var(--wheat-deep);}
+  .mp-foot a svg{width:15px;height:15px;}
+  .mp-foot .fine{font-size:.78rem;color:var(--text-2);margin:2px 0 0;}
+
+  /* departments */
+  .dept-band{background:var(--paper-2);}
+  .depts{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .dept{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px;text-decoration:none;color:inherit;
+    display:flex;flex-direction:column;gap:11px;transition:transform .2s var(--ease),box-shadow .2s,border-color .2s;position:relative;
+  }
+  .dept:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:var(--line-strong);}
+  .dept .d-ic{width:46px;height:46px;border-radius:12px;background:var(--ink);display:grid;place-items:center;flex:none;}
+  .dept .d-ic svg{width:24px;height:24px;color:var(--wheat-glow);}
+  .dept h3{font-size:1.14rem;margin:0;color:var(--ink);}
+  .dept p{font-size:.9rem;color:var(--text-2);margin:0;flex:1;line-height:1.5;}
+  .dept .d-contact{font-size:.86rem;font-weight:700;color:var(--ink-700);display:inline-flex;align-items:center;gap:7px;margin-top:2px;}
+  .dept .d-contact svg{width:15px;height:15px;color:var(--wheat-deep);}
+
+  /* government */
+  .gov-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:48px;align-items:start;}
+  .mayor-card{background:var(--ink);color:var(--text-inv);border-radius:var(--radius);padding:34px;position:relative;overflow:hidden;}
+  .mayor-card .mlines{position:absolute;right:-30px;top:-30px;width:180px;height:180px;opacity:.28;color:var(--wheat-glow);}
+  .mayor-card .role{font-size:.74rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--wheat-glow);margin-bottom:14px;position:relative;}
+  .mayor-card .who{display:flex;align-items:center;gap:16px;position:relative;margin-bottom:18px;}
+  .mayor-card .avatar{width:66px;height:66px;border-radius:50%;background:linear-gradient(150deg,var(--wheat),var(--wheat-deep));display:grid;place-items:center;font-weight:800;font-size:1.5rem;color:#2A1D06;flex:none;}
+  .mayor-card .who h3{color:#fff;font-size:1.5rem;margin:0;}
+  .mayor-card .who .sworn{font-size:.85rem;color:var(--text-inv-2);}
+  .mayor-card blockquote{font-family:"Source Serif 4",Georgia,serif;font-size:1.06rem;line-height:1.55;color:var(--text-inv);margin:0;position:relative;font-style:italic;opacity:.95;}
+
+  .council-block h3{font-size:1.28rem;margin-bottom:6px;}
+  .council-block .cintro{color:var(--text-2);font-size:.98rem;margin-bottom:22px;}
+  .council{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:24px;}
+  .cmember{display:flex;align-items:center;gap:13px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius-sm);padding:13px 15px;}
+  .cmember .ca{width:42px;height:42px;border-radius:50%;background:var(--paper-2);border:1px solid var(--line-strong);display:grid;place-items:center;font-weight:800;color:var(--ink-700);font-size:.95rem;flex:none;}
+  .cmember .cn{font-weight:700;color:var(--ink);font-size:.98rem;line-height:1.2;}
+  .cmember .cr{font-size:.78rem;color:var(--text-2);}
+  .gov-note{background:var(--paper-2);border-left:3px solid var(--wheat);border-radius:0 10px 10px 0;padding:16px 20px;font-size:.9rem;color:var(--text-2);}
+  .gov-note b{color:var(--ink);}
+
+  /* contact */
+  .contact-band{background:var(--ink);color:var(--text-inv);}
+  .contact-band .sec-head h2{color:#fff;}
+  .contact-band .sec-head p{color:var(--text-inv-2);}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;}
+  .cinfo{display:grid;grid-template-columns:1fr 1fr;gap:26px 34px;}
+  .cinfo .ci-block h4{color:var(--wheat-glow);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;margin-bottom:10px;}
+  .cinfo .ci-block p{margin:0 0 3px;color:var(--text-inv);font-size:.98rem;}
+  .cinfo .ci-block a{color:#fff;font-weight:600;}
+  .cinfo .ci-block a:hover{color:var(--wheat-glow);}
+  .cinfo .ci-block .muted{color:var(--text-inv-2);font-size:.86rem;}
+  .hours-row{display:flex;justify-content:space-between;gap:12px;padding:6px 0;border-bottom:1px dashed rgba(243,238,227,.2);font-size:.94rem;}
+  .hours-row:last-child{border-bottom:0;}
+  .hours-row span:first-child{color:var(--text-inv-2);}
+  .hours-row .closed{color:var(--wheat-glow);font-weight:700;}
+
+  .map-card{background:var(--ink-800);border:1px solid rgba(243,238,227,.14);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-lg);}
+  .map-visual{height:230px;position:relative;background:
+     linear-gradient(rgba(18,47,61,.2),rgba(12,32,41,.55)),
+     repeating-linear-gradient(0deg,transparent 0 39px,rgba(231,196,106,.08) 39px 40px),
+     repeating-linear-gradient(90deg,transparent 0 39px,rgba(231,196,106,.08) 39px 40px),
+     var(--ink-900);
+     display:grid;place-items:center;}
+  .map-visual .pin{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;}
+  .map-visual .pin svg{width:38px;height:38px;color:var(--wheat-glow);filter:drop-shadow(0 4px 8px rgba(0,0,0,.4));}
+  .map-visual .pin .pl{font-weight:700;color:#fff;font-size:.96rem;}
+  .map-visual .pin .ps{font-size:.82rem;color:var(--text-inv-2);}
+  .map-foot{padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+  .map-foot .maddr{font-size:.9rem;color:var(--text-inv-2);}
+  .map-foot .maddr b{color:#fff;display:block;font-size:.98rem;}
+
+  /* ================= FOOTER ================= */
+  footer{background:var(--ink-900);color:var(--text-inv-2);padding:56px 0 30px;}
+  .foot-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:38px;padding-bottom:38px;border-bottom:1px solid rgba(243,238,227,.12);}
+  .foot-brand .brand{margin-bottom:16px;}
+  .foot-brand .brand .name .t1{color:#fff;}
+  .foot-brand .brand .name .t2{color:var(--text-inv-2);}
+  .foot-brand p{font-size:.9rem;line-height:1.6;max-width:330px;color:var(--text-inv-2);}
+  .foot-col h4{color:#fff;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:15px;font-weight:700;}
+  .foot-col ul li{margin-bottom:9px;}
+  .foot-col a{color:var(--text-inv-2);text-decoration:none;font-size:.92rem;}
+  .foot-col a:hover{color:var(--wheat-glow);text-decoration:underline;}
+
+  .foot-access{padding:26px 0;border-bottom:1px solid rgba(243,238,227,.12);display:grid;grid-template-columns:1fr 1fr;gap:34px;}
+  .foot-access h4{color:#fff;font-size:.92rem;margin-bottom:7px;display:flex;align-items:center;gap:9px;}
+  .foot-access h4 svg{width:18px;height:18px;color:var(--wheat-glow);}
+  .foot-access p{font-size:.86rem;line-height:1.6;color:var(--text-inv-2);margin:0;}
+  .foot-access a{color:#fff;}
+
+  .foot-bottom{padding-top:24px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font-size:.84rem;color:var(--text-inv-2);}
+  .foot-bottom .fb-links{display:flex;gap:20px;flex-wrap:wrap;}
+  .foot-bottom a{color:var(--text-inv-2);text-decoration:none;}
+  .foot-bottom a:hover{color:var(--wheat-glow);}
+
+  .skip{position:absolute;left:12px;top:-60px;background:var(--wheat);color:#2A1D06;padding:11px 18px;border-radius:8px;font-weight:800;z-index:200;transition:top .18s;text-decoration:none;}
+  .skip:focus{top:12px;}
+
+  /* mobile menu overlay */
+  .m-overlay{position:fixed;inset:0;background:rgba(12,32,41,.55);backdrop-filter:blur(2px);z-index:90;opacity:0;visibility:hidden;transition:opacity .2s;}
+  .m-overlay.open{opacity:1;visibility:visible;}
+  .m-drawer{position:fixed;top:0;right:0;bottom:0;width:min(86vw,360px);background:var(--paper);z-index:100;transform:translateX(100%);transition:transform .28s var(--ease);display:flex;flex-direction:column;box-shadow:var(--shadow-lg);}
+  .m-drawer.open{transform:translateX(0);}
+  .m-drawer .md-head{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-bottom:1px solid var(--line);}
+  .m-drawer .md-head .seal{width:40px;height:40px;}
+  .m-drawer nav{padding:12px;overflow:auto;flex:1;}
+  .m-drawer nav a{display:flex;align-items:center;justify-content:space-between;padding:15px 14px;text-decoration:none;color:var(--ink);font-weight:700;font-size:1.05rem;border-radius:10px;}
+  .m-drawer nav a:hover{background:var(--paper-2);}
+  .m-drawer nav a svg{width:17px;height:17px;color:var(--text-2);}
+  .m-drawer .md-foot{padding:18px 20px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:10px;}
+
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s var(--ease),transform .6s var(--ease);}
+  .reveal.in{opacity:1;transform:none;}
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1 !important;transform:none !important;transition:none;}
+    .task,.dept,.btn,.notice{transition:none !important;}
+    .hero-lines{opacity:.35;}
+  }
+
+  /* ================= RESPONSIVE ================= */
+  @media (max-width:1000px){
+    .tasks{grid-template-columns:repeat(2,1fr);}
+    .depts{grid-template-columns:repeat(2,1fr);}
+    .colwrap{grid-template-columns:1fr;gap:40px;}
+    .gov-grid{grid-template-columns:1fr;gap:34px;}
+    .contact-grid{grid-template-columns:1fr;gap:30px;}
+    .foot-top{grid-template-columns:1fr 1fr;gap:30px;}
+  }
+  @media (max-width:820px){
+    .mainnav,.search{display:none;}
+    .menu-btn{display:grid;}
+    .header-tools .btn-primary .lbl-long{display:none;}
+  }
+  @media (max-width:620px){
+    body{font-size:16px;}
+    .wrap{padding:0 18px;}
+    section{padding:48px 0;}
+    .hero .wrap{padding-top:44px;padding-bottom:42px;}
+    .tasks{grid-template-columns:1fr;}
+    .depts{grid-template-columns:1fr;}
+    .cinfo{grid-template-columns:1fr;}
+    .council{grid-template-columns:1fr;}
+    .foot-top{grid-template-columns:1fr;}
+    .foot-access{grid-template-columns:1fr;gap:20px;}
+    .brand .name .t1{font-size:1.08rem;}
+    .govbar .hide-sm{display:none;}
+    .alertbar p{font-size:.86rem;}
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+
+<!-- ========== GOV BANNER ========== -->
+<div class="govbar">
+  <div class="wrap">
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 8.5 8 10 4.6-1.5 8-5 8-10V6l-8-4Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m8.5 12 2.3 2.3L15.5 9.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span><strong>An official website</strong> of the City of Connell, Washington</span>
+    <span class="sep hide-sm">•</span>
+    <span class="hide-sm">Franklin County</span>
+  </div>
+</div>
+
+<!-- ========== EMERGENCY ALERT BAR ========== -->
+<div class="alertbar" id="alertbar" role="region" aria-label="Emergency notice">
+  <div class="wrap">
+    <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3 1.8 20.5h20.4L12 3Z" stroke="#fff" stroke-width="1.9" stroke-linejoin="round"/><path d="M12 9.5v4.5" stroke="#fff" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="17" r="1.1" fill="#fff"/></svg></span>
+    <p><strong>Stay informed.</strong> Sign up for <strong>CodeRED</strong> emergency alerts to get weather, safety, and utility notifications for Connell and Franklin County. <a href="#alerts">Enroll free →</a></p>
+    <button class="alert-x" id="alertClose" aria-label="Dismiss emergency notice">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6 18 18M18 6 6 18" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</div>
+
+<!-- ========== HEADER ========== -->
+<header class="masthead" id="masthead">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="City of Connell — home">
+      <span class="seal" aria-hidden="true">
+        <svg viewBox="0 0 100 100" fill="none">
+          <circle cx="50" cy="50" r="47" fill="#122F3D"/>
+          <circle cx="50" cy="50" r="47" stroke="#C6912E" stroke-width="1.5"/>
+          <circle cx="50" cy="50" r="41" stroke="#E7C46A" stroke-width="1" opacity=".55"/>
+          <!-- converging junction lines -->
+          <path d="M50 50 L12 28 M50 50 L50 8 M50 50 L88 28" stroke="#E7C46A" stroke-width="2.4" stroke-linecap="round"/>
+          <circle cx="50" cy="50" r="4.6" fill="#E7C46A"/>
+          <circle cx="50" cy="50" r="8.4" stroke="#E7C46A" stroke-width="1.3" opacity=".6"/>
+          <!-- wheat sheaves -->
+          <path d="M42 88 C42 78 45 72 50 68 C55 72 58 78 58 88" stroke="#C6912E" stroke-width="2" fill="none"/>
+          <path d="M50 68 L50 84 M46 74 45 71 M46 79 45 76 M54 74 55 71 M54 79 55 76" stroke="#C6912E" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </span>
+      <span class="name">
+        <span class="t1">City of Connell</span>
+        <span class="t2">Franklin County · Washington</span>
+      </span>
+    </a>
+
+    <nav class="mainnav" aria-label="Primary">
+      <a href="#services" data-nav>Services</a>
+      <a href="#meetings" data-nav>Meetings</a>
+      <a href="#departments" data-nav>Departments</a>
+      <a href="#government" data-nav>Government</a>
+      <a href="#contact" data-nav>Contact</a>
+    </nav>
+
+    <div class="header-tools">
+      <div class="search">
+        <div class="search-field" role="search">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.9"/><path d="m20 20-3.2-3.2" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>
+          <input type="text" id="searchInput" placeholder="Search services…" aria-label="Search city services" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="results" aria-autocomplete="list">
+          <button class="search-go" id="searchGo" aria-label="Search">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+        <div class="results" id="results" role="listbox" aria-label="Search results" hidden></div>
+      </div>
+      <a class="btn btn-primary" href="#services">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="2.5" stroke="currentColor" stroke-width="1.9"/><path d="M2.5 9.5h19" stroke="currentColor" stroke-width="1.9"/></svg>
+        <span class="lbl-long">Pay a Bill</span><span style="display:none" class="lbl-short">Pay</span>
+      </a>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<span id="top"></span>
+
+<!-- ========== HERO ========== -->
+<section class="hero" style="padding:0;">
+  <svg class="hero-lines" viewBox="0 0 1440 520" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <g stroke="#E7C46A" stroke-width="1" fill="none" opacity="0.9">
+      <path class="hl-path" d="M-50 560 L720 250" />
+      <path class="hl-path" d="M-50 620 L720 250" />
+      <path class="hl-path" d="M720 250 L1490 560" />
+      <path class="hl-path" d="M720 250 L1490 620" />
+      <path class="hl-path" d="M720 250 L720 -40" opacity=".5"/>
+      <path class="hl-path" d="M300 560 L760 300" opacity=".35"/>
+      <path class="hl-path" d="M1140 560 L680 300" opacity=".35"/>
+    </g>
+    <circle cx="720" cy="250" r="5" fill="#E7C46A"/>
+    <circle cx="720" cy="250" r="13" stroke="#E7C46A" stroke-width="1.2" fill="none" opacity=".55"/>
+    <circle cx="720" cy="250" r="26" stroke="#E7C46A" stroke-width="1" fill="none" opacity=".28"/>
+  </svg>
+  <div class="wrap">
+    <div class="hero-top">
+      <span class="eyebrow on-dark">Est. 1910 · The Columbia Basin</span>
+      <h1>A city built at the <span class="hl">junction</span>.</h1>
+      <p class="lede">Where the rails and coulees meet, Connell keeps moving. Handle city business, follow your council, and stay connected to your community — all in one place.</p>
+    </div>
+
+    <div class="tasks-head">
+      <h2>I want to…</h2>
+      <span class="sub">The things residents do most</span>
+    </div>
+
+    <div class="tasks">
+      <a class="task" href="#services">
+        <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="2.5" y="5" width="19" height="14" rx="2.5" stroke="currentColor" stroke-width="1.8"/><path d="M2.5 9.5h19" stroke="currentColor" stroke-width="1.8"/><path d="M6 15h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+        <span class="tt">Pay a utility bill</span>
+        <span class="td">Pay water &amp; sewer online, by phone, or set up autopay.</span>
+        <span class="arrow">Utility billing <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+      <a class="task" href="#meetings">
+        <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="3.5" y="4.5" width="17" height="16" rx="2.5" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 9h17M8 3v3M16 3v3M7.5 13h5M7.5 16.5h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+        <span class="tt">View agendas &amp; minutes</span>
+        <span class="td">See what the Council is deciding and read past meeting records.</span>
+        <span class="arrow">Meetings <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+      <a class="task" href="#services">
+        <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg></span>
+        <span class="tt">Report a concern</span>
+        <span class="td">Potholes, water leaks, streetlights, or code issues — tell Public Works.</span>
+        <span class="arrow">Report it <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+      <a class="task" href="#departments">
+        <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 20V9l8-5 8 5v11" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M4 20h16M9.5 20v-5h5v5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="tt">Apply for a permit</span>
+        <span class="td">Building, planning, and land-use permits for your project.</span>
+        <span class="arrow">Building &amp; Planning <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+      <a class="task" href="#alerts">
+        <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9a6 6 0 1 1 12 0c0 5 2 6 2 6H4s2-1 2-6Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M10 19a2 2 0 0 0 4 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+        <span class="tt">Sign up for alerts</span>
+        <span class="td">Get CodeRED emergency notifications by call, text, or email.</span>
+        <span class="arrow">Emergency alerts <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+      <a class="task" href="#contact">
+        <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4.5 6.5C4.5 5.7 5.2 5 6 5h2.3c.6 0 1.2.4 1.4 1l1 2.7c.2.5 0 1.1-.4 1.4l-1.3 1c.9 1.9 2.5 3.5 4.4 4.4l1-1.3c.3-.4.9-.6 1.4-.4l2.7 1c.6.2 1 .8 1 1.4V18c0 .8-.7 1.5-1.5 1.5C10.5 19.5 4.5 13.5 4.5 6.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></span>
+        <span class="tt">Contact City Hall</span>
+        <span class="td">Phone numbers, hours, staff directory, and public records requests.</span>
+        <span class="arrow">Get in touch <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="divider" aria-hidden="true">
+  <svg viewBox="0 0 180 20" fill="none"><path d="M2 18 L90 4 L178 18" stroke="currentColor" stroke-width="1.4"/><circle cx="90" cy="4" r="2.6" fill="currentColor"/></svg>
+</div>
+
+<!-- ========== NOTICES + MEETINGS ========== -->
+<section id="news">
+  <div class="wrap">
+    <div class="colwrap">
+      <div class="reveal">
+        <div class="sec-head" style="margin-bottom:22px;">
+          <span class="eyebrow">City Hall</span>
+          <h2>News &amp; notices</h2>
+        </div>
+        <div class="notices">
+          <a class="notice" href="#contact">
+            <span class="tag info">Hours</span>
+            <span class="n-body">
+              <h3>City Hall is closed on Fridays</h3>
+              <p>Our office is open Monday through Thursday, 7:00 AM–5:30 PM. Drop-box payments are accepted any time.</p>
+            </span>
+          </a>
+          <a class="notice" href="#services">
+            <span class="tag svc">Utilities</span>
+            <span class="n-body">
+              <h3>Set up automatic utility payments</h3>
+              <p>Never miss a due date — enroll in autopay for your water and sewer account through City Hall.</p>
+            </span>
+          </a>
+          <a class="notice" href="#meetings">
+            <span class="tag mtg">Council</span>
+            <span class="n-body">
+              <h3>Council meets the 1st &amp; 3rd Wednesday</h3>
+              <p>Regular meetings begin at 6:00 PM in Council Chambers. Agendas post about one week ahead.</p>
+            </span>
+          </a>
+          <a class="notice" href="#alerts">
+            <span class="tag info">Safety</span>
+            <span class="n-body">
+              <h3>Enroll in CodeRED before you need it</h3>
+              <p>Franklin County's alert system reaches you during weather, water, and public-safety events. It's free.</p>
+            </span>
+          </a>
+        </div>
+      </div>
+
+      <div class="meetings-panel reveal" id="meetings">
+        <div class="mp-head">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="16" rx="2.5" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 9h17M8 3v3M16 3v3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <h3>Upcoming public meetings</h3>
+        </div>
+        <div id="meetingList">
+          <!-- filled by JS; static fallback below -->
+          <div class="meeting">
+            <span class="m-date"><span class="mo">—</span><span class="dy">••</span></span>
+            <span class="m-info"><h4>City Council — Regular Meeting</h4><span class="m-meta">1st &amp; 3rd Wednesday · <b>6:00 PM</b> · Council Chambers</span></span>
+          </div>
+        </div>
+        <div class="mp-foot">
+          <a href="#meetings">Agendas &amp; meeting packets
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a href="https://www.digitalarchives.wa.gov/" target="_blank" rel="noopener">Archived minutes &amp; ordinances
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 5h11v11M19 5 5 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <p class="fine">Meetings are open to the public. Public comment is welcome. All City meeting locations are accessible; request accommodations at least 48 hours in advance.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SERVICES / UTILITY ========== -->
+<section id="services" class="dept-band" style="padding-top:60px;padding-bottom:60px;">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Do it online</span>
+      <h2>Pay, apply, and request</h2>
+      <p>Common city services, grouped by what you're trying to get done. Most can start right here; a few still finish at City Hall.</p>
+    </div>
+    <div class="depts reveal">
+      <a class="dept" href="#contact">
+        <span class="d-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="2.5" y="5" width="19" height="14" rx="2.5" stroke="currentColor" stroke-width="1.8"/><path d="M2.5 9.5h19M6 15h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+        <h3>Utility billing</h3>
+        <p>Pay your water and sewer bill online, by phone, by mail, or in the City Hall drop box. Enroll in autopay or paperless billing.</p>
+        <span class="d-contact"><svg viewBox="0 0 24 24" fill="none"><path d="M4.5 6.5C4.5 5.7 5.2 5 6 5h2.3c.6 0 1.2.4 1.4 1l1 2.7c.2.5 0 1.1-.4 1.4l-1.3 1c.9 1.9 2.5 3.5 4.4 4.4l1-1.3c.3-.4.9-.6 1.4-.4l2.7 1c.6.2 1 .8 1 1.4V18c0 .8-.7 1.5-1.5 1.5C10.5 19.5 4.5 13.5 4.5 6.5Z" stroke="currentColor" stroke-width="1.8"/></svg>(509) 234-2701 · ext. 1221</span>
+      </a>
+      <a class="dept" href="#departments">
+        <span class="d-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 20V9l8-5 8 5v11M4 20h16M9.5 20v-5h5v5" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></span>
+        <h3>Building &amp; land-use permits</h3>
+        <p>Apply for building, planning, and land-use permits. Check requirements, fees, and processing times before you start a project.</p>
+        <span class="d-contact"><svg viewBox="0 0 24 24" fill="none"><path d="M4.5 6.5C4.5 5.7 5.2 5 6 5h2.3c.6 0 1.2.4 1.4 1l1 2.7c.2.5 0 1.1-.4 1.4l-1.3 1c.9 1.9 2.5 3.5 4.4 4.4l1-1.3c.3-.4.9-.6 1.4-.4l2.7 1c.6.2 1 .8 1 1.4V18c0 .8-.7 1.5-1.5 1.5C10.5 19.5 4.5 13.5 4.5 6.5Z" stroke="currentColor" stroke-width="1.8"/></svg>Building &amp; Planning</span>
+      </a>
+      <a class="dept" href="#services">
+        <span class="d-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.8"/><path d="M4 20c0-3.3 3.6-5.5 8-5.5s8 2.2 8 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+        <h3>New to Connell?</h3>
+        <p>Start water and sewer service, learn trash and recycling days, and find everything you need to get set up in your new home.</p>
+        <span class="d-contact"><svg viewBox="0 0 24 24" fill="none"><path d="M4.5 6.5C4.5 5.7 5.2 5 6 5h2.3c.6 0 1.2.4 1.4 1l1 2.7c.2.5 0 1.1-.4 1.4l-1.3 1c.9 1.9 2.5 3.5 4.4 4.4l1-1.3c.3-.4.9-.6 1.4-.4l2.7 1c.6.2 1 .8 1 1.4V18c0 .8-.7 1.5-1.5 1.5C10.5 19.5 4.5 13.5 4.5 6.5Z" stroke="currentColor" stroke-width="1.8"/></svg>New resident guide</span>
+      </a>
+      <a class="dept" href="#departments">
+        <span class="d-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg></span>
+        <h3>Report a problem</h3>
+        <p>Report potholes, water main breaks, streetlight outages, or possible code violations so Public Works can respond.</p>
+        <span class="d-contact"><svg viewBox="0 0 24 24" fill="none"><path d="M4.5 6.5C4.5 5.7 5.2 5 6 5h2.3c.6 0 1.2.4 1.4 1l1 2.7c.2.5 0 1.1-.4 1.4l-1.3 1c.9 1.9 2.5 3.5 4.4 4.4l1-1.3c.3-.4.9-.6 1.4-.4l2.7 1c.6.2 1 .8 1 1.4V18c0 .8-.7 1.5-1.5 1.5C10.5 19.5 4.5 13.5 4.5 6.5Z" stroke="currentColor" stroke-width="1.8"/></svg>Public Works</span>
+      </a>
+      <a class="dept" href="#departments">
+        <span class="d-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 4h9l4 4v12H6z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M14 4v4h4M9 13h6M9 16.5h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+        <h3>Public records request</h3>
+        <p>Request public records under Washington's Public Records Act. The City Clerk processes and tracks every request.</p>
+        <span class="d-contact"><svg viewBox="0 0 24 24" fill="none"><path d="M4.5 6.5C4.5 5.7 5.2 5 6 5h2.3c.6 0 1.2.4 1.4 1l1 2.7c.2.5 0 1.1-.4 1.4l-1.3 1c.9 1.9 2.5 3.5 4.4 4.4l1-1.3c.3-.4.9-.6 1.4-.4l2.7 1c.6.2 1 .8 1 1.4V18c0 .8-.7 1.5-1.5 1.5C10.5 19.5 4.5 13.5 4.5 6.5Z" stroke="currentColor" stroke-width="1.8"/></svg>City Clerk · ext. 1232</span>
+      </a>
+      <a class="dept" href="#alerts">
+        <span class="d-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9a6 6 0 1 1 12 0c0 5 2 6 2 6H4s2-1 2-6Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M10 19a2 2 0 0 0 4 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+        <h3>Emergency alerts</h3>
+        <p>Sign up for CodeRED to get emergency and community notifications by phone call, text message, or email.</p>
+        <span class="d-contact"><svg viewBox="0 0 24 24" fill="none"><path d="M4.5 6.5C4.5 5.7 5.2 5 6 5h2.3c.6 0 1.2.4 1.4 1l1 2.7c.2.5 0 1.1-.4 1.4l-1.3 1c.9 1.9 2.5 3.5 4.4 4.4l1-1.3c.3-.4.9-.6 1.4-.4l2.7 1c.6.2 1 .8 1 1.4V18c0 .8-.7 1.5-1.5 1.5C10.5 19.5 4.5 13.5 4.5 6.5Z" stroke="currentColor" stroke-width="1.8"/></svg>Enroll in CodeRED</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== DEPARTMENTS ========== -->
+<section id="departments">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Who does what</span>
+      <h2>City departments</h2>
+      <p>The teams that keep Connell running — from the water in your tap to the officers on patrol. Reach any of them directly below.</p>
+    </div>
+    <div class="depts reveal">
+      <a class="dept" href="#contact">
+        <span class="d-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2 4 6v6c0 5 3.4 8.5 8 10 4.6-1.5 8-5 8-10V6l-8-4Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 8v4l2.5 1.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+        <h3>Police Department</h3>
+        <p>Community-oriented policing focused on safety, service, and strong ties with residents and local schools.</p>
+        <span class="d-contact"><svg viewBox="0 0 24 24" fill="none"><path d="M4.5 6.5C4.5 5.7 5.2 5 6 5h2.3c.6 0 1.2.4 1.4 1l1 2.7c.2.5 0 1.1-.4 1.4l-1.3 1c.9 1.9 2.5 3.5 4.4 4.4l1-1.3c.3-.4.9-.6 1.4-.4l2.7 1c.6.2 1 .8 1 1.4V18c0 .8-.7 1.5-1.5 1.5C10.5 19.5 4.5 13.5 4.5 6.5Z" stroke="currentColor" stroke-width="1.8"/></svg>Non-emergency (509) 234-4141</span>
+      </a>
+      <a class="dept" href="#services">
+        <span class="d-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M3 20h18M6 20V9m4 11V9m4 11V9m4 11V9M4 9l8-5 8 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <h3>Public Works</h3>
+        <p>Maintains streets, parks, and the city's water and wastewater systems to a high standard of reliability and safety.</p>
+        <span class="d-contact"><svg viewBox="0 0 24 24" fill="none"><path d="M4.5 6.5C4.5 5.7 5.2 5 6 5h2.3c.6 0 1.2.4 1.4 1l1 2.7c.2.5 0 1.1-.4 1.4l-1.3 1c.9 1.9 2.5 3.5 4.4 4.4l1-1.3c.3-.4.9-.6 1.4-.4l2.7 1c.6.2 1 .8 1 1.4V18c0 .8-.7 1.5-1.5 1.5C10.5 19.5 4.5 13.5 4.5 6.5Z" stroke="currentColor" stroke-width="1.8"/></svg>Streets · Water · Sewer</span>
+      </a>
+      <a class="dept" href="#services">
+        <span class="d-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 20V9l8-5 8 5v11M4 20h16M9.5 20v-5h5v5" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></span>
+        <h3>Building &amp; Planning</h3>
+        <p>Reviews development to keep it consistent with the Comprehensive Plan, city code, and state and federal rules.</p>
+        <span class="d-contact"><svg viewBox="0 0 24 24" fill="none"><path d="M4.5 6.5C4.5 5.7 5.2 5 6 5h2.3c.6 0 1.2.4 1.4 1l1 2.7c.2.5 0 1.1-.4 1.4l-1.3 1c.9 1.9 2.5 3.5 4.4 4.4l1-1.3c.3-.4.9-.6 1.4-.4l2.7 1c.6.2 1 .8 1 1.4V18c0 .8-.7 1.5-1.5 1.5C10.5 19.5 4.5 13.5 4.5 6.5Z" stroke="currentColor" stroke-width="1.8"/></svg>Permits &amp; code compliance</span>
+      </a>
+      <a class="dept" href="#services">
+        <span class="d-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3v18M5 8s2-2 7-2 7 2 7 2M5 8v9c2-1.5 5-1.5 7 0 2-1.5 5-1.5 7 0V8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <h3>Parks &amp; Recreation</h3>
+        <p>Cares for Connell's parks and recreation facilities — spaces loved and used by residents of every age.</p>
+        <span class="d-contact"><svg viewBox="0 0 24 24" fill="none"><path d="M4.5 6.5C4.5 5.7 5.2 5 6 5h2.3c.6 0 1.2.4 1.4 1l1 2.7c.2.5 0 1.1-.4 1.4l-1.3 1c.9 1.9 2.5 3.5 4.4 4.4l1-1.3c.3-.4.9-.6 1.4-.4l2.7 1c.6.2 1 .8 1 1.4V18c0 .8-.7 1.5-1.5 1.5C10.5 19.5 4.5 13.5 4.5 6.5Z" stroke="currentColor" stroke-width="1.8"/></svg>Parks &amp; facilities</span>
+      </a>
+      <a class="dept" href="#services">
+        <span class="d-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="3.5" y="4.5" width="17" height="15" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M7.5 15l3-3.5 2.5 2 4-4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <h3>Finance &amp; Utility Billing</h3>
+        <p>Manages the city budget, utility accounts, and payments — and keeps Connell's finances transparent and sound.</p>
+        <span class="d-contact"><svg viewBox="0 0 24 24" fill="none"><path d="M4.5 6.5C4.5 5.7 5.2 5 6 5h2.3c.6 0 1.2.4 1.4 1l1 2.7c.2.5 0 1.1-.4 1.4l-1.3 1c.9 1.9 2.5 3.5 4.4 4.4l1-1.3c.3-.4.9-.6 1.4-.4l2.7 1c.6.2 1 .8 1 1.4V18c0 .8-.7 1.5-1.5 1.5C10.5 19.5 4.5 13.5 4.5 6.5Z" stroke="currentColor" stroke-width="1.8"/></svg>Billing · ext. 1221</span>
+      </a>
+      <a class="dept" href="#services">
+        <span class="d-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 4h9l4 4v12H6z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M14 4v4h4M9 12h6M9 15.5h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+        <h3>City Clerk</h3>
+        <p>Keeps the city's official records, manages public records requests, and supports the Council and elections.</p>
+        <span class="d-contact"><svg viewBox="0 0 24 24" fill="none"><path d="M4.5 6.5C4.5 5.7 5.2 5 6 5h2.3c.6 0 1.2.4 1.4 1l1 2.7c.2.5 0 1.1-.4 1.4l-1.3 1c.9 1.9 2.5 3.5 4.4 4.4l1-1.3c.3-.4.9-.6 1.4-.4l2.7 1c.6.2 1 .8 1 1.4V18c0 .8-.7 1.5-1.5 1.5C10.5 19.5 4.5 13.5 4.5 6.5Z" stroke="currentColor" stroke-width="1.8"/></svg>Marissa Ortiz · ext. 1232</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== GOVERNMENT ========== -->
+<section id="government" class="dept-band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Your local government</span>
+      <h2>Mayor &amp; City Council</h2>
+      <p>Connell is a noncharter code city with a Mayor–Council form of government. Residents elect the Mayor and a five-member Council who set city policy in open, public meetings.</p>
+    </div>
+    <div class="gov-grid">
+      <div class="mayor-card reveal">
+        <svg class="mlines" viewBox="0 0 100 100" fill="none" aria-hidden="true"><path d="M50 50 L6 20 M50 50 L50 -6 M50 50 L94 20" stroke="currentColor" stroke-width="2"/><circle cx="50" cy="50" r="4" fill="currentColor"/></svg>
+        <div class="role">Office of the Mayor</div>
+        <div class="who">
+          <span class="avatar" aria-hidden="true">SH</span>
+          <div>
+            <h3>Shelly Harper</h3>
+            <span class="sworn">Sworn in January 7, 2026</span>
+          </div>
+        </div>
+        <blockquote>“Let's build a city we're proud of — one that's open, welcoming, and working for every neighborhood.”</blockquote>
+      </div>
+
+      <div class="council-block reveal">
+        <h3>City Council</h3>
+        <p class="cintro">Five councilmembers, sworn in January 2026, adopt the city's laws, budget, and priorities. The Mayor presides but votes only to break a tie.</p>
+        <div class="council">
+          <div class="cmember"><span class="ca" aria-hidden="true">TC</span><span><span class="cn">Terri Cerna</span><span class="cr">Councilmember · Mayor Pro-Tem</span></span></div>
+          <div class="cmember"><span class="ca" aria-hidden="true">DD</span><span><span class="cn">David Dixon</span><span class="cr">Councilmember</span></span></div>
+          <div class="cmember"><span class="ca" aria-hidden="true">PH</span><span><span class="cn">Patrice Hebel</span><span class="cr">Councilmember · Position 5</span></span></div>
+          <div class="cmember"><span class="ca" aria-hidden="true">FM</span><span><span class="cn">Frankie Meraz</span><span class="cr">Councilmember</span></span></div>
+          <div class="cmember"><span class="ca" aria-hidden="true">SW</span><span><span class="cn">Shelly Welch</span><span class="cr">Councilmember · Position 6</span></span></div>
+        </div>
+        <div class="gov-note">
+          <b>Boards &amp; commissions.</b> Residents also serve on the Planning Commission, Parks &amp; Recreation Board, and Hotel/Motel Tax Committee, which advise the Council and act on the city's behalf. Interested in serving? Contact the City Clerk.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== ALERTS CTA ========== -->
+<section id="alerts" style="background:var(--paper);padding-top:56px;padding-bottom:56px;">
+  <div class="wrap">
+    <div class="reveal" style="background:linear-gradient(135deg,#1B4152,#122F3D);border-radius:18px;padding:44px;display:grid;grid-template-columns:1.3fr 1fr;gap:36px;align-items:center;position:relative;overflow:hidden;">
+      <svg viewBox="0 0 200 200" fill="none" aria-hidden="true" style="position:absolute;right:-40px;bottom:-40px;width:260px;opacity:.16;color:#E7C46A;"><path d="M100 100 L14 40 M100 100 L100 -12 M100 100 L186 40 M100 100 L40 186 M100 100 L160 186" stroke="currentColor" stroke-width="2"/><circle cx="100" cy="100" r="6" fill="currentColor"/><circle cx="100" cy="100" r="18" stroke="currentColor" stroke-width="1.4" fill="none"/></svg>
+      <div style="position:relative;">
+        <span class="eyebrow on-dark">Franklin County CodeRED</span>
+        <h2 style="color:#fff;font-size:clamp(1.6rem,3vw,2.1rem);margin-bottom:.4em;">Get alerts before an emergency reaches you</h2>
+        <p style="color:var(--text-inv-2);margin-bottom:0;max-width:440px;">Sign up once to receive calls, texts, and emails about severe weather, water advisories, evacuations, and public-safety events across Connell and Franklin County. It's free, and you choose how you're contacted.</p>
+      </div>
+      <div style="position:relative;display:flex;flex-direction:column;gap:12px;">
+        <a class="btn btn-primary" href="https://public.coderedweb.com/CNE/en-US" target="_blank" rel="noopener" style="width:100%;">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9a6 6 0 1 1 12 0c0 5 2 6 2 6H4s2-1 2-6Z" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="M10 19a2 2 0 0 0 4 0" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>
+          Enroll in CodeRED
+        </a>
+        <a class="btn btn-ghost" href="#contact" style="width:100%;">Questions? Contact City Hall</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CONTACT ========== -->
+<section id="contact" class="contact-band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow on-dark">We're here to help</span>
+      <h2>Contact City Hall</h2>
+      <p>Call, email, or stop by. For suggestions on this website, ask for City Clerk Marissa Ortiz.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="cinfo reveal">
+        <div class="ci-block">
+          <h4>Visit &amp; write</h4>
+          <p>104 E Adams St</p>
+          <p>Connell, WA 99326</p>
+          <p class="muted" style="margin-top:8px;">Mail: PO Box 1200<br>Connell, WA 99326-1200</p>
+        </div>
+        <div class="ci-block">
+          <h4>Call &amp; email</h4>
+          <p>City Hall: <a href="tel:+15092342701">(509) 234-2701</a></p>
+          <p>Police (non-emergency): <a href="tel:+15092344141">(509) 234-4141</a></p>
+          <p><a href="mailto:cityofconnell@connellwa.org">cityofconnell@connellwa.org</a></p>
+          <p class="muted" style="margin-top:8px;">Emergencies: call <b style="color:#fff;">911</b></p>
+        </div>
+        <div class="ci-block" style="grid-column:1/-1;">
+          <h4>Office hours</h4>
+          <div class="hours-row"><span>Monday – Thursday</span><span>7:00 AM – 5:30 PM</span></div>
+          <div class="hours-row"><span>Friday</span><span class="closed">Closed</span></div>
+          <div class="hours-row"><span>Saturday – Sunday</span><span class="closed">Closed</span></div>
+          <p class="muted" style="margin-top:10px;">A payment drop box is available at City Hall any time, including Fridays and weekends.</p>
+        </div>
+      </div>
+
+      <div class="map-card reveal">
+        <div class="map-visual">
+          <div class="pin">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 22s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="11" r="2.6" stroke="currentColor" stroke-width="1.8"/></svg>
+            <span class="pl">Connell City Hall</span>
+            <span class="ps">Adams St &amp; Columbia Ave</span>
+          </div>
+        </div>
+        <div class="map-foot">
+          <span class="maddr"><b>104 E Adams St</b>Connell, WA 99326</span>
+          <a class="btn btn-primary" href="https://www.google.com/maps/dir/?api=1&destination=104+E+Adams+St+Connell+WA+99326" target="_blank" rel="noopener" style="padding:10px 18px;min-height:42px;">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m4 12 16-7-7 16-2-7-7-2Z" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></svg>
+            Directions
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ========== FOOTER ========== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a class="brand" href="#top" aria-label="City of Connell — home">
+          <span class="seal" aria-hidden="true">
+            <svg viewBox="0 0 100 100" fill="none">
+              <circle cx="50" cy="50" r="47" fill="#0C2029"/>
+              <circle cx="50" cy="50" r="47" stroke="#C6912E" stroke-width="1.5"/>
+              <path d="M50 50 L12 28 M50 50 L50 8 M50 50 L88 28" stroke="#E7C46A" stroke-width="2.4" stroke-linecap="round"/>
+              <circle cx="50" cy="50" r="4.6" fill="#E7C46A"/>
+              <path d="M42 88 C42 78 45 72 50 68 C55 72 58 78 58 88" stroke="#C6912E" stroke-width="2" fill="none"/>
+              <path d="M50 68 L50 84" stroke="#C6912E" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <span class="name"><span class="t1">City of Connell</span><span class="t2">Franklin County · Washington</span></span>
+        </a>
+        <p>The official website of the City of Connell, Washington — incorporated 1910. Serving our residents, businesses, and the surrounding Columbia Basin community.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Pay a utility bill</a></li>
+          <li><a href="#services">Apply for a permit</a></li>
+          <li><a href="#services">New resident guide</a></li>
+          <li><a href="#services">Report a problem</a></li>
+          <li><a href="#services">Public records request</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Government</h4>
+        <ul>
+          <li><a href="#government">Mayor &amp; City Council</a></li>
+          <li><a href="#meetings">Agendas &amp; minutes</a></li>
+          <li><a href="#government">Boards &amp; commissions</a></li>
+          <li><a href="#departments">Departments</a></li>
+          <li><a href="https://www.digitalarchives.wa.gov/" target="_blank" rel="noopener">Ordinances (State Archives)</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="#contact">Contact City Hall</a></li>
+          <li><a href="#alerts">CodeRED alerts</a></li>
+          <li><a href="tel:+15092342701">(509) 234-2701</a></li>
+          <li><a href="tel:+15092344141">Police (non-emergency)</a></li>
+          <li><a href="mailto:cityofconnell@connellwa.org">Email the City</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="foot-access">
+      <div>
+        <h4><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9.5" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="7.5" r="1.4" fill="currentColor"/><path d="M8 10.5h8M12 10.5V17M12 14l-2.5 3M12 14l2.5 3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>Accessibility</h4>
+        <p>The City of Connell is committed to digital accessibility and works to meet WCAG 2.1 Level AA and Title II of the ADA. Need this information in another format, or an accommodation for a public meeting? Contact the City Clerk at <a href="tel:+15092342701">(509) 234-2701</a> or <a href="mailto:cityofconnell@connellwa.org">email us</a>. Please allow at least 48 hours for meeting accommodations.</p>
+      </div>
+      <div>
+        <h4><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9.5" stroke="currentColor" stroke-width="1.7"/><path d="M2.5 12h19M12 2.5c3 3 3 15 0 19M12 2.5c-3 3-3 15 0 19" stroke="currentColor" stroke-width="1.5"/></svg>Language access / Acceso a idiomas</h4>
+        <p>Language assistance is available at no cost. ¿Necesita ayuda en español? Llame al <a href="tel:+15092342701">(509) 234-2701</a> y con gusto le ayudaremos con los servicios de la ciudad.</p>
+      </div>
+    </div>
+
+    <div class="foot-bottom">
+      <span>© 2026 City of Connell, Washington · An official government website</span>
+      <div class="fb-links">
+        <a href="#top">Back to top ↑</a>
+        <a href="#contact">Public records</a>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ========== MOBILE MENU ========== -->
+<div class="m-overlay" id="mOverlay"></div>
+<aside class="m-drawer" id="mDrawer" aria-label="Menu" aria-hidden="true">
+  <div class="md-head">
+    <span class="seal" aria-hidden="true">
+      <svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="47" fill="#122F3D"/><circle cx="50" cy="50" r="47" stroke="#C6912E" stroke-width="1.5"/><path d="M50 50 L12 28 M50 50 L50 8 M50 50 L88 28" stroke="#E7C46A" stroke-width="2.4" stroke-linecap="round"/><circle cx="50" cy="50" r="4.6" fill="#E7C46A"/></svg>
+    </span>
+    <button class="alert-x" id="mClose" aria-label="Close menu" style="background:var(--paper-2);color:var(--ink);">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6 18 18M18 6 6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <nav aria-label="Mobile">
+    <a href="#services" data-mnav>Services <svg viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    <a href="#meetings" data-mnav>Meetings <svg viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    <a href="#departments" data-mnav>Departments <svg viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    <a href="#government" data-mnav>Government <svg viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    <a href="#alerts" data-mnav>Emergency alerts <svg viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    <a href="#contact" data-mnav>Contact <svg viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  </nav>
+  <div class="md-foot">
+    <a class="btn btn-primary" href="#services" data-mnav>Pay a Bill</a>
+    <a class="btn btn-solid" href="tel:+15092342701">Call (509) 234-2701</a>
+  </div>
+</aside>
+
+<script>
+(function(){
+  "use strict";
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------- Alert bar dismiss ---------- */
+  var alertBar = document.getElementById('alertbar');
+  var alertClose = document.getElementById('alertClose');
+  if(alertClose){ alertClose.addEventListener('click', function(){ alertBar.setAttribute('hidden',''); }); }
+
+  /* ---------- Sticky header shadow ---------- */
+  var masthead = document.getElementById('masthead');
+  function onScroll(){ if(window.scrollY > 8){ masthead.classList.add('stuck'); } else { masthead.classList.remove('stuck'); } }
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  /* ---------- Mobile menu ---------- */
+  var menuBtn = document.getElementById('menuBtn');
+  var drawer = document.getElementById('mDrawer');
+  var overlay = document.getElementById('mOverlay');
+  var mClose = document.getElementById('mClose');
+  function openMenu(){ drawer.classList.add('open'); overlay.classList.add('open'); drawer.setAttribute('aria-hidden','false'); menuBtn.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+  function closeMenu(){ drawer.classList.remove('open'); overlay.classList.remove('open'); drawer.setAttribute('aria-hidden','true'); menuBtn.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+  if(menuBtn){ menuBtn.addEventListener('click', openMenu); }
+  if(mClose){ mClose.addEventListener('click', closeMenu); }
+  if(overlay){ overlay.addEventListener('click', closeMenu); }
+  document.querySelectorAll('[data-mnav]').forEach(function(a){ a.addEventListener('click', closeMenu); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape'){ closeMenu(); hideResults(); } });
+
+  /* ---------- Upcoming meetings (computed so it never goes stale) ---------- */
+  var MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  // returns Date of the Nth given weekday (0=Sun) in a given year/month(0-based)
+  function nthWeekday(year, month, weekday, n){
+    var d = new Date(year, month, 1);
+    var offset = (weekday - d.getDay() + 7) % 7;
+    return new Date(year, month, 1 + offset + (n-1)*7);
+  }
+  // find next occurrence at/after "from" for a rule
+  function nextByRule(from, weekday, occurrences){
+    for(var add=0; add<4; add++){
+      var y = from.getFullYear(), m = from.getMonth()+add;
+      var yy = y + Math.floor(m/12); var mm = ((m%12)+12)%12;
+      for(var i=0;i<occurrences.length;i++){
+        var dt = nthWeekday(yy, mm, weekday, occurrences[i]);
+        if(dt >= stripTime(from)) return dt;
+      }
+    }
+    return null;
+  }
+  function stripTime(d){ return new Date(d.getFullYear(), d.getMonth(), d.getDate()); }
+
+  var now = new Date();
+  var meetings = [
+    { name:'City Council — Regular Meeting', weekday:3, occ:[1,3], time:'6:00 PM', loc:'Council Chambers, 104 E Adams St' },
+    { name:'Planning Commission', weekday:1, occ:[4], time:'5:30 PM', loc:'Council Chambers' },
+    { name:'Parks &amp; Recreation Board', weekday:2, occ:[4], time:'6:00 PM', loc:'Council Chambers' }
+  ];
+  var listEl = document.getElementById('meetingList');
+  if(listEl){
+    var html = '';
+    meetings.forEach(function(mt){
+      var dt = nextByRule(now, mt.weekday, mt.occ);
+      var mo = dt ? MONTHS[dt.getMonth()] : '—';
+      var dy = dt ? dt.getDate() : '••';
+      html += '<div class="meeting">'
+        + '<span class="m-date"><span class="mo">'+mo+'</span><span class="dy">'+dy+'</span></span>'
+        + '<span class="m-info"><h4>'+mt.name+'</h4>'
+        + '<span class="m-meta"><b>'+mt.time+'</b> · '+mt.loc+'</span></span>'
+        + '</div>';
+    });
+    listEl.innerHTML = html;
+  }
+
+  /* ---------- Search ---------- */
+  var index = [
+    {label:'Pay a utility bill', desc:'Water & sewer payments', anchor:'#services', keys:'pay bill utility water sewer autopay payment invoice due account paperless'},
+    {label:'Agendas & minutes', desc:'City Council meetings', anchor:'#meetings', keys:'agenda minutes council meeting packet public comment schedule vote'},
+    {label:'Apply for a permit', desc:'Building & Planning', anchor:'#services', keys:'permit building planning zoning land use construction remodel fees inspection'},
+    {label:'Report a problem', desc:'Public Works', anchor:'#services', keys:'report pothole leak water main streetlight outage code violation graffiti concern'},
+    {label:'Public records request', desc:'City Clerk', anchor:'#services', keys:'public records request clerk foia disclosure documents'},
+    {label:'Emergency alerts (CodeRED)', desc:'Sign up free', anchor:'#alerts', keys:'alert coderED emergency notification weather evacuation text call safety'},
+    {label:'Police Department', desc:'Non-emergency (509) 234-4141', anchor:'#departments', keys:'police officer crime records safety non emergency law'},
+    {label:'Public Works', desc:'Streets, water, sewer', anchor:'#departments', keys:'public works streets water sewer wastewater parks maintenance snow'},
+    {label:'Parks & Recreation', desc:'Parks & facilities', anchor:'#departments', keys:'parks recreation facilities fields programs playground'},
+    {label:'Finance & Utility Billing', desc:'Budget & accounts', anchor:'#departments', keys:'finance budget utility billing account payment treasurer'},
+    {label:'City Clerk', desc:'Marissa Ortiz · ext. 1232', anchor:'#departments', keys:'clerk records elections public records marissa ortiz'},
+    {label:'Mayor & City Council', desc:'Your local government', anchor:'#government', keys:'mayor council government harper councilmember elected officials boards commissions'},
+    {label:'New resident guide', desc:'Start service in Connell', anchor:'#services', keys:'new resident move moving start service trash recycling setup welcome'},
+    {label:'Contact City Hall', desc:'Phone, hours, address', anchor:'#contact', keys:'contact phone hours address city hall email directions map location'}
+  ];
+
+  var input = document.getElementById('searchInput');
+  var results = document.getElementById('results');
+  var goBtn = document.getElementById('searchGo');
+  var hlIndex = -1;
+  var current = [];
+
+  function search(q){
+    q = q.trim().toLowerCase();
+    if(!q) return [];
+    var terms = q.split(/\s+/);
+    return index.map(function(item){
+      var hay = (item.label+' '+item.desc+' '+item.keys).toLowerCase();
+      var score = 0;
+      terms.forEach(function(t){
+        if(item.label.toLowerCase().indexOf(t) === 0) score += 5;
+        if(item.label.toLowerCase().indexOf(t) > -1) score += 3;
+        if(hay.indexOf(t) > -1) score += 1;
+      });
+      return {item:item, score:score};
+    }).filter(function(r){ return r.score > 0; })
+      .sort(function(a,b){ return b.score - a.score; })
+      .slice(0,6).map(function(r){ return r.item; });
+  }
+
+  function renderResults(items){
+    current = items; hlIndex = -1;
+    if(!items.length){
+      results.innerHTML = '<div class="empty">No matches. Try “bill”, “permit”, “meeting”, or “alerts”.</div>';
+      showResults(); return;
+    }
+    var html = '<div class="rlabel">Services &amp; pages</div>';
+    items.forEach(function(it, i){
+      html += '<button role="option" data-anchor="'+it.anchor+'" data-i="'+i+'">'
+        + '<span class="r1">'+it.label+'</span>'
+        + '<span class="r2">'+it.desc+'</span></button>';
+    });
+    results.innerHTML = html;
+    results.querySelectorAll('button').forEach(function(b){
+      b.addEventListener('click', function(){ goTo(b.getAttribute('data-anchor')); });
+    });
+    showResults();
+  }
+  function showResults(){ results.hidden = false; input.setAttribute('aria-expanded','true'); }
+  function hideResults(){ results.hidden = true; input.setAttribute('aria-expanded','false'); hlIndex = -1; }
+
+  function goTo(anchor){
+    hideResults(); input.blur();
+    var el = document.querySelector(anchor);
+    if(el){ el.scrollIntoView({behavior: reduceMotion ? 'auto' : 'smooth', block:'start'}); }
+  }
+
+  if(input){
+    input.addEventListener('input', function(){ renderResults(search(input.value)); });
+    input.addEventListener('focus', function(){ if(input.value.trim()) renderResults(search(input.value)); });
+    input.addEventListener('keydown', function(e){
+      var btns = results.querySelectorAll('button');
+      if(e.key === 'ArrowDown'){ e.preventDefault(); hlIndex = Math.min(hlIndex+1, btns.length-1); updateHl(btns); }
+      else if(e.key === 'ArrowUp'){ e.preventDefault(); hlIndex = Math.max(hlIndex-1, 0); updateHl(btns); }
+      else if(e.key === 'Enter'){ e.preventDefault();
+        if(hlIndex > -1 && btns[hlIndex]){ goTo(btns[hlIndex].getAttribute('data-anchor')); }
+        else if(current[0]){ goTo(current[0].anchor); }
+      } else if(e.key === 'Escape'){ hideResults(); }
+    });
+    function updateHl(btns){ btns.forEach(function(b,i){ b.classList.toggle('hl', i===hlIndex); if(i===hlIndex) b.scrollIntoView({block:'nearest'}); }); }
+    if(goBtn){ goBtn.addEventListener('click', function(){ if(current[0]) goTo(current[0].anchor); else input.focus(); }); }
+    document.addEventListener('click', function(e){ if(!e.target.closest('.search')){ hideResults(); } });
+  }
+
+  /* ---------- Scroll-spy for nav ---------- */
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll('[data-nav]'));
+  var sections = navLinks.map(function(a){ return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
+  function spy(){
+    var pos = window.scrollY + 140;
+    var currentId = '';
+    sections.forEach(function(s){ if(s.offsetTop <= pos){ currentId = s.id; } });
+    navLinks.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href') === '#'+currentId); });
+  }
+  window.addEventListener('scroll', spy, {passive:true}); spy();
+
+  /* ---------- Reveal on scroll ---------- */
+  if('IntersectionObserver' in window && !reduceMotion){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+
+  /* ---------- Hero line draw-in ---------- */
+  if(!reduceMotion){
+    document.querySelectorAll('.hl-path').forEach(function(p, i){
+      try{
+        var len = p.getTotalLength();
+        p.style.strokeDasharray = len; p.style.strokeDashoffset = len;
+        p.style.transition = 'stroke-dashoffset 1.4s cubic-bezier(.22,.61,.36,1) '+(i*0.12)+'s';
+        requestAnimationFrame(function(){ requestAnimationFrame(function(){ p.style.strokeDashoffset = '0'; }); });
+      }catch(err){ /* getTotalLength unsupported */ }
+    });
+  }
+})();
+</script>
+</body>
+</html>
