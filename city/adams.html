@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>City of Adams, Oregon — Official Website</title>
+<meta name="description" content="Official website for the City of Adams, Oregon — a small city in the Blue Mountain foothills of Umatilla County. Pay your water bill, find permits and forms, city council meeting information, and contact City Hall.">
+<meta name="keywords" content="Adams, Oregon, Umatilla County, City Hall, water bill, permits, city council, business license">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="City of Adams, Oregon">
+<meta property="og:title" content="City of Adams, Oregon — Official Website">
+<meta property="og:description" content="Official website for the City of Adams, Oregon — pay your water bill, find permits and forms, and city council meeting information.">
+<meta property="og:url" content="http://www.cityofadamsoregon.com/">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;500;600;700&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+<style>
+  /* ---------- Reset ---------- */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+  }
+  img, svg { display: block; max-width: 100%; }
+  a { color: inherit; }
+
+  /* ---------- Tokens ---------- */
+  :root {
+    --pine-900: #10281D;
+    --pine-800: #163A2B;
+    --pine-700: #1E4835;
+    --pine-600: #275842;
+    --pine-500: #35735640;
+    --wheat-600: #A9791F;
+    --wheat-500: #C08A2E;
+    --wheat-400: #D6A23A;
+    --wheat-300: #E7C468;
+    --wheat-200: #F0DA9E;
+    --paper:    #FBFAF6;
+    --paper-2:  #F4F0E6;
+    --paper-3:  #ECE6D6;
+    --cream:    #F3EEDF;
+    --cream-dim:#CFC8B4;
+    --ink-900:  #23241E;
+    --ink-700:  #3C3D34;
+    --ink-500:  #61614F;
+    --line:     #E4DECF;
+    --line-dk:  #D6CFBB;
+    --focus:    #C08A2E;
+
+    --serif: "Zilla Slab", Georgia, "Times New Roman", serif;
+    --sans: "Public Sans", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --mono: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace;
+
+    --maxw: 1120px;
+    --gutter: clamp(1.15rem, 4vw, 2.75rem);
+    --radius: 14px;
+    --radius-sm: 9px;
+    --shadow: 0 1px 2px rgba(16,40,29,.05), 0 8px 24px -14px rgba(16,40,29,.22);
+    --shadow-lift: 0 2px 4px rgba(16,40,29,.06), 0 20px 40px -20px rgba(16,40,29,.30);
+  }
+
+  /* ---------- Base ---------- */
+  body {
+    font-family: var(--sans);
+    color: var(--ink-900);
+    background: var(--paper);
+    line-height: 1.6;
+    font-size: 1.02rem;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3, h4 { font-family: var(--serif); line-height: 1.12; font-weight: 600; letter-spacing: -.005em; color: var(--pine-900); }
+  p { max-width: 68ch; }
+  strong { font-weight: 600; }
+
+  .wrap { max-width: var(--maxw); margin-inline: auto; padding-inline: var(--gutter); }
+
+  a.link { color: var(--pine-700); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1.5px; text-decoration-color: var(--wheat-400); transition: color .15s, text-decoration-color .15s; }
+  a.link:hover { color: var(--pine-900); text-decoration-color: var(--pine-600); }
+
+  :where(a, button, [tabindex]):focus-visible {
+    outline: 3px solid var(--focus);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  .skip {
+    position: absolute; left: 12px; top: -60px;
+    background: var(--pine-800); color: var(--cream);
+    padding: .6rem 1rem; border-radius: 8px; z-index: 200;
+    text-decoration: none; font-weight: 600; transition: top .18s;
+  }
+  .skip:focus { top: 12px; }
+
+  /* ---------- Eyebrow / section head ---------- */
+  .eyebrow {
+    font-family: var(--sans);
+    font-size: .74rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
+    color: var(--wheat-600);
+    display: inline-flex; align-items: center; gap: .55rem;
+  }
+  .eyebrow::before { content: ""; width: 26px; height: 2px; background: var(--wheat-500); display: inline-block; }
+  .section-head { max-width: 62ch; margin-bottom: 2.1rem; }
+  .section-head h2 { font-size: clamp(1.55rem, 3.4vw, 2.15rem); margin-top: .7rem; }
+  .section-head p { color: var(--ink-500); margin-top: .55rem; font-size: 1.03rem; }
+
+  section.band { padding-block: clamp(3rem, 7vw, 5.25rem); }
+  .band--paper2 { background: var(--paper-2); border-block: 1px solid var(--line); }
+
+  /* ---------- Header ---------- */
+  .topbar {
+    background: var(--pine-900);
+    color: var(--cream-dim);
+    font-size: .82rem;
+  }
+  .topbar .wrap { display: flex; flex-wrap: wrap; gap: .4rem 1.4rem; align-items: center; justify-content: center; padding-block: .5rem; text-align: center; }
+  .topbar a { color: var(--cream); text-decoration: none; }
+  .topbar a:hover { text-decoration: underline; text-underline-offset: 3px; }
+  .topbar .dot { color: var(--wheat-500); }
+
+  header.site {
+    position: sticky; top: 0; z-index: 100;
+    background: color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter: saturate(150%) blur(10px);
+    -webkit-backdrop-filter: saturate(150%) blur(10px);
+    border-bottom: 1px solid transparent;
+    transition: box-shadow .2s, border-color .2s, background .2s;
+  }
+  header.site.scrolled { border-bottom-color: var(--line); box-shadow: 0 6px 24px -18px rgba(16,40,29,.5); }
+  .nav { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: .7rem; }
+
+  .brand { display: flex; align-items: center; gap: .7rem; text-decoration: none; color: var(--pine-900); flex-shrink: 0; }
+  .brand .seal { flex-shrink: 0; }
+  .brand .txt { display: flex; flex-direction: column; line-height: 1; }
+  .brand .txt b { font-family: var(--serif); font-weight: 700; font-size: 1.16rem; letter-spacing: -.01em; }
+  .brand .txt span { font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-500); margin-top: .28rem; font-weight: 600; }
+
+  .nav-links { display: flex; align-items: center; gap: .35rem; }
+  .nav-links a {
+    text-decoration: none; color: var(--ink-700); font-weight: 600; font-size: .93rem;
+    padding: .5rem .7rem; border-radius: 8px; transition: background .15s, color .15s;
+  }
+  .nav-links a:hover { background: var(--paper-3); color: var(--pine-900); }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: .5rem; justify-content: center;
+    font-family: var(--sans); font-weight: 600; font-size: .95rem;
+    padding: .68rem 1.15rem; border-radius: 999px; text-decoration: none;
+    border: 1.5px solid transparent; cursor: pointer; transition: transform .12s, box-shadow .15s, background .15s, border-color .15s, color .15s;
+    white-space: nowrap;
+  }
+  .btn svg { width: 18px; height: 18px; }
+  .btn-primary { background: var(--wheat-500); color: #2A1E06; border-color: var(--wheat-600); }
+  .btn-primary:hover { background: var(--wheat-400); transform: translateY(-1px); box-shadow: 0 10px 22px -12px rgba(169,121,31,.75); }
+  .btn-pine { background: var(--pine-800); color: var(--cream); }
+  .btn-pine:hover { background: var(--pine-700); transform: translateY(-1px); }
+  .btn-ghost { background: transparent; color: var(--cream); border-color: rgba(243,238,223,.4); }
+  .btn-ghost:hover { border-color: var(--cream); background: rgba(243,238,223,.08); }
+  .btn-outline { background: var(--paper); color: var(--pine-800); border-color: var(--line-dk); }
+  .btn-outline:hover { border-color: var(--pine-600); background: var(--paper-2); }
+
+  .menu-toggle {
+    display: none; align-items: center; justify-content: center;
+    width: 44px; height: 44px; border: 1.5px solid var(--line-dk); background: var(--paper);
+    border-radius: 10px; cursor: pointer;
+  }
+  .menu-toggle svg { width: 22px; height: 22px; color: var(--pine-800); }
+
+  /* ---------- Hero ---------- */
+  .hero { position: relative; background: linear-gradient(175deg, var(--pine-800) 0%, var(--pine-900) 62%, #0C2117 100%); color: var(--cream); overflow: hidden; }
+  .hero .wrap { position: relative; z-index: 3; padding-top: clamp(3.2rem, 7vw, 5.5rem); padding-bottom: clamp(11rem, 20vw, 15rem); }
+  .hero .kicker { color: var(--wheat-300); font-weight: 700; letter-spacing: .16em; text-transform: uppercase; font-size: .78rem; display: inline-flex; align-items: center; gap: .6rem; }
+  .hero .kicker::before { content: ""; width: 30px; height: 2px; background: var(--wheat-400); }
+  .hero h1 { color: var(--cream); font-weight: 700; font-size: clamp(2.6rem, 7.5vw, 4.6rem); margin-top: 1rem; letter-spacing: -.02em; }
+  .hero h1 .or { display: block; color: var(--wheat-300); font-weight: 500; font-size: clamp(1.1rem, 3vw, 1.7rem); letter-spacing: .01em; margin-top: .35rem; }
+  .hero .lede { color: #E4E0CF; font-size: clamp(1.02rem, 2.1vw, 1.22rem); margin-top: 1.35rem; max-width: 46ch; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 2rem; }
+
+  /* mountains + wheat signature */
+  .horizon { position: absolute; left: 0; right: 0; bottom: -1px; width: 100%; height: auto; z-index: 2; pointer-events: none; }
+  .hero .glow { position: absolute; z-index: 1; left: 50%; bottom: 6%; width: min(760px, 90%); aspect-ratio: 2/1; transform: translateX(-50%); background: radial-gradient(ellipse at center, rgba(231,196,104,.34), rgba(231,196,104,0) 62%); pointer-events: none; }
+
+  /* ---------- Quick actions strip (overlaps hero) ---------- */
+  .quick { position: relative; z-index: 5; margin-top: clamp(-8.5rem, -15vw, -6rem); }
+  .quick-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;
+    background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius);
+    box-shadow: var(--shadow-lift); padding: 1.15rem;
+  }
+  .qcard {
+    display: flex; flex-direction: column; gap: .55rem; text-decoration: none; color: var(--ink-900);
+    padding: 1.1rem 1.05rem; border-radius: var(--radius-sm); background: var(--paper-2);
+    border: 1px solid var(--line); transition: transform .14s, box-shadow .16s, border-color .16s, background .16s;
+    position: relative; min-height: 100%;
+  }
+  .qcard:hover { transform: translateY(-3px); box-shadow: var(--shadow); border-color: var(--wheat-400); background: #fff; }
+  .qcard .ico { width: 42px; height: 42px; border-radius: 10px; display: grid; place-items: center; background: var(--pine-800); color: var(--wheat-300); flex-shrink: 0; }
+  .qcard .ico svg { width: 22px; height: 22px; }
+  .qcard b { font-family: var(--serif); font-size: 1.1rem; font-weight: 600; color: var(--pine-900); }
+  .qcard span { font-size: .86rem; color: var(--ink-500); line-height: 1.45; }
+  .qcard .arrow { position: absolute; top: 1.1rem; right: 1.05rem; color: var(--wheat-500); opacity: 0; transform: translateX(-4px); transition: opacity .16s, transform .16s; }
+  .qcard:hover .arrow { opacity: 1; transform: translateX(0); }
+
+  /* ---------- Notices ---------- */
+  .notice-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 1.25rem; }
+  .notice {
+    background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 1.5rem 1.55rem; box-shadow: var(--shadow); position: relative; overflow: hidden;
+  }
+  .notice::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 5px; background: var(--wheat-500); }
+  .notice.alert::before { background: var(--pine-600); }
+  .notice .tag { display: inline-flex; align-items: center; gap: .45rem; font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--wheat-600); margin-bottom: .7rem; }
+  .notice.alert .tag { color: var(--pine-600); }
+  .notice h3 { font-size: 1.28rem; margin-bottom: .5rem; }
+  .notice p { font-size: .96rem; color: var(--ink-700); }
+  .meeting-meta { display: flex; flex-wrap: wrap; gap: .5rem .9rem; margin: .9rem 0 .2rem; }
+  .chip { display: inline-flex; align-items: center; gap: .45rem; background: var(--paper-3); border: 1px solid var(--line-dk); border-radius: 8px; padding: .4rem .7rem; font-size: .84rem; font-weight: 600; color: var(--pine-900); }
+  .chip svg { width: 15px; height: 15px; color: var(--pine-600); }
+  .creds { margin-top: 1rem; border-top: 1px dashed var(--line-dk); padding-top: .9rem; display: flex; flex-wrap: wrap; gap: 1.4rem; }
+  .creds div span { display: block; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-500); font-weight: 700; }
+  .creds div b { font-family: var(--mono); font-size: 1.02rem; letter-spacing: .04em; color: var(--pine-900); font-weight: 600; }
+  .notice .more { margin-top: 1.1rem; }
+
+  .stack-notices { display: grid; gap: 1.25rem; }
+
+  /* ---------- Services ---------- */
+  .svc-group + .svc-group { margin-top: 2.6rem; }
+  .svc-group > h3 { font-size: 1.14rem; color: var(--pine-800); display: flex; align-items: center; gap: .6rem; margin-bottom: 1.05rem; padding-bottom: .7rem; border-bottom: 1px solid var(--line); }
+  .svc-group > h3 .dotm { width: 8px; height: 8px; border-radius: 50%; background: var(--wheat-500); flex-shrink: 0; }
+  .svc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(248px, 1fr)); gap: .9rem; }
+  .svc {
+    display: flex; gap: .85rem; align-items: flex-start; text-decoration: none; color: var(--ink-900);
+    background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-sm);
+    padding: 1rem 1.05rem; transition: transform .13s, box-shadow .15s, border-color .15s; position: relative;
+  }
+  .band--paper2 .svc { background: #fff; }
+  .svc:hover { transform: translateY(-2px); box-shadow: var(--shadow); border-color: var(--wheat-400); }
+  .svc .sico { width: 38px; height: 38px; border-radius: 9px; background: var(--paper-3); color: var(--pine-700); display: grid; place-items: center; flex-shrink: 0; }
+  .band--paper2 .svc .sico { background: var(--paper-2); }
+  .svc .sico svg { width: 20px; height: 20px; }
+  .svc .body b { font-family: var(--serif); font-weight: 600; font-size: 1.02rem; color: var(--pine-900); display: block; line-height: 1.25; }
+  .svc .body span { font-size: .84rem; color: var(--ink-500); }
+  .ext { font-size: .62rem; font-weight: 700; letter-spacing: .06em; color: var(--wheat-600); border: 1px solid var(--wheat-400); border-radius: 5px; padding: .07rem .3rem; vertical-align: middle; margin-left: .35rem; }
+  .ext.pdf { color: var(--pine-600); border-color: var(--pine-500); }
+
+  /* ---------- Departments ---------- */
+  .dept-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+  .dept { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); display: flex; flex-direction: column; }
+  .dept .cap { padding: 1.35rem 1.4rem 0; }
+  .dept .badge { width: 46px; height: 46px; border-radius: 12px; background: var(--pine-800); color: var(--wheat-300); display: grid; place-items: center; margin-bottom: .9rem; }
+  .dept .badge svg { width: 24px; height: 24px; }
+  .dept h3 { font-size: 1.25rem; margin-bottom: .5rem; }
+  .dept p { font-size: .93rem; color: var(--ink-700); }
+  .dept .links { margin-top: auto; padding: 1.1rem 1.4rem 1.4rem; display: flex; flex-direction: column; gap: .1rem; }
+  .dept .links a { display: flex; align-items: center; justify-content: space-between; gap: .6rem; text-decoration: none; color: var(--pine-700); font-weight: 600; font-size: .92rem; padding: .55rem .1rem; border-top: 1px solid var(--line); transition: color .14s, padding .14s; }
+  .dept .links a:first-child { border-top: 1px solid var(--line-dk); }
+  .dept .links a:hover { color: var(--pine-900); padding-left: .35rem; }
+  .dept .links a svg { width: 16px; height: 16px; color: var(--wheat-500); flex-shrink: 0; }
+
+  /* ---------- Help / practical cards ---------- */
+  .help-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+  .help { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.5rem; box-shadow: var(--shadow); }
+  .help .hh { display: flex; align-items: center; gap: .7rem; margin-bottom: .85rem; }
+  .help .hh .hi { width: 40px; height: 40px; border-radius: 10px; background: var(--paper-3); color: var(--pine-700); display: grid; place-items: center; flex-shrink: 0; }
+  .help .hh .hi svg { width: 22px; height: 22px; }
+  .help h3 { font-size: 1.14rem; }
+  .help p { font-size: .92rem; color: var(--ink-700); margin-bottom: .8rem; }
+  .help .callout { display: inline-flex; align-items: center; gap: .5rem; font-weight: 600; color: var(--pine-900); font-size: .95rem; background: var(--paper-2); border: 1px solid var(--line-dk); border-radius: 9px; padding: .55rem .8rem; text-decoration: none; }
+  .help .callout svg { width: 17px; height: 17px; color: var(--wheat-600); }
+  .help .callout.tel:hover { border-color: var(--wheat-500); }
+
+  /* ---------- Contact ---------- */
+  .contact { background: linear-gradient(170deg, var(--pine-800), var(--pine-900)); color: var(--cream); border-radius: var(--radius); overflow: hidden; }
+  .contact-grid { display: grid; grid-template-columns: 1.1fr 1fr; }
+  .contact .left { padding: clamp(2rem, 4vw, 3rem); }
+  .contact .left .eyebrow { color: var(--wheat-300); }
+  .contact .left .eyebrow::before { background: var(--wheat-400); }
+  .contact h2 { color: var(--cream); font-size: clamp(1.6rem, 3.5vw, 2.1rem); margin: .7rem 0 .6rem; }
+  .contact .left > p { color: #DDD9C8; font-size: 1rem; max-width: 40ch; }
+  .addr { margin-top: 1.6rem; display: grid; gap: 1.15rem; }
+  .addr .row { display: flex; gap: .8rem; align-items: flex-start; }
+  .addr .row .ai { width: 38px; height: 38px; border-radius: 9px; background: rgba(243,238,223,.1); color: var(--wheat-300); display: grid; place-items: center; flex-shrink: 0; }
+  .addr .row .ai svg { width: 19px; height: 19px; }
+  .addr .row .rc span { display: block; font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: var(--cream-dim); font-weight: 700; margin-bottom: .15rem; }
+  .addr .row .rc b { font-weight: 500; font-size: 1.02rem; color: var(--cream); }
+  .addr .row .rc a { color: var(--cream); text-decoration: none; border-bottom: 1px solid rgba(231,196,104,.5); }
+  .addr .row .rc a:hover { border-bottom-color: var(--wheat-300); }
+  .contact .right { padding: clamp(2rem, 4vw, 3rem); background: rgba(0,0,0,.16); border-left: 1px solid rgba(243,238,223,.1); }
+  .person + .person { margin-top: 1.6rem; padding-top: 1.6rem; border-top: 1px solid rgba(243,238,223,.14); }
+  .person .role { font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--wheat-300); font-weight: 700; }
+  .person .name { font-family: var(--serif); font-size: 1.3rem; font-weight: 600; color: var(--cream); margin: .25rem 0 .7rem; }
+  .person ul { list-style: none; display: grid; gap: .45rem; }
+  .person ul li { display: flex; align-items: center; gap: .6rem; font-size: .95rem; color: #E4E0CF; }
+  .person ul li svg { width: 16px; height: 16px; color: var(--wheat-300); flex-shrink: 0; }
+  .person ul li a { color: #E4E0CF; text-decoration: none; border-bottom: 1px solid rgba(231,196,104,.45); }
+  .person ul li a:hover { color: #fff; }
+  .fb { display: inline-flex; align-items: center; gap: .55rem; margin-top: 1.6rem; background: var(--wheat-500); color: #2A1E06; font-weight: 600; text-decoration: none; padding: .6rem 1rem; border-radius: 999px; font-size: .92rem; transition: background .15s, transform .12s; }
+  .fb:hover { background: var(--wheat-400); transform: translateY(-1px); }
+  .fb svg { width: 17px; height: 17px; }
+
+  /* ---------- Footer ---------- */
+  footer.site { background: var(--pine-900); color: var(--cream-dim); padding-block: 2.8rem 1.6rem; margin-top: 0; }
+  .foot-top { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 2rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(243,238,223,.12); }
+  .foot-brand .brand { color: var(--cream); }
+  .foot-brand .brand .txt b { color: var(--cream); }
+  .foot-brand .brand .txt span { color: var(--cream-dim); }
+  .foot-brand p { color: var(--cream-dim); font-size: .9rem; margin-top: .9rem; max-width: 34ch; }
+  .foot-col h4 { font-family: var(--sans); font-size: .74rem; letter-spacing: .13em; text-transform: uppercase; color: var(--wheat-300); margin-bottom: .9rem; font-weight: 700; }
+  .foot-col ul { list-style: none; display: grid; gap: .5rem; }
+  .foot-col ul a { color: var(--cream); text-decoration: none; font-size: .92rem; opacity: .85; }
+  .foot-col ul a:hover { opacity: 1; text-decoration: underline; text-underline-offset: 3px; }
+  .foot-bottom { display: flex; flex-wrap: wrap; gap: .6rem 1.4rem; justify-content: space-between; align-items: center; padding-top: 1.4rem; font-size: .82rem; color: var(--cream-dim); }
+  .foot-bottom .disc { max-width: 70ch; }
+
+  /* ---------- Reveal animation ---------- */
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; } }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 940px) {
+    .notice-grid { grid-template-columns: 1fr; }
+    .dept-grid, .help-grid { grid-template-columns: 1fr 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .contact .right { border-left: none; border-top: 1px solid rgba(243,238,223,.1); }
+    .foot-top { grid-template-columns: 1fr 1fr; }
+    .quick-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 760px) {
+    .nav-links, .nav .btn.desk { display: none; }
+    .menu-toggle { display: flex; }
+    header.site.open .nav-links {
+      display: flex; position: absolute; top: 100%; left: 0; right: 0;
+      flex-direction: column; align-items: stretch; gap: .15rem;
+      background: var(--paper); border-bottom: 1px solid var(--line);
+      padding: .8rem var(--gutter) 1.1rem; box-shadow: var(--shadow);
+    }
+    header.site.open .nav-links a { padding: .8rem .6rem; border-radius: 8px; font-size: 1rem; }
+    header.site.open .nav-links .btn { margin-top: .5rem; }
+    .dept-grid, .help-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) {
+    .quick-grid { grid-template-columns: 1fr; padding: .85rem; gap: .7rem; }
+    .foot-top { grid-template-columns: 1fr; gap: 1.6rem; }
+    .hero .wrap { padding-bottom: clamp(9rem, 34vw, 12rem); }
+    .creds { gap: 1rem; }
+  }
+
+  @media print {
+    header.site, .quick, .hero-actions, .menu-toggle, .topbar { display: none !important; }
+    body { background: #fff; }
+    .notice, .svc, .dept, .help { box-shadow: none; border-color: #bbb; }
+  }
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to main content</a>
+
+<!-- ============ TOP BAR ============ -->
+<div class="topbar">
+  <div class="wrap">
+    <span>City Hall &middot; <a href="tel:15415669380">541-566-9380</a></span>
+    <span class="dot">&bull;</span>
+    <span>190 North Main Street, Adams, OR 97810</span>
+    <span class="dot">&bull;</span>
+    <span>Council Meeting: <a href="#notices">Mon, July 13 &middot; 6:30 PM</a></span>
+  </div>
+</div>
+
+<!-- ============ HEADER ============ -->
+<header class="site" id="siteHeader">
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="City of Adams, Oregon — home">
+      <svg class="seal" width="44" height="44" viewBox="0 0 44 44" fill="none" aria-hidden="true">
+        <circle cx="22" cy="22" r="21" fill="#163A2B" stroke="#C08A2E" stroke-width="1.5"/>
+        <path d="M6 30c4-5 7-2 10-6s5 3 8-2 6 4 8 0" stroke="#E7C468" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+        <path d="M13 27l4-8 4 8M23 27l4-9 4 9" stroke="#F0DA9E" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="22" cy="13" r="2.4" fill="#E7C468"/>
+      </svg>
+      <span class="txt"><b>City of Adams</b><span>Umatilla County, Oregon</span></span>
+    </a>
+
+    <nav class="nav-links" id="navLinks" aria-label="Primary">
+      <a href="#services">Services</a>
+      <a href="#notices">Notices</a>
+      <a href="#departments">Departments</a>
+      <a href="#city-pages">City Pages</a>
+      <a href="#contact">Contact</a>
+      <a class="btn btn-primary" href="https://cityofadamsoregon.egovpayments.com/egov/apps/payment/center.egov" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+        Pay Water Bill
+      </a>
+    </nav>
+
+    <a class="btn btn-primary desk" href="https://cityofadamsoregon.egovpayments.com/egov/apps/payment/center.egov" target="_blank" rel="noopener" style="display:none">Pay Water Bill</a>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+<span id="top"></span>
+
+<!-- ============ HERO ============ -->
+<section class="hero" aria-label="Welcome">
+  <div class="glow" aria-hidden="true"></div>
+  <div class="wrap">
+    <span class="kicker">Welcome to Adams</span>
+    <h1>City of Adams<span class="or">In the Blue Mountain foothills of Eastern Oregon</span></h1>
+    <p class="lede">The official home for city services, council meetings, and community information — for the residents and businesses of our small town in the wheat country of Umatilla County.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="https://cityofadamsoregon.egovpayments.com/egov/apps/payment/center.egov" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+        Pay Water Bill
+      </a>
+      <a class="btn btn-ghost" href="#services">Permits &amp; Forms</a>
+      <a class="btn btn-ghost" href="#notices">Council Meeting Info</a>
+    </div>
+  </div>
+
+  <!-- Blue Mountains over a wheat field: signature -->
+  <svg class="horizon" viewBox="0 0 1440 260" preserveAspectRatio="none" aria-hidden="true">
+    <defs>
+      <linearGradient id="far" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#2E5A44"/><stop offset="1" stop-color="#265238"/>
+      </linearGradient>
+      <linearGradient id="near" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#173C2B"/><stop offset="1" stop-color="#102A1D"/>
+      </linearGradient>
+      <linearGradient id="field" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#C89A3B"/><stop offset="1" stop-color="#A9791F"/>
+      </linearGradient>
+    </defs>
+    <!-- far ridge -->
+    <path fill="url(#far)" opacity="0.9" d="M0 150 C 160 108, 300 132, 440 118 C 620 100, 760 150, 940 128 C 1120 106, 1280 140, 1440 120 L1440 260 L0 260 Z"/>
+    <!-- near ridge -->
+    <path fill="url(#near)" d="M0 186 C 180 150, 340 178, 520 166 C 720 152, 880 196, 1080 176 C 1240 160, 1360 190, 1440 178 L1440 260 L0 260 Z"/>
+    <!-- wheat field foreground -->
+    <path fill="url(#field)" d="M0 224 C 240 214, 520 230, 760 224 C 1020 218, 1240 232, 1440 224 L1440 260 L0 260 Z"/>
+    <!-- wheat stalk suggestion -->
+    <g stroke="#E7C468" stroke-width="1.5" opacity="0.55" stroke-linecap="round">
+      <path d="M120 224 L120 236 M300 226 L300 238 M470 224 L470 235 M660 226 L660 237 M820 224 L820 236 M1000 226 L1000 237 M1180 224 L1180 236 M1340 225 L1340 237"/>
+    </g>
+  </svg>
+</section>
+
+<!-- ============ QUICK ACTIONS ============ -->
+<div class="wrap quick">
+  <div class="quick-grid reveal">
+    <a class="qcard" href="https://cityofadamsoregon.egovpayments.com/egov/apps/payment/center.egov" target="_blank" rel="noopener">
+      <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11Z"/></svg></span>
+      <b>Pay Your Water Bill</b>
+      <span>Pay online securely through the city payment portal.</span>
+      <span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
+    <a class="qcard" href="#services">
+      <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v5h5"/><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M8 13h8M8 17h5"/></svg></span>
+      <b>Permits &amp; Forms</b>
+      <span>Building, land use, water service, and business licenses.</span>
+      <span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
+    <a class="qcard" href="#notices">
+      <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg></span>
+      <b>Council Meetings</b>
+      <span>Meeting dates, agendas, and how to join by phone or video.</span>
+      <span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
+    <a class="qcard" href="#help">
+      <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21v-8l9-7 9 7v8"/><path d="M9 21v-6h6v6"/></svg></span>
+      <b>Reserve the Park</b>
+      <span>Book the City Park shelter for your next gathering.</span>
+      <span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
+  </div>
+</div>
+
+<!-- ============ NOTICES ============ -->
+<section class="band" id="notices">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">News &amp; Notices</span>
+      <h2>What's happening in Adams</h2>
+      <p>Current announcements from City Hall. For the latest events, follow the city on Facebook.</p>
+    </div>
+
+    <div class="notice-grid">
+      <div class="notice alert reveal">
+        <span class="tag">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg>
+          Upcoming meeting
+        </span>
+        <h3>City Council Meeting</h3>
+        <p>The Adams City Council meets at City Hall. The public is welcome to attend in person or join remotely.</p>
+        <div class="meeting-meta">
+          <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Monday, July 13, 2026</span>
+          <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l2 1"/></svg> 6:30 PM</span>
+          <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.2-7-11a7 7 0 0 1 14 0c0 5.8-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg> Adams City Hall</span>
+        </div>
+        <div class="creds">
+          <div><span>Meeting ID</span><b>838 1619 9050</b></div>
+          <div><span>Passcode</span><b>381728</b></div>
+        </div>
+      </div>
+
+      <div class="stack-notices">
+        <div class="notice reveal">
+          <span class="tag">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>
+            Budget
+          </span>
+          <h3>2026&ndash;2027 Fiscal Year Budget</h3>
+          <p>The city budget for the coming fiscal year is available for review.</p>
+          <div class="more"><a class="btn btn-outline" href="http://www.cityofadamsoregon.com/city-budgets.html">View City Budgets</a></div>
+        </div>
+
+        <div class="notice reveal">
+          <span class="tag">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l3 3v17H6z"/><path d="M9 12h6M9 16h6"/></svg>
+            Businesses
+          </span>
+          <h3>Business License Required</h3>
+          <p>Under Ordinance No. 266, any business operating within the City of Adams must keep a current business license on file.</p>
+          <div class="more"><a class="btn btn-outline" href="http://www.cityofadamsoregon.com/uploads/3/1/2/3/3123389/business_license_form_1.2023.pdf" target="_blank" rel="noopener">Business License Application (PDF)</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="band band--paper2" id="services">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">City Services</span>
+      <h2>Pay, apply, and get things done</h2>
+      <p>Everything you need from the city, organized by what you're trying to do. Documents open as PDFs; the payment portal opens in a new tab.</p>
+    </div>
+
+    <!-- Group 1 -->
+    <div class="svc-group reveal">
+      <h3><span class="dotm"></span> Pay &amp; Apply</h3>
+      <div class="svc-grid">
+        <a class="svc" href="https://cityofadamsoregon.egovpayments.com/egov/apps/payment/center.egov" target="_blank" rel="noopener">
+          <span class="sico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></svg></span>
+          <span class="body"><b>Pay Water Bill<span class="ext">Portal</span></b><span>Pay your water account online.</span></span>
+        </a>
+        <a class="svc" href="http://www.cityofadamsoregon.com/uploads/3/1/2/3/3123389/new_water_account_application_4.8.24.pdf" target="_blank" rel="noopener">
+          <span class="sico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11Z"/></svg></span>
+          <span class="body"><b>Water Service Application<span class="ext pdf">PDF</span></b><span>Start new water service.</span></span>
+        </a>
+        <a class="svc" href="http://www.cityofadamsoregon.com/uploads/3/1/2/3/3123389/business_license_form_1.2023.pdf" target="_blank" rel="noopener">
+          <span class="sico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M13 9h4M13 13h4M5 16c1-2 5-2 6 0"/></svg></span>
+          <span class="body"><b>Business License<span class="ext pdf">PDF</span></b><span>Apply or renew (Ord. No. 266).</span></span>
+        </a>
+        <a class="svc" href="http://www.cityofadamsoregon.com/uploads/3/1/2/3/3123389/land_use_permit_application.pdf" target="_blank" rel="noopener">
+          <span class="sico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21v-9l9-7 9 7v9"/><path d="M9 21v-6h6v6"/></svg></span>
+          <span class="body"><b>Building &amp; Land Use Permit<span class="ext pdf">PDF</span></b><span>Land use request and permit form.</span></span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Group 2 -->
+    <div class="svc-group reveal">
+      <h3><span class="dotm"></span> Planning &amp; Land Use</h3>
+      <div class="svc-grid">
+        <a class="svc" href="http://www.cityofadamsoregon.com/uploads/3/1/2/3/3123389/adams_zoning_map.pdf" target="_blank" rel="noopener">
+          <span class="sico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2Z"/><path d="M9 4v14M15 6v14"/></svg></span>
+          <span class="body"><b>Zoning Map<span class="ext pdf">PDF</span></b><span>City zoning districts.</span></span>
+        </a>
+        <a class="svc" href="http://www.cityofadamsoregon.com/uploads/3/1/2/3/3123389/development_code.pdf" target="_blank" rel="noopener">
+          <span class="sico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h12v18H6a2 2 0 0 1-2-2Z"/><path d="M8 3v18"/></svg></span>
+          <span class="body"><b>Development Code<span class="ext pdf">PDF</span></b><span>Land development standards.</span></span>
+        </a>
+        <a class="svc" href="http://www.cityofadamsoregon.com/uploads/3/1/2/3/3123389/vacation_8.6.20.pdf" target="_blank" rel="noopener">
+          <span class="sico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20 20 4M9 4h11v11"/></svg></span>
+          <span class="body"><b>Street / Alley Vacation<span class="ext pdf">PDF</span></b><span>Vacation application form.</span></span>
+        </a>
+        <a class="svc" href="http://www.cityofadamsoregon.com/uploads/3/1/2/3/3123389/resolution_20-13_land_use_fees_9.10.20.pdf" target="_blank" rel="noopener">
+          <span class="sico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/></svg></span>
+          <span class="body"><b>Land Use Fee Schedule<span class="ext pdf">PDF</span></b><span>Resolution 20-13.</span></span>
+        </a>
+        <a class="svc" href="http://www.cityofadamsoregon.com/planning-commission.html">
+          <span class="sico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V10M19 21V10M4 10l8-6 8 6M9 21v-6h6v6"/></svg></span>
+          <span class="body"><b>Planning Commission<span class="ext">Page</span></b><span>Meetings and land use planning.</span></span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Group 3 -->
+    <div class="svc-group reveal">
+      <h3><span class="dotm"></span> Records &amp; Meetings</h3>
+      <div class="svc-grid">
+        <a class="svc" href="http://www.cityofadamsoregon.com/meeting-minutes.html">
+          <span class="sico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h9a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6"/><path d="M9 3v3H6M8 12h8M8 16h5"/></svg></span>
+          <span class="body"><b>Meeting Minutes<span class="ext">Page</span></b><span>Records of council meetings.</span></span>
+        </a>
+        <a class="svc" href="http://www.cityofadamsoregon.com/ordinances--resolutions.html">
+          <span class="sico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M4 7l8-4 8 4M6 10l-2 5h4ZM18 10l-2 5h4Z"/></svg></span>
+          <span class="body"><b>Ordinances &amp; Resolutions<span class="ext">Page</span></b><span>City laws and resolutions.</span></span>
+        </a>
+        <a class="svc" href="http://www.cityofadamsoregon.com/city-calendar--information.html">
+          <span class="sico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 10h18M8 15h3"/></svg></span>
+          <span class="body"><b>City Calendar &amp; Information<span class="ext">Page</span></b><span>Dates and general info.</span></span>
+        </a>
+        <a class="svc" href="http://www.cityofadamsoregon.com/city-budgets.html">
+          <span class="sico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg></span>
+          <span class="body"><b>City Budgets<span class="ext">Page</span></b><span>Annual budget documents.</span></span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DEPARTMENTS ============ -->
+<section class="band" id="departments">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Departments</span>
+      <h2>City departments &amp; services</h2>
+      <p>The people and offices that keep Adams running.</p>
+    </div>
+
+    <div class="dept-grid">
+      <div class="dept reveal">
+        <div class="cap">
+          <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11Z"/></svg></span>
+          <h3>Water Department</h3>
+          <p>Set up service, pay your bill, and manage your water account with the city.</p>
+        </div>
+        <div class="links">
+          <a href="https://cityofadamsoregon.egovpayments.com/egov/apps/payment/center.egov" target="_blank" rel="noopener">Pay Water Bill Online <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+          <a href="http://www.cityofadamsoregon.com/uploads/3/1/2/3/3123389/new_water_account_application_4.8.24.pdf" target="_blank" rel="noopener">Water Service Application <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+          <a href="http://www.cityofadamsoregon.com/water-department.html">Water Department Page <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+
+      <div class="dept reveal">
+        <div class="cap">
+          <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h6v16H6a2 2 0 0 0-2 2Z"/><path d="M20 5a2 2 0 0 0-2-2h-6v16h6a2 2 0 0 1 2 2Z"/></svg></span>
+          <h3>Adams Public Library</h3>
+          <p>Books, resources, and programs for the community. Directed by Amanda Hespel.</p>
+        </div>
+        <div class="links">
+          <a href="http://www.cityofadamsoregon.com/adams-public-library.html">Visit the Library Page <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="tel:15415663038">Call: 541-566-3038 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5c0 8 7 15 15 15l1-4-5-2-2 2a13 13 0 0 1-5-5l2-2-2-5Z"/></svg></a>
+          <a href="http://www.cityofadamsoregon.com/adams-american-newsletter.html">Adams American Newsletter <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+
+      <div class="dept reveal">
+        <div class="cap">
+          <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V10M19 21V10M4 10l8-6 8 6M9 21v-6h6v6"/></svg></span>
+          <h3>Planning &amp; Land Use</h3>
+          <p>Building permits, zoning, vacations, and the city's development code.</p>
+        </div>
+        <div class="links">
+          <a href="http://www.cityofadamsoregon.com/planning-commission.html">Planning Commission <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="http://www.cityofadamsoregon.com/uploads/3/1/2/3/3123389/adams_zoning_map.pdf" target="_blank" rel="noopener">Zoning Map <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+          <a href="http://www.cityofadamsoregon.com/uploads/3/1/2/3/3123389/development_code.pdf" target="_blank" rel="noopener">Development Code <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HELP / PRACTICAL ============ -->
+<section class="band band--paper2" id="help">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Good to Know</span>
+      <h2>Common questions, answered</h2>
+      <p>A few things residents ask City Hall about most often.</p>
+    </div>
+
+    <div class="help-grid">
+      <div class="help reveal">
+        <div class="hh">
+          <span class="hi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M10 5.5 4 12v6h4l2-2 2 2h2l2-6-2-3.5"/><circle cx="16.5" cy="6.5" r="2"/><path d="M8 9c1 0 2 .5 2 2"/></svg></span>
+          <h3>Loose or aggressive animals</h3>
+        </div>
+        <p>The City of Adams does not have an animal control officer. The city can warn or ticket an owner but cannot contain a loose animal, and criminal charges go through the Sheriff's Office.</p>
+        <a class="callout tel" href="tel:15419663600"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5c0 8 7 15 15 15l1-4-5-2-2 2a13 13 0 0 1-5-5l2-2-2-5Z"/></svg> Umatilla County Sheriff &middot; 541-966-3600</a>
+      </div>
+
+      <div class="help reveal">
+        <div class="hh">
+          <span class="hi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h16M6 10V7a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v3M5 10l1 9h12l1-9"/></svg></span>
+          <h3>Reserve the park shelter</h3>
+        </div>
+        <p>Reserve the City Park shelter by calling City Hall. It has electricity, potable water, and a small BBQ. Ask for the restroom code if you'd like weekend access.</p>
+        <a class="callout tel" href="tel:15415669380"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5c0 8 7 15 15 15l1-4-5-2-2 2a13 13 0 0 1-5-5l2-2-2-5Z"/></svg> City Hall &middot; 541-566-9380</a>
+      </div>
+
+      <div class="help reveal">
+        <div class="hh">
+          <span class="hi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c1 3-1 4-1 6a3 3 0 0 0 6 0c0-1-.5-2-1-2.5C17 9 18 11 18 14a6 6 0 0 1-12 0c0-4 3-6 6-11Z"/></svg></span>
+          <h3>Burn permits</h3>
+        </div>
+        <p>Before burning, you must have a current, valid permit. Permits are issued at the fire station at 103 E. Main Street in Weston, Oregon.</p>
+        <a class="callout tel" href="tel:15415662311"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5c0 8 7 15 15 15l1-4-5-2-2 2a13 13 0 0 1-5-5l2-2-2-5Z"/></svg> East Umatilla Fire &amp; Rescue &middot; 541-566-2311</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CITY PAGES ============ -->
+<section class="band" id="city-pages">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">More From the City</span>
+      <h2>City pages &amp; community</h2>
+      <p>Explore Adams beyond the paperwork.</p>
+    </div>
+    <div class="svc-grid reveal">
+      <a class="svc" href="http://www.cityofadamsoregon.com/adams-public-library.html">
+        <span class="sico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h6v16H6a2 2 0 0 0-2 2Z"/><path d="M20 5a2 2 0 0 0-2-2h-6v16h6a2 2 0 0 1 2 2Z"/></svg></span>
+        <span class="body"><b>Adams Public Library<span class="ext">Page</span></b><span>Catalog, hours, and programs.</span></span>
+      </a>
+      <a class="svc" href="http://www.cityofadamsoregon.com/adams-american-newsletter.html">
+        <span class="sico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h13v14H6a2 2 0 0 1-2-2Z"/><path d="M17 8h3v9a2 2 0 0 1-2 2M8 9h5M8 13h5"/></svg></span>
+        <span class="body"><b>Adams American Newsletter<span class="ext">Page</span></b><span>City news and updates.</span></span>
+      </a>
+      <a class="svc" href="http://www.cityofadamsoregon.com/history.html">
+        <span class="sico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 4v4h4M12 8v4l3 2"/></svg></span>
+        <span class="body"><b>History<span class="ext">Page</span></b><span>The story of Adams, Oregon.</span></span>
+      </a>
+      <a class="svc" href="https://www.facebook.com/pages/Adams-Oregon/473711562646367" target="_blank" rel="noopener">
+        <span class="sico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h-2a4 4 0 0 0-4 4v3H6v4h3v7h4v-7h3l1-4h-4V7a1 1 0 0 1 1-1h2Z"/></svg></span>
+        <span class="body"><b>Facebook<span class="ext">Off-site</span></b><span>Events and community posts.</span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="band band--paper2" id="contact">
+  <div class="wrap">
+    <div class="contact reveal">
+      <div class="contact-grid">
+        <div class="left">
+          <span class="eyebrow">Contact</span>
+          <h2>Adams City Hall</h2>
+          <p>Questions about your account, permits, or the park? Reach out to City Hall — we're glad to help.</p>
+          <div class="addr">
+            <div class="row">
+              <span class="ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.2-7-11a7 7 0 0 1 14 0c0 5.8-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+              <div class="rc"><span>Visit / Mail</span><b>190 North Main Street<br>P.O. Box 20, Adams, OR 97810</b></div>
+            </div>
+            <div class="row">
+              <span class="ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5c0 8 7 15 15 15l1-4-5-2-2 2a13 13 0 0 1-5-5l2-2-2-5Z"/></svg></span>
+              <div class="rc"><span>Phone &amp; Fax</span><b><a href="tel:15415669380">541-566-9380</a> &middot; Fax 541-566-2077</b></div>
+            </div>
+            <div class="row">
+              <span class="ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
+              <!-- TODO: replace with the city's real email address -->
+              <div class="rc"><span>Email</span><b><a href="mailto:REPLACE-WITH-CITY-EMAIL">Email City Hall</a></b></div>
+            </div>
+          </div>
+          <a class="fb" href="https://www.facebook.com/pages/Adams-Oregon/473711562646367" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.3v7A10 10 0 0 0 22 12Z"/></svg>
+            Follow us on Facebook
+          </a>
+        </div>
+
+        <div class="right">
+          <div class="person">
+            <div class="role">City Recorder</div>
+            <div class="name">Donna Grimes</div>
+            <ul>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5c0 8 7 15 15 15l1-4-5-2-2 2a13 13 0 0 1-5-5l2-2-2-5Z"/></svg> <a href="tel:15415669380">541-566-9380</a></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="8" width="12" height="8" rx="1"/><path d="M6 8V4h12v4M8 16v4h8v-4"/></svg> Fax 541-566-2077</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.2-7-11a7 7 0 0 1 14 0c0 5.8-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg> 190 N. Main St, Adams, OR 97810</li>
+            </ul>
+          </div>
+          <div class="person">
+            <div class="role">Library Director</div>
+            <div class="name">Amanda Hespel</div>
+            <ul>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5c0 8 7 15 15 15l1-4-5-2-2 2a13 13 0 0 1-5-5l2-2-2-5Z"/></svg> <a href="tel:15415663038">541-566-3038</a></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h6v16H6a2 2 0 0 0-2 2Z"/><path d="M20 5a2 2 0 0 0-2-2h-6v16h6a2 2 0 0 1 2 2Z"/></svg> <a href="http://www.cityofadamsoregon.com/adams-public-library.html">Adams Public Library</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a class="brand" href="#top">
+          <svg class="seal" width="40" height="40" viewBox="0 0 44 44" fill="none" aria-hidden="true">
+            <circle cx="22" cy="22" r="21" fill="#163A2B" stroke="#C08A2E" stroke-width="1.5"/>
+            <path d="M6 30c4-5 7-2 10-6s5 3 8-2 6 4 8 0" stroke="#E7C468" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+            <path d="M13 27l4-8 4 8M23 27l4-9 4 9" stroke="#F0DA9E" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="22" cy="13" r="2.4" fill="#E7C468"/>
+          </svg>
+          <span class="txt"><b>City of Adams</b><span>Umatilla County, Oregon</span></span>
+        </a>
+        <p>The official website of the City of Adams, Oregon, in the Blue Mountain foothills of Umatilla County.</p>
+      </div>
+      <div class="foot-col">
+        <h4>City Services</h4>
+        <ul>
+          <li><a href="https://cityofadamsoregon.egovpayments.com/egov/apps/payment/center.egov" target="_blank" rel="noopener">Pay Water Bill</a></li>
+          <li><a href="#services">Permits &amp; Forms</a></li>
+          <li><a href="#notices">Council Meetings</a></li>
+          <li><a href="http://www.cityofadamsoregon.com/ordinances--resolutions.html">Ordinances &amp; Resolutions</a></li>
+          <li><a href="http://www.cityofadamsoregon.com/city-budgets.html">City Budgets</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Community</h4>
+        <ul>
+          <li><a href="http://www.cityofadamsoregon.com/adams-public-library.html">Public Library</a></li>
+          <li><a href="http://www.cityofadamsoregon.com/adams-american-newsletter.html">Adams American Newsletter</a></li>
+          <li><a href="http://www.cityofadamsoregon.com/history.html">History</a></li>
+          <li><a href="#contact">Contact City Hall</a></li>
+          <li><a href="https://www.facebook.com/pages/Adams-Oregon/473711562646367" target="_blank" rel="noopener">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; <span id="yr">2026</span> City of Adams, Oregon. All rights reserved.</span>
+      <span class="disc">190 North Main Street &middot; P.O. Box 20 &middot; Adams, OR 97810 &middot; 541-566-9380</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Header shadow on scroll
+  var header = document.getElementById('siteHeader');
+  var onScroll = function () {
+    if (window.scrollY > 8) header.classList.add('scrolled');
+    else header.classList.remove('scrolled');
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Mobile menu
+  var toggle = document.getElementById('menuToggle');
+  toggle.addEventListener('click', function () {
+    var open = header.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  });
+  // Close menu when a link is tapped
+  document.getElementById('navLinks').addEventListener('click', function (e) {
+    if (e.target.closest('a')) {
+      header.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Open menu');
+    }
+  });
+
+  // Current year
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // Reveal on scroll
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var items = document.querySelectorAll('.reveal');
+  if (reduce || !('IntersectionObserver' in window)) {
+    items.forEach(function (el) { el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    items.forEach(function (el) { io.observe(el); });
+  }
+</script>
+</body>
+</html>

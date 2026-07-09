@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Town of Manhattan, Montana</title>
+<meta name="description" content="Official website of the Town of Manhattan, Montana — in the heart of the Gallatin Valley. Town Hall, Police, Fire, and Public Works contacts, water & sewer billing, public notices, forms, and meetings.">
+<meta name="theme-color" content="#1C2B47">
+<meta property="og:title" content="Town of Manhattan, Montana">
+<meta property="og:description" content="In the heart of the Gallatin Valley. Municipal services, departments, notices, and meetings.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%231C2B47' stroke='%23B5643C' stroke-width='3'/%3E%3Ccircle cx='67' cy='39' r='7' fill='%23B5643C'/%3E%3Cpath d='M13 72 L33 45 L45 60 L60 37 L87 72 Z' fill='%23E4E6EB'/%3E%3Crect x='13' y='71' width='74' height='6' fill='%23B5643C'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=Zilla+Slab:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1C2B47;      /* primary institutional (deep navy) */
+  --navy-2:#2A3D63;    /* lighter navy */
+  --navy-3:#152037;    /* deep navy */
+  --copper:#B5643C;    /* copper — signature accent */
+  --copper-2:#D08A5F;  /* light copper */
+  --sky:#4A6C93;       /* steel blue — links/secondary */
+  --paper:#F3F3F2;     /* page background */
+  --stone:#E7E8EA;     /* section tint */
+  --card:#FFFFFF;
+  --ink:#181C24;       /* body text */
+  --ink-2:#4C5666;     /* muted text */
+  --line:#DADBDD;      /* hairline */
+  --alert:#ECF0F6;     /* notice card bg */
+  --shadow:0 1px 2px rgba(20,32,55,.06), 0 8px 24px rgba(20,32,55,.06);
+  --radius:14px;
+  --wrap:1120px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Public Sans",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  color:var(--ink);background:var(--paper);line-height:1.6;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+}
+h1,h2,h3,.slab{font-family:"Zilla Slab",Georgia,serif;line-height:1.12;letter-spacing:-.01em}
+a{color:var(--sky);text-decoration:none}
+a:hover{text-decoration:underline}
+img,svg{display:block;max-width:100%}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 20px}
+.eyebrow{font-size:.74rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--copper)}
+.section{padding:64px 0;scroll-margin-top:74px}
+.section--tint{background:var(--stone)}
+.lead{color:var(--ink-2);font-size:1.06rem;max-width:60ch}
+:focus-visible{outline:3px solid var(--sky);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px;top:0;background:var(--navy);color:#fff;padding:10px 16px;z-index:200;border-radius:0 0 8px 0}
+.skip:focus{left:0}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;gap:.5rem;font-weight:600;font-size:.95rem;
+  padding:12px 20px;border-radius:10px;border:2px solid transparent;cursor:pointer;
+  transition:transform .12s ease,background .15s ease,border-color .15s ease;min-height:44px}
+.btn:hover{text-decoration:none;transform:translateY(-1px)}
+.btn--copper{background:var(--copper);color:var(--navy-3);border-color:var(--copper)}
+.btn--copper:hover{background:var(--copper-2);border-color:var(--copper-2)}
+.btn--navy{background:var(--navy);color:#fff}
+.btn--navy:hover{background:var(--navy-2)}
+.btn--ghost{background:transparent;color:#F1F3EC;border-color:rgba(241,243,236,.4)}
+.btn--ghost:hover{border-color:#F1F3EC;background:rgba(241,243,236,.08)}
+.btn--outline{background:transparent;color:var(--navy);border-color:var(--line)}
+.btn--outline:hover{border-color:var(--navy)}
+
+/* ---------- utility bar ---------- */
+.util{background:var(--navy-3);color:#CFD5DE;font-size:.82rem}
+.util .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:38px;flex-wrap:wrap}
+.util a{color:#E7B79C;font-weight:600}
+.util .u-emerg{color:#F0C4A6}
+.util strong{color:#fff}
+
+/* ---------- header / nav ---------- */
+header.site{position:sticky;top:0;z-index:100;background:rgba(243,243,242,.94);
+  backdrop-filter:saturate(1.4) blur(8px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:66px}
+.brand{display:flex;align-items:center;gap:12px;font-family:"Zilla Slab",serif}
+.brand .badge{width:42px;height:42px;flex:none}
+.brand b{font-size:1.18rem;font-weight:700;line-height:1;color:var(--navy)}
+.brand span{display:block;font-family:"Public Sans",sans-serif;font-size:.68rem;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--copper);margin-top:3px}
+.nav-links{display:flex;align-items:center;gap:4px}
+.nav-links a{color:var(--ink);font-weight:600;font-size:.94rem;padding:9px 12px;border-radius:8px}
+.nav-links a:hover{background:var(--stone);text-decoration:none;color:var(--navy)}
+.nav-toggle{display:none;background:var(--navy);border:0;color:#fff;width:44px;height:44px;
+  border-radius:10px;cursor:pointer;align-items:center;justify-content:center}
+.nav-toggle svg{width:22px;height:22px}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;color:#F1F3EC;
+  background:linear-gradient(180deg,#141F35 0%,#1E2C49 46%,#273A5E 100%)}
+.hero .wrap{position:relative;z-index:3;padding-top:74px;padding-bottom:190px}
+.hero h1{font-size:clamp(2.6rem,7vw,4.6rem);font-weight:700;margin:14px 0 6px;color:#fff}
+.hero .tag{font-family:"Zilla Slab",serif;font-weight:500;font-size:clamp(1.15rem,3vw,1.5rem);
+  color:var(--copper-2);margin-bottom:26px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:22px}
+.hero-chip{display:inline-flex;flex-wrap:wrap;gap:8px 18px;align-items:center;
+  font-size:.88rem;color:#CBD2DD}
+.hero-chip b{color:#fff}
+.hero-chip .dot{width:5px;height:5px;border-radius:50%;background:var(--copper);display:inline-block}
+.ridge{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:230px;z-index:2}
+.sun{position:absolute;right:14%;bottom:150px;width:130px;height:130px;border-radius:50%;
+  background:radial-gradient(circle,var(--copper-2) 0%,var(--copper) 42%,rgba(200,155,60,0) 72%);
+  opacity:.85;z-index:1}
+@media(max-width:640px){.sun{right:8%;width:96px;height:96px;bottom:130px}}
+
+/* ---------- cards & grids ---------- */
+.head{max-width:64ch;margin-bottom:34px}
+.head h2{font-size:clamp(1.7rem,4vw,2.3rem);font-weight:700;margin:8px 0 10px;color:var(--navy)}
+.grid{display:grid;gap:18px}
+.g-3{grid-template-columns:repeat(3,1fr)}
+.g-4{grid-template-columns:repeat(4,1fr)}
+.g-2{grid-template-columns:repeat(2,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:24px;box-shadow:var(--shadow)}
+.card h3{font-size:1.2rem;font-weight:600;color:var(--navy);margin-bottom:6px}
+.card p{color:var(--ink-2);font-size:.95rem}
+
+/* department card */
+.dept{display:flex;flex-direction:column}
+.dept .ico{width:40px;height:40px;border-radius:10px;background:var(--stone);
+  display:flex;align-items:center;justify-content:center;margin-bottom:14px;color:var(--navy)}
+.dept .ico svg{width:22px;height:22px}
+.contact-line{display:flex;justify-content:space-between;gap:10px;font-size:.92rem;
+  padding:7px 0;border-top:1px solid var(--line)}
+.contact-line:first-of-type{border-top:0;margin-top:8px}
+.contact-line span{color:var(--ink-2)}
+.contact-line a{font-weight:600}
+
+/* how-do-i quick links */
+.qlinks{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.qlink{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:16px;font-weight:600;color:var(--ink);box-shadow:var(--shadow);
+  transition:border-color .15s ease,transform .12s ease}
+.qlink:hover{text-decoration:none;border-color:var(--copper);transform:translateY(-1px);color:var(--navy)}
+.qlink .qi{width:34px;height:34px;flex:none;border-radius:9px;background:var(--navy);color:var(--copper-2);
+  display:flex;align-items:center;justify-content:center}
+.qlink .qi svg{width:19px;height:19px}
+
+/* notices */
+.notice{background:var(--alert);border:1px solid #D3DEEC;border-left:5px solid var(--copper);
+  border-radius:12px;padding:20px 22px}
+.notice .n-tag{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:#8A4B28;background:#F0E0D5;padding:3px 9px;border-radius:20px;margin-bottom:10px}
+.notice h3{font-size:1.12rem;color:var(--navy-3);margin-bottom:6px}
+.notice p{font-size:.95rem;color:#3C4658}
+.notice a{color:#8A4B28;font-weight:700}
+
+/* info list (gov / boards) */
+.stack{display:grid;gap:16px}
+.info-row{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 22px;box-shadow:var(--shadow)}
+.info-row h3{font-size:1.1rem;color:var(--navy);margin-bottom:4px}
+.info-row p{font-size:.94rem;color:var(--ink-2)}
+.pill{display:inline-block;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;
+  color:var(--navy);background:var(--stone);padding:4px 10px;border-radius:20px;margin-left:8px;vertical-align:middle}
+.pill--open{color:#8A4B28;background:#F0E0D5}
+
+/* seasonal small cards */
+.mini{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;box-shadow:var(--shadow)}
+.mini h3{font-size:1.05rem;color:var(--navy);margin-bottom:6px}
+.mini p{font-size:.9rem;color:var(--ink-2)}
+.mini .lbl{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--copper)}
+
+/* contact */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:start}
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+.field label{font-size:.82rem;font-weight:700;color:var(--navy)}
+.field input,.field textarea{font:inherit;padding:11px 13px;border:1px solid var(--line);
+  border-radius:9px;background:#fff;color:var(--ink);width:100%}
+.field textarea{min-height:120px;resize:vertical}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--sky);box-shadow:0 0 0 3px rgba(58,111,143,.15)}
+.formnote{font-size:.8rem;color:var(--ink-2);margin-top:6px}
+.mapframe{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+.mapframe iframe{width:100%;height:100%;min-height:340px;border:0;display:block}
+.addr-block{display:grid;gap:14px;margin-top:20px}
+.addr-item{display:flex;gap:12px;align-items:flex-start}
+.addr-item .ai{color:var(--copper);flex:none;margin-top:2px}
+.addr-item .ai svg{width:20px;height:20px}
+.addr-item b{color:var(--navy);display:block;font-size:.95rem}
+.addr-item span{color:var(--ink-2);font-size:.92rem}
+
+/* footer */
+footer.site{background:var(--navy-3);color:#C3CAD6;padding:56px 0 26px}
+.f-top{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px;padding-bottom:32px;
+  border-bottom:1px solid rgba(255,255,255,.12)}
+footer .brand b{color:#fff}
+footer h4{font-family:"Zilla Slab",serif;color:#fff;font-size:1rem;margin-bottom:12px;font-weight:600}
+footer ul{list-style:none}
+footer li{margin-bottom:8px}
+footer a{color:#C3CAD6;font-weight:500;font-size:.92rem}
+footer a:hover{color:var(--copper-2)}
+.f-bottom{padding-top:20px;font-size:.82rem;color:#8B93A2;display:flex;justify-content:space-between;
+  gap:12px;flex-wrap:wrap}
+.f-desc{font-size:.9rem;color:#A6AEBC;margin-top:12px;max-width:34ch}
+
+/* ---------- ridge divider ---------- */
+.divider{height:26px;color:var(--line)}
+.divider svg{width:100%;height:100%}
+
+/* ---------- responsive ---------- */
+@media(max-width:900px){
+  .g-4{grid-template-columns:repeat(2,1fr)}
+  .g-3{grid-template-columns:repeat(2,1fr)}
+  .qlinks{grid-template-columns:repeat(2,1fr)}
+  .f-top{grid-template-columns:1fr 1fr}
+}
+@media(max-width:720px){
+  .nav-links{position:absolute;top:66px;left:0;right:0;background:var(--paper);
+    border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;
+    padding:8px 14px 16px;gap:2px;display:none;box-shadow:var(--shadow)}
+  .nav-links.open{display:flex}
+  .nav-links a{padding:12px 10px;font-size:1rem;border-radius:8px}
+  .nav-toggle{display:flex}
+  .contact-grid{grid-template-columns:1fr}
+  .g-2{grid-template-columns:1fr}
+  .section{padding:48px 0}
+  .hero .wrap{padding-bottom:150px}
+  .ridge{height:170px}
+}
+@media(max-width:520px){
+  .g-4,.g-3,.qlinks,.f-top{grid-template-columns:1fr}
+  .util .u-left{display:none}
+  .hero-actions .btn{flex:1 1 auto;justify-content:center}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important;animation:none!important}
+}
+.fade{opacity:0;transform:translateY(14px)}
+.fade.in{opacity:1;transform:none;transition:opacity .6s ease,transform .6s ease}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+
+<!-- Utility bar -->
+<div class="util">
+  <div class="wrap">
+    <div class="u-left">Municipal Building · 207 S. 6th St · <span>Mon–Fri 8:30 AM–5:00 PM</span></div>
+    <div class="u-right u-emerg">Emergency? <strong>Dial 911</strong> &nbsp;·&nbsp; Town Hall <a href="tel:+14062843235">406-284-3235</a></div>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="site">
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="Town of Manhattan home">
+      <svg class="badge" viewBox="0 0 100 100" aria-hidden="true">
+        <circle cx="50" cy="50" r="48" fill="#1C2B47" stroke="#B5643C" stroke-width="3"/>
+        <circle cx="67" cy="39" r="7" fill="#B5643C"/>
+        <path d="M13 72 L33 45 L45 60 L60 37 L87 72 Z" fill="#E4E6EB"/>
+        <path d="M33 45 L39 53 L27 53 Z M60 37 L67 47 L53 47 Z" fill="#fff"/>
+        <rect x="13" y="71" width="74" height="6" fill="#B5643C"/>
+      </svg>
+      <span class="brand-text"><b>Town of Manhattan</b><span>Gallatin County, Montana</span></span>
+    </a>
+    <nav class="nav-links" id="menu" aria-label="Primary">
+      <a href="#notices">Notices</a>
+      <a href="#services">Services</a>
+      <a href="#departments">Departments</a>
+      <a href="#government">Government</a>
+      <a href="#living">Living Here</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+  </div>
+</header>
+
+<span id="top"></span>
+<!-- Hero -->
+<section class="hero">
+  <div class="sun" aria-hidden="true"></div>
+  <div class="wrap">
+    <p class="eyebrow fade">In the heart of the Gallatin Valley</p>
+    <h1 class="fade">Town of Manhattan</h1>
+    <p class="tag fade">A quiet valley town with everything you need close to home.</p>
+    <div class="hero-actions fade">
+      <a class="btn btn--copper" href="#billing">Water &amp; sewer billing</a>
+      <a class="btn btn--ghost" href="#notices">Public notices</a>
+      <a class="btn btn--ghost" href="#contact">Contact Town Hall</a>
+    </div>
+    <div class="hero-chip fade">
+      <span><span class="dot"></span> Town Office open <b>Mon–Fri, 8:30–5:00</b></span>
+      <span><span class="dot"></span> <b>911</b> for any emergency</span>
+    </div>
+  </div>
+  <svg class="ridge" viewBox="0 0 1440 230" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 150 L120 96 L240 132 L360 70 L470 120 L560 62 L680 118 L790 78 L900 128 L1010 72 L1130 122 L1240 88 L1340 128 L1440 96 L1440 230 L0 230 Z" fill="#1E2C49"/>
+    <path d="M0 190 L110 150 L230 184 L340 132 L450 178 L560 128 L680 176 L800 138 L910 182 L1030 140 L1150 184 L1270 148 L1380 186 L1440 160 L1440 230 L0 230 Z" fill="#152037"/>
+    <rect x="0" y="228" width="1440" height="6" fill="#B5643C"/>
+  </svg>
+</section>
+
+<main id="main">
+
+<!-- Public Notices -->
+<section class="section" id="notices">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Stay informed</p>
+      <h2>Public notices</h2>
+      <p class="lead">Current announcements from the Town Office. For legal notices and requests for proposals, contact Clerk/Treasurer Pam Humphrey at the Town Hall.</p>
+    </div>
+    <!-- To add or edit a notice, copy one .notice block below. Keep the most time-sensitive item first. -->
+    <div class="grid g-2">
+      <div class="notice">
+        <span class="n-tag">Summer · Water use</span>
+        <h3>Sprinkling schedule is in effect</h3>
+        <p>Please help conserve water. Even-numbered addresses may water on even calendar dates, odd-numbered addresses on odd dates, and everyone may water on the 31st. Watering hours are <b>4 AM–noon</b> and <b>4 PM–midnight</b>.</p>
+      </div>
+      <div class="notice">
+        <span class="n-tag">Get involved</span>
+        <h3>Openings on Town boards</h3>
+        <p>Seats are open on the <b>Board of Adjustment</b> and the <b>City-County Planning Board</b> (county representative — must live within 3 miles of town limits). Download a board application under <a href="#services">Forms &amp; permits</a>, or call the Town Office to learn more.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><svg viewBox="0 0 1440 26" preserveAspectRatio="none"><path d="M0 20 L180 10 L360 18 L540 8 L720 18 L900 8 L1080 18 L1260 8 L1440 16" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></div>
+
+<!-- How do I / Services -->
+<section class="section" id="services">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Quick help</p>
+      <h2>How do I&hellip;</h2>
+      <p class="lead">The things residents ask for most often, all in one place.</p>
+    </div>
+    <div class="qlinks">
+      <a class="qlink" href="#billing"><span class="qi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10h18M7 15h4M5 6h14a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2z"/></svg></span>Pay a water &amp; sewer bill</a>
+      <a class="qlink" href="#government"><span class="qi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12h6M9 16h6M9 8h6M5 4h14v16H5z"/></svg></span>Apply for a Town board</a>
+      <a class="qlink" href="#contact"><span class="qi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l9 7v11H3V10l9-7z"/><path d="M9 21v-6h6v6"/></svg></span>Ask about a building permit</a>
+      <a class="qlink" href="#departments"><span class="qi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20a1 1 0 100-2 1 1 0 000 2z"/><path d="M12 3v13M6 9l6-6 6 6"/></svg></span>Report a concern</a>
+      <a class="qlink" href="#contact"><span class="qi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3v4a1 1 0 001 1h4"/><path d="M17 21H7a2 2 0 01-2-2V5a2 2 0 012-2h7l5 5v11a2 2 0 01-2 2z"/></svg></span>Download forms &amp; permits</a>
+      <a class="qlink" href="#government"><span class="qi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/></svg></span>See meetings &amp; agendas</a>
+    </div>
+
+    <!-- Water & sewer billing detail -->
+    <div class="card" id="billing" style="margin-top:26px;border-left:5px solid var(--sky)">
+      <h3>Water &amp; sewer billing</h3>
+      <p style="margin-bottom:12px">The Town of Manhattan provides <b>water and sewer utilities</b>. To start or stop service, update your account, or ask a question about your bill, contact the Town Office directly — staff can help you Monday through Friday.</p>
+      <div class="grid g-3" style="gap:12px">
+        <div><span class="mini" style="display:block"><span class="lbl">Call</span><br><a href="tel:+14062843235" style="font-weight:700">406-284-3235</a></span></div>
+        <div><span class="mini" style="display:block"><span class="lbl">Email</span><br><a href="mailto:townofmanhattan@gmail.com" style="font-weight:700">townofmanhattan@gmail.com</a></span></div>
+        <div><span class="mini" style="display:block"><span class="lbl">In person</span><br>207 S. 6th St, Manhattan</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Departments -->
+<section class="section section--tint" id="departments">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Who to call</p>
+      <h2>Departments</h2>
+      <p class="lead">For any life-threatening emergency, always dial <b>911</b> first. Use the numbers below for non-emergency business.</p>
+    </div>
+    <div class="grid g-4">
+      <div class="card dept">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-4h6v4M9 11h.01M15 11h.01"/></svg></span>
+        <h3>Town Hall</h3>
+        <p>Clerk/Treasurer, utilities, licenses &amp; permits, and general Town business.</p>
+        <div class="contact-line"><span>Phone</span><a href="tel:+14062843235">406-284-3235</a></div>
+        <div class="contact-line"><span>Fax</span><span>406-284-2090</span></div>
+        <div class="contact-line"><span>Email</span><a href="mailto:townofmanhattan@gmail.com">Email us</a></div>
+      </div>
+      <div class="card dept">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg></span>
+        <h3>Police</h3>
+        <p>Non-emergency reports, questions, and City Court matters.</p>
+        <div class="contact-line"><span>Phone</span><a href="tel:+14062846630">406-284-6630</a></div>
+        <div class="contact-line"><span>Fax</span><span>406-284-6363</span></div>
+        <div class="contact-line"><span>Emergency</span><a href="tel:911">Dial 911</a></div>
+      </div>
+      <div class="card dept">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2s5 4 5 9a5 5 0 01-10 0c0-2 1-3 1-3s1 2 2 2c0-3 2-6 2-8z"/></svg></span>
+        <h3>Fire</h3>
+        <p>Fire response and prevention for Manhattan and the surrounding area.</p>
+        <div class="contact-line"><span>Phone</span><a href="tel:+14062846224">406-284-6224</a></div>
+        <div class="contact-line"><span>Emergency</span><a href="tel:911">Dial 911</a></div>
+      </div>
+      <div class="card dept">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 005.4-5.4l-2.3 2.3-2-2 2.3-2.3z"/></svg></span>
+        <h3>Public Works</h3>
+        <p>Streets, snow removal, water &amp; sewer lines, and maintenance.</p>
+        <div class="contact-line"><span>Phone</span><a href="tel:+14062843278">406-284-3278</a></div>
+        <div class="contact-line"><span>Email</span><a href="mailto:townofmanhattan@gmail.com">Email us</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Government -->
+<section class="section" id="government">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Your local government</p>
+      <h2>Mayor, Council &amp; boards</h2>
+      <p class="lead">Manhattan is governed by a Mayor and Town Council, supported by volunteer citizen boards. Residents are encouraged to attend meetings and serve — call or stop by Town Hall with questions.</p>
+    </div>
+    <div class="stack">
+      <div class="info-row">
+        <h3>Mayor's Office</h3>
+        <p style="margin-bottom:8px">Leads the Town Council and oversees day-to-day operations.</p>
+        <div class="grid g-3" style="gap:10px">
+          <div class="contact-line" style="border-top:0"><span>Phone</span><a href="tel:+14062843235">406-284-3235</a></div>
+          <div class="contact-line" style="border-top:0"><span>Cell</span><a href="tel:+14065707572">406-570-7572</a></div>
+          <div class="contact-line" style="border-top:0"><span>Email</span><a href="mailto:manhattanmayor@gmail.com">manhattanmayor@gmail.com</a></div>
+        </div>
+      </div>
+      <div class="info-row">
+        <h3>Town Council</h3>
+        <p>The Council meets regularly to set policy, pass ordinances, and manage the Town budget. Meetings are open to the public — contact Town Hall for the current schedule and agendas. To reach a council member, email <a href="mailto:townofmanhattan@gmail.com">the Town Office</a> and your message will be directed to the right person.</p>
+      </div>
+      <div class="info-row">
+        <h3>City-County Planning Board <span class="pill pill--open">Seat open</span></h3>
+        <p>Reviews land use and growth for the Manhattan area. A county-representative seat is open (applicant must reside outside city limits but within 3 miles, two-year term). To apply, contact the Gallatin County Commission at <a href="tel:+14065823000">406-582-3000</a>.</p>
+      </div>
+      <div class="info-row">
+        <h3>Board of Adjustment <span class="pill pill--open">Seats open</span></h3>
+        <p>Decides appeals and variances as they arise. Several positions are currently open. Complete a board application (available under Forms) and return it to the Town Office by mail, drop-off, or email.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Living here / seasonal -->
+<section class="section section--tint" id="living">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Around town</p>
+      <h2>Living in Manhattan</h2>
+      <p class="lead">Seasonal reminders and community resources for residents.</p>
+    </div>
+    <div class="grid g-4">
+      <div class="mini">
+        <span class="lbl">Summer</span>
+        <h3>Water conservation</h3>
+        <p>Sprinkling follows an odd/even address schedule. Watering hours are 4 AM–noon and 4 PM–midnight. See <a href="#notices">Public notices</a> for details.</p>
+      </div>
+      <div class="mini">
+        <span class="lbl">Winter</span>
+        <h3>Snow &amp; ice removal</h3>
+        <p>Public Works plows primary safety routes first when snow reaches 6″ or more, then secondary streets. The state handles Broadway and Main Street. Weekend plowing occurs during a declared 10″+ emergency.</p>
+      </div>
+      <div class="mini">
+        <span class="lbl">Year-round</span>
+        <h3>Clean up after pets</h3>
+        <p>Town ordinance requires owners to promptly remove and dispose of pet waste from public places. Fines apply for violations.</p>
+      </div>
+      <div class="mini">
+        <span class="lbl">Community</span>
+        <h3>Manhattan Food Bank</h3>
+        <p>Give or receive — the local food bank supports neighbors in need. Contact Town Hall to learn how to donate or get help.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="section" id="contact">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Get in touch</p>
+      <h2>Contact the Town Office</h2>
+      <p class="lead">Send us a message and we'll get back to you during business hours. For emergencies, always call 911.</p>
+    </div>
+    <div class="contact-grid">
+      <div>
+        <!-- Web3Forms: replace the access_key value below with your own key from web3forms.com -->
+        <form action="https://api.web3forms.com/submit" method="POST" id="contactForm">
+          <input type="hidden" name="access_key" value="YOUR-WEB3FORMS-ACCESS-KEY">
+          <input type="hidden" name="subject" value="New message from townofmanhattan.com">
+          <input type="hidden" name="from_name" value="Town of Manhattan website">
+          <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+          <div class="field">
+            <label for="cf-name">Your name</label>
+            <input id="cf-name" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="cf-email">Email</label>
+            <input id="cf-email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="field">
+            <label for="cf-topic">Subject</label>
+            <input id="cf-topic" name="topic" type="text" placeholder="Water bill, permit, general question…">
+          </div>
+          <div class="field">
+            <label for="cf-msg">Message</label>
+            <textarea id="cf-msg" name="message" required></textarea>
+          </div>
+          <button class="btn btn--navy" type="submit">Send message</button>
+          <p class="formnote">Prefer email? Write to <a href="mailto:townofmanhattan@gmail.com">townofmanhattan@gmail.com</a>. This form is not monitored for emergencies.</p>
+          <p class="formnote" id="formStatus" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+      <div>
+        <div class="mapframe">
+          <iframe title="Map to Manhattan Municipal Building, 207 S. 6th St" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=207+S+6th+St,+Manhattan,+MT+59741&output=embed"></iframe>
+        </div>
+        <div class="addr-block">
+          <div class="addr-item"><span class="ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.5 7-11a7 7 0 10-14 0c0 4.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><div><b>Municipal Building</b><span>207 S. 6th St · P.O. Box 96 · Manhattan, MT 59741</span></div></div>
+          <div class="addr-item"><span class="ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3-8.6A2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.6a2 2 0 01-.5 2.1L8 9.9a16 16 0 006 6l1.5-1.2a2 2 0 012.1-.4c.8.3 1.7.5 2.6.6a2 2 0 011.7 2z"/></svg></span><div><b>Phone &amp; fax</b><span><a href="tel:+14062843235">406-284-3235</a> · fax 406-284-2090</span></div></div>
+          <div class="addr-item"><span class="ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span><div><b>Email</b><span><a href="mailto:townofmanhattan@gmail.com">townofmanhattan@gmail.com</a></span></div></div>
+          <div class="addr-item"><span class="ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><b>Office hours</b><span>Monday–Friday, 8:30 AM – 5:00 PM</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- Footer -->
+<footer class="site">
+  <div class="wrap">
+    <div class="f-top">
+      <div>
+        <a class="brand" href="#top" aria-label="Town of Manhattan home">
+          <svg class="badge" viewBox="0 0 100 100" aria-hidden="true">
+            <circle cx="50" cy="50" r="48" fill="#152037" stroke="#B5643C" stroke-width="3"/>
+            <circle cx="67" cy="39" r="7" fill="#B5643C"/>
+            <path d="M13 72 L33 45 L45 60 L60 37 L87 72 Z" fill="#E4E6EB"/>
+            <rect x="13" y="71" width="74" height="6" fill="#B5643C"/>
+          </svg>
+          <span class="brand-text"><b>Town of Manhattan</b><span style="color:var(--copper-2)">Gallatin County, Montana</span></span>
+        </a>
+        <p class="f-desc">In the heart of the Gallatin Valley. Serving residents with water &amp; sewer utilities, public safety, and local government.</p>
+      </div>
+      <div>
+        <h4>Town services</h4>
+        <ul>
+          <li><a href="#billing">Water &amp; sewer billing</a></li>
+          <li><a href="#services">Forms &amp; permits</a></li>
+          <li><a href="#notices">Public notices</a></li>
+          <li><a href="#government">Meetings &amp; boards</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li>207 S. 6th St, P.O. Box 96</li>
+          <li>Manhattan, MT 59741</li>
+          <li><a href="tel:+14062843235">406-284-3235</a></li>
+          <li><a href="mailto:townofmanhattan@gmail.com">townofmanhattan@gmail.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="f-bottom">
+      <span>© <span id="yr"></span> Town of Manhattan, Montana. All rights reserved.</span>
+      <span>Emergency? Dial <strong style="color:#E7B79C">911</strong></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Mobile nav
+(function(){
+  var btn=document.getElementById('navToggle'), menu=document.getElementById('menu');
+  btn.addEventListener('click',function(){
+    var open=menu.classList.toggle('open');
+    btn.setAttribute('aria-expanded',open);
+    btn.setAttribute('aria-label',open?'Close menu':'Open menu');
+  });
+  menu.addEventListener('click',function(e){ if(e.target.tagName==='A') menu.classList.remove('open'); });
+})();
+
+// Footer year
+document.getElementById('yr').textContent=new Date().getFullYear();
+
+// Fade-in on load / scroll
+(function(){
+  var els=document.querySelectorAll('.fade');
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    els.forEach(function(el){el.classList.add('in')}); return;
+  }
+  els.forEach(function(el,i){ setTimeout(function(){el.classList.add('in')}, 90*i); });
+})();
+
+// Contact form -> Web3Forms (AJAX so the page doesn't navigate away)
+(function(){
+  var form=document.getElementById('contactForm'), status=document.getElementById('formStatus');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var key=form.querySelector('[name=access_key]').value;
+    if(key.indexOf('YOUR-')===0){
+      status.style.color='#8A4B28';
+      status.textContent='Form not yet configured — add your Web3Forms access key to enable sending. Meanwhile, please email townofmanhattan@gmail.com.';
+      return;
+    }
+    status.style.color='var(--ink-2)'; status.textContent='Sending…';
+    fetch('https://api.web3forms.com/submit',{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}})
+    .then(function(r){return r.json()})
+    .then(function(d){
+      if(d.success){ status.style.color='#1C2B47'; status.textContent='Thanks — your message was sent. We\'ll reply during office hours.'; form.reset(); }
+      else{ status.style.color='#8A4B28'; status.textContent='Something went wrong. Please email townofmanhattan@gmail.com.'; }
+    })
+    .catch(function(){ status.style.color='#8A4B28'; status.textContent='Something went wrong. Please email townofmanhattan@gmail.com.'; });
+  });
+})();
+</script>
+</body>
+</html>

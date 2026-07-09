@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>City of Lostine, Oregon — Wallowa County</title>
+<meta name="description" content="Official website for the City of Lostine, Oregon — a small town in the heart of the Eagle Cap Mountains in Wallowa County. City hall, meeting agendas, ordinances, budgets, permits, and contact information.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,900&family=Public+Sans:wght@400;500;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#16233c;        /* mountain-dusk navy — dominant brand */
+    --ink-2:#22345a;      /* lighter navy for gradients */
+    --sky:#3c4f7a;        /* dusk sky */
+    --gold:#d29a3a;       /* harvest ochre accent */
+    --gold-deep:#b07f27;  /* gold hover/border */
+    --steel:#31567f;      /* cool link blue */
+    --steel-deep:#264363;
+    --paper:#f5f2ea;      /* warm page bg */
+    --card:#ffffff;
+    --card-2:#fbf9f3;
+    --stone:#e4ddce;      /* hairline borders */
+    --stone-2:#efe9dd;
+    --text:#1f2530;
+    --muted:#5b6472;
+    --shadow:0 1px 2px rgba(22,35,60,.04), 0 8px 24px rgba(22,35,60,.06);
+    --radius:14px;
+    --wrap:1120px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{
+    margin:0;background:var(--paper);color:var(--text);
+    font-family:"Public Sans",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;
+    text-underline-offset:2px;
+  }
+  h1,h2,h3{font-family:"Fraunces",Georgia,serif;line-height:1.08;margin:0;letter-spacing:-.01em}
+  a{color:var(--steel);text-decoration-color:color-mix(in srgb,var(--steel) 35%,transparent)}
+  a:hover{color:var(--steel-deep)}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+  .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-deep);margin:0 0 14px}
+  .skip{position:absolute;left:-999px;top:0;background:var(--ink);color:#fff;padding:10px 16px;z-index:200;border-radius:0 0 8px 0}
+  .skip:focus{left:0}
+  :focus-visible{outline:3px solid var(--gold);outline-offset:2px;border-radius:4px}
+
+  /* ---------- ridgeline mark ---------- */
+  .mark{display:block}
+  .mark .back{fill:color-mix(in srgb,var(--ink) 55%,#fff 45%)}
+  .mark .front{fill:var(--ink)}
+
+  /* ---------- header ---------- */
+  header.site{position:sticky;top:0;z-index:100;background:color-mix(in srgb,var(--ink) 97%,#000);
+    border-bottom:1px solid rgba(255,255,255,.08)}
+  .bar{display:flex;align-items:center;gap:22px;height:66px}
+  .brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:#fff;margin-right:auto}
+  .brand svg{width:30px;height:22px}
+  .brand .front{fill:var(--gold)}
+  .brand .back{fill:rgba(255,255,255,.32)}
+  .brand b{font-family:"Fraunces";font-weight:600;font-size:20px;letter-spacing:0}
+  .brand span{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);display:block;line-height:1}
+  .brand .lock{display:flex;flex-direction:column;gap:3px}
+  nav.main{display:flex;gap:4px;align-items:center}
+  nav.main a{color:rgba(255,255,255,.82);text-decoration:none;font-size:14.5px;font-weight:500;
+    padding:9px 12px;border-radius:9px;transition:background .15s,color .15s}
+  nav.main a:hover{background:rgba(255,255,255,.08);color:#fff}
+  .btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:14.5px;
+    text-decoration:none;padding:10px 18px;border-radius:10px;border:1px solid transparent;
+    cursor:pointer;transition:transform .12s,background .15s,border-color .15s;white-space:nowrap;font-family:inherit}
+  .btn:active{transform:translateY(1px)}
+  .btn-gold{background:var(--gold);color:var(--ink);border-color:var(--gold-deep)}
+  .btn-gold:hover{background:#dca849;color:var(--ink)}
+  .btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.3)}
+  .btn-ghost:hover{background:rgba(255,255,255,.1);color:#fff}
+  .btn-out{background:transparent;color:var(--steel);border-color:var(--stone)}
+  .btn-out:hover{border-color:var(--steel);background:#fff}
+  .menu-toggle{display:none;background:transparent;border:1px solid rgba(255,255,255,.28);
+    border-radius:9px;width:42px;height:38px;cursor:pointer;padding:0}
+  .menu-toggle span{display:block;width:18px;height:2px;background:#fff;margin:3px auto;border-radius:2px;transition:.2s}
+  .menu-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(5px) rotate(45deg)}
+  .menu-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+  .menu-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-5px) rotate(-45deg)}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;background:linear-gradient(180deg,var(--ink) 0%,var(--sky) 62%,#6d6c7e 100%);
+    color:#fff;overflow:hidden;isolation:isolate}
+  .hero .stars{position:absolute;inset:0;opacity:.5;z-index:0}
+  .hero-inner{position:relative;z-index:3;padding:74px 24px 0;max-width:var(--wrap);margin:0 auto}
+  .hero h1{font-weight:900;font-size:clamp(52px,12vw,120px);letter-spacing:-.03em;line-height:.92}
+  .hero .kicker{font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--gold);margin:0 0 16px}
+  .hero .lede{font-size:clamp(18px,2.4vw,21px);max-width:560px;color:rgba(255,255,255,.9);margin:22px 0 26px;line-height:1.5}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:34px}
+  .datastrip{display:flex;flex-wrap:wrap;gap:0;font-family:"IBM Plex Mono",monospace;
+    font-size:12.5px;letter-spacing:.06em;color:rgba(255,255,255,.82);
+    border-top:1px solid rgba(255,255,255,.18);padding-top:16px;margin-bottom:6px}
+  .datastrip div{padding:2px 22px 2px 0;margin-right:22px;border-right:1px solid rgba(255,255,255,.18)}
+  .datastrip div:last-child{border-right:0;margin-right:0}
+  .datastrip b{color:var(--gold);font-weight:500}
+  .ridge{display:block;width:100%;height:auto;margin-top:26px;position:relative;z-index:2}
+  .ridge .r-back{fill:#2a3352}
+  .ridge .r-mid{fill:#20293f}
+  .ridge .r-front{fill:#141c30}
+  .ridge .river{fill:none;stroke:var(--gold);stroke-width:2.4;opacity:.85;stroke-linecap:round}
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+  /* ---------- sections ---------- */
+  section{padding:74px 0}
+  .sec-head{max-width:640px;margin-bottom:40px}
+  .sec-head h2{font-size:clamp(30px,4.4vw,42px);font-weight:900;color:var(--ink)}
+  .sec-head p{color:var(--muted);margin:14px 0 0;font-size:17px}
+  .band{background:var(--ink);color:#fff}
+  .band .sec-head h2{color:#fff}
+  .band .sec-head p{color:rgba(255,255,255,.72)}
+  .rule{height:1px;background:var(--stone);border:0;max-width:var(--wrap);margin:0 auto}
+
+  /* ---------- services grid ---------- */
+  .grid{display:grid;gap:16px}
+  .g-3{grid-template-columns:repeat(3,1fr)}
+  .g-2{grid-template-columns:repeat(2,1fr)}
+  .g-4{grid-template-columns:repeat(4,1fr)}
+  .svc{background:var(--card);border:1px solid var(--stone);border-radius:var(--radius);
+    padding:26px 24px;text-decoration:none;color:var(--text);display:block;position:relative;
+    box-shadow:var(--shadow);transition:transform .16s,border-color .16s,box-shadow .16s}
+  .svc:hover{transform:translateY(-3px);border-color:var(--gold);box-shadow:0 10px 30px rgba(22,35,60,.1)}
+  .svc .ico{width:42px;height:42px;border-radius:10px;background:var(--stone-2);color:var(--ink);
+    display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+  .svc:hover .ico{background:color-mix(in srgb,var(--gold) 22%,#fff);color:var(--gold-deep)}
+  .svc .ico svg{width:22px;height:22px;stroke:currentColor;stroke-width:1.7;fill:none;
+    stroke-linecap:round;stroke-linejoin:round}
+  .svc h3{font-family:"Public Sans";font-weight:700;font-size:17.5px;letter-spacing:0;color:var(--ink);margin-bottom:5px}
+  .svc p{margin:0;color:var(--muted);font-size:14.5px;line-height:1.5}
+  .svc .arrow{position:absolute;top:24px;right:22px;color:var(--stone);transition:color .16s,transform .16s;font-size:18px}
+  .svc:hover .arrow{color:var(--gold);transform:translateX(3px)}
+
+  /* ---------- about ---------- */
+  .about-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:48px;align-items:start}
+  .prose p{margin:0 0 18px;color:#333b47}
+  .prose p:first-of-type{font-size:19px;color:var(--text)}
+  .facts{background:var(--card-2);border:1px solid var(--stone);border-radius:var(--radius);padding:8px 26px;box-shadow:var(--shadow)}
+  .facts dl{margin:0}
+  .facts .row{display:flex;justify-content:space-between;align-items:baseline;gap:16px;
+    padding:16px 0;border-bottom:1px solid var(--stone)}
+  .facts .row:last-child{border-bottom:0}
+  .facts dt{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--muted)}
+  .facts dd{margin:0;font-weight:700;color:var(--ink);text-align:right;font-size:16px}
+  .chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:26px}
+  .chip{font-size:13.5px;font-weight:500;background:var(--stone-2);color:#3a4250;
+    padding:7px 13px;border-radius:999px;border:1px solid var(--stone)}
+
+  /* ---------- officials ---------- */
+  .people{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .person{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);
+    border-radius:var(--radius);padding:24px;display:flex;gap:16px;align-items:center}
+  .avatar{width:52px;height:52px;flex:0 0 52px;border-radius:12px;
+    background:linear-gradient(135deg,var(--gold),var(--gold-deep));color:var(--ink);
+    display:flex;align-items:center;justify-content:center;font-family:"Fraunces";font-weight:900;font-size:19px}
+  .person .who{min-width:0}
+  .person .role{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--gold);margin:0 0 4px}
+  .person .name{font-family:"Fraunces";font-weight:600;font-size:19px;color:#fff;margin:0;line-height:1.1}
+  .person .note{margin:5px 0 0;font-size:13px;color:rgba(255,255,255,.6)}
+  .council{margin-top:16px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .seat{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:20px}
+  .seat .pos{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;color:rgba(255,255,255,.55);text-transform:uppercase}
+  .seat .nm{font-family:"Fraunces";font-weight:600;font-size:18px;color:#fff;margin-top:6px}
+  .sub-label{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--gold);margin:44px 0 4px}
+
+  /* ---------- records ---------- */
+  .rec-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
+  .rec-col h3{font-family:"Public Sans";font-weight:700;font-size:15px;letter-spacing:.02em;
+    color:var(--ink);text-transform:uppercase;padding-bottom:12px;margin-bottom:6px;
+    border-bottom:2px solid var(--gold)}
+  .rec-col ul{list-style:none;margin:0;padding:0}
+  .rec-col li{border-bottom:1px solid var(--stone)}
+  .rec-col li a{display:flex;justify-content:space-between;align-items:center;gap:12px;
+    padding:13px 2px;text-decoration:none;color:var(--text);font-size:15.5px;font-weight:500;transition:color .14s,padding .14s}
+  .rec-col li a:hover{color:var(--steel-deep);padding-left:6px}
+  .rec-col li a::after{content:"→";color:var(--stone);font-size:14px;transition:color .14s}
+  .rec-col li a:hover::after{color:var(--gold)}
+
+  /* ---------- contact ---------- */
+  .contact-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:48px;align-items:start}
+  .cinfo .block{display:flex;gap:14px;padding:18px 0;border-bottom:1px solid var(--stone)}
+  .cinfo .block:last-of-type{border-bottom:0}
+  .cinfo .ci-ico{width:38px;height:38px;flex:0 0 38px;border-radius:10px;background:var(--stone-2);
+    color:var(--ink);display:flex;align-items:center;justify-content:center}
+  .cinfo .ci-ico svg{width:19px;height:19px;stroke:currentColor;stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round}
+  .cinfo .ci-lab{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin:0 0 2px}
+  .cinfo .ci-val{margin:0;font-weight:600;color:var(--ink);font-size:16.5px}
+  .cinfo .ci-val a{font-weight:600}
+  form.contact{background:var(--card);border:1px solid var(--stone);border-radius:var(--radius);padding:30px;box-shadow:var(--shadow)}
+  form.contact .fld{margin-bottom:16px}
+  form.contact label{display:block;font-size:13px;font-weight:700;color:var(--ink);margin-bottom:6px;letter-spacing:.01em}
+  form.contact input,form.contact textarea{width:100%;font-family:inherit;font-size:15.5px;color:var(--text);
+    background:var(--card-2);border:1px solid var(--stone);border-radius:10px;padding:12px 14px;transition:border-color .15s,box-shadow .15s}
+  form.contact input:focus,form.contact textarea:focus{outline:none;border-color:var(--gold);
+    box-shadow:0 0 0 3px color-mix(in srgb,var(--gold) 25%,transparent)}
+  form.contact textarea{resize:vertical;min-height:120px}
+  form.contact .btn-gold{width:100%;justify-content:center;padding:13px}
+  .form-status{margin:14px 0 0;font-size:14.5px;font-weight:600;display:none}
+  .form-status.ok{display:block;color:var(--steel-deep)}
+  .form-status.err{display:block;color:#a4442e}
+
+  /* ---------- notices + footer ---------- */
+  .notices{background:var(--stone-2);border-top:1px solid var(--stone);border-bottom:1px solid var(--stone)}
+  .notices .wrap{padding-top:26px;padding-bottom:26px;display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap}
+  .notices p{margin:0;font-size:13.5px;color:#4a525f;line-height:1.6;max-width:900px}
+  .notices strong{color:var(--ink)}
+  footer.site{background:color-mix(in srgb,var(--ink) 97%,#000);color:rgba(255,255,255,.72);padding:56px 0 30px}
+  .foot-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,.12)}
+  .foot-brand{max-width:320px}
+  .foot-brand .fb{display:flex;align-items:center;gap:11px;margin-bottom:14px}
+  .foot-brand .fb svg{width:30px;height:22px}
+  .foot-brand .fb .front{fill:var(--gold)}
+  .foot-brand .fb .back{fill:rgba(255,255,255,.3)}
+  .foot-brand .fb b{font-family:"Fraunces";font-weight:600;font-size:20px;color:#fff}
+  .foot-brand p{margin:0;font-size:14px;line-height:1.6}
+  .foot-nav{display:flex;gap:56px;flex-wrap:wrap}
+  .foot-nav .col h4{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--gold);margin:0 0 14px;font-weight:500}
+  .foot-nav a{display:block;color:rgba(255,255,255,.72);text-decoration:none;font-size:14.5px;padding:5px 0;transition:color .14s}
+  .foot-nav a:hover{color:#fff}
+  .foot-bot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:24px;font-size:13px;color:rgba(255,255,255,.5)}
+  .foot-bot a{color:rgba(255,255,255,.7)}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:900px){
+    .about-grid,.contact-grid{grid-template-columns:1fr;gap:32px}
+    .people{grid-template-columns:1fr 1fr}
+    .council{grid-template-columns:1fr 1fr}
+    .rec-cols{grid-template-columns:1fr 1fr;gap:28px}
+    .g-3,.g-4{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:720px){
+    nav.main{display:none;position:absolute;top:66px;left:0;right:0;flex-direction:column;
+      background:color-mix(in srgb,var(--ink) 98%,#000);padding:12px 16px 18px;gap:2px;
+      border-bottom:1px solid rgba(255,255,255,.12)}
+    nav.main.open{display:flex}
+    nav.main a{padding:12px 14px;font-size:16px}
+    nav.main .btn{margin-top:8px;justify-content:center}
+    .menu-toggle{display:block}
+    .bar{height:60px}
+    section{padding:56px 0}
+    .hero-inner{padding-top:52px}
+    .datastrip div{border-right:0;padding-right:0;margin-right:0;flex:0 0 50%;padding-bottom:8px}
+    .people,.council,.rec-cols,.g-3,.g-4,.g-2{grid-template-columns:1fr}
+    .foot-nav{gap:32px}
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- ============ HEADER ============ -->
+<header class="site">
+  <div class="wrap bar">
+    <a class="brand" href="#top" aria-label="City of Lostine home">
+      <svg viewBox="0 0 60 44" aria-hidden="true"><path class="back" d="M0 44 L14 16 L24 30 L34 8 L44 26 L60 44 Z"/><path class="front" d="M6 44 L20 22 L30 34 L40 14 L52 30 L60 44 Z"/></svg>
+      <span class="lock"><span>City of</span><b>Lostine</b></span>
+    </a>
+    <nav class="main" id="nav">
+      <a href="#town">The Town</a>
+      <a href="#government">Government</a>
+      <a href="#records">Records</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+      <a class="btn btn-gold" href="#contact">City Hall</a>
+    </nav>
+    <button class="menu-toggle" id="menuBtn" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<a id="top"></a>
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <svg class="stars" viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <g fill="#ffffff">
+      <circle cx="120" cy="60" r="1.1" opacity=".7"/><circle cx="300" cy="40" r="1.4" opacity=".5"/>
+      <circle cx="480" cy="80" r="1" opacity=".6"/><circle cx="650" cy="46" r="1.3" opacity=".7"/>
+      <circle cx="820" cy="70" r="1" opacity=".45"/><circle cx="980" cy="52" r="1.5" opacity=".6"/>
+      <circle cx="1120" cy="88" r="1.1" opacity=".55"/><circle cx="210" cy="120" r="1" opacity=".4"/>
+      <circle cx="560" cy="130" r="1.2" opacity=".5"/><circle cx="900" cy="120" r="1" opacity=".5"/>
+      <circle cx="1060" cy="150" r="1.1" opacity=".4"/><circle cx="380" cy="160" r="1" opacity=".35"/>
+    </g>
+  </svg>
+  <div class="hero-inner">
+    <p class="kicker reveal">Wallowa County · Oregon · Est. 1903</p>
+    <h1 class="reveal">City of<br>Lostine</h1>
+    <p class="lede reveal">A small town in the heart of the Eagle Cap Mountains, settled along the Lostine River on Oregon's Highway&nbsp;82.</p>
+    <div class="hero-cta reveal">
+      <a class="btn btn-gold" href="#services">Resident Services</a>
+      <a class="btn btn-ghost" href="#records">Meetings &amp; Agendas</a>
+    </div>
+    <div class="datastrip reveal">
+      <div><b>1903</b> Incorporated</div>
+      <div><b>209</b> Residents</div>
+      <div><b>3,363 ft</b> Elevation</div>
+      <div><b>Hwy 82</b> Route</div>
+    </div>
+  </div>
+  <svg class="ridge" viewBox="0 0 1200 260" preserveAspectRatio="none" aria-hidden="true">
+    <path class="r-back" d="M0 260 L0 150 L90 120 L180 158 L270 96 L360 140 L470 70 L560 126 L660 92 L780 150 L880 110 L1000 156 L1100 124 L1200 150 L1200 260 Z"/>
+    <path class="r-mid" d="M0 260 L0 186 L110 150 L210 196 L320 130 L430 182 L540 120 L640 176 L760 138 L860 188 L980 150 L1090 194 L1200 168 L1200 260 Z"/>
+    <path class="r-front" d="M0 260 L0 222 L140 196 L260 228 L380 190 L500 226 L600 180 L720 224 L840 198 L960 230 L1080 204 L1200 226 L1200 260 Z"/>
+    <path class="river" d="M600 260 C590 232 620 216 606 196 C594 178 616 166 604 150"/>
+  </svg>
+</div>
+
+<main id="main">
+
+<!-- ============ SERVICES ============ -->
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">How can we help?</p>
+      <h2>Resident services</h2>
+      <p>The things people need most from City Hall, in one place. Select an item to view the current documents and information.</p>
+    </div>
+    <div class="grid g-3">
+      <a class="svc reveal" href="#contact">
+        <span class="arrow">→</span>
+        <span class="ico"><svg viewBox="0 0 24 24"><path d="M12 3c3 4 5 6.5 5 9a5 5 0 0 1-10 0c0-2.5 2-5 5-9Z"/></svg></span>
+        <h3>Water &amp; Utilities</h3>
+        <p>Questions about your water service, billing, or turning service on and off.</p>
+      </a>
+      <a class="svc reveal" href="https://www.cityoflostine.com/agendas-minutes">
+        <span class="arrow">→</span>
+        <span class="ico"><svg viewBox="0 0 24 24"><path d="M8 3h8l3 3v15H5V3Z"/><path d="M8 9h8M8 13h8M8 17h5"/></svg></span>
+        <h3>Agendas &amp; Minutes</h3>
+        <p>Upcoming council meeting agendas and minutes from past sessions.</p>
+      </a>
+      <a class="svc reveal" href="https://www.cityoflostine.com/ordinances">
+        <span class="arrow">→</span>
+        <span class="ico"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg></span>
+        <h3>Ordinances</h3>
+        <p>City ordinances and municipal code adopted by the council.</p>
+      </a>
+      <a class="svc reveal" href="https://www.cityoflostine.com/permits">
+        <span class="arrow">→</span>
+        <span class="ico"><svg viewBox="0 0 24 24"><path d="M9 3h6l1 3H8Z"/><path d="M6 6h12v15H6Z"/><path d="M9 12l2 2 4-4"/></svg></span>
+        <h3>Permits</h3>
+        <p>Applications and requirements for building and land-use permits.</p>
+      </a>
+      <a class="svc reveal" href="https://www.cityoflostine.com/2025-2026-budget">
+        <span class="arrow">→</span>
+        <span class="ico"><svg viewBox="0 0 24 24"><path d="M3 20h18"/><path d="M6 20V10M11 20V5M16 20v-7"/></svg></span>
+        <h3>City Budget</h3>
+        <p>The current fiscal-year budget plus prior years and the committee application.</p>
+      </a>
+      <a class="svc reveal" href="https://www.cityoflostine.com/resolutions">
+        <span class="arrow">→</span>
+        <span class="ico"><svg viewBox="0 0 24 24"><path d="M6 3h9l3 3v15H6Z"/><path d="M9 12l2 2 4-4"/></svg></span>
+        <h3>Resolutions</h3>
+        <p>Resolutions and formal actions passed by the City Council.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ============ TOWN / ABOUT ============ -->
+<section id="town">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="reveal">
+        <p class="eyebrow">The Town</p>
+        <h2 class="sec-head" style="margin-bottom:24px">A snapshot of small-town Oregon</h2>
+        <div class="prose">
+          <p>Incorporated in 1903, Lostine is a quaint little town first settled by G.E. Laughlin in 1878. It sits cradled in Wallowa County in the heart of the Eagle Cap Mountains, home to around 209 residents — a genuine snapshot of small-town Americana along Oregon's Route 82.</p>
+          <p>At an elevation of 3,363 feet, passersby can stop for a cup of coffee at the Blue Banana, pick up groceries and supplies at M. Crow &amp; Co. General Store, sit in on a service at the historic church, browse antiques, or simply take in the scenery.</p>
+          <p>Surrounded by acres of crops and ranch land, Lostine may not be widely known around the world — but it is very much loved by the people who call it home.</p>
+        </div>
+        <div class="chips">
+          <span class="chip">Blue Banana Coffee</span>
+          <span class="chip">M. Crow &amp; Co. General Store</span>
+          <span class="chip">Historic Church</span>
+          <span class="chip">Antiques</span>
+          <span class="chip">Ranch &amp; Farmland</span>
+        </div>
+      </div>
+      <div class="facts reveal">
+        <dl>
+          <div class="row"><dt>County</dt><dd>Wallowa</dd></div>
+          <div class="row"><dt>State</dt><dd>Oregon</dd></div>
+          <div class="row"><dt>Incorporated</dt><dd>1903</dd></div>
+          <div class="row"><dt>First settled</dt><dd>1878</dd></div>
+          <div class="row"><dt>Population</dt><dd>≈ 209</dd></div>
+          <div class="row"><dt>Elevation</dt><dd>3,363 ft</dd></div>
+          <div class="row"><dt>Highway</dt><dd>OR Route 82</dd></div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GOVERNMENT ============ -->
+<section id="government" class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow" style="color:var(--gold)">Your Local Government</p>
+      <h2>City officials</h2>
+      <p>Lostine is served by an elected mayor and city council, supported by city staff who keep services running day to day.</p>
+    </div>
+    <div class="people">
+      <div class="person reveal">
+        <div class="avatar">DT</div>
+        <div class="who">
+          <p class="role">Mayor</p>
+          <p class="name">Dusty Tippet</p>
+          <p class="note">Serving since January 2017</p>
+        </div>
+      </div>
+      <div class="person reveal">
+        <div class="avatar">TC</div>
+        <div class="who">
+          <p class="role">City Recorder</p>
+          <p class="name">Toni Clary</p>
+          <p class="note">City Recorder since January 2017</p>
+        </div>
+      </div>
+      <div class="person reveal">
+        <div class="avatar">SY</div>
+        <div class="who">
+          <p class="role">Water Master</p>
+          <p class="name">Shawn Young</p>
+          <p class="note">Certified since 2002</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="sub-label">City Council</p>
+    <div class="council">
+      <div class="seat reveal"><div class="pos">Position 1</div><div class="nm">Darci Calhoun</div></div>
+      <div class="seat reveal"><div class="pos">Position 2</div><div class="nm">Lee Allen</div></div>
+      <div class="seat reveal"><div class="pos">Position 3</div><div class="nm">Rick Boyd</div></div>
+      <div class="seat reveal"><div class="pos">Position 4</div><div class="nm">Danny Wallace</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RECORDS ============ -->
+<section id="records">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">Public Records</p>
+      <h2>Records &amp; documents</h2>
+      <p>Meeting materials, city legislation, and every published budget — open to the public.</p>
+    </div>
+    <div class="rec-cols">
+      <div class="rec-col reveal">
+        <h3>Meetings</h3>
+        <ul>
+          <li><a href="https://www.cityoflostine.com/agendas-minutes">Agendas &amp; Minutes</a></li>
+          <li><a href="https://www.cityoflostine.com/events">Events</a></li>
+          <li><a href="https://www.cityoflostine.com/news">City News</a></li>
+        </ul>
+        <h3 style="margin-top:32px">Legislation</h3>
+        <ul>
+          <li><a href="https://www.cityoflostine.com/ordinances">Ordinances</a></li>
+          <li><a href="https://www.cityoflostine.com/resolutions">Resolutions</a></li>
+          <li><a href="https://www.cityoflostine.com/permits">Permits</a></li>
+        </ul>
+      </div>
+      <div class="rec-col reveal">
+        <h3>City Budgets</h3>
+        <ul>
+          <li><a href="https://www.cityoflostine.com/2025-2026-budget">2025–2026 Budget</a></li>
+          <li><a href="https://www.cityoflostine.com/2023-2024-budget">2023–2024 Budget</a></li>
+          <li><a href="https://www.cityoflostine.com/2022-2023-budget">2022–2023 Budget</a></li>
+          <li><a href="https://www.cityoflostine.com/2021-2022-budget">2021–2022 Budget</a></li>
+          <li><a href="https://www.cityoflostine.com/2020-2021-budget">2020–2021 Budget</a></li>
+          <li><a href="https://www.cityoflostine.com/budget-committee-app">Budget Committee Application</a></li>
+        </ul>
+      </div>
+      <div class="rec-col reveal">
+        <h3>Get Involved</h3>
+        <ul>
+          <li><a href="https://www.cityoflostine.com/gallery">Photo Gallery</a></li>
+          <li><a href="https://www.cityoflostine.com/donate">Donate to the City</a></li>
+          <li><a href="https://www.facebook.com/cityoflostine/">Facebook Page</a></li>
+          <li><a href="#contact">Contact City Hall</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ============ CONTACT ============ -->
+<section id="contact">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">Get in Touch</p>
+      <h2>Contact City Hall</h2>
+      <p>Reach the City of Lostine by phone, mail, email, or the form below. Office hours can vary — please call ahead before visiting.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="cinfo reveal">
+        <div class="block">
+          <div class="ci-ico"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-3 2a12 12 0 0 0 5 5l2-3 5 2v4a1 1 0 0 1-1 1A17 17 0 0 1 4 5a1 1 0 0 1 1-1Z"/></svg></div>
+          <div><p class="ci-lab">Phone</p><p class="ci-val"><a href="tel:15415692415">541-569-2415</a></p></div>
+        </div>
+        <div class="block">
+          <div class="ci-ico"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4Z"/><path d="M4 7l8 6 8-6"/></svg></div>
+          <div><p class="ci-lab">Email</p><p class="ci-val"><a href="mailto:lostinecityhall@frontier.com">lostinecityhall@frontier.com</a></p></div>
+        </div>
+        <div class="block">
+          <div class="ci-ico"><svg viewBox="0 0 24 24"><path d="M12 21s7-6 7-11a7 7 0 0 0-14 0c0 5 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+          <div><p class="ci-lab">Location</p><p class="ci-val">128 Highway 82<br>Lostine, OR 97857</p></div>
+        </div>
+        <div class="block">
+          <div class="ci-ico"><svg viewBox="0 0 24 24"><path d="M5 4h14v4H5Z"/><path d="M6 8v12h12V8"/></svg></div>
+          <div><p class="ci-lab">Mailing Address</p><p class="ci-val">PO Box 181<br>Lostine, OR 97857</p></div>
+        </div>
+      </div>
+
+      <form class="contact reveal" id="contactForm">
+        <!-- Web3Forms: replace the access key below with your own from web3forms.com -->
+        <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+        <input type="hidden" name="subject" value="New message from cityoflostine.com">
+        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+        <div class="fld">
+          <label for="name">Name</label>
+          <input id="name" type="text" name="name" required autocomplete="name">
+        </div>
+        <div class="fld">
+          <label for="email">Email</label>
+          <input id="email" type="email" name="email" required autocomplete="email">
+        </div>
+        <div class="fld">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required placeholder="How can the city help you?"></textarea>
+        </div>
+        <button class="btn btn-gold" type="submit">Send message</button>
+        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ NOTICES ============ -->
+<div class="notices">
+  <div class="wrap">
+    <p><strong>Equal opportunity.</strong> The City of Lostine is an equal opportunity provider and employer. Persons with disabilities who require an alternative means of communication should call <a href="tel:711">711</a>.</p>
+  </div>
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <div class="fb">
+          <svg viewBox="0 0 60 44" aria-hidden="true"><path class="back" d="M0 44 L14 16 L24 30 L34 8 L44 26 L60 44 Z"/><path class="front" d="M6 44 L20 22 L30 34 L40 14 L52 30 L60 44 Z"/></svg>
+          <b>City of Lostine</b>
+        </div>
+        <p>128 Highway 82 · PO Box 181<br>Lostine, OR 97857 · Wallowa County</p>
+      </div>
+      <nav class="foot-nav">
+        <div class="col">
+          <h4>Explore</h4>
+          <a href="#town">The Town</a>
+          <a href="#government">Government</a>
+          <a href="#services">Services</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="col">
+          <h4>Records</h4>
+          <a href="https://www.cityoflostine.com/agendas-minutes">Agendas &amp; Minutes</a>
+          <a href="https://www.cityoflostine.com/ordinances">Ordinances</a>
+          <a href="https://www.cityoflostine.com/resolutions">Resolutions</a>
+          <a href="https://www.cityoflostine.com/2025-2026-budget">City Budget</a>
+        </div>
+        <div class="col">
+          <h4>Connect</h4>
+          <a href="tel:15415692415">541-569-2415</a>
+          <a href="mailto:lostinecityhall@frontier.com">Email City Hall</a>
+          <a href="https://www.facebook.com/cityoflostine/">Facebook</a>
+          <a href="https://www.cityoflostine.com/donate">Donate</a>
+        </div>
+      </nav>
+    </div>
+    <div class="foot-bot">
+      <span>© <span id="year"></span> City of Lostine, Oregon. All rights reserved.</span>
+      <span>Equal opportunity provider &amp; employer · TTY <a href="tel:711">711</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // mobile menu
+  var btn=document.getElementById('menuBtn'),nav=document.getElementById('nav');
+  btn.addEventListener('click',function(){
+    var open=nav.classList.toggle('open');
+    btn.setAttribute('aria-expanded',open);
+  });
+  nav.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){nav.classList.remove('open');btn.setAttribute('aria-expanded','false');});
+  });
+
+  // footer year
+  document.getElementById('year').textContent=new Date().getFullYear();
+
+  // scroll reveal (respects reduced motion)
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var items=document.querySelectorAll('.reveal');
+  if(reduce||!('IntersectionObserver' in window)){
+    items.forEach(function(el){el.classList.add('in');});
+  }else{
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+    },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+    items.forEach(function(el){io.observe(el);});
+  }
+
+  // Web3Forms submit
+  var form=document.getElementById('contactForm'),status=document.getElementById('formStatus');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var key=form.querySelector('[name=access_key]').value;
+    status.className='form-status';
+    if(key==='YOUR_WEB3FORMS_ACCESS_KEY'){
+      status.textContent='Form not yet configured — add your Web3Forms access key to enable sending.';
+      status.className='form-status err';return;
+    }
+    var data=new FormData(form),btnEl=form.querySelector('button[type=submit]');
+    btnEl.disabled=true;btnEl.textContent='Sending…';
+    fetch('https://api.web3forms.com/submit',{method:'POST',body:data})
+      .then(function(r){return r.json();})
+      .then(function(j){
+        if(j.success){status.textContent='Thank you — your message has been sent to City Hall.';status.className='form-status ok';form.reset();}
+        else{status.textContent='Something went wrong. Please call 541-569-2415 or email us directly.';status.className='form-status err';}
+      })
+      .catch(function(){status.textContent='Something went wrong. Please call 541-569-2415 or email us directly.';status.className='form-status err';})
+      .finally(function(){btnEl.disabled=false;btnEl.textContent='Send message';});
+  });
+</script>
+</body>
+</html>

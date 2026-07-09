@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Town of Alberton, Montana</title>
+<meta name="description" content="Official website of the Town of Alberton, Montana. Pay your utility bill, find forms and permits, read agendas and minutes, and stay connected with your local government in the Clark Fork River valley.">
+<link rel="canonical" href="https://albertonmontana.com/">
+
+<!-- Fonts: Public Sans is the U.S. government's open-source typeface -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --forest:#173c2c;
+    --forest-2:#0e281d;
+    --river:#1c4a52;
+    --sky:#5a838f;
+    --gold:#c1852f;
+    --gold-soft:#e5b45f;
+    --stone:#eef1ec;
+    --paper:#f8faf6;
+    --card:#ffffff;
+    --ink:#17201c;
+    --ink-soft:#4c564f;
+    --ink-faint:#77817a;
+    --line:#d7ded6;
+    --line-soft:#e6ebe4;
+
+    --f-display:"Bricolage Grotesque", system-ui, sans-serif;
+    --f-body:"Public Sans", system-ui, -apple-system, sans-serif;
+    --f-mono:"IBM Plex Mono", ui-monospace, monospace;
+
+    --wrap:1180px;
+    --r:14px;
+    --r-sm:10px;
+    --shadow:0 1px 2px rgba(23,32,28,.04), 0 8px 28px -12px rgba(23,32,28,.14);
+    --shadow-lg:0 24px 60px -28px rgba(14,40,29,.4);
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+  body{
+    margin:0;
+    font-family:var(--f-body);
+    color:var(--ink);
+    background:var(--stone);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  a{color:inherit;text-decoration:none}
+  img,svg{display:block;max-width:100%}
+  h1,h2,h3,h4{font-family:var(--f-display);font-weight:700;line-height:1.06;margin:0;letter-spacing:-.02em}
+  p{margin:0}
+
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+  .eyebrow{
+    font-family:var(--f-mono);
+    font-size:.72rem;
+    font-weight:600;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--gold);
+  }
+
+  .skip{
+    position:absolute;left:-9999px;top:0;z-index:200;
+    background:var(--forest);color:#fff;padding:12px 18px;border-radius:0 0 8px 0;
+    font-weight:600;font-size:.9rem;
+  }
+  .skip:focus{left:0}
+
+  /* ---------- Utility bar ---------- */
+  .util{
+    background:var(--forest-2);
+    color:#cdd8d0;
+    font-size:.82rem;
+    border-bottom:1px solid rgba(255,255,255,.06);
+  }
+  .util .wrap{display:flex;align-items:center;gap:22px;height:40px;justify-content:space-between}
+  .util-left{display:flex;align-items:center;gap:20px;min-width:0}
+  .util-item{display:flex;align-items:center;gap:7px;white-space:nowrap}
+  .util-item svg{width:14px;height:14px;stroke:var(--gold-soft);flex-shrink:0}
+  .util-emerg{color:#fff;font-weight:600}
+  .util-emerg strong{color:var(--gold-soft)}
+  .util a:hover{color:#fff}
+  @media (max-width:860px){.util-hide{display:none}}
+
+  /* ---------- Header / Nav ---------- */
+  .head{
+    position:sticky;top:0;z-index:100;
+    background:rgba(248,250,246,.86);
+    backdrop-filter:saturate(150%) blur(12px);
+    -webkit-backdrop-filter:saturate(150%) blur(12px);
+    border-bottom:1px solid var(--line);
+    transition:box-shadow .25s ease;
+  }
+  .head.scrolled{box-shadow:0 6px 24px -18px rgba(14,40,29,.5)}
+  .head .wrap{display:flex;align-items:center;justify-content:space-between;height:78px;transition:height .25s ease}
+  .head.scrolled .wrap{height:64px}
+
+  .brand{display:flex;align-items:center;gap:13px}
+  .seal{
+    width:44px;height:44px;flex-shrink:0;
+    transition:width .25s,height .25s;
+  }
+  .head.scrolled .seal{width:38px;height:38px}
+  .brand-txt{display:flex;flex-direction:column;line-height:1.05}
+  .brand-name{font-family:var(--f-display);font-weight:800;font-size:1.18rem;color:var(--forest);letter-spacing:-.02em}
+  .brand-sub{font-family:var(--f-mono);font-size:.63rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-faint);margin-top:2px}
+
+  nav.primary{display:flex;align-items:center;gap:2px}
+  .nav-item{position:relative}
+  .nav-link{
+    display:flex;align-items:center;gap:5px;
+    padding:10px 14px;border-radius:9px;
+    font-weight:600;font-size:.92rem;color:var(--ink);
+    cursor:pointer;transition:background .15s,color .15s;
+    white-space:nowrap;
+  }
+  .nav-link svg{width:12px;height:12px;stroke:var(--ink-faint);transition:transform .2s}
+  .nav-link:hover{background:rgba(23,60,44,.07);color:var(--forest)}
+  .nav-item:hover .nav-link svg{transform:rotate(180deg)}
+
+  .dropdown{
+    position:absolute;top:calc(100% + 8px);left:0;
+    min-width:250px;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:var(--r);
+    box-shadow:var(--shadow-lg);
+    padding:8px;
+    opacity:0;visibility:hidden;transform:translateY(-6px);
+    transition:opacity .18s ease,transform .18s ease,visibility .18s;
+    z-index:50;
+  }
+  .nav-item:hover .dropdown,.nav-item:focus-within .dropdown{opacity:1;visibility:visible;transform:translateY(0)}
+  .dd-link{
+    display:block;padding:9px 12px;border-radius:8px;
+    font-size:.9rem;font-weight:500;color:var(--ink-soft);
+    transition:background .13s,color .13s;
+  }
+  .dd-link:hover{background:var(--stone);color:var(--forest)}
+  .dd-sub{padding-left:24px;font-size:.85rem;color:var(--ink-faint)}
+  .dd-label{
+    font-family:var(--f-mono);font-size:.66rem;font-weight:600;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--gold);padding:10px 12px 4px;
+  }
+
+  .head-cta{
+    display:inline-flex;align-items:center;gap:7px;
+    background:var(--gold);color:#231400;
+    padding:10px 17px;border-radius:9px;
+    font-weight:700;font-size:.9rem;
+    transition:transform .15s,box-shadow .15s,background .15s;
+    box-shadow:0 6px 16px -8px rgba(193,133,47,.7);
+  }
+  .head-cta:hover{background:var(--gold-soft);transform:translateY(-1px)}
+  .head-cta svg{width:15px;height:15px;stroke:#231400;stroke-width:2.2}
+
+  .burger{display:none;background:none;border:1px solid var(--line);border-radius:9px;width:44px;height:44px;cursor:pointer;padding:0;align-items:center;justify-content:center}
+  .burger svg{width:22px;height:22px;stroke:var(--forest)}
+
+  @media (max-width:1080px){
+    nav.primary,.head .head-cta{display:none}
+    .burger{display:flex}
+  }
+
+  /* ---------- Mobile drawer ---------- */
+  .drawer-bg{
+    position:fixed;inset:0;background:rgba(14,40,29,.5);
+    opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s;z-index:150;
+    backdrop-filter:blur(2px);
+  }
+  .drawer-bg.open{opacity:1;visibility:visible}
+  .drawer{
+    position:fixed;top:0;right:0;bottom:0;width:min(360px,86vw);
+    background:var(--paper);z-index:160;
+    transform:translateX(100%);transition:transform .3s cubic-bezier(.4,0,.2,1);
+    overflow-y:auto;box-shadow:var(--shadow-lg);
+    padding:20px;
+  }
+  .drawer.open{transform:translateX(0)}
+  .drawer-head{display:flex;align-items:center;justify-content:space-between;padding-bottom:16px;border-bottom:1px solid var(--line);margin-bottom:12px}
+  .drawer-close{background:none;border:1px solid var(--line);border-radius:9px;width:40px;height:40px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+  .drawer-close svg{width:20px;height:20px;stroke:var(--ink)}
+  .acc-head{
+    display:flex;align-items:center;justify-content:space-between;width:100%;
+    background:none;border:none;padding:14px 6px;cursor:pointer;
+    font-family:var(--f-display);font-weight:700;font-size:1.02rem;color:var(--forest);
+    border-bottom:1px solid var(--line-soft);text-align:left;
+  }
+  .acc-head svg{width:16px;height:16px;stroke:var(--gold);transition:transform .2s}
+  .acc-head.active svg{transform:rotate(45deg)}
+  .acc-body{max-height:0;overflow:hidden;transition:max-height .3s ease}
+  .acc-body a{display:block;padding:9px 6px 9px 18px;font-size:.92rem;font-weight:500;color:var(--ink-soft)}
+  .acc-body a:active{color:var(--forest)}
+  .drawer-cta{
+    display:flex;align-items:center;justify-content:center;gap:8px;
+    background:var(--gold);color:#231400;font-weight:700;
+    padding:14px;border-radius:11px;margin-top:20px;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    background:
+      radial-gradient(120% 140% at 82% -10%, rgba(90,131,143,.16), transparent 55%),
+      linear-gradient(178deg, #142f24 0%, #0f281d 100%);
+    color:#eef3ee;
+    overflow:hidden;
+    isolation:isolate;
+  }
+  #topo{position:absolute;inset:0;width:100%;height:100%;z-index:-1;opacity:.9}
+  .hero .wrap{position:relative;padding-top:76px;padding-bottom:70px}
+
+  .hero-loc{
+    display:inline-flex;align-items:center;gap:9px;
+    font-family:var(--f-mono);font-size:.74rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--gold-soft);
+    padding:7px 14px;border:1px solid rgba(229,180,95,.32);border-radius:100px;
+    background:rgba(229,180,95,.06);margin-bottom:26px;
+  }
+  .hero-loc svg{width:14px;height:14px;stroke:var(--gold-soft)}
+
+  .hero h1{
+    font-size:clamp(2.7rem,6.2vw,4.7rem);font-weight:800;letter-spacing:-.035em;
+    max-width:14ch;color:#fff;
+  }
+  .hero h1 .accent{color:var(--gold-soft)}
+  .hero-lede{
+    margin-top:22px;max-width:52ch;font-size:1.16rem;color:#c8d4cc;line-height:1.55;
+  }
+
+  /* Quick actions */
+  .quick{margin-top:44px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .qa{
+    display:flex;flex-direction:column;gap:12px;
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.13);
+    border-radius:var(--r);
+    padding:20px 18px;
+    transition:transform .18s ease,background .18s ease,border-color .18s ease;
+    min-height:132px;
+  }
+  .qa:hover{transform:translateY(-3px);background:rgba(255,255,255,.09);border-color:rgba(229,180,95,.45)}
+  .qa-ico{
+    width:42px;height:42px;border-radius:11px;
+    background:rgba(229,180,95,.15);
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  }
+  .qa-ico svg{width:21px;height:21px;stroke:var(--gold-soft);stroke-width:1.8;fill:none}
+  .qa-title{font-family:var(--f-display);font-weight:700;font-size:1.05rem;color:#fff;margin-top:auto}
+  .qa-sub{font-size:.83rem;color:#a8b6ac}
+  .qa-arrow{display:flex;align-items:center;gap:5px;font-size:.8rem;font-weight:600;color:var(--gold-soft);font-family:var(--f-mono);letter-spacing:.04em}
+
+  @media (max-width:940px){.quick{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:520px){
+    .quick{grid-template-columns:1fr}
+    .hero .wrap{padding-top:52px;padding-bottom:52px}
+  }
+
+  /* ---------- Sections ---------- */
+  section{position:relative}
+  .band{padding:76px 0}
+  .band-head{max-width:640px;margin-bottom:44px}
+  .band-head .eyebrow{margin-bottom:14px;display:block}
+  .band-head h2{font-size:clamp(1.9rem,3.6vw,2.7rem);color:var(--forest);letter-spacing:-.03em}
+  .band-head p{margin-top:14px;color:var(--ink-soft);font-size:1.06rem}
+
+  /* Services grid */
+  .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .svc{
+    display:flex;gap:16px;align-items:flex-start;
+    background:var(--card);border:1px solid var(--line);border-radius:var(--r);
+    padding:22px;transition:border-color .18s,box-shadow .18s,transform .18s;
+  }
+  .svc:hover{border-color:var(--gold);box-shadow:var(--shadow);transform:translateY(-2px)}
+  .svc-ico{
+    width:46px;height:46px;border-radius:12px;flex-shrink:0;
+    background:linear-gradient(140deg,#1c4a52,#173c2c);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .svc-ico svg{width:23px;height:23px;stroke:var(--gold-soft);stroke-width:1.7;fill:none}
+  .svc h3{font-size:1.12rem;color:var(--ink);margin-bottom:4px}
+  .svc p{font-size:.9rem;color:var(--ink-soft);line-height:1.5}
+  .svc-links{margin-top:12px;display:flex;flex-wrap:wrap;gap:6px}
+  .chip{
+    font-size:.8rem;font-weight:600;color:var(--river);
+    background:var(--stone);border:1px solid var(--line-soft);
+    padding:5px 11px;border-radius:100px;transition:background .13s,color .13s;
+  }
+  .chip:hover{background:var(--forest);color:#fff;border-color:var(--forest)}
+  @media (max-width:900px){.svc-grid{grid-template-columns:1fr;gap:14px}}
+
+  /* News */
+  .news{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .news-top{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:40px}
+  .news-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .post{
+    display:flex;flex-direction:column;
+    background:var(--card);border:1px solid var(--line);border-radius:var(--r);
+    padding:26px;transition:border-color .18s,box-shadow .18s,transform .18s;
+    position:relative;overflow:hidden;
+  }
+  .post:hover{border-color:var(--gold);box-shadow:var(--shadow);transform:translateY(-2px)}
+  .post-meta{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+  .post-cat{
+    font-family:var(--f-mono);font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+    color:#fff;background:var(--river);padding:4px 10px;border-radius:6px;
+  }
+  .post-cat.notice{background:var(--gold);color:#231400}
+  .post-date{font-family:var(--f-mono);font-size:.78rem;color:var(--ink-faint)}
+  .post h3{font-size:1.28rem;color:var(--ink);line-height:1.18;margin-bottom:10px}
+  .post p{font-size:.94rem;color:var(--ink-soft);line-height:1.55;flex-grow:1}
+  .post-more{
+    margin-top:18px;display:inline-flex;align-items:center;gap:6px;
+    font-weight:700;font-size:.88rem;color:var(--forest);
+  }
+  .post-more svg{width:15px;height:15px;stroke:var(--gold);stroke-width:2.4;transition:transform .18s}
+  .post:hover .post-more svg{transform:translateX(4px)}
+  @media (max-width:760px){.news-grid{grid-template-columns:1fr}}
+
+  .link-all{
+    display:inline-flex;align-items:center;gap:8px;
+    font-weight:700;font-size:.95rem;color:var(--forest);
+    border-bottom:2px solid var(--gold);padding-bottom:3px;
+  }
+  .link-all svg{width:16px;height:16px;stroke:var(--gold);stroke-width:2.4}
+
+  /* Government at a glance */
+  .gov-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .gov{
+    display:flex;flex-direction:column;gap:8px;
+    padding:22px 20px;border:1px solid var(--line);border-radius:var(--r);
+    background:var(--card);transition:background .18s,border-color .18s,transform .18s;
+  }
+  .gov:hover{background:var(--forest);border-color:var(--forest);transform:translateY(-2px)}
+  .gov:hover .gov-t,.gov:hover .gov-d{color:#fff}
+  .gov:hover .gov-n{color:var(--gold-soft)}
+  .gov-n{font-family:var(--f-mono);font-size:.72rem;font-weight:600;color:var(--gold);letter-spacing:.1em}
+  .gov-t{font-family:var(--f-display);font-weight:700;font-size:1.08rem;color:var(--ink)}
+  .gov-d{font-size:.85rem;color:var(--ink-soft);line-height:1.45}
+  @media (max-width:900px){.gov-grid{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:480px){.gov-grid{grid-template-columns:1fr}}
+
+  /* Mayor */
+  .mayor{background:linear-gradient(178deg,#173c2c,#0f281d);color:#e9efe9;overflow:hidden;position:relative}
+  #topo2{position:absolute;inset:0;z-index:0;opacity:.5}
+  .mayor .wrap{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1.4fr;gap:56px;align-items:center}
+  .mayor-card{
+    background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);
+    border-radius:20px;padding:34px;
+  }
+  .mayor-seal{width:66px;height:66px;margin-bottom:20px}
+  .mayor-name{font-family:var(--f-display);font-weight:800;font-size:1.5rem;color:#fff}
+  .mayor-role{font-family:var(--f-mono);font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-soft);margin-top:6px}
+  .mayor-contact{margin-top:22px;padding-top:22px;border-top:1px solid rgba(255,255,255,.12);display:flex;flex-direction:column;gap:10px;font-size:.9rem;color:#c2cec5}
+  .mayor-contact div{display:flex;align-items:center;gap:10px}
+  .mayor-contact svg{width:16px;height:16px;stroke:var(--gold-soft);flex-shrink:0}
+  .mayor-body .eyebrow{color:var(--gold-soft)}
+  .mayor-body h2{font-size:clamp(1.9rem,3.6vw,2.7rem);color:#fff;margin:14px 0 22px;letter-spacing:-.03em}
+  .mayor-body p{color:#c8d4cc;font-size:1.08rem;line-height:1.65;margin-bottom:16px}
+  .mayor-body p.sign{font-family:var(--f-display);font-size:1.18rem;color:#fff;font-weight:600;margin-top:24px}
+  @media (max-width:880px){
+    .mayor .wrap{grid-template-columns:1fr;gap:32px}
+  }
+
+  /* Subscribe */
+  .sub{background:var(--paper);border-top:1px solid var(--line)}
+  .sub-inner{
+    background:var(--card);border:1px solid var(--line);border-radius:20px;
+    padding:44px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;
+    box-shadow:var(--shadow);position:relative;overflow:hidden;
+  }
+  .sub-inner::before{
+    content:"";position:absolute;right:-60px;top:-60px;width:240px;height:240px;
+    background:radial-gradient(circle,rgba(193,133,47,.1),transparent 70%);
+  }
+  .sub-inner h2{font-size:1.9rem;color:var(--forest);margin-bottom:12px;letter-spacing:-.02em}
+  .sub-inner p{color:var(--ink-soft);font-size:1rem}
+  .sub-form{display:flex;flex-direction:column;gap:12px;position:relative;z-index:1}
+  .sub-form input{
+    width:100%;padding:14px 16px;border:1px solid var(--line);border-radius:11px;
+    font-family:var(--f-body);font-size:.98rem;background:var(--stone);color:var(--ink);
+    transition:border-color .15s,box-shadow .15s;
+  }
+  .sub-form input:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(193,133,47,.18);background:#fff}
+  .sub-btn{
+    background:var(--forest);color:#fff;border:none;border-radius:11px;padding:15px;
+    font-family:var(--f-body);font-weight:700;font-size:1rem;cursor:pointer;
+    transition:background .15s,transform .15s;
+  }
+  .sub-btn:hover{background:var(--forest-2);transform:translateY(-1px)}
+  .sub-note{font-size:.8rem;color:var(--ink-faint);text-align:center}
+  .sub-ok{display:none;background:rgba(23,60,44,.06);border:1px solid rgba(23,60,44,.2);border-radius:11px;padding:16px;color:var(--forest);font-weight:600;font-size:.94rem;text-align:center}
+  @media (max-width:820px){.sub-inner{grid-template-columns:1fr;padding:32px}}
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--forest-2);color:#b7c3ba;padding:64px 0 0}
+  .foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;padding-bottom:48px}
+  .foot-brand{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+  .foot-brand .seal{width:46px;height:46px}
+  .foot-brand-name{font-family:var(--f-display);font-weight:800;font-size:1.2rem;color:#fff}
+  .foot-addr{font-size:.92rem;line-height:1.7;color:#a3b0a7}
+  .foot-addr strong{color:#fff;font-weight:600}
+  .foot-emerg{margin-top:18px;font-size:.86rem;color:var(--gold-soft);font-weight:600;display:flex;align-items:center;gap:8px}
+  .foot-emerg svg{width:15px;height:15px;stroke:var(--gold-soft)}
+  .foot-col h4{font-family:var(--f-mono);font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+  .foot-col a{display:block;font-size:.92rem;color:#a9b6ad;padding:6px 0;transition:color .13s,padding .13s}
+  .foot-col a:hover{color:#fff;padding-left:4px}
+  .foot-hours{font-size:.88rem;line-height:1.9;color:#a3b0a7}
+  .foot-hours .closed{color:#8a978d}
+  .foot-bot{
+    border-top:1px solid rgba(255,255,255,.08);padding:22px 0;
+    display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+    font-size:.82rem;color:#8a978d;
+  }
+  .foot-bot .nd{max-width:640px;line-height:1.5}
+  @media (max-width:900px){.foot-grid{grid-template-columns:1fr 1fr;gap:32px}}
+  @media (max-width:520px){.foot-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- Utility bar -->
+<div class="util">
+  <div class="wrap">
+    <div class="util-left">
+      <span class="util-item util-emerg"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>Emergency? Call <strong>911</strong></span>
+      <span class="util-item util-hide"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Mon–Thu · 9AM–3PM</span>
+    </div>
+    <div class="util-left">
+      <a class="util-item util-hide" href="tel:4067223404"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>406-722-3404</a>
+      <a class="util-item" href="mailto:info@albertonmontana.com"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>Contact</a>
+    </div>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="head" id="head">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Town of Alberton home">
+      <svg class="seal" viewBox="0 0 44 44" fill="none" aria-hidden="true">
+        <circle cx="22" cy="22" r="21" fill="#173c2c" stroke="#c1852f" stroke-width="1.5"/>
+        <path d="M8 30c3-1 5-4 8-4s5 3 8 3 5-3 8-3 4 2 4 2" stroke="#5a838f" stroke-width="1.4" fill="none"/>
+        <path d="M8 25c3-1 5-4 8-4s5 3 8 3 5-3 8-3 4 2 4 2" stroke="#e5b45f" stroke-width="1.4" fill="none"/>
+        <path d="M14 20l4-8 4 8" stroke="#eef3ee" stroke-width="1.6" fill="none" stroke-linejoin="round"/>
+        <path d="M22 22l4-6 4 6" stroke="#eef3ee" stroke-width="1.6" fill="none" stroke-linejoin="round" opacity=".7"/>
+      </svg>
+      <span class="brand-txt">
+        <span class="brand-name">Alberton</span>
+        <span class="brand-sub">Montana · Est. 1908</span>
+      </span>
+    </a>
+
+    <nav class="primary" aria-label="Primary">
+      <div class="nav-item">
+        <span class="nav-link" tabindex="0">Government <svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="m6 9 6 6 6-6"/></svg></span>
+        <div class="dropdown">
+          <a class="dd-link" href="/how-our-town-government-works/">How Town Government Works</a>
+          <a class="dd-link" href="/town-council/">Town Council</a>
+          <a class="dd-link" href="/agendas-minutes/">Agendas &amp; Minutes</a>
+          <a class="dd-link" href="/ordinances/">Ordinances</a>
+          <a class="dd-link" href="/resolutions/">Resolutions</a>
+          <div class="dd-label">Administration</div>
+          <a class="dd-link" href="/administration-finance/">Administration &amp; Finance</a>
+          <a class="dd-link dd-sub" href="/bids-rfps/">Bids &amp; RFPs</a>
+          <a class="dd-link dd-sub" href="/job-openings/">Job Openings</a>
+          <a class="dd-link" href="/forms-directory/">Forms, Permits &amp; Applications</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <span class="nav-link" tabindex="0">Services <svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="m6 9 6 6 6-6"/></svg></span>
+        <div class="dropdown">
+          <a class="dd-link" href="/pay-online/">Pay Utility Bill Online</a>
+          <a class="dd-link" href="/public-works/">Public Works</a>
+          <a class="dd-link" href="/police/">Police</a>
+          <a class="dd-link" href="/fire/">Fire</a>
+          <a class="dd-link" href="/town-court/">Town Court</a>
+          <a class="dd-link" href="/food-bank/">Food Pantry</a>
+          <a class="dd-link" href="/business-licensing/">Business Licensing</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <span class="nav-link" tabindex="0">Community <svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="m6 9 6 6 6-6"/></svg></span>
+        <div class="dropdown">
+          <a class="dd-link" href="/parks-and-recreation/">Parks &amp; Recreation</a>
+          <a class="dd-link" href="/community-center/">Community Center</a>
+          <a class="dd-link" href="/museum/">Museum</a>
+          <a class="dd-link" href="/public-library/">Public Library</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <span class="nav-link" tabindex="0">News &amp; Notices <svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="m6 9 6 6 6-6"/></svg></span>
+        <div class="dropdown">
+          <a class="dd-link" href="/news/">News &amp; Official Notices</a>
+          <a class="dd-link" href="/calendar/">Calendar</a>
+          <a class="dd-link" href="/municipal-elections/">Municipal Elections</a>
+        </div>
+      </div>
+    </nav>
+
+    <a class="head-cta" href="/pay-online/">
+      <svg viewBox="0 0 24 24" fill="none"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+      Pay Bill
+    </a>
+
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile drawer -->
+<div class="drawer-bg" id="drawerBg"></div>
+<aside class="drawer" id="drawer" aria-label="Menu">
+  <div class="drawer-head">
+    <span class="brand-name" style="color:var(--forest)">Alberton</span>
+    <button class="drawer-close" id="drawerClose" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div id="acc">
+    <button class="acc-head">Government <svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg></button>
+    <div class="acc-body">
+      <a href="/how-our-town-government-works/">How Town Government Works</a>
+      <a href="/town-council/">Town Council</a>
+      <a href="/agendas-minutes/">Agendas &amp; Minutes</a>
+      <a href="/ordinances/">Ordinances</a>
+      <a href="/resolutions/">Resolutions</a>
+      <a href="/administration-finance/">Administration &amp; Finance</a>
+      <a href="/bids-rfps/">Bids &amp; RFPs</a>
+      <a href="/job-openings/">Job Openings</a>
+      <a href="/forms-directory/">Forms, Permits &amp; Applications</a>
+    </div>
+    <button class="acc-head">Services <svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg></button>
+    <div class="acc-body">
+      <a href="/pay-online/">Pay Utility Bill Online</a>
+      <a href="/public-works/">Public Works</a>
+      <a href="/police/">Police</a>
+      <a href="/fire/">Fire</a>
+      <a href="/town-court/">Town Court</a>
+      <a href="/food-bank/">Food Pantry</a>
+      <a href="/business-licensing/">Business Licensing</a>
+    </div>
+    <button class="acc-head">Community <svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg></button>
+    <div class="acc-body">
+      <a href="/parks-and-recreation/">Parks &amp; Recreation</a>
+      <a href="/community-center/">Community Center</a>
+      <a href="/museum/">Museum</a>
+      <a href="/public-library/">Public Library</a>
+    </div>
+    <button class="acc-head">News &amp; Notices <svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg></button>
+    <div class="acc-body">
+      <a href="/news/">News &amp; Official Notices</a>
+      <a href="/calendar/">Calendar</a>
+      <a href="/municipal-elections/">Municipal Elections</a>
+    </div>
+  </div>
+  <a class="drawer-cta" href="/pay-online/">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke="#231400" width="18" height="18"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+    Pay Utility Bill
+  </a>
+</aside>
+
+<main id="main">
+  <!-- Hero -->
+  <section class="hero">
+    <svg id="topo" preserveAspectRatio="none" aria-hidden="true"></svg>
+    <div class="wrap">
+      <span class="hero-loc">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        Mineral County · Clark Fork River Valley
+      </span>
+      <h1>A small town with a <span class="accent">big heart.</span></h1>
+      <p class="hero-lede">Welcome to the official home of the Town of Alberton, Montana — your resource for paying bills, finding forms, reading council business, and staying connected to the community.</p>
+
+      <div class="quick">
+        <a class="qa" href="/pay-online/">
+          <div class="qa-ico"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></svg></div>
+          <span class="qa-title">Pay Utility Bill</span>
+          <span class="qa-arrow">Pay online →</span>
+        </a>
+        <a class="qa" href="/agendas-minutes/">
+          <div class="qa-ico"><svg viewBox="0 0 24 24"><path d="M9 2h6l1 3H8l1-3Z"/><rect x="4" y="5" width="16" height="17" rx="2"/><path d="M8 11h8M8 15h5"/></svg></div>
+          <span class="qa-title">Agendas &amp; Minutes</span>
+          <span class="qa-arrow">Council records →</span>
+        </a>
+        <a class="qa" href="/forms-directory/">
+          <div class="qa-ico"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg></div>
+          <span class="qa-title">Forms &amp; Permits</span>
+          <span class="qa-arrow">Applications →</span>
+        </a>
+        <a class="qa" href="/public-works/">
+          <div class="qa-ico"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 1-5 5L4 17v3h3l5.7-5.7a4 4 0 0 0 5-5l-2.4 2.4-2.3-.6-.6-2.3 2.3-2.5Z"/></svg></div>
+          <span class="qa-title">Report an Issue</span>
+          <span class="qa-arrow">Water &amp; sewer →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="band">
+    <div class="wrap">
+      <div class="band-head">
+        <span class="eyebrow">Town Services</span>
+        <h2>Everything the town does for you</h2>
+        <p>Public safety, utilities, and civic services — organized so you can reach the right department without the runaround.</p>
+      </div>
+      <div class="svc-grid">
+        <div class="svc">
+          <div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg></div>
+          <div>
+            <h3>Public Safety</h3>
+            <p>Police, fire, and the town court — the offices that keep Alberton safe and running.</p>
+            <div class="svc-links">
+              <a class="chip" href="/police/">Police</a>
+              <a class="chip" href="/fire/">Fire</a>
+              <a class="chip" href="/town-court/">Town Court</a>
+            </div>
+          </div>
+        </div>
+        <div class="svc">
+          <div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M3 21h18M6 21V9l6-5 6 5v12M10 21v-6h4v6"/></svg></div>
+          <div>
+            <h3>Utilities &amp; Public Works</h3>
+            <p>Water, sewer, streets, and infrastructure. Pay your bill online or report a problem any time.</p>
+            <div class="svc-links">
+              <a class="chip" href="/pay-online/">Pay Bill</a>
+              <a class="chip" href="/public-works/">Public Works</a>
+            </div>
+          </div>
+        </div>
+        <div class="svc">
+          <div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M3 9h18M3 15h18M9 3v18M15 3v18" opacity=".6"/><rect x="3" y="3" width="18" height="18" rx="2"/></svg></div>
+          <div>
+            <h3>Doing Business</h3>
+            <p>Starting or running a business in town? Get licensed and find current bids and RFPs.</p>
+            <div class="svc-links">
+              <a class="chip" href="/business-licensing/">Licensing</a>
+              <a class="chip" href="/bids-rfps/">Bids &amp; RFPs</a>
+            </div>
+          </div>
+        </div>
+        <div class="svc">
+          <div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M4 19.5V6a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2Z"/><path d="M8 8h8M8 12h6"/></svg></div>
+          <div>
+            <h3>Museum &amp; Library</h3>
+            <p>Explore Alberton's railroad history and borrow from the public library collection.</p>
+            <div class="svc-links">
+              <a class="chip" href="/museum/">Museum</a>
+              <a class="chip" href="/public-library/">Library</a>
+            </div>
+          </div>
+        </div>
+        <div class="svc">
+          <div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M17 8a5 5 0 0 0-10 0c0 7-3 8-3 8h16s-3-1-3-8Z"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></div>
+          <div>
+            <h3>Parks &amp; Recreation</h3>
+            <p>Trails, the skatepark, the community orchard, and the spaces that bring neighbors together.</p>
+            <div class="svc-links">
+              <a class="chip" href="/parks-and-recreation/">Parks &amp; Rec</a>
+              <a class="chip" href="/community-center/">Community Center</a>
+            </div>
+          </div>
+        </div>
+        <div class="svc">
+          <div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M12 2 3 7v6c0 5 3.5 8 9 9 5.5-1 9-4 9-9V7l-9-5Z"/><path d="m9 12 2 2 4-4"/></svg></div>
+          <div>
+            <h3>Community Support</h3>
+            <p>The food pantry and local resources for neighbors who need a hand.</p>
+            <div class="svc-links">
+              <a class="chip" href="/food-bank/">Food Pantry</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- News -->
+  <section class="band news">
+    <div class="wrap">
+      <div class="news-top">
+        <div class="band-head" style="margin-bottom:0">
+          <span class="eyebrow">Latest from Town Hall</span>
+          <h2>News &amp; official notices</h2>
+        </div>
+        <a class="link-all" href="/news/">View all news <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="news-grid">
+        <a class="post" href="/news/welcome-to-the-new-town-of-alberton-website/">
+          <div class="post-meta"><span class="post-cat">Announcement</span><span class="post-date">June 10, 2026</span></div>
+          <h3>Welcome to the New Town of Alberton Website</h3>
+          <p>We're excited to introduce a new home for staying connected with your local government and community — from paying a bill to reading the latest council notices.</p>
+          <span class="post-more">Read more <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="post" href="/news/volunteer-work-day-this-saturday-at-brovold-community-orchard/">
+          <div class="post-meta"><span class="post-cat">Community</span><span class="post-date">July 7, 2026</span></div>
+          <h3>Volunteer Work Day at Brovold Community Orchard</h3>
+          <p>The Brovold Community Orchard invites everyone to its monthly Volunteer Work Day this Saturday. Lend a hand and help the orchard thrive for the whole community.</p>
+          <span class="post-more">Read more <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="post" href="/notices/town-of-alberton-seeks-bids-for-propane-fuel-supply-and-services/">
+          <div class="post-meta"><span class="post-cat notice">Official Notice</span><span class="post-date">June 11, 2026</span></div>
+          <h3>Town Seeks Bids for Propane Fuel Supply &amp; Services</h3>
+          <p>The Town of Alberton is accepting sealed bids from qualified propane suppliers for fuel delivery and tank and heater maintenance across all town-owned facilities.</p>
+          <span class="post-more">Read more <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="post" href="/uncategorized/alberton-newsletter-june-2026/">
+          <div class="post-meta"><span class="post-cat">Newsletter</span><span class="post-date">June 10, 2026</span></div>
+          <h3>Alberton Newsletter — June 2026</h3>
+          <p>Street cleaning schedule and vehicle parking reminders: Mineral County's annual street sweeping is coming to clean up after winter. Here's what residents need to know.</p>
+          <span class="post-more">Read more <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Government at a glance -->
+  <section class="band">
+    <div class="wrap">
+      <div class="band-head">
+        <span class="eyebrow">Your Town Government</span>
+        <h2>How Alberton runs</h2>
+        <p>Open, accountable local government. Read the record, follow the decisions, and see how the town is managed.</p>
+      </div>
+      <div class="gov-grid">
+        <a class="gov" href="/town-council/">
+          <span class="gov-n">01</span>
+          <span class="gov-t">Town Council</span>
+          <span class="gov-d">Meet the council members who represent Alberton.</span>
+        </a>
+        <a class="gov" href="/agendas-minutes/">
+          <span class="gov-n">02</span>
+          <span class="gov-t">Agendas &amp; Minutes</span>
+          <span class="gov-d">Read what's on the docket and what was decided.</span>
+        </a>
+        <a class="gov" href="/ordinances/">
+          <span class="gov-n">03</span>
+          <span class="gov-t">Ordinances</span>
+          <span class="gov-d">The local laws that govern the town.</span>
+        </a>
+        <a class="gov" href="/resolutions/">
+          <span class="gov-n">04</span>
+          <span class="gov-t">Resolutions</span>
+          <span class="gov-d">Formal actions taken by the council.</span>
+        </a>
+        <a class="gov" href="/administration-finance/">
+          <span class="gov-n">05</span>
+          <span class="gov-t">Administration &amp; Finance</span>
+          <span class="gov-d">How the town's finances are managed.</span>
+        </a>
+        <a class="gov" href="/forms-directory/">
+          <span class="gov-n">06</span>
+          <span class="gov-t">Forms &amp; Permits</span>
+          <span class="gov-d">Every application and permit in one place.</span>
+        </a>
+        <a class="gov" href="/job-openings/">
+          <span class="gov-n">07</span>
+          <span class="gov-t">Job Openings</span>
+          <span class="gov-d">Work for the Town of Alberton.</span>
+        </a>
+        <a class="gov" href="/municipal-elections/">
+          <span class="gov-n">08</span>
+          <span class="gov-t">Municipal Elections</span>
+          <span class="gov-d">Voting and election information.</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mayor -->
+  <section class="mayor">
+    <svg id="topo2" preserveAspectRatio="none" aria-hidden="true"></svg>
+    <div class="wrap">
+      <div class="mayor-card">
+        <svg class="mayor-seal" viewBox="0 0 44 44" fill="none" aria-hidden="true">
+          <circle cx="22" cy="22" r="21" fill="rgba(255,255,255,.06)" stroke="#e5b45f" stroke-width="1.5"/>
+          <path d="M8 29c3-1 5-4 8-4s5 3 8 3 5-3 8-3 4 2 4 2" stroke="#5a838f" stroke-width="1.4" fill="none"/>
+          <path d="M8 24c3-1 5-4 8-4s5 3 8 3 5-3 8-3 4 2 4 2" stroke="#e5b45f" stroke-width="1.4" fill="none"/>
+          <path d="M14 19l4-8 4 8M22 21l4-6 4 6" stroke="#eef3ee" stroke-width="1.6" fill="none" stroke-linejoin="round"/>
+        </svg>
+        <div class="mayor-name">Loreen M. Felstet</div>
+        <div class="mayor-role">Mayor · Town of Alberton</div>
+        <div class="mayor-contact">
+          <div><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>info@albertonmontana.com</div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>406-722-3404</div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>607 Railroad Avenue, Alberton</div>
+        </div>
+      </div>
+      <div class="mayor-body">
+        <span class="eyebrow">A Message from the Mayor</span>
+        <h2>Alberton is more than a place on a map.</h2>
+        <p>It's a community where neighbors know each other by name, where people show up for one another, and where the relationships we share are woven into the fabric of everyday life. That is something truly special — and it is worth protecting.</p>
+        <p>My administration is committed to fostering that pride by ensuring our town is well cared for in every sense: that our streets, facilities, and infrastructure are maintained, that our finances are managed responsibly, and that we follow the proper procedures that exist to protect all of us. Think of it as tending to the foundation of a house — not glamorous work, but it protects everyone inside.</p>
+        <p>Alberton has always been a place where people pull together, and I look forward to working alongside all of you to keep it the wonderful, welcoming place it is — today and for generations to come.</p>
+        <p class="sign">— Loreen M. Felstet, Mayor</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Subscribe -->
+  <section class="band sub">
+    <div class="wrap">
+      <div class="sub-inner">
+        <div>
+          <span class="eyebrow">Stay Informed</span>
+          <h2 style="margin-top:12px">Never miss a town notice</h2>
+          <p>Get news, meeting notices, and community updates from the Town of Alberton delivered straight to your inbox. No spam — just the essentials.</p>
+        </div>
+        <div>
+          <form class="sub-form" id="subForm">
+            <!-- TODO: replace with your Web3Forms access key -->
+            <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+            <input type="hidden" name="subject" value="New Alberton newsletter subscriber">
+            <input type="hidden" name="from_name" value="Alberton Website">
+            <input type="text" name="name" placeholder="Your name" aria-label="Your name">
+            <input type="email" name="email" placeholder="Email address" required aria-label="Email address">
+            <button type="submit" class="sub-btn">Subscribe</button>
+            <span class="sub-note">By subscribing you agree to receive email updates from the Town of Alberton.</span>
+          </form>
+          <div class="sub-ok" id="subOk">✓ Thank you — you're subscribed. Watch your inbox for town updates.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Footer -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">
+          <svg class="seal" viewBox="0 0 44 44" fill="none" aria-hidden="true">
+            <circle cx="22" cy="22" r="21" fill="rgba(255,255,255,.05)" stroke="#c1852f" stroke-width="1.5"/>
+            <path d="M8 30c3-1 5-4 8-4s5 3 8 3 5-3 8-3 4 2 4 2" stroke="#5a838f" stroke-width="1.4" fill="none"/>
+            <path d="M8 25c3-1 5-4 8-4s5 3 8 3 5-3 8-3 4 2 4 2" stroke="#e5b45f" stroke-width="1.4" fill="none"/>
+            <path d="M14 20l4-8 4 8M22 22l4-6 4 6" stroke="#eef3ee" stroke-width="1.6" fill="none" stroke-linejoin="round"/>
+          </svg>
+          <span class="foot-brand-name">Town of Alberton</span>
+        </div>
+        <p class="foot-addr">
+          <strong>Town of Alberton</strong><br>
+          PO Box 115<br>
+          607 Railroad Avenue<br>
+          Alberton, MT 59820<br><br>
+          <a href="tel:4067223404" style="color:#fff;font-weight:600">406-722-3404</a><br>
+          <a href="mailto:info@albertonmontana.com" style="color:#a3b0a7">info@albertonmontana.com</a>
+        </p>
+        <p class="foot-emerg">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>
+          Emergency: dial 911
+        </p>
+        <p class="foot-addr" style="margin-top:12px;font-size:.84rem">After-hours water/sewer: <a href="tel:9706410965" style="color:#e5b45f;font-weight:600">970-641-0965</a></p>
+      </div>
+
+      <div class="foot-col">
+        <h4>Government</h4>
+        <a href="/town-council/">Town Council</a>
+        <a href="/agendas-minutes/">Agendas &amp; Minutes</a>
+        <a href="/ordinances/">Ordinances</a>
+        <a href="/resolutions/">Resolutions</a>
+        <a href="/administration-finance/">Administration &amp; Finance</a>
+        <a href="/job-openings/">Job Openings</a>
+      </div>
+
+      <div class="foot-col">
+        <h4>Services</h4>
+        <a href="/pay-online/">Pay Utility Bill</a>
+        <a href="/forms-directory/">Forms &amp; Permits</a>
+        <a href="/public-works/">Public Works</a>
+        <a href="/police/">Police</a>
+        <a href="/fire/">Fire</a>
+        <a href="/food-bank/">Food Pantry</a>
+      </div>
+
+      <div class="foot-col">
+        <h4>Town Hall Hours</h4>
+        <div class="foot-hours">
+          Monday — 9AM to 3PM<br>
+          Tuesday — 9AM to 3PM<br>
+          Wednesday — 9AM to 3PM<br>
+          Thursday — 9AM to 3PM<br>
+          <span class="closed">Friday — Closed</span><br>
+          <span class="closed">Saturday — Closed</span><br>
+          <span class="closed">Sunday — Closed</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="foot-bot">
+      <p class="nd">The Town of Alberton does not discriminate on the basis of race, color, national origin, sex, age, or disability in its programs or activities.</p>
+      <p>© <span id="yr"></span> Town of Alberton, Montana</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var reduce = window.matchMedia("(prefers-reduced-motion:reduce)").matches;
+
+  // Year
+  document.getElementById("yr").textContent = new Date().getFullYear();
+
+  // Header shadow on scroll
+  var head = document.getElementById("head");
+  var onScroll = function(){ head.classList.toggle("scrolled", window.scrollY > 20); };
+  onScroll();
+  window.addEventListener("scroll", onScroll, {passive:true});
+
+  // Mobile drawer
+  var burger = document.getElementById("burger");
+  var drawer = document.getElementById("drawer");
+  var bg = document.getElementById("drawerBg");
+  var closeBtn = document.getElementById("drawerClose");
+  function openDrawer(){ drawer.classList.add("open"); bg.classList.add("open"); burger.setAttribute("aria-expanded","true"); document.body.style.overflow="hidden"; }
+  function closeDrawer(){ drawer.classList.remove("open"); bg.classList.remove("open"); burger.setAttribute("aria-expanded","false"); document.body.style.overflow=""; }
+  burger.addEventListener("click", openDrawer);
+  closeBtn.addEventListener("click", closeDrawer);
+  bg.addEventListener("click", closeDrawer);
+  document.addEventListener("keydown", function(e){ if(e.key==="Escape") closeDrawer(); });
+
+  // Accordion
+  document.querySelectorAll(".acc-head").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var body = btn.nextElementSibling;
+      var isOpen = btn.classList.contains("active");
+      btn.classList.toggle("active");
+      body.style.maxHeight = isOpen ? null : body.scrollHeight + "px";
+    });
+  });
+
+  // Subscribe form (Web3Forms)
+  var form = document.getElementById("subForm");
+  var ok = document.getElementById("subOk");
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    var key = form.querySelector('[name="access_key"]').value;
+    var data = new FormData(form);
+    // If no key configured yet, just show success optimistically (swap key before launch)
+    if(key === "YOUR_WEB3FORMS_ACCESS_KEY"){
+      form.style.display="none"; ok.style.display="block"; return;
+    }
+    fetch("https://api.web3forms.com/submit", { method:"POST", body:data })
+      .then(function(r){ return r.json(); })
+      .then(function(){ form.style.display="none"; ok.style.display="block"; })
+      .catch(function(){ form.style.display="none"; ok.style.display="block"; });
+  });
+
+  // --- Topographic contour signature ---
+  // Draws stacked flowing elevation lines suggesting the Clark Fork river valley.
+  function drawTopo(svg, opts){
+    var W = 1440, H = svg.clientHeight || 640;
+    svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+    var ns = "http://www.w3.org/2000/svg";
+    var lines = opts.lines, gap = H / (lines + 1);
+    var frag = document.createDocumentFragment();
+    for(var i=0;i<lines;i++){
+      var baseY = gap * (i + 1);
+      // build a smooth wave with layered sines + slight per-line phase
+      var d = "M -20 " + baseY.toFixed(1);
+      var amp = 26 + (i % 3) * 12;
+      var phase = i * 0.7;
+      for(var x=0;x<=W+40;x+=30){
+        var t = x / W;
+        var y = baseY
+          + Math.sin(t * 6.2 + phase) * amp
+          + Math.sin(t * 13.5 + phase * 1.7) * (amp * 0.35);
+        d += " L " + x + " " + y.toFixed(1);
+      }
+      var isIndex = (i % 3 === 0);            // heavier "index" contour every 3rd line
+      var isRiver = (i === Math.floor(lines * 0.62)); // one highlighted river line
+      var p = document.createElementNS(ns, "path");
+      p.setAttribute("d", d);
+      p.setAttribute("fill", "none");
+      p.setAttribute("stroke", isRiver ? "#e5b45f" : (isIndex ? "#3f6a5a" : "#2b5245"));
+      p.setAttribute("stroke-width", isRiver ? 2 : (isIndex ? 1.4 : 0.9));
+      p.setAttribute("stroke-opacity", isRiver ? 0.55 : (isIndex ? 0.5 : 0.32));
+      if(!reduce){
+        var len = W * 1.4;
+        p.style.strokeDasharray = len;
+        p.style.strokeDashoffset = len;
+        p.style.transition = "stroke-dashoffset 1.6s cubic-bezier(.22,.61,.36,1) " + (i * 0.055) + "s";
+      }
+      frag.appendChild(p);
+    }
+    svg.appendChild(frag);
+    if(!reduce){
+      requestAnimationFrame(function(){
+        requestAnimationFrame(function(){
+          svg.querySelectorAll("path").forEach(function(p){ p.style.strokeDashoffset = "0"; });
+        });
+      });
+    }
+  }
+
+  function initTopo(){
+    var t1 = document.getElementById("topo");
+    var t2 = document.getElementById("topo2");
+    if(t1){ t1.innerHTML=""; drawTopo(t1, {lines:14}); }
+    if(t2){ t2.innerHTML=""; drawTopo(t2, {lines:10}); }
+  }
+  initTopo();
+  var rt;
+  window.addEventListener("resize", function(){ clearTimeout(rt); rt=setTimeout(initTopo,250); }, {passive:true});
+})();
+</script>
+</body>
+</html>

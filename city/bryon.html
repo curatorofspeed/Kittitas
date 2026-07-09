@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Town of Byron, Wyoming — A Great Place to Live</title>
+<meta name="description" content="Official website for the Town of Byron, Wyoming. Pay your utility bill, view council agendas and minutes, find forms and permits, and plan your visit to the Big Horn Basin.">
+<meta name="keywords" content="Byron Wyoming, Town of Byron, Big Horn County, Big Horn Basin, Byron WY town hall, pay water bill Byron, Byron Days">
+<meta name="theme-color" content="#3B2B3D">
+<link rel="canonical" href="https://byronwyoming.org/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Town of Byron, Wyoming">
+<meta property="og:title" content="Town of Byron, Wyoming — A Great Place to Live">
+<meta property="og:description" content="A friendly farming town in Wyoming's Big Horn Basin, framed by two mountain ranges. Pay bills, view minutes, find forms, and plan your visit.">
+<meta property="og:url" content="https://byronwyoming.org/">
+<meta name="twitter:card" content="summary">
+
+<!-- Favicon: copper ridge on dusk plum -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%232A1F2E'/%3E%3Cpath d='M6 46 L22 24 L32 36 L42 20 L58 46 Z' fill='none' stroke='%23C4693B' stroke-width='4' stroke-linejoin='round'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Zilla+Slab:wght@500;600;700&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "GovernmentOrganization",
+  "name": "Town of Byron, Wyoming",
+  "url": "https://byronwyoming.org/",
+  "telephone": "+1-307-548-7490",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "35 South Pryor St",
+    "postOfficeBoxNumber": "PO Box 5",
+    "addressLocality": "Byron",
+    "addressRegion": "WY",
+    "postalCode": "82412",
+    "addressCountry": "US"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 44.7963411, "longitude": -108.5065095 },
+  "openingHoursSpecification": [
+    {"@type":"OpeningHoursSpecification","dayOfWeek":"Monday","opens":"10:00","closes":"15:00"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":"Tuesday","opens":"10:00","closes":"16:00"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":"Wednesday","opens":"10:00","closes":"15:00"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":"Thursday","opens":"10:00","closes":"15:00"}
+  ]
+}
+</script>
+
+<style>
+  :root{
+    --plum:#3B2B3D;        /* deep dusk plum — civic brand */
+    --plum-lo:#513A54;     /* lighter plum for depth */
+    --plum-hi:#2A1F2E;     /* darkest plum — deepest bands */
+    --copper:#C4693B;      /* signature accent — last light on the ridge */
+    --copper-2:#9E5730;    /* deep copper — accent on light backgrounds */
+    --copper-lt:#E3A26C;   /* light copper — accent/links on dark backgrounds */
+    --on-copper:#1F1824;   /* text on copper buttons */
+    --sand:#EADFCC;        /* warm sandstone — soft section fills */
+    --sand-line:#DBCFB9;
+    --paper:#F5F0EA;       /* page background — warm dusk light */
+    --card:#FFFFFF;
+    --ink:#2A2230;         /* deep plum-charcoal text */
+    --muted:#6B5F6A;       /* muted plum-grey */
+    --line:#E7DECF;        /* warm hairline */
+    --radius:14px;
+    --shadow:0 1px 2px rgba(42,34,48,.05), 0 10px 30px -18px rgba(42,34,48,.30);
+    --wrap:1120px;
+    --pad:clamp(1.1rem, 4vw, 2.5rem);
+    --sec:clamp(3.5rem, 7vw, 6rem);
+  }
+
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  @media (prefers-reduced-motion:no-preference){ html{scroll-behavior:smooth} }
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:"Archivo",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    font-size:clamp(1rem,.97rem + .15vw,1.06rem); line-height:1.65;
+    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  }
+  h1,h2,h3{font-family:"Zilla Slab",Georgia,serif; line-height:1.08; margin:0; letter-spacing:-.01em}
+  a{color:var(--plum); text-decoration-thickness:1px; text-underline-offset:2px}
+  a:hover{color:var(--copper-2)}
+  img{max-width:100%; display:block}
+  :focus-visible{outline:3px solid var(--copper); outline-offset:2px; border-radius:4px}
+
+  .wrap{max-width:var(--wrap); margin-inline:auto; padding-inline:var(--pad)}
+  .eyebrow{font-size:.76rem; font-weight:600; text-transform:uppercase; letter-spacing:.15em; color:var(--copper-2); margin:0 0 .7rem}
+  .lead{color:var(--muted); font-size:1.08rem}
+
+  .skip{position:absolute; left:-999px; top:0; background:var(--copper); color:var(--on-copper); padding:.7rem 1.1rem; border-radius:0 0 8px 0; font-weight:600; z-index:100}
+  .skip:focus{left:0}
+
+  /* ---------- Header ---------- */
+  header{position:sticky; top:0; z-index:60; background:rgba(59,43,61,.97); backdrop-filter:saturate(140%) blur(6px); border-bottom:1px solid rgba(255,255,255,.08)}
+  .bar{display:flex; align-items:center; gap:1rem; height:72px}
+  .brand{display:flex; align-items:center; gap:.7rem; text-decoration:none; margin-right:auto; color:#fff}
+  .brand svg{flex:0 0 auto}
+  .brand-txt{display:flex; flex-direction:column; line-height:1}
+  .brand b{font-family:"Zilla Slab",serif; font-weight:700; font-size:1.16rem; letter-spacing:.005em; line-height:1; color:#fff}
+  .brand i{font-style:normal; font-size:.66rem; letter-spacing:.22em; text-transform:uppercase; color:var(--copper-lt); margin-top:4px; font-weight:600}
+  nav.desktop{display:flex; align-items:center; gap:.35rem}
+  nav.desktop a{color:#d9cbd2; text-decoration:none; font-weight:500; font-size:.95rem; padding:.5rem .7rem; border-radius:8px}
+  nav.desktop a:hover{color:#fff; background:rgba(255,255,255,.09)}
+  .btn{--bg:var(--copper); --fg:var(--on-copper); display:inline-flex; align-items:center; gap:.5rem; background:var(--bg); color:var(--fg); font-weight:600; text-decoration:none; padding:.62rem 1.05rem; border-radius:10px; font-size:.95rem; border:1px solid transparent; transition:transform .15s ease, box-shadow .15s ease, background .15s ease; white-space:nowrap}
+  .btn:hover{color:var(--on-copper); background:#d07e4a; transform:translateY(-1px); box-shadow:0 8px 20px -10px rgba(196,105,59,.7)}
+  .btn.ghost{--bg:transparent; --fg:#fff; border-color:rgba(255,255,255,.38)}
+  .btn.ghost:hover{background:rgba(255,255,255,.1); color:#fff}
+  .btn svg{flex:0 0 auto}
+  .menu-toggle{display:none; background:transparent; border:1px solid rgba(255,255,255,.3); color:#fff; width:44px; height:44px; border-radius:10px; cursor:pointer; align-items:center; justify-content:center}
+  .menu-toggle svg{pointer-events:none}
+
+  nav.mobile{display:none; background:var(--plum-hi); border-bottom:1px solid rgba(255,255,255,.08)}
+  nav.mobile .wrap{display:flex; flex-direction:column; padding-block:.6rem 1.2rem; gap:.15rem}
+  nav.mobile a{color:#e7dce2; text-decoration:none; padding:.85rem .4rem; border-bottom:1px solid rgba(255,255,255,.08); font-weight:500; display:flex; justify-content:space-between; align-items:center}
+  nav.mobile a::after{content:"→"; color:var(--copper-lt); opacity:.8}
+  nav.mobile .btn{margin-top:.9rem; justify-content:center}
+  nav.mobile .btn::after{content:none}
+
+  /* ---------- Hero (dusk sky) ---------- */
+  .hero{
+    position:relative; color:#fff; overflow:hidden; isolation:isolate;
+    background:
+      radial-gradient(130% 92% at 50% 116%, rgba(232,152,92,.58) 0%, rgba(232,152,92,0) 56%),
+      linear-gradient(178deg, #2A1F2E 0%, #3B2B3D 36%, #4A3550 60%, #6A4658 82%, #855551 100%);
+  }
+  .hero .contours{position:absolute; inset:0; width:100%; height:100%; opacity:.5; z-index:-1}
+  .hero .wrap{padding-top:clamp(3.5rem,8vw,6rem); padding-bottom:clamp(7rem,12vw,10rem); max-width:920px}
+  .hero .eyebrow{color:var(--copper-lt)}
+  .hero h1{font-size:clamp(2.5rem,7.5vw,4.6rem); font-weight:700; max-width:15ch}
+  .hero h1 em{font-style:normal; color:var(--copper-lt)}
+  .hero p.sub{font-size:clamp(1.05rem,1rem + .5vw,1.3rem); color:#d9cbd2; max-width:56ch; margin:1.4rem 0 0}
+  .hero .cta{display:flex; flex-wrap:wrap; gap:.8rem; margin-top:2rem}
+  .facts{display:flex; flex-wrap:wrap; gap:0; margin-top:2.6rem; border-top:1px solid rgba(255,255,255,.16); padding-top:1.4rem}
+  .facts div{padding-right:2rem; margin-right:2rem; border-right:1px solid rgba(255,255,255,.16)}
+  .facts div:last-child{border-right:none; margin-right:0; padding-right:0}
+  .facts dt{font-size:.72rem; text-transform:uppercase; letter-spacing:.13em; color:var(--copper-lt); font-weight:600}
+  .facts dd{margin:.25rem 0 0; font-family:"Zilla Slab",serif; font-size:1.3rem; font-weight:600}
+  .facts dd a{color:#fff; text-decoration:none}
+  .facts dd a:hover{color:var(--copper-lt)}
+  .ridge{position:absolute; left:0; right:0; bottom:-1px; width:100%; height:clamp(90px,12vw,150px); z-index:1}
+
+  /* ---------- Sections ---------- */
+  section{padding-block:var(--sec)}
+  .sec-head{max-width:640px; margin-bottom:2.4rem}
+  .sec-head h2{font-size:clamp(1.7rem,3.5vw,2.4rem); font-weight:700}
+  .sec-head p{margin:.7rem 0 0; color:var(--muted)}
+
+  /* Services */
+  #services{padding-top:clamp(2.5rem,5vw,4rem)}
+  .grid-svc{display:grid; grid-template-columns:repeat(3,1fr); gap:1rem}
+  .svc{position:relative; display:flex; flex-direction:column; gap:.6rem; background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:1.4rem 1.4rem 1.5rem; text-decoration:none; color:var(--ink); box-shadow:var(--shadow); transition:transform .16s ease, border-color .16s ease, box-shadow .16s ease}
+  .svc::before{content:""; position:absolute; left:0; top:1.4rem; bottom:1.4rem; width:3px; border-radius:3px; background:var(--copper); transform:scaleY(0); transform-origin:top; transition:transform .18s ease}
+  .svc:hover{transform:translateY(-3px); border-color:var(--sand-line); box-shadow:0 1px 2px rgba(42,34,48,.06),0 18px 40px -20px rgba(42,34,48,.42)}
+  .svc:hover::before{transform:scaleY(1)}
+  .svc .ic{width:38px; height:38px; border-radius:9px; background:var(--sand); color:var(--plum); display:grid; place-items:center; flex:0 0 auto}
+  .svc h3{font-size:1.12rem; font-weight:600; font-family:"Archivo",sans-serif; letter-spacing:0}
+  .svc p{margin:0; font-size:.92rem; color:var(--muted); line-height:1.5}
+  .svc .go{margin-top:auto; padding-top:.6rem; font-size:.85rem; font-weight:600; color:var(--copper-2); display:flex; align-items:center; gap:.35rem}
+  .svc .go span{transition:transform .16s ease}
+  .svc:hover .go span{transform:translateX(3px)}
+  .ext{position:absolute; top:1.15rem; right:1.15rem; color:var(--muted); opacity:.55}
+
+  /* Info split */
+  .split{display:grid; grid-template-columns:1.15fr .85fr; gap:1.25rem; align-items:start}
+  .panel{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden}
+  .panel .phead{background:var(--plum); color:#fff; padding:1.1rem 1.4rem; display:flex; align-items:center; justify-content:space-between; gap:1rem}
+  .panel .phead h3{font-size:1.2rem; font-weight:600; color:#fff}
+  .status{display:inline-flex; align-items:center; gap:.5rem; font-size:.82rem; font-weight:600; padding:.35rem .7rem; border-radius:999px; background:rgba(255,255,255,.12); color:#e2d6dd; white-space:nowrap}
+  .status .dot{width:8px; height:8px; border-radius:50%; background:#9a8f98; box-shadow:0 0 0 3px rgba(154,143,152,.28)}
+  .status.is-open{background:rgba(196,105,59,.22); color:#f0c6a0}
+  .status.is-open .dot{background:var(--copper-lt); box-shadow:0 0 0 3px rgba(227,162,108,.32)}
+  .pbody{padding:1.4rem}
+  .addr{font-style:normal; line-height:1.55}
+  .addr b{font-family:"Zilla Slab",serif; font-size:1.05rem}
+  .rowlink{display:inline-flex; align-items:center; gap:.45rem; font-weight:600; text-decoration:none; color:var(--plum); margin-top:.2rem}
+  .rowlink:hover{color:var(--copper-2)}
+  .hours{width:100%; border-collapse:collapse; margin-top:1.2rem; font-size:.95rem}
+  .hours th{text-align:left; font-weight:600; color:var(--muted); font-size:.72rem; text-transform:uppercase; letter-spacing:.1em; padding-bottom:.5rem; border-bottom:1px solid var(--line)}
+  .hours td{padding:.5rem 0; border-bottom:1px solid var(--line)}
+  .hours td:last-child{text-align:right; font-variant-numeric:tabular-nums; color:var(--ink)}
+  .hours tr.closed td{color:var(--muted)}
+  .hours tr.today td{font-weight:700}
+  .hours tr.today td:first-child{position:relative; padding-left:1rem}
+  .hours tr.today td:first-child::before{content:""; position:absolute; left:0; top:50%; transform:translateY(-50%); width:5px; height:5px; border-radius:50%; background:var(--copper)}
+
+  .meet{display:flex; gap:1rem; padding:1rem 0; border-bottom:1px solid var(--line)}
+  .meet:last-of-type{border-bottom:none}
+  .meet .when{flex:0 0 auto; width:52px; text-align:center; background:var(--sand); border-radius:10px; padding:.5rem 0; line-height:1}
+  .meet .when b{display:block; font-family:"Zilla Slab",serif; font-size:1.25rem; color:var(--plum)}
+  .meet .when span{font-size:.66rem; text-transform:uppercase; letter-spacing:.08em; color:var(--muted)}
+  .meet .m-txt b{font-size:1.02rem}
+  .meet .m-txt div{color:var(--muted); font-size:.92rem}
+  .leaders{margin-top:1.3rem; border-top:1px solid var(--line); padding-top:1.1rem}
+  .leaders h4{margin:0 0 .7rem; font-size:.72rem; text-transform:uppercase; letter-spacing:.12em; color:var(--muted); font-weight:600; font-family:"Archivo",sans-serif}
+  .leaders dl{margin:0; display:grid; grid-template-columns:auto 1fr; gap:.4rem 1rem; font-size:.94rem}
+  .leaders dt{color:var(--muted)}
+  .leaders dd{margin:0; font-weight:600}
+
+  /* History band */
+  .band-history{background:var(--sand); border-block:1px solid var(--sand-line)}
+  .history-grid{display:grid; grid-template-columns:.9fr 1.1fr; gap:clamp(1.5rem,4vw,3.5rem); align-items:center}
+  .history-grid h2{font-size:clamp(1.7rem,3.5vw,2.4rem)}
+  .history-grid p{margin:1rem 0 0; color:#4a3e48}
+  .est{font-family:"Zilla Slab",serif; font-size:clamp(3rem,8vw,5rem); font-weight:700; color:var(--plum); line-height:.9}
+  .est small{display:block; font-family:"Archivo",sans-serif; font-size:.8rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--copper-2); margin-top:.6rem}
+  .est-card{background:var(--card); border:1px solid var(--sand-line); border-radius:var(--radius); padding:1.6rem 1.8rem; box-shadow:var(--shadow)}
+
+  /* Visit band */
+  .band-visit{background:linear-gradient(165deg,var(--plum) 0%,var(--plum-hi) 100%); color:#fff; position:relative; overflow:hidden}
+  .band-visit .eyebrow{color:var(--copper-lt)}
+  .band-visit h2{color:#fff; font-size:clamp(1.7rem,3.5vw,2.4rem)}
+  .band-visit .lead{color:#d9cbd2}
+  .visit-grid{display:grid; grid-template-columns:1fr 1fr; gap:clamp(1.5rem,4vw,3rem); align-items:start; margin-top:.5rem}
+  .tags{display:flex; flex-wrap:wrap; gap:.5rem; margin-top:1.4rem}
+  .tags span{font-size:.85rem; padding:.4rem .8rem; border:1px solid rgba(255,255,255,.24); border-radius:999px; color:#d9cbd2}
+  .vcard{background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.15); border-radius:var(--radius); padding:1.3rem 1.4rem; margin-bottom:1rem}
+  .vcard h3{font-size:1.15rem; color:#fff; font-weight:600}
+  .vcard p{margin:.4rem 0 0; color:#d9cbd2; font-size:.94rem}
+  .vcard a{color:var(--copper-lt); font-weight:600; text-decoration:none}
+  .vcard a:hover{text-decoration:underline}
+
+  /* Resources */
+  .res-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:2rem}
+  .res h3{font-size:.9rem; text-transform:uppercase; letter-spacing:.1em; color:var(--plum); font-family:"Archivo",sans-serif; font-weight:700; padding-bottom:.7rem; border-bottom:2px solid var(--copper); display:inline-block; margin-bottom:.9rem}
+  .res ul{list-style:none; margin:0; padding:0}
+  .res li{padding:.42rem 0; border-bottom:1px solid var(--line)}
+  .res li:last-child{border-bottom:none}
+  .res a{text-decoration:none; font-weight:500; font-size:.96rem}
+  .res a:hover{text-decoration:underline}
+  .res .plain{color:var(--ink); display:flex; justify-content:space-between; gap:1rem; font-size:.96rem}
+  .res .plain b{font-weight:600}
+
+  /* Footer */
+  footer{background:var(--plum-hi); color:#c6bac2; padding-block:clamp(3rem,6vw,4.5rem) 2rem; border-top:4px solid var(--copper)}
+  .foot-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:2.5rem; margin-bottom:2.5rem}
+  .foot-brand b{font-family:"Zilla Slab",serif; color:#fff; font-size:1.3rem; display:block}
+  .foot-brand p{margin:.8rem 0 0; font-size:.94rem; max-width:34ch; color:#ada0a8}
+  footer h4{color:#fff; font-size:.75rem; text-transform:uppercase; letter-spacing:.13em; margin:0 0 1rem; font-family:"Archivo",sans-serif; font-weight:600}
+  footer ul{list-style:none; margin:0; padding:0}
+  footer li{padding:.3rem 0}
+  footer a{color:#c6bac2; text-decoration:none; font-size:.95rem}
+  footer a:hover{color:var(--copper-lt)}
+  .foot-bot{border-top:1px solid rgba(255,255,255,.1); padding-top:1.6rem; display:flex; flex-wrap:wrap; gap:.6rem 1.5rem; justify-content:space-between; align-items:center; font-size:.85rem; color:#988c95}
+  .foot-bot b{color:#c6bac2; font-weight:600}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:900px){
+    nav.desktop{display:none}
+    .menu-toggle{display:inline-flex}
+    .header-cta{display:none}
+    .grid-svc{grid-template-columns:repeat(2,1fr)}
+    .split{grid-template-columns:1fr}
+    .history-grid{grid-template-columns:1fr; text-align:left}
+    .visit-grid{grid-template-columns:1fr}
+    .res-grid{grid-template-columns:1fr 1fr}
+    .foot-grid{grid-template-columns:1fr 1fr}
+    .foot-brand{grid-column:1 / -1}
+  }
+  @media (max-width:560px){
+    .bar{height:64px}
+    .grid-svc{grid-template-columns:1fr}
+    .res-grid{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr}
+    .facts div{padding-right:1.3rem; margin-right:1.3rem}
+    .facts dd{font-size:1.1rem}
+    .hero .cta .btn{flex:1 1 auto; justify-content:center}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none !important; animation:none !important}
+  }
+
+  /* load-in */
+  @media (prefers-reduced-motion:no-preference){
+    .reveal{opacity:0; transform:translateY(14px); animation:rise .7s cubic-bezier(.2,.7,.3,1) forwards}
+    .reveal.d1{animation-delay:.08s}.reveal.d2{animation-delay:.16s}.reveal.d3{animation-delay:.24s}
+    @keyframes rise{to{opacity:1; transform:none}}
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="/" aria-label="Town of Byron, Wyoming — home">
+      <svg width="40" height="40" viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="12" fill="#C4693B"/>
+        <path d="M6 46 L22 24 L32 36 L42 20 L58 46 Z" fill="none" stroke="#2A1F2E" stroke-width="4.5" stroke-linejoin="round"/>
+      </svg>
+      <span class="brand-txt"><b>Town of Byron</b><i>Wyoming</i></span>
+    </a>
+    <nav class="desktop" aria-label="Primary">
+      <a href="#services">Services</a>
+      <a href="#townhall">Town Hall</a>
+      <a href="#visit">Visit</a>
+      <a href="#resources">Resources</a>
+    </nav>
+    <a class="btn header-cta" href="https://byronwy.ourcommunityconnect.com/" target="_blank" rel="noopener">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+      Pay My Bill
+    </a>
+    <button class="menu-toggle" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+  <nav class="mobile" id="mobileNav" aria-label="Mobile">
+    <div class="wrap">
+      <a href="#services">Services</a>
+      <a href="#townhall">Town Hall &amp; Hours</a>
+      <a href="#visit">Plan a Visit</a>
+      <a href="#resources">Resources</a>
+      <a href="https://byronwyoming.org/minutes.html">Agendas &amp; Minutes</a>
+      <a href="https://byronwyoming.org/contact.html">Contact</a>
+      <a class="btn" href="https://byronwy.ourcommunityconnect.com/" target="_blank" rel="noopener">Pay My Bill</a>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section class="hero" style="padding-block:0">
+    <svg class="contours" viewBox="0 0 1440 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <g fill="none" stroke="#E3A26C" stroke-width="1.4" opacity="0.12">
+        <path d="M-50 350 C 250 300, 400 380, 720 330 S 1200 260, 1500 320"/>
+        <path d="M-50 400 C 250 360, 420 430, 720 380 S 1200 320, 1500 370"/>
+        <path d="M-50 300 C 250 250, 380 320, 720 275 S 1200 205, 1500 265"/>
+        <path d="M-50 250 C 250 205, 380 265, 720 225 S 1200 160, 1500 210"/>
+      </g>
+    </svg>
+    <div class="wrap">
+      <p class="eyebrow reveal">Big Horn Basin · Northern Wyoming</p>
+      <h1 class="reveal d1">A great place<br>to <em>live.</em></h1>
+      <p class="sub reveal d1">A friendly farming town tucked between two mountain ranges — with the Shoshone River to the south, the Big Horn Reservoir just up the road, and open country in every direction.</p>
+      <div class="cta reveal d2">
+        <a class="btn" href="https://byronwy.ourcommunityconnect.com/" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+          Pay My Bill
+        </a>
+        <a class="btn ghost" href="https://byronwyoming.org/contact.html">Contact Town Hall</a>
+      </div>
+      <dl class="facts reveal d3">
+        <div><dt>Founded</dt><dd>May 22, 1900</dd></div>
+        <div><dt>County</dt><dd>Big Horn</dd></div>
+        <div><dt>Town Hall</dt><dd><a href="tel:+13075487490">(307) 548-7490</a></dd></div>
+      </dl>
+    </div>
+    <svg class="ridge" viewBox="0 0 1440 150" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 150 L0 96 L150 60 L300 104 L470 44 L640 92 L820 34 L1010 88 L1200 52 L1440 96 L1440 150 Z" fill="#2A1F2E"/>
+      <path d="M0 150 L0 120 L180 92 L360 124 L560 78 L760 118 L980 84 L1200 116 L1440 90 L1440 150 Z" fill="#F5F0EA"/>
+      <path d="M0 120 L180 92 L360 124 L560 78 L760 118 L980 84 L1200 116 L1440 90" fill="none" stroke="#E8A86A" stroke-width="2.5" opacity="0.95"/>
+    </svg>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Town Services</p>
+        <h2>Handle it online</h2>
+        <p>The things residents ask for most — pay a bill, read the minutes, pull a permit — all in one place.</p>
+      </div>
+      <div class="grid-svc">
+
+        <a class="svc" href="https://byronwy.ourcommunityconnect.com/" target="_blank" rel="noopener">
+          <svg class="ext" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+          <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></svg></span>
+          <h3>Pay My Bill</h3>
+          <p>Pay your water and utility bill securely through Community Connect.</p>
+          <span class="go">Open payment portal <span>→</span></span>
+        </a>
+
+        <a class="svc" href="https://byronwyoming.org/minutes.html">
+          <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg></span>
+          <h3>Agendas &amp; Minutes</h3>
+          <p>Read what the council decided and see what's on the next agenda.</p>
+          <span class="go">View minutes <span>→</span></span>
+        </a>
+
+        <a class="svc" href="https://byronwyoming.org/forms.html">
+          <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M9 3v3h6V3M8 12h8M8 16h5"/></svg></span>
+          <h3>Forms &amp; Permits</h3>
+          <p>Download town forms, permit applications, and the employment application.</p>
+          <span class="go">Get forms <span>→</span></span>
+        </a>
+
+        <a class="svc" href="https://byronwyoming.org/events.html">
+          <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg></span>
+          <h3>Events &amp; Recreation</h3>
+          <p>See what the Recreation Department has going on around town.</p>
+          <span class="go">View events <span>→</span></span>
+        </a>
+
+        <a class="svc" href="https://byronwyoming.org/planning-and-zoning.html">
+          <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+          <h3>Planning &amp; Zoning</h3>
+          <p>Building in Byron? Start with the town's planning and zoning information.</p>
+          <span class="go">Learn more <span>→</span></span>
+        </a>
+
+        <a class="svc" href="https://byronwyoming.org/cemetery.html">
+          <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a5 5 0 0 0-5 5v6h10V8a5 5 0 0 0-5-5zM7 14v6h10v-6M12 8v4M10 10h4"/></svg></span>
+          <h3>Cemetery</h3>
+          <p>Cemetery records and information for the Byron community.</p>
+          <span class="go">Cemetery info <span>→</span></span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- TOWN HALL + MEETINGS -->
+  <section id="townhall" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Town Hall</p>
+        <h2>Visit or reach us</h2>
+      </div>
+      <div class="split">
+
+        <!-- Town Hall -->
+        <div class="panel">
+          <div class="phead">
+            <h3>Byron Town Hall</h3>
+            <span class="status" id="hallStatusWrap"><span class="dot"></span><span id="hallStatus">Checking hours…</span></span>
+          </div>
+          <div class="pbody">
+            <address class="addr">
+              <b>35 South Pryor St</b><br>
+              PO Box 5, Byron, WY 82412<br>
+              <a class="rowlink" href="tel:+13075487490">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.4-1.2a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+                (307) 548-7490
+              </a>
+            </address>
+            <a class="rowlink" href="https://www.google.com/maps/search/?api=1&query=44.7963411,-108.5065095" target="_blank" rel="noopener" style="margin-top:.8rem">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+              Get directions
+            </a>
+
+            <table class="hours" id="hoursTable">
+              <thead><tr><th>Office hours</th><th>Mountain Time</th></tr></thead>
+              <tbody>
+                <tr data-day="1"><td>Monday</td><td>10:00 AM – 3:00 PM</td></tr>
+                <tr data-day="2"><td>Tuesday</td><td>10:00 AM – 4:00 PM</td></tr>
+                <tr data-day="3"><td>Wednesday</td><td>10:00 AM – 3:00 PM</td></tr>
+                <tr data-day="4"><td>Thursday</td><td>10:00 AM – 3:00 PM</td></tr>
+                <tr class="closed" data-day="5"><td>Friday</td><td>Closed</td></tr>
+                <tr class="closed" data-day="6"><td>Saturday</td><td>Closed</td></tr>
+                <tr class="closed" data-day="0"><td>Sunday</td><td>Closed</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Meetings + Leadership -->
+        <div class="panel">
+          <div class="phead"><h3>Meetings &amp; Leadership</h3></div>
+          <div class="pbody">
+            <div class="meet">
+              <div class="when"><b>2nd</b><span>Tue</span></div>
+              <div class="m-txt"><b>Town Council</b><div>Second Tuesday · 7:00 PM</div></div>
+            </div>
+            <div class="meet">
+              <div class="when"><b>1st</b><span>Wed</span></div>
+              <div class="m-txt"><b>Municipal Court</b><div>First Wednesday · 3:00 PM</div></div>
+            </div>
+
+            <div class="leaders">
+              <h4>Town Officials</h4>
+              <dl>
+                <dt>Mayor</dt><dd>Allan Clark</dd>
+                <dt>Council</dt><dd>Brandon Hessenthaler, Shae Abraham, Karma Sanders, Mikey Brightly</dd>
+                <dt>Clerk / Treasurer</dt><dd>Nicole Hunter</dd>
+                <dt>Public Works</dt><dd>Jacob Gruell · <a href="tel:+13075482608" style="text-decoration:none">(307) 548-2608</a></dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- HISTORY -->
+  <section class="band-history">
+    <div class="wrap history-grid">
+      <div class="est-card">
+        <div class="est">1900<small>Settled by pioneer families</small></div>
+      </div>
+      <div>
+        <p class="eyebrow">Our Story</p>
+        <h2>Named for the man who brought the water</h2>
+        <p>Byron was settled on May 22, 1900 by pioneer families of the Church of Jesus Christ of Latter-day Saints. The town takes its name from Byron Sessions, who led the first settlers and oversaw the survey and building of the Sidon Canal — the ditch that first carried irrigation water to the valley and made farming here possible.</p>
+        <p style="margin-top:1rem"><a class="rowlink" href="https://byronwyoming.org/town-history.html">Read the full town history →</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISIT -->
+  <section class="band-visit" id="visit">
+    <div class="wrap">
+      <div class="visit-grid">
+        <div>
+          <p class="eyebrow">Plan a Visit</p>
+          <h2>Find peace in Wyoming nature</h2>
+          <p class="lead">Byron sits a short drive from the Big Horn Reservoir and the Shoshone River, surrounded by farmland and framed by mountains. If it can be done outdoors, there's room for it here.</p>
+          <div class="tags">
+            <span>Fishing</span><span>Hiking</span><span>Camping</span><span>Hunting</span>
+            <span>Kayaking</span><span>Boating</span><span>Horseback riding</span><span>Rock climbing</span>
+            <span>Snowmobiling</span><span>Four-wheeling</span><span>Cycling</span><span>Golfing</span>
+          </div>
+        </div>
+        <div>
+          <div class="vcard">
+            <h3>Byron Museum</h3>
+            <p>Stop by the museum on South Pryor Street for a little of the town's history. Contact E. Denney &amp; Linda Neville at <a href="tel:+13072727347">(307) 272-7347</a>.</p>
+            <p style="margin-top:.7rem"><a href="https://byronwyoming.org/byron-museum.html">Museum details →</a></p>
+          </div>
+          <div class="vcard">
+            <h3>Byron Days</h3>
+            <p>The town's summer celebration — a Byron tradition worth planning a trip around.</p>
+            <p style="margin-top:.7rem"><a href="https://byronwyoming.org/byron-days.html">Byron Days info →</a> &nbsp;·&nbsp; <a href="https://www.wyomingtourism.org/" target="_blank" rel="noopener">Wyoming Travel Guide →</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESOURCES -->
+  <section id="resources">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Helpful Links</p>
+        <h2>Resources &amp; assistance</h2>
+      </div>
+      <div class="res-grid">
+
+        <div class="res">
+          <h3>State &amp; County</h3>
+          <ul>
+            <li><a href="http://www.wyo.gov/" target="_blank" rel="noopener">State of Wyoming</a></li>
+            <li><a href="http://soswy.state.wy.us/" target="_blank" rel="noopener">Wyoming Secretary of State</a></li>
+            <li><a href="http://revenue.wyo.gov/" target="_blank" rel="noopener">Wyoming Dept. of Revenue</a></li>
+            <li><a href="http://map.wyoroad.info/hi.html" target="_blank" rel="noopener">Wyoming Road Conditions</a></li>
+            <li><a href="https://www.wyomingatwork.com/" target="_blank" rel="noopener">Wyoming at Work</a></li>
+            <li><a href="http://www.bighorncountywy.gov/" target="_blank" rel="noopener">Big Horn County</a></li>
+          </ul>
+        </div>
+
+        <div class="res">
+          <h3>Assistance</h3>
+          <ul>
+            <li class="plain"><span>LIEAP energy aid</span><a href="tel:+18002464221">800-246-4221</a></li>
+            <li class="plain"><span>Energy Share of WY</span><a href="tel:+18774615719">877-461-5719</a></li>
+            <li class="plain"><span>Big Horn County Cares</span><a href="tel:+13075683334">307-568-3334</a></li>
+            <li class="plain"><span>Health &amp; Human Svcs</span><a href="tel:211">Dial 211</a></li>
+            <li class="plain"><span>Solid Waste</span><a href="tel:+13075486124">(307) 548-6124</a></li>
+          </ul>
+        </div>
+
+        <div class="res">
+          <h3>News &amp; Chambers</h3>
+          <ul>
+            <li><a href="http://www.lovellchronicle.com/" target="_blank" rel="noopener">Lovell Chronicle</a></li>
+            <li><a href="http://www.powelltribune.com/" target="_blank" rel="noopener">Powell Tribune</a></li>
+            <li><a href="http://lovellchamber.com/" target="_blank" rel="noopener">Lovell Chamber</a></li>
+            <li><a href="http://powellchamber.org" target="_blank" rel="noopener">Powell Chamber</a></li>
+            <li><a href="http://www.codychamber.org/" target="_blank" rel="noopener">Cody Chamber</a></li>
+            <li><a href="http://www.greybull.com/" target="_blank" rel="noopener">Greybull Chamber</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <b>Town of Byron, Wyoming</b>
+        <p>A friendly farming town between two mountain ranges in the Big Horn Basin. A great place to live — and to visit.</p>
+      </div>
+      <div>
+        <h4>Town Services</h4>
+        <ul>
+          <li><a href="https://byronwy.ourcommunityconnect.com/" target="_blank" rel="noopener">Pay My Bill</a></li>
+          <li><a href="https://byronwyoming.org/minutes.html">Agendas &amp; Minutes</a></li>
+          <li><a href="https://byronwyoming.org/forms.html">Forms &amp; Permits</a></li>
+          <li><a href="https://byronwyoming.org/planning-and-zoning.html">Planning &amp; Zoning</a></li>
+          <li><a href="https://byronwyoming.org/cemetery.html">Cemetery</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li>35 South Pryor St</li>
+          <li>PO Box 5, Byron, WY 82412</li>
+          <li><a href="tel:+13075487490">(307) 548-7490</a></li>
+          <li><a href="https://byronwyoming.org/contact.html">Full contact directory →</a></li>
+          <li><a href="https://byronwyoming.org/contact.html">Employment opportunities</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© <span id="yr"></span> <b>Town of Byron, Wyoming</b> · Official municipal website</span>
+      <span>Mountain Time · Big Horn County</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---- Mobile menu ---- */
+  var btn = document.getElementById('menuBtn');
+  var nav = document.getElementById('mobileNav');
+  function closeMenu(){ nav.style.display='none'; btn.setAttribute('aria-expanded','false'); btn.setAttribute('aria-label','Open menu'); }
+  function openMenu(){ nav.style.display='block'; btn.setAttribute('aria-expanded','true'); btn.setAttribute('aria-label','Close menu'); }
+  btn.addEventListener('click', function(){
+    (btn.getAttribute('aria-expanded')==='true') ? closeMenu() : openMenu();
+  });
+  nav.addEventListener('click', function(e){ if(e.target.tagName==='A') closeMenu(); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeMenu(); });
+
+  /* ---- Year ---- */
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  /* ---- Town Hall open/closed status (America/Denver) ---- */
+  // day -> [openMinute, closeMinute] from midnight; null = closed
+  var HOURS = {1:[600,900], 2:[600,960], 3:[600,900], 4:[600,900], 5:null, 6:null, 0:null};
+  var DAYS = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  var MAP = {Sun:0,Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6};
+
+  function nowInByron(){
+    try{
+      var fmt = new Intl.DateTimeFormat('en-US',{timeZone:'America/Denver',weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false});
+      var p = {}; fmt.formatToParts(new Date()).forEach(function(x){ p[x.type]=x.value; });
+      var h = parseInt(p.hour,10); if(h===24) h=0;
+      return { day: MAP[p.weekday], mins: h*60 + parseInt(p.minute,10) };
+    }catch(e){
+      var d = new Date(); return { day:d.getDay(), mins:d.getHours()*60+d.getMinutes() };
+    }
+  }
+  function fmtTime(m){
+    var h=Math.floor(m/60), mm=m%60, ap=h>=12?'PM':'AM', hh=h%12; if(hh===0) hh=12;
+    return hh+':'+String(mm).padStart(2,'0')+' '+ap;
+  }
+  function renderStatus(){
+    var t = nowInByron(), today = HOURS[t.day];
+    var wrap = document.getElementById('hallStatusWrap');
+    var el = document.getElementById('hallStatus');
+    if(today && t.mins>=today[0] && t.mins<today[1]){
+      el.textContent = 'Open now · closes ' + fmtTime(today[1]);
+      wrap.classList.add('is-open');
+      return;
+    }
+    wrap.classList.remove('is-open');
+    var out = 'Closed';
+    for(var i=0;i<8;i++){
+      var d=(t.day+i)%7, h=HOURS[d];
+      if(!h) continue;
+      if(i===0 && t.mins<h[0]){ out='Closed · opens ' + fmtTime(h[0]) + ' today'; break; }
+      if(i===0 && t.mins>=h[1]) continue;
+      if(i>0){ out='Closed · opens ' + DAYS[d] + ' ' + fmtTime(h[0]); break; }
+    }
+    el.textContent = out;
+  }
+  renderStatus();
+
+  /* ---- Highlight today's row in the hours table ---- */
+  var today = nowInByron().day;
+  var row = document.querySelector('#hoursTable tr[data-day="'+today+'"]');
+  if(row) row.classList.add('today');
+})();
+</script>
+</body>
+</html>

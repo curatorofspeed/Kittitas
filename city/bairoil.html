@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Town of Bairoil, Wyoming</title>
+<meta name="description" content="Official website of the Town of Bairoil, Wyoming — office hours, town government, council meetings, public notices, recreation, and visitor information for a small high-plains community in Sweetwater County.">
+
+<!--
+  Town of Bairoil, WY — single-file redesign.
+  Lean, mobile-first, no build step, no framework. Fonts via Google Fonts.
+
+  NOTE ON DOCUMENT LINKS: agenda / minutes / notice PDFs below point to the
+  town's existing server (townofbairoil.com/_pdfs/...). When the site is
+  migrated, repoint these or drop the files alongside index.html.
+
+  NOTE ON PHOTOS: this build is intentionally image-light (SVG art only) so it
+  loads fast and stays self-contained. Drop real photos into the marked spots
+  in "Recreation" and "Visit" whenever you want.
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;600;700&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --paper:#f2f4f7;
+    --paper-2:#e7ebf1;
+    --surface:#ffffff;
+    --ink:#161a20;
+    --ink-2:#39424f;
+    --muted:#5b6472;
+    --line:#d4dae2;
+    --line-2:#e4e8ee;
+    --sky:#1f416a;        /* primary brand — Wyoming dusk blue */
+    --sky-deep:#122a45;   /* darkest blue — hero / footer */
+    --sky-mid:#1a3557;
+    --sky-soft:#dde7f2;   /* pale blue wash */
+    --oxide:#a8482c;      /* weathered brick — sparing accent */
+    --oxide-deep:#8a3a22;
+    --oxide-soft:#f0e0d9;
+    --focus:#f0b429;      /* focus ring only — high-vis, not a theme color */
+
+    --maxw:1120px;
+    --pad:clamp(1.1rem,4vw,2.2rem);
+    --radius:4px;
+    --shadow:0 1px 2px rgba(18,42,69,.06), 0 8px 24px -12px rgba(18,42,69,.18);
+
+    --f-display:"Zilla Slab",Georgia,serif;
+    --f-body:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+    --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",monospace;
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--f-body);
+    font-size:clamp(1rem,.97rem + .18vw,1.075rem);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  h1,h2,h3{font-family:var(--f-display);font-weight:600;line-height:1.08;margin:0;letter-spacing:-.01em}
+  p{margin:0 0 1rem}
+  p:last-child{margin-bottom:0}
+  a{color:var(--sky);text-underline-offset:3px;text-decoration-thickness:1px}
+  a:hover{color:var(--oxide-deep)}
+
+  :focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:2px}
+
+  .wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--pad)}
+
+  .skip{position:absolute;left:-999px;top:0;background:var(--sky-deep);color:#fff;padding:.6rem 1rem;z-index:100;border-radius:0 0 var(--radius) 0}
+  .skip:focus{left:0}
+
+  .mono{font-family:var(--f-mono)}
+
+  /* eyebrow / section label */
+  .eyebrow{
+    font-family:var(--f-mono);
+    font-size:.72rem;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--oxide-deep);
+    display:flex;align-items:center;gap:.7rem;
+    margin:0 0 1rem;
+  }
+  .eyebrow::before{content:"";width:1.6rem;height:2px;background:var(--oxide);flex:none}
+  .eyebrow.on-dark{color:#e8b9a6}
+  .eyebrow.on-dark::before{background:#c96f4d}
+
+  /* ---------- Header ---------- */
+  header.site{
+    position:sticky;top:0;z-index:60;
+    background:rgba(242,244,247,.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:66px}
+  .brand{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:var(--ink)}
+  .brand svg{flex:none;display:block}
+  .brand .name{font-family:var(--f-display);font-weight:700;font-size:1.12rem;line-height:1;letter-spacing:-.01em}
+  .brand .sub{font-family:var(--f-mono);font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-top:.28rem}
+
+  nav.main{display:flex;align-items:center;gap:.15rem}
+  nav.main a{
+    font-size:.92rem;font-weight:500;color:var(--ink-2);text-decoration:none;
+    padding:.5rem .72rem;border-radius:var(--radius);white-space:nowrap;
+  }
+  nav.main a:hover{color:var(--sky);background:var(--paper-2)}
+  nav.main a.active{color:var(--sky);background:var(--paper-2)}
+  nav.main a.cta{
+    background:var(--sky);color:#fff;margin-left:.4rem;padding:.55rem .95rem;font-weight:600;
+  }
+  nav.main a.cta:hover{background:var(--sky-deep);color:#fff}
+
+  .navtoggle{display:none;border:1px solid var(--line);background:var(--surface);color:var(--ink);
+    width:44px;height:44px;border-radius:var(--radius);align-items:center;justify-content:center;cursor:pointer}
+  .navtoggle svg{display:block}
+
+  @media (max-width:860px){
+    nav.main{
+      position:absolute;top:100%;left:0;right:0;
+      flex-direction:column;align-items:stretch;gap:0;
+      background:var(--surface);border-bottom:1px solid var(--line);
+      padding:.5rem var(--pad) 1rem;
+      box-shadow:var(--shadow);
+      display:none;
+    }
+    nav.main.open{display:flex}
+    nav.main a{padding:.85rem .4rem;border-radius:0;border-bottom:1px solid var(--line-2)}
+    nav.main a.cta{margin:.7rem 0 0;border-radius:var(--radius);text-align:center}
+    .navtoggle{display:inline-flex}
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{position:relative;overflow:hidden;background:linear-gradient(180deg,#0c2036 0%,#15304d 42%,#1d3c5f 100%);color:#eef3f9}
+  .hero .stars{position:absolute;inset:0;pointer-events:none}
+  .hero-inner{position:relative;z-index:3;max-width:var(--maxw);margin-inline:auto;padding:clamp(3rem,8vw,5.5rem) var(--pad) clamp(9rem,20vw,12rem)}
+  .hero h1{
+    font-size:clamp(2.7rem,8.5vw,5.4rem);
+    font-weight:700;letter-spacing:-.02em;line-height:.96;
+    margin:.2rem 0 1.1rem;color:#fff;
+    text-wrap:balance;
+  }
+  .hero h1 .thin{font-weight:500;color:#cfe0f0;display:block;font-size:.44em;letter-spacing:.02em;margin-top:.5rem}
+  .hero .lede{font-size:clamp(1.05rem,1rem + .5vw,1.28rem);max-width:44ch;color:#d7e3f0;margin-bottom:1.7rem}
+  .hero .factbar{
+    display:flex;flex-wrap:wrap;gap:.6rem;
+  }
+  .hero .fact{
+    display:flex;flex-direction:column;gap:.15rem;
+    background:rgba(255,255,255,.07);
+    border:1px solid rgba(255,255,255,.14);
+    border-radius:var(--radius);
+    padding:.7rem .95rem;min-width:150px;
+    backdrop-filter:blur(2px);
+  }
+  .hero .fact .k{font-family:var(--f-mono);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:#a9c4dd}
+  .hero .fact .v{font-weight:600;font-size:.98rem;color:#fff}
+  .hero .fact a{color:#fff}
+
+  .ridge{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:auto;display:block;z-index:2}
+
+  /* ---------- Quick strip (at a glance) ---------- */
+  .glance{background:var(--sky-deep);color:#dfe9f3;position:relative;z-index:4}
+  .glance .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+  .glance .cell{padding:1.5rem var(--pad);border-left:1px solid rgba(255,255,255,.1)}
+  .glance .cell:first-child{border-left:0}
+  .glance .lab{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:#8fb0cf;margin-bottom:.5rem}
+  .glance .big{font-family:var(--f-display);font-size:1.15rem;font-weight:600;color:#fff;line-height:1.25}
+  .glance a{color:#fff;text-decoration-color:rgba(255,255,255,.4)}
+  .glance a:hover{color:#fff}
+  @media (max-width:720px){
+    .glance .wrap{grid-template-columns:1fr}
+    .glance .cell{border-left:0;border-top:1px solid rgba(255,255,255,.1);padding:1.1rem var(--pad)}
+    .glance .cell:first-child{border-top:0}
+  }
+
+  /* ---------- Sections ---------- */
+  main{display:block}
+  .section{padding:clamp(3.2rem,7vw,5.5rem) 0;border-top:1px solid var(--line)}
+  .section:first-of-type{border-top:0}
+  .section .head{max-width:60ch;margin-bottom:2.4rem}
+  .section h2{font-size:clamp(1.75rem,1.4rem + 1.6vw,2.5rem);color:var(--sky-deep)}
+  .section .head p:not(.eyebrow){color:var(--ink-2);margin-top:.8rem;font-size:1.06rem}
+  section[id]{scroll-margin-top:80px}
+  .alt{background:var(--surface)}
+
+  .grid{display:grid;gap:1.1rem}
+  .g-2{grid-template-columns:repeat(2,1fr)}
+  .g-3{grid-template-columns:repeat(3,1fr)}
+  @media (max-width:820px){.g-3{grid-template-columns:1fr 1fr}}
+  @media (max-width:600px){.g-2,.g-3{grid-template-columns:1fr}}
+
+  .card{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    padding:1.5rem;box-shadow:var(--shadow);
+  }
+  .alt .card{background:var(--paper);box-shadow:none}
+  .card h3{font-size:1.2rem;color:var(--sky-deep);margin-bottom:.55rem;display:flex;align-items:center;gap:.55rem}
+  .card h3 .ic{color:var(--oxide);flex:none}
+  .card p{color:var(--ink-2);font-size:.98rem}
+  .card .lead-note{color:var(--muted);font-size:.9rem}
+
+  /* officials / definition rows */
+  .roster{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--surface)}
+  .alt .roster{background:var(--paper)}
+  .roster .row{padding:.95rem 1.15rem;border-top:1px solid var(--line-2);border-left:1px solid var(--line-2)}
+  .roster .row:nth-child(-n+2){border-top:0}
+  .roster .row:nth-child(odd){border-left:0}
+  .roster .role{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:.28rem}
+  .roster .who{font-weight:600;color:var(--ink);font-size:1.02rem}
+  .roster .who small{display:block;font-weight:400;color:var(--muted);font-size:.82rem;margin-top:.15rem;font-family:var(--f-body)}
+  @media (max-width:560px){
+    .roster{grid-template-columns:1fr}
+    .roster .row{border-left:0}
+    .roster .row:nth-child(2){border-top:1px solid var(--line-2)}
+  }
+
+  /* document lists */
+  .docs{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
+  @media (max-width:640px){.docs{grid-template-columns:1fr}}
+  .doclist{list-style:none;margin:.4rem 0 0;padding:0}
+  .doclist li{border-top:1px solid var(--line-2)}
+  .doclist li:first-child{border-top:0}
+  .doclist a{
+    display:flex;align-items:center;gap:.7rem;justify-content:space-between;
+    padding:.72rem .2rem;text-decoration:none;color:var(--ink-2);font-size:.96rem;
+  }
+  .doclist a:hover{color:var(--sky)}
+  .doclist a .t{display:flex;align-items:center;gap:.6rem}
+  .doclist a .pdf{font-family:var(--f-mono);font-size:.58rem;letter-spacing:.1em;color:var(--oxide-deep);border:1px solid var(--oxide-soft);background:var(--oxide-soft);padding:.18rem .34rem;border-radius:3px;flex:none}
+  .doclist a .arw{color:var(--muted);flex:none;transition:transform .15s ease}
+  .doclist a:hover .arw{transform:translateX(3px);color:var(--sky)}
+
+  .pill{display:inline-flex;align-items:center;gap:.45rem;font-family:var(--f-mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--sky);background:var(--sky-soft);border-radius:20px;padding:.35rem .75rem;margin-bottom:1rem}
+
+  .note{border-left:3px solid var(--oxide);background:var(--oxide-soft);padding:1rem 1.15rem;border-radius:0 var(--radius) var(--radius) 0;font-size:.96rem;color:var(--ink-2)}
+  .note strong{color:var(--oxide-deep)}
+
+  /* price list */
+  .fees{list-style:none;margin:.6rem 0 0;padding:0}
+  .fees li{display:flex;justify-content:space-between;gap:1rem;padding:.55rem 0;border-top:1px dashed var(--line);font-size:.96rem}
+  .fees li:first-child{border-top:0}
+  .fees .amt{font-family:var(--f-mono);font-weight:500;color:var(--sky-deep);white-space:nowrap}
+
+  /* feature list w/ marks */
+  .feat{list-style:none;margin:0;padding:0;display:grid;gap:.9rem}
+  .feat li{display:flex;gap:.75rem;align-items:flex-start;font-size:.98rem;color:var(--ink-2)}
+  .feat li svg{flex:none;margin-top:.2rem;color:var(--oxide)}
+  .feat li b{color:var(--ink)}
+
+  .photo-slot{
+    display:flex;align-items:center;justify-content:center;text-align:center;
+    aspect-ratio:16/10;border:1px dashed var(--line);border-radius:var(--radius);
+    background:
+      linear-gradient(135deg,var(--paper-2) 0%,var(--surface) 100%);
+    color:var(--muted);font-family:var(--f-mono);font-size:.72rem;letter-spacing:.1em;
+    padding:1rem;
+  }
+  .alt .photo-slot{background:linear-gradient(135deg,var(--paper) 0%,var(--paper-2) 100%)}
+
+  /* contact */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;align-items:stretch}
+  @media (max-width:760px){.contact-grid{grid-template-columns:1fr}}
+  .cinfo dl{margin:0}
+  .cinfo .block{padding:1.15rem 0;border-top:1px solid var(--line-2)}
+  .cinfo .block:first-of-type{border-top:0;padding-top:0}
+  .cinfo dt{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--oxide-deep);margin-bottom:.4rem}
+  .cinfo dd{margin:0;color:var(--ink-2)}
+  .cinfo dd a{font-weight:600}
+  .cinfo .addr{font-style:normal;line-height:1.5}
+  .mapcard{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;min-height:280px;background:var(--paper-2)}
+  .mapcard iframe{display:block;width:100%;height:100%;min-height:280px;border:0;filter:saturate(.9)}
+
+  .btnrow{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.2rem}
+  .btn{
+    display:inline-flex;align-items:center;gap:.55rem;
+    font-weight:600;font-size:.95rem;text-decoration:none;
+    padding:.7rem 1.15rem;border-radius:var(--radius);
+    background:var(--sky);color:#fff;border:1px solid var(--sky);
+  }
+  .btn:hover{background:var(--sky-deep);border-color:var(--sky-deep);color:#fff}
+  .btn.ghost{background:transparent;color:var(--sky);border-color:var(--line)}
+  .btn.ghost:hover{background:var(--paper-2);color:var(--sky-deep);border-color:var(--sky)}
+
+  /* ---------- Footer ---------- */
+  footer.site{background:var(--sky-deep);color:#c6d6e6;padding:clamp(2.6rem,6vw,3.8rem) 0 2rem;border-top:4px solid var(--oxide)}
+  footer.site .top{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2rem}
+  @media (max-width:760px){footer.site .top{grid-template-columns:1fr;gap:1.6rem}}
+  footer.site .name{font-family:var(--f-display);font-weight:700;color:#fff;font-size:1.3rem;margin-bottom:.5rem;display:flex;align-items:center;gap:.6rem}
+  footer.site p{font-size:.92rem;color:#adc2d6;max-width:34ch}
+  footer.site h4{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:#7fa1c0;margin:0 0 .9rem}
+  footer.site ul{list-style:none;margin:0;padding:0;display:grid;gap:.5rem}
+  footer.site ul a{color:#d3e1ee;text-decoration:none;font-size:.94rem}
+  footer.site ul a:hover{color:#fff;text-decoration:underline}
+  footer.site .addr{font-style:normal;color:#adc2d6;font-size:.92rem;line-height:1.6}
+  footer.site .addr a{color:#fff}
+  .foot-btm{margin-top:2.4rem;padding-top:1.4rem;border-top:1px solid rgba(255,255,255,.12);
+    display:flex;flex-wrap:wrap;gap:.6rem 1.2rem;justify-content:space-between;align-items:center;
+    font-size:.82rem;color:#8fabc6}
+  .foot-btm .mono{letter-spacing:.04em}
+  .foot-btm a{color:#c6d6e6}
+
+  .reveal{opacity:0;transform:translateY(14px)}
+  .reveal.in{opacity:1;transform:none;transition:opacity .6s ease,transform .6s ease}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- ================= HEADER ================= -->
+<header class="site">
+  <div class="wrap bar">
+    <a class="brand" href="#top" aria-label="Town of Bairoil, Wyoming — home">
+      <!-- Pronghorn mark -->
+      <svg width="34" height="34" viewBox="0 0 200 160" role="img" aria-hidden="true">
+        <g fill="var(--sky)">
+          <path d="M40 70 C44 60,58 55,76 54 L94 55 C101 53,104 42,107 32 L111 20 C112 16,115 15,118 17 L124 18 C134 20,146 26,158 34 L166 40 C169 43,167 47,162 46 L146 44 C136 43,128 45,122 51 L114 59 C110 63,108 70,108 78 L108 150 L113 150 L113 82 L97 82 L97 150 L102 150 L102 82 L76 82 L76 150 L81 150 L81 82 L62 82 L62 150 L67 150 L67 80 L48 75 C44 73,41 72,40 70 Z"/>
+          <path d="M106 24 L98 19 L105 28 Z"/>
+        </g>
+        <path d="M111 20 C108 9,114 1,120 5" fill="none" stroke="var(--oxide)" stroke-width="5" stroke-linecap="round"/>
+        <path d="M113 11 L123 8" fill="none" stroke="var(--oxide)" stroke-width="5" stroke-linecap="round"/>
+      </svg>
+      <span>
+        <span class="name">Town of Bairoil</span>
+        <span class="sub">Sweetwater County · Wyoming</span>
+      </span>
+    </a>
+
+    <button class="navtoggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mainnav">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+
+    <nav class="main" id="mainnav" aria-label="Primary">
+      <a href="#hours">Hours</a>
+      <a href="#government">Government</a>
+      <a href="#notices">Notices</a>
+      <a href="#recreation">Recreation</a>
+      <a href="#visit">Visit</a>
+      <a href="#contact" class="cta">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<span id="top"></span>
+
+<!-- ================= HERO ================= -->
+<section class="hero" aria-labelledby="hero-title">
+  <svg class="stars" viewBox="0 0 1200 400" preserveAspectRatio="xMidYMin slice" aria-hidden="true">
+    <g fill="#ffffff">
+      <circle cx="140" cy="60" r="1.3" opacity=".7"/>
+      <circle cx="300" cy="40" r="1" opacity=".5"/>
+      <circle cx="520" cy="80" r="1.4" opacity=".65"/>
+      <circle cx="720" cy="46" r="1" opacity=".5"/>
+      <circle cx="900" cy="70" r="1.5" opacity=".7"/>
+      <circle cx="1060" cy="38" r="1" opacity=".5"/>
+      <circle cx="1130" cy="96" r="1.2" opacity=".6"/>
+      <circle cx="430" cy="120" r="1" opacity=".45"/>
+      <circle cx="980" cy="128" r="1" opacity=".45"/>
+    </g>
+  </svg>
+
+  <div class="hero-inner">
+    <p class="eyebrow on-dark">42.24&deg;N · 107.56&deg;W · Elev. ~6,700 ft</p>
+    <h1 id="hero-title">Bairoil, Wyoming
+      <span class="thin">A small town under a very big sky.</span>
+    </h1>
+    <p class="lede">An oil-field town on the high plains of the Great Divide Basin, where antelope wander the streets and the spring water runs clear. Established 1915 · Incorporated 1980.</p>
+
+    <div class="factbar">
+      <div class="fact">
+        <span class="k">Town Hall</span>
+        <span class="v">Mon–Thu 7a–3p · Fri 7a–12p</span>
+      </div>
+      <div class="fact">
+        <span class="k">Call the clerk</span>
+        <span class="v"><a href="tel:+13073247653">307-324-7653</a></span>
+      </div>
+      <div class="fact">
+        <span class="k">Heads up</span>
+        <span class="v">No fuel in town — fill up first</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ridgeline + pronghorn scene -->
+  <svg class="ridge" viewBox="0 0 1200 230" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
+    <!-- blue-hour horizon glow -->
+    <rect x="0" y="70" width="1200" height="24" fill="url(#glow)"/>
+    <defs>
+      <linearGradient id="glow" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#b5502f" stop-opacity="0"/>
+        <stop offset=".6" stop-color="#b5502f" stop-opacity=".35"/>
+        <stop offset="1" stop-color="#b5502f" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <!-- far ridge -->
+    <path d="M0 120 L120 100 L260 118 L420 92 L600 116 L780 96 L960 120 L1120 102 L1200 116 L1200 230 L0 230 Z" fill="#1a3253"/>
+    <!-- mid ridge -->
+    <path d="M0 150 L160 132 L340 156 L520 130 L700 158 L900 136 L1080 160 L1200 144 L1200 230 L0 230 Z" fill="#152941"/>
+    <!-- pronghorn on the mid ridge -->
+    <g transform="translate(852,96) scale(0.42)">
+      <path d="M40 70 C44 60,58 55,76 54 L94 55 C101 53,104 42,107 32 L111 20 C112 16,115 15,118 17 L124 18 C134 20,146 26,158 34 L166 40 C169 43,167 47,162 46 L146 44 C136 43,128 45,122 51 L114 59 C110 63,108 70,108 78 L108 150 L113 150 L113 82 L97 82 L97 150 L102 150 L102 82 L76 82 L76 150 L81 150 L81 82 L62 82 L62 150 L67 150 L67 80 L48 75 C44 73,41 72,40 70 Z" fill="#0e2135"/>
+      <path d="M106 24 L98 19 L105 28 Z" fill="#0e2135"/>
+      <path d="M111 20 C108 9,114 1,120 5" fill="none" stroke="#0e2135" stroke-width="5" stroke-linecap="round"/>
+      <path d="M113 11 L123 8" fill="none" stroke="#0e2135" stroke-width="5" stroke-linecap="round"/>
+    </g>
+    <!-- near ridge -->
+    <path d="M0 190 L200 172 L440 196 L640 170 L860 196 L1060 176 L1200 194 L1200 230 L0 230 Z" fill="#0e2135"/>
+  </svg>
+</section>
+
+<!-- ================= AT A GLANCE ================= -->
+<section class="glance" aria-label="At a glance" id="hours">
+  <div class="wrap">
+    <div class="cell">
+      <div class="lab">Town Hall Hours</div>
+      <div class="big">Monday–Thursday 7:00 a.m. – 3:00 p.m.<br>Friday 7:00 a.m. – 12:00 p.m.</div>
+    </div>
+    <div class="cell">
+      <div class="lab">Council Meetings</div>
+      <div class="big">1st &amp; 3rd Wednesday<br>of every month</div>
+    </div>
+    <div class="cell">
+      <div class="lab">Town Office</div>
+      <div class="big"><a href="tel:+13073247653">307-324-7653</a><br><a href="mailto:townofb@outlook.com">townofb@outlook.com</a></div>
+    </div>
+  </div>
+</section>
+
+<main id="main">
+
+  <!-- ================= GOVERNMENT ================= -->
+  <section class="section" id="government">
+    <div class="wrap">
+      <div class="head reveal">
+        <p class="eyebrow">Town Government</p>
+        <h2>Who runs the town, and when they meet</h2>
+        <p>Bairoil operates with a mayor and a four-member town council. Meetings are open to the public on the first and third Wednesday of each month at the Town Hall.</p>
+      </div>
+
+      <div class="grid g-2">
+        <div class="reveal">
+          <h3 style="font-size:1.05rem;color:var(--sky-deep);margin-bottom:.9rem;font-family:var(--f-display)">Elected officials</h3>
+          <div class="roster">
+            <div class="row"><div class="role">Mayor</div><div class="who">Lowell Clawson</div></div>
+            <div class="row"><div class="role">Clerk / Treasurer</div><div class="who">Ashley Hopkin</div></div>
+            <div class="row"><div class="role">Council</div><div class="who">Alan Thornton</div></div>
+            <div class="row"><div class="role">Council</div><div class="who">Audra Thornton</div></div>
+            <div class="row"><div class="role">Council</div><div class="who">Butch McFall</div></div>
+            <div class="row"><div class="role">Council</div><div class="who">Michelle Chavez</div></div>
+          </div>
+        </div>
+
+        <div class="reveal">
+          <h3 style="font-size:1.05rem;color:var(--sky-deep);margin-bottom:.9rem;font-family:var(--f-display)">Town staff &amp; services</h3>
+          <div class="roster">
+            <div class="row"><div class="role">Fire Chief</div><div class="who">Dean Martin</div></div>
+            <div class="row"><div class="role">Water / Sewer Operator</div><div class="who">Debbie Good<small>Backup: Rex Kelson</small></div></div>
+            <div class="row"><div class="role">Custodian</div><div class="who">Debbie Good</div></div>
+            <div class="row"><div class="role">Police Officer</div><div class="who">Position open<small>See Notices below</small></div></div>
+            <div class="row"><div class="role">Maintenance</div><div class="who">Position open</div></div>
+            <div class="row"><div class="role">Roster (PDF)</div><div class="who"><a href="https://www.townofbairoil.com/_pdfs/2024/Employee%20Names%20and%20Titles%20-%202024.pdf" target="_blank" rel="noopener">Employees &amp; titles &rsaquo;</a></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Meeting documents -->
+      <div class="card reveal" style="margin-top:1.6rem">
+        <h3><svg class="ic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg>Meeting agendas &amp; minutes</h3>
+        <p class="lead-note" style="margin-bottom:1.2rem">The five most recent of each are listed here. Earlier records are available at the Town Hall on request.</p>
+        <div class="docs">
+          <div>
+            <div class="pill">Agendas · 2026</div>
+            <ul class="doclist">
+              <li><a href="https://www.townofbairoil.com/_pdfs/2026/July%201,%202026%20Agenda.pdf" target="_blank" rel="noopener"><span class="t"><span class="pdf">PDF</span>July 1, 2026</span><svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+              <li><a href="https://www.townofbairoil.com/_pdfs/2026/June%2017,%202026%20Agenda.pdf" target="_blank" rel="noopener"><span class="t"><span class="pdf">PDF</span>June 17, 2026</span><svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+              <li><a href="https://www.townofbairoil.com/_pdfs/2026/June%203,%202026%20Agenda.pdf" target="_blank" rel="noopener"><span class="t"><span class="pdf">PDF</span>June 3, 2026</span><svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+              <li><a href="https://www.townofbairoil.com/_pdfs/2026/May%2020,%202026%20Agenda.pdf" target="_blank" rel="noopener"><span class="t"><span class="pdf">PDF</span>May 20, 2026</span><svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+              <li><a href="https://www.townofbairoil.com/_pdfs/2026/May%206,%202026%20Agenda.pdf" target="_blank" rel="noopener"><span class="t"><span class="pdf">PDF</span>May 6, 2026</span><svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+            </ul>
+          </div>
+          <div>
+            <div class="pill">Minutes · 2026</div>
+            <ul class="doclist">
+              <li><a href="https://www.townofbairoil.com/_pdfs/2026/June%2017,%202026%20Minutes.pdf" target="_blank" rel="noopener"><span class="t"><span class="pdf">PDF</span>June 17, 2026</span><svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+              <li><a href="https://www.townofbairoil.com/_pdfs/2026/June%203,%202026%20Minutes.pdf" target="_blank" rel="noopener"><span class="t"><span class="pdf">PDF</span>June 3, 2026</span><svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+              <li><a href="https://www.townofbairoil.com/_pdfs/2026/May%2020,%202026%20Minutes.pdf" target="_blank" rel="noopener"><span class="t"><span class="pdf">PDF</span>May 20, 2026</span><svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+              <li><a href="https://www.townofbairoil.com/_pdfs/2026/May%206,%202026%20Minutes.pdf" target="_blank" rel="noopener"><span class="t"><span class="pdf">PDF</span>May 6, 2026</span><svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+              <li><a href="https://www.townofbairoil.com/_pdfs/2026/April%2015,%202026%20Minutes.pdf" target="_blank" rel="noopener"><span class="t"><span class="pdf">PDF</span>April 15, 2026</span><svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+            </ul>
+          </div>
+        </div>
+        <div style="margin-top:1.4rem;padding-top:1.1rem;border-top:1px solid var(--line-2)">
+          <div class="pill" style="background:var(--oxide-soft);color:var(--oxide-deep)">Ordinances</div>
+          <ul class="doclist">
+            <li><a href="https://www.townofbairoil.com/_pdfs/2017/Jan/ordinance2017001.pdf" target="_blank" rel="noopener"><span class="t"><span class="pdf">PDF</span>Ord. 2017-001 — Wyoming Region 4 Hazard Mitigation Plan</span><svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= NOTICES ================= -->
+  <section class="section alt" id="notices">
+    <div class="wrap">
+      <div class="head reveal">
+        <p class="eyebrow">Public Notices</p>
+        <h2>Current notices &amp; plans</h2>
+        <p>Time-sensitive announcements, budget dates, and standing town documents.</p>
+      </div>
+
+      <div class="grid g-3">
+        <div class="card reveal">
+          <h3><svg class="ic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3h18v14H7l-4 4z"/></svg>Budget meetings</h3>
+          <p>The 2026–2027 town budget meeting schedule is posted for public attendance.</p>
+          <div class="btnrow"><a class="btn ghost" href="https://www.townofbairoil.com/_pdfs/2026/2026%20Budget%20Meeting%20Dates.pdf" target="_blank" rel="noopener">View dates (PDF)</a></div>
+        </div>
+        <div class="card reveal">
+          <h3><svg class="ic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2s7 4 7 10a7 7 0 0 1-14 0c0-6 7-10 7-10z"/></svg>Source water</h3>
+          <p>Bairoil's Source Water Protection Plan describes how the town safeguards its drinking-water supply.</p>
+          <div class="btnrow"><a class="btn ghost" href="https://www.townofbairoil.com/_pdfs/2022/Source%20Water.pdf" target="_blank" rel="noopener">Read the plan (PDF)</a></div>
+        </div>
+        <div class="card reveal">
+          <h3><svg class="ic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13A4 4 0 0 1 16 11"/></svg>Employment</h3>
+          <p>The town is currently seeking a <b>Police Officer</b>. Other positions are posted here as they open.</p>
+          <div class="btnrow"><a class="btn ghost" href="#contact">Ask at Town Hall</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= RECREATION ================= -->
+  <section class="section" id="recreation">
+    <div class="wrap">
+      <div class="head reveal">
+        <p class="eyebrow">Recreation</p>
+        <h2>The rec center &amp; the park</h2>
+        <p>The Town Hall building houses a weight room and gym, and Mike Atwill Memorial Park gives families a place to gather in the open air.</p>
+      </div>
+
+      <div class="grid g-2">
+        <div class="card reveal">
+          <h3><svg class="ic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6.5 6.5l11 11M4 8l-2 2 3 3M20 16l2-2-3-3M8 4l-2 2M18 20l-2-2"/></svg>Weight room &amp; gym</h3>
+          <p>Open to adults for a membership fee. Members receive a door code and <b>24/7 access</b> to both the weight room and the gym. An adult must be present in the gym at all times.</p>
+          <ul class="fees">
+            <li><span>One week</span><span class="amt">$10</span></li>
+            <li><span>Three months</span><span class="amt">$25</span></li>
+            <li><span>Six months</span><span class="amt">$50</span></li>
+            <li><span>Full year</span><span class="amt">$100</span></li>
+          </ul>
+          <div class="btnrow"><a class="btn" href="tel:+13073247653">Sign up: 307-324-7653</a></div>
+        </div>
+
+        <div class="card reveal" style="display:flex;flex-direction:column">
+          <h3><svg class="ic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v20M5 8c0-3 3-4 7-4s7 1 7 4-3 4-7 4-7-1-7-4z"/></svg>Mike Atwill Memorial Park</h3>
+          <p>The town's playground has swings and a merry-go-round, with benches, picnic tables, and grills for gatherings. A quiet spot to spend an afternoon.</p>
+          <!-- PHOTO SLOT: drop a park photo here -->
+          <div class="photo-slot" style="margin-top:auto">PARK PHOTO — DROP IN HERE</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= VISIT ================= -->
+  <section class="section alt" id="visit">
+    <div class="wrap">
+      <div class="head reveal">
+        <p class="eyebrow">Visiting Bairoil</p>
+        <h2>Out here on the high plains</h2>
+        <p>Fishing, wide-open scenic drives, wandering antelope, and a piece of oil-field history parked in the middle of town. A few things worth knowing before you come.</p>
+      </div>
+
+      <div class="grid g-3" style="margin-bottom:1.1rem">
+        <div class="card reveal">
+          <h3><svg class="ic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="2.5"/></svg>See &amp; do</h3>
+          <ul class="feat">
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span><b>Fishing &amp; hunting</b> at A&amp;M Reservoir, Kids Pond, and Lost Soldier Pond, all a short drive away.</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span><b>Wild horses &amp; antelope</b> roam the surrounding country — and often the town's own streets and yards.</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span><b>Camping</b> areas, short- or long-term, plus scenic drives full of wildflowers.</span></li>
+          </ul>
+        </div>
+
+        <div class="card reveal">
+          <h3><svg class="ic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20z"/></svg>Good to know</h3>
+          <ul class="feat">
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9L1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg><span><b>No fuel in town.</b> Nearest gas is Muddy Gap (~15 mi north on US-287) or Rawlins (~34 mi south).</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2s7 4 7 10a7 7 0 0 1-14 0c0-6 7-10 7-10z"/></svg><span>Some of the purest <b>mountain spring water</b> around, from Abel Springs near Green Mountain.</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg><span>Snacks and drinks are stocked in the <b>vending machine at Town Hall</b>.</span></li>
+          </ul>
+        </div>
+
+        <div class="card reveal">
+          <h3><svg class="ic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19V5a2 2 0 0 1 2-2h9l5 5v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M15 3v5h5"/></svg>History</h3>
+          <p>Founded in 1915 around "Bair Oil Well No. 1," the first well drilled here. The fuller story lives in the book <em>Bairoil… The Unfinished Story</em>.</p>
+          <div class="btnrow">
+            <a class="btn ghost" href="https://www.townofbairoil.com/_pdfs/2016/BairoilBook.pdf" target="_blank" rel="noopener">Read an excerpt</a>
+          </div>
+          <p class="lead-note" style="margin-top:.9rem">Copies available at the Town Hall for $15.</p>
+        </div>
+      </div>
+
+      <!-- Trencher Park feature -->
+      <div class="card reveal">
+        <div class="grid g-2" style="gap:1.6rem;align-items:center">
+          <div>
+            <span class="pill" style="background:var(--oxide-soft);color:var(--oxide-deep)">Trencher Park &amp; Old Town Hall</span>
+            <h3 style="font-size:1.35rem;margin-bottom:.7rem">The Buckeye ditching machine</h3>
+            <p>Parked on the slab beside the Old Town Hall sits Buckeye Traction Ditching Machine <span class="mono">#3745</span> — built around 1920 in Findlay, Ohio. Hauled to Bairoil from Midwest, Wyoming in the late 1930s, it dug most of the town's original water, sewer, and gas lines. Its last job was in the early 1960s, and it was given to the town to stand as a piece of Bairoil's history.</p>
+            <p class="lead-note">The town plans to rehab the Old Town Hall into offices, meeting rooms, and a town museum, with landscaped grounds and parking around it.</p>
+          </div>
+          <!-- Stylized trencher / oil-field mark -->
+          <div aria-hidden="true" style="display:flex;align-items:center;justify-content:center">
+            <svg width="100%" viewBox="0 0 320 220" style="max-width:340px" role="img">
+              <rect x="0" y="0" width="320" height="220" rx="4" fill="var(--sky-deep)"/>
+              <g stroke="#3a5a7d" stroke-width="1" opacity=".5">
+                <line x1="0" y1="170" x2="320" y2="170"/>
+                <line x1="0" y1="150" x2="320" y2="150"/>
+              </g>
+              <!-- ground -->
+              <path d="M0 170 L320 170 L320 220 L0 220 Z" fill="#0e2135"/>
+              <!-- trench -->
+              <path d="M40 170 L60 200 L110 200 L120 170 Z" fill="#081726"/>
+              <!-- machine body -->
+              <g fill="#c96f4d">
+                <rect x="150" y="120" width="120" height="50" rx="3"/>
+                <rect x="180" y="96" width="60" height="28" rx="2"/>
+              </g>
+              <!-- boom/ladder down into trench -->
+              <path d="M150 150 L70 196 L82 202 L162 156 Z" fill="#a8482c"/>
+              <!-- wheels -->
+              <circle cx="176" cy="172" r="16" fill="#0e2135" stroke="#c96f4d" stroke-width="4"/>
+              <circle cx="244" cy="172" r="16" fill="#0e2135" stroke="#c96f4d" stroke-width="4"/>
+              <!-- smokestack + puff -->
+              <rect x="196" y="72" width="10" height="26" fill="#8a3a22"/>
+              <circle cx="201" cy="66" r="7" fill="#25415d"/>
+              <circle cx="214" cy="58" r="9" fill="#25415d"/>
+              <circle cx="230" cy="52" r="6" fill="#25415d"/>
+              <text x="270" y="205" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="11" fill="#5f82a4">EST. 1920 · FINDLAY, OH</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Community: church + directory -->
+      <div class="grid g-2" style="margin-top:1.1rem">
+        <div class="card reveal">
+          <h3><svg class="ic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v6M9 5h6M6 22V11l6-4 6 4v11M6 22h12"/></svg>Bairoil Community Baptist Church</h3>
+          <p class="cinfo"><span class="addr">414 Indian Paintbrush Ave · P.O. Box 71 · Bairoil, WY 82322</span></p>
+          <ul class="fees" style="margin-top:.9rem">
+            <li><span>Sunday School</span><span class="amt">1:30 p.m.</span></li>
+            <li><span>Sunday Worship</span><span class="amt">2:30 p.m.</span></li>
+          </ul>
+          <p class="lead-note" style="margin-top:.8rem">Pastor Scott Ochsenhirt officiating.</p>
+        </div>
+        <div class="card reveal">
+          <h3><svg class="ic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>Business directory</h3>
+          <p>Local services in and around Bairoil.</p>
+          <ul class="fees" style="margin-top:.6rem">
+            <li><span><b>Massage Therapy Services</b></span><span class="amt"><a href="tel:+13073216715">307-321-6715</a></span></li>
+          </ul>
+          <p class="lead-note" style="margin-top:.9rem">Run a business in town and want to be listed? Let the clerk know.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section class="section" id="contact">
+    <div class="wrap">
+      <div class="head reveal">
+        <p class="eyebrow">Contact</p>
+        <h2>Reach the town</h2>
+        <p>The clerk's office handles most town business. For emergencies, always call 911.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="card cinfo reveal">
+          <div class="block">
+            <dt>Town Clerk</dt>
+            <dd>
+              <address class="addr">1101 Antelope Drive · P.O. Box 58<br>Bairoil, WY 82322</address>
+              <p style="margin:.7rem 0 0">
+                Phone: <a href="tel:+13073247653">307-324-7653</a><br>
+                Fax: 307-324-4706<br>
+                Email: <a href="mailto:townofb@outlook.com">townofb@outlook.com</a>
+              </p>
+            </dd>
+          </div>
+          <div class="block">
+            <dt>Police Department</dt>
+            <dd>
+              <address class="addr">1101 Antelope Drive · P.O. Box 58<br>Bairoil, WY 82322</address>
+              <p style="margin:.7rem 0 0;color:var(--oxide-deep);font-weight:600">Emergencies: call 911</p>
+            </dd>
+          </div>
+          <div class="block">
+            <dt>Office hours</dt>
+            <dd>Monday–Thursday, 7:00 a.m. – 3:00 p.m.<br>Friday, 7:00 a.m. – 12:00 p.m.</dd>
+          </div>
+          <div class="btnrow">
+            <a class="btn" href="tel:+13073247653">Call the clerk</a>
+            <a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=Bairoil,+WY+82322" target="_blank" rel="noopener">Open in Maps</a>
+          </div>
+        </div>
+
+        <div class="mapcard reveal">
+          <iframe
+            title="Map of Bairoil, Wyoming"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=Bairoil,+WY+82322&z=12&output=embed"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="site">
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <div class="name">
+          <svg width="26" height="26" viewBox="0 0 200 160" aria-hidden="true">
+            <g fill="#c96f4d">
+              <path d="M40 70 C44 60,58 55,76 54 L94 55 C101 53,104 42,107 32 L111 20 C112 16,115 15,118 17 L124 18 C134 20,146 26,158 34 L166 40 C169 43,167 47,162 46 L146 44 C136 43,128 45,122 51 L114 59 C110 63,108 70,108 78 L108 150 L113 150 L113 82 L97 82 L97 150 L102 150 L102 82 L76 82 L76 150 L81 150 L81 82 L62 82 L62 150 L67 150 L67 80 L48 75 C44 73,41 72,40 70 Z"/>
+              <path d="M106 24 L98 19 L105 28 Z"/>
+            </g>
+            <path d="M111 20 C108 9,114 1,120 5" fill="none" stroke="#e8b9a6" stroke-width="5" stroke-linecap="round"/>
+            <path d="M113 11 L123 8" fill="none" stroke="#e8b9a6" stroke-width="5" stroke-linecap="round"/>
+          </svg>
+          Town of Bairoil
+        </div>
+        <p>A small, friendly community on the Wyoming high plains. Established 1915 · Incorporated 1980.</p>
+      </div>
+
+      <div>
+        <h4>On this site</h4>
+        <ul>
+          <li><a href="#hours">Hours &amp; contact</a></li>
+          <li><a href="#government">Town government</a></li>
+          <li><a href="#notices">Public notices</a></li>
+          <li><a href="#recreation">Recreation</a></li>
+          <li><a href="#visit">Visiting Bairoil</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Town Hall</h4>
+        <address class="addr">
+          1101 Antelope Drive<br>
+          P.O. Box 58<br>
+          Bairoil, WY 82322<br><br>
+          <a href="tel:+13073247653">307-324-7653</a><br>
+          <a href="mailto:townofb@outlook.com">townofb@outlook.com</a>
+        </address>
+      </div>
+    </div>
+
+    <div class="foot-btm">
+      <span>&copy; <span id="yr"></span> Town of Bairoil, Wyoming. All rights reserved.</span>
+      <span class="mono">Site by Kittitas Digital</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav
+  (function(){
+    var t=document.getElementById('navToggle'), n=document.getElementById('mainnav');
+    if(t&&n){
+      t.addEventListener('click',function(){
+        var open=n.classList.toggle('open');
+        t.setAttribute('aria-expanded',open?'true':'false');
+        t.setAttribute('aria-label',open?'Close menu':'Open menu');
+      });
+      n.addEventListener('click',function(e){
+        if(e.target.tagName==='A'){n.classList.remove('open');t.setAttribute('aria-expanded','false');t.setAttribute('aria-label','Open menu');}
+      });
+    }
+  })();
+
+  // Current year
+  document.getElementById('yr').textContent=new Date().getFullYear();
+
+  // Reveal on scroll (respects reduced motion)
+  (function(){
+    var els=document.querySelectorAll('.reveal');
+    if(!('IntersectionObserver' in window)||window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      els.forEach(function(el){el.classList.add('in');});return;
+    }
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});
+    },{rootMargin:'0px 0px -8% 0px',threshold:.06});
+    els.forEach(function(el){io.observe(el);});
+  })();
+
+  // Active nav link on scroll
+  (function(){
+    var links=[].slice.call(document.querySelectorAll('nav.main a[href^="#"]'));
+    var map={};
+    links.forEach(function(l){var id=l.getAttribute('href').slice(1);var s=document.getElementById(id);if(s)map[id]={link:l,sec:s};});
+    var ids=Object.keys(map);
+    if(!ids.length||!('IntersectionObserver' in window))return;
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        var id=en.target.id;
+        if(en.isIntersecting){
+          links.forEach(function(l){l.classList.remove('active');});
+          if(map[id])map[id].link.classList.add('active');
+        }
+      });
+    },{rootMargin:'-45% 0px -50% 0px',threshold:0});
+    ids.forEach(function(id){io.observe(map[id].sec);});
+  })();
+</script>
+</body>
+</html>

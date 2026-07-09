@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>City of Condon, Oregon — County Seat of Gilliam County</title>
+<meta name="description" content="Official website of the City of Condon, Oregon — a wheat-country town and county seat of Gilliam County on the Eastern Oregon high plateau. Pay utilities, find forms, view council agendas, and reach city departments.">
+<link rel="canonical" href="https://cityofcondon.com/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="City of Condon, Oregon">
+<meta property="og:description" content="County seat of Gilliam County on the Eastern Oregon high plateau. City services, departments, council agendas, and community information.">
+<meta property="og:url" content="https://cityofcondon.com/">
+<meta name="theme-color" content="#223049">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23223049'/%3E%3Ccircle cx='16' cy='16' r='9.5' fill='none' stroke='%23D8A93A' stroke-width='1.6'/%3E%3Ccircle cx='16' cy='16' r='5' fill='none' stroke='%23D8A93A' stroke-width='1.2'/%3E%3Cpath d='M16 8 L16 24 M8 16 L24 16' stroke='%23D8A93A' stroke-width='1.2'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;600;700&family=Public+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "GovernmentOrganization",
+  "name": "City of Condon",
+  "url": "https://cityofcondon.com/",
+  "telephone": "+1-541-384-2711",
+  "faxNumber": "+1-541-384-2700",
+  "email": "admin@cityofcondon.com",
+  "areaServed": "Condon, Oregon",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "128 South Main Street, PO Box 445",
+    "addressLocality": "Condon",
+    "addressRegion": "OR",
+    "postalCode": "97823",
+    "addressCountry": "US"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 45.234, "longitude": -120.183 },
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday"], "opens": "08:00", "closes": "17:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Friday", "opens": "08:00", "closes": "13:00" }
+  ]
+}
+</script>
+
+<style>
+  :root{
+    /* palette — "high plateau" */
+    --sky:#223049;        /* plateau dusk indigo — primary dark */
+    --sky-deep:#182231;   /* deeper indigo */
+    --sky-soft:#2c3c58;   /* lifted indigo for cards on dark */
+    --wheat:#d8a93a;      /* ripe wheat gold — accent */
+    --wheat-deep:#b5872a; /* harvest gold — hover/detail */
+    --field:#5f7050;      /* dryland / young wheat green */
+    --field-deep:#47563b;
+    --paper:#f3f0e7;      /* warm bone paper */
+    --paper-2:#eae5d8;    /* card paper */
+    --ink:#20242b;        /* body ink */
+    --stone:#6f7178;      /* muted label gray */
+    --stone-lt:#9a9ba0;
+    --line:#dcd6c6;       /* hairline on paper */
+    --line-dk:rgba(216,169,58,.22); /* hairline on indigo */
+
+    --ff-display:"Zilla Slab",Georgia,serif;
+    --ff-body:"Public Sans",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    --ff-mono:"Space Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+
+    --wrap:1140px;
+    --gap:clamp(1rem,3.2vw,2rem);
+    --radius:3px;
+    --shadow:0 1px 2px rgba(24,34,49,.06),0 12px 30px -18px rgba(24,34,49,.28);
+    --ease:cubic-bezier(.22,.61,.36,1);
+  }
+
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{
+    margin:0;font-family:var(--ff-body);color:var(--ink);background:var(--paper);
+    font-size:clamp(1rem,.97rem + .18vw,1.075rem);line-height:1.62;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  }
+  img{max-width:100%;display:block}
+  a{color:inherit}
+  h1,h2,h3,h4{font-family:var(--ff-display);font-weight:600;line-height:1.08;letter-spacing:-.01em;margin:0}
+  p{margin:0 0 1rem}
+  p:last-child{margin-bottom:0}
+
+  /* focus */
+  :focus-visible{outline:3px solid var(--wheat);outline-offset:2px;border-radius:2px}
+
+  .skip{position:absolute;left:-999px;top:0;background:var(--wheat);color:var(--sky-deep);
+    padding:.7rem 1.1rem;font-weight:600;z-index:200;border-radius:0 0 4px 0}
+  .skip:focus{left:0}
+
+  .wrap{width:min(var(--wrap),100% - 2.4rem);margin-inline:auto}
+
+  /* generic vertical rhythm */
+  .band{padding-block:clamp(3.4rem,7vw,6rem)}
+  .band--tight{padding-block:clamp(2.6rem,5vw,4rem)}
+  .band--paper{background:var(--paper)}
+  .band--ink{background:var(--sky);color:#eef1f6}
+  .band--ink h2,.band--ink h3{color:#fff}
+  .band--sections{
+    background:var(--paper);
+    background-image:linear-gradient(var(--line) 1px,transparent 1px),
+      linear-gradient(90deg,var(--line) 1px,transparent 1px);
+    background-size:74px 74px;background-position:center;
+  }
+
+  /* eyebrow / section head */
+  .eyebrow{font-family:var(--ff-mono);font-size:.72rem;font-weight:700;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--wheat-deep);display:flex;align-items:center;gap:.7rem;margin:0 0 1rem}
+  .band--ink .eyebrow{color:var(--wheat)}
+  .eyebrow::before{content:"";width:26px;height:2px;background:currentColor;display:inline-block;flex:none}
+  .h-sec{font-size:clamp(1.7rem,1.2rem + 2.1vw,2.55rem)}
+  .lede{max-width:60ch;color:var(--stone);font-size:1.06rem}
+  .band--ink .lede{color:#c3cbd8}
+  .sec-head{margin-bottom:clamp(2rem,4vw,3rem)}
+
+  /* buttons */
+  .btn{display:inline-flex;align-items:center;gap:.55rem;font-family:var(--ff-body);font-weight:600;
+    font-size:.95rem;letter-spacing:.01em;padding:.8rem 1.35rem;border-radius:var(--radius);
+    text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:transform .18s var(--ease),background .18s,border-color .18s,color .18s}
+  .btn svg{width:16px;height:16px}
+  .btn--gold{background:var(--wheat);color:var(--sky-deep);border-color:var(--wheat)}
+  .btn--gold:hover{background:var(--wheat-deep);border-color:var(--wheat-deep);transform:translateY(-2px)}
+  .btn--ghost{background:transparent;color:#eef1f6;border-color:var(--line-dk)}
+  .btn--ghost:hover{border-color:var(--wheat);color:#fff;transform:translateY(-2px)}
+  .btn--ink{background:var(--sky);color:#fff;border-color:var(--sky)}
+  .btn--ink:hover{background:var(--sky-deep);transform:translateY(-2px)}
+
+  /* ---------- header ---------- */
+  .top{position:sticky;top:0;z-index:100;background:rgba(24,34,49,.94);
+    backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--line-dk)}
+  .top__in{display:flex;align-items:center;gap:1.2rem;height:70px}
+  .brand{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:#fff;margin-right:auto}
+  .brand__disk{flex:none;width:38px;height:38px}
+  .brand__txt{display:flex;flex-direction:column;line-height:1}
+  .brand__name{font-family:var(--ff-display);font-weight:700;font-size:1.18rem;letter-spacing:-.01em}
+  .brand__sub{font-family:var(--ff-mono);font-size:.6rem;letter-spacing:.28em;color:var(--wheat);margin-top:3px}
+  .nav{display:flex;align-items:center;gap:.3rem}
+  .nav a{text-decoration:none;color:#d3dae6;font-weight:500;font-size:.92rem;padding:.5rem .7rem;border-radius:3px;transition:color .15s,background .15s}
+  .nav a:hover{color:#fff;background:rgba(255,255,255,.06)}
+  .nav .btn{margin-left:.5rem;padding:.6rem 1.05rem}
+  .navtoggle{display:none;background:none;border:1.5px solid var(--line-dk);color:#fff;border-radius:3px;
+    width:44px;height:40px;cursor:pointer;align-items:center;justify-content:center}
+  .navtoggle svg{width:22px;height:22px}
+
+  @media (max-width:940px){
+    .navtoggle{display:inline-flex}
+    .nav{position:fixed;inset:70px 0 auto 0;flex-direction:column;align-items:stretch;gap:0;
+      background:var(--sky-deep);border-bottom:1px solid var(--line-dk);padding:.6rem 1.2rem 1.2rem;
+      transform:translateY(-140%);transition:transform .32s var(--ease);box-shadow:var(--shadow)}
+    .nav[data-open="true"]{transform:translateY(0)}
+    .nav a{padding:.85rem .4rem;border-bottom:1px solid rgba(255,255,255,.06);font-size:1rem}
+    .nav .btn{margin:.9rem 0 0;justify-content:center;padding:.85rem}
+  }
+  @media (prefers-reduced-motion:reduce){.nav{transition:none}.btn{transition:none}}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;background:var(--sky);color:#eef1f6;overflow:hidden;isolation:isolate}
+  .hero__fields{position:absolute;left:0;right:0;bottom:0;width:100%;height:46%;z-index:-1;display:block}
+  .hero__glow{position:absolute;left:50%;bottom:34%;transform:translateX(-50%);width:120%;height:60%;
+    background:radial-gradient(ellipse at center,rgba(216,169,58,.16),transparent 62%);z-index:-2;pointer-events:none}
+  .hero__grid{position:absolute;inset:0;z-index:-2;opacity:.5;pointer-events:none;
+    background-image:linear-gradient(var(--line-dk) 1px,transparent 1px),linear-gradient(90deg,var(--line-dk) 1px,transparent 1px);
+    background-size:74px 74px;-webkit-mask-image:linear-gradient(180deg,#000,transparent 70%);mask-image:linear-gradient(180deg,#000,transparent 70%)}
+  .hero__in{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(1.5rem,4vw,3.5rem);align-items:center;
+    padding-block:clamp(3.4rem,7vw,5.6rem)}
+  .hero__eyebrow{font-family:var(--ff-mono);font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--wheat);margin-bottom:1.3rem}
+  .hero h1{font-size:clamp(2.4rem,1.3rem + 4.6vw,4.15rem);line-height:1.02;letter-spacing:-.02em;color:#fff;font-weight:700}
+  .hero h1 em{font-style:normal;color:var(--wheat)}
+  .hero__lede{margin:1.4rem 0 2rem;max-width:46ch;color:#c8d0dd;font-size:clamp(1.02rem,1rem + .2vw,1.18rem)}
+  .hero__cta{display:flex;flex-wrap:wrap;gap:.85rem}
+  .hero__disk{justify-self:center;width:min(340px,80%);filter:drop-shadow(0 20px 40px rgba(0,0,0,.35))}
+
+  @media (max-width:820px){
+    .hero__in{grid-template-columns:1fr;text-align:left}
+    .hero__disk{order:-1;width:min(240px,62%);justify-self:start;margin-bottom:.5rem}
+    .hero__fields{height:38%}
+  }
+
+  /* ---------- services quick actions ---------- */
+  .svc{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);
+    border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+  .svc__card{background:var(--paper);padding:1.6rem 1.5rem;text-decoration:none;color:var(--ink);
+    display:flex;flex-direction:column;gap:.55rem;transition:background .2s,transform .2s}
+  .svc__card:hover{background:#fff}
+  .svc__ico{width:34px;height:34px;color:var(--wheat-deep)}
+  .svc__ico svg{width:100%;height:100%;stroke-width:1.5}
+  .svc__t{font-family:var(--ff-display);font-weight:600;font-size:1.16rem;display:flex;align-items:center;gap:.4rem}
+  .svc__t .arw{color:var(--wheat-deep);transition:transform .2s var(--ease)}
+  .svc__card:hover .arw{transform:translateX(4px)}
+  .svc__d{color:var(--stone);font-size:.92rem;line-height:1.5}
+  @media (max-width:820px){.svc{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:520px){.svc{grid-template-columns:1fr}}
+
+  /* ---------- notices ---------- */
+  .notice-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:clamp(1.5rem,4vw,3rem);align-items:start}
+  .notices{display:flex;flex-direction:column}
+  .notice{display:grid;grid-template-columns:auto 1fr;gap:1.1rem;padding:1.15rem 0;border-top:1px solid var(--line);align-items:baseline}
+  .notice:first-child{border-top:0;padding-top:0}
+  .notice__tag{font-family:var(--ff-mono);font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--field-deep);background:rgba(95,112,80,.14);padding:.32rem .55rem;border-radius:2px;white-space:nowrap;align-self:start;margin-top:.2rem}
+  .notice__tag--alert{color:#8a4a1e;background:rgba(216,169,58,.2)}
+  .notice__b h4{font-size:1.06rem;font-weight:600;margin-bottom:.15rem}
+  .notice__b a{color:var(--sky);text-decoration:underline;text-decoration-color:var(--wheat);text-underline-offset:3px}
+  .notice__b p{color:var(--stone);font-size:.92rem;margin:.15rem 0 0}
+  .docs{background:var(--sky);color:#eef1f6;border-radius:var(--radius);padding:1.7rem 1.6rem}
+  .docs h3{color:#fff;font-size:1.2rem;margin-bottom:.3rem}
+  .docs p{color:#b9c2d1;font-size:.88rem;margin-bottom:1.1rem}
+  .docs a{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:#e7ebf2;padding:.7rem 0;
+    border-top:1px solid var(--line-dk);font-size:.94rem;font-weight:500;transition:color .15s,padding .15s}
+  .docs a:hover{color:var(--wheat);padding-left:.3rem}
+  .docs a svg{width:16px;height:16px;color:var(--wheat);flex:none}
+  @media (max-width:820px){.notice-grid{grid-template-columns:1fr}}
+
+  /* ---------- departments ---------- */
+  .dept{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
+  .dept__card{background:var(--sky-soft);border:1px solid var(--line-dk);border-radius:var(--radius);
+    padding:1.5rem;text-decoration:none;color:#eef1f6;display:flex;flex-direction:column;transition:transform .2s var(--ease),border-color .2s,background .2s}
+  .dept__card:hover{transform:translateY(-3px);border-color:var(--wheat);background:#33455f}
+  .dept__num{font-family:var(--ff-mono);font-size:.72rem;color:var(--wheat);letter-spacing:.1em;margin-bottom:.9rem}
+  .dept__card h3{color:#fff;font-size:1.24rem;margin-bottom:.45rem}
+  .dept__people{color:#b9c2d1;font-size:.88rem;line-height:1.55;flex:1}
+  .dept__people b{color:#e7ebf2;font-weight:600}
+  .dept__go{margin-top:1.1rem;font-family:var(--ff-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--wheat);display:flex;align-items:center;gap:.4rem}
+  .dept__go svg{width:14px;height:14px;transition:transform .2s var(--ease)}
+  .dept__card:hover .dept__go svg{transform:translateX(4px)}
+  @media (max-width:820px){.dept{grid-template-columns:1fr 1fr}}
+  @media (max-width:520px){.dept{grid-template-columns:1fr}}
+
+  /* ---------- split: govt + parks ---------- */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,3rem);align-items:start}
+  @media (max-width:820px){.split{grid-template-columns:1fr}}
+
+  .meet{background:var(--paper-2);border-left:3px solid var(--wheat);border-radius:0 var(--radius) var(--radius) 0;
+    padding:1.3rem 1.5rem;margin:0 0 1.6rem}
+  .meet__k{font-family:var(--ff-mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--wheat-deep);margin-bottom:.35rem}
+  .meet strong{font-family:var(--ff-display);font-size:1.35rem;font-weight:600;display:block}
+  .meet span{color:var(--stone);font-size:.92rem}
+
+  .linklist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+  .linklist a{display:flex;align-items:center;justify-content:space-between;gap:1rem;text-decoration:none;
+    color:var(--ink);padding:.85rem 0;border-top:1px solid var(--line);font-weight:500;transition:color .15s,padding .15s}
+  .linklist a:hover{color:var(--wheat-deep);padding-left:.35rem}
+  .linklist a svg{width:15px;height:15px;color:var(--stone-lt);flex:none;transition:transform .2s var(--ease),color .2s}
+  .linklist a:hover svg{color:var(--wheat-deep);transform:translateX(3px)}
+
+  .parks{display:flex;flex-direction:column;gap:1rem}
+  .park{display:grid;grid-template-columns:auto 1fr;gap:1.1rem;background:var(--paper-2);
+    border:1px solid var(--line);border-radius:var(--radius);padding:1.25rem 1.4rem;align-items:center}
+  .park__ico{width:44px;height:44px;border-radius:50%;background:var(--field);color:#f3f0e7;display:grid;place-items:center;flex:none}
+  .park__ico svg{width:22px;height:22px;stroke-width:1.6}
+  .park h4{font-size:1.14rem;margin-bottom:.15rem}
+  .park p{color:var(--stone);font-size:.9rem;margin:0}
+  .park a{color:var(--sky);font-weight:600;text-decoration:none;font-size:.9rem;white-space:nowrap}
+  .park a:hover{color:var(--wheat-deep)}
+
+  /* ---------- snapshot / benchmark (signature) ---------- */
+  .snap{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(2rem,5vw,4rem);align-items:center}
+  .snap__disk{justify-self:center;width:min(360px,84%);filter:drop-shadow(0 24px 46px rgba(0,0,0,.4))}
+  .snap__body p{color:#c8d0dd;max-width:56ch}
+  .readouts{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line-dk);
+    border:1px solid var(--line-dk);border-radius:var(--radius);overflow:hidden;margin-top:1.8rem}
+  .ro{background:var(--sky);padding:1.05rem 1.2rem}
+  .ro__k{font-family:var(--ff-mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--wheat);margin-bottom:.3rem}
+  .ro__v{font-family:var(--ff-display);font-size:1.3rem;font-weight:600;color:#fff;line-height:1.1}
+  .ro__v small{font-family:var(--ff-mono);font-size:.62rem;color:var(--stone-lt);letter-spacing:.05em}
+  @media (max-width:820px){.snap{grid-template-columns:1fr}.snap__disk{width:min(260px,64%);justify-self:start}}
+  @media (max-width:420px){.readouts{grid-template-columns:1fr}}
+
+  /* ---------- useful links ---------- */
+  .ext{columns:3;column-gap:2.4rem}
+  .ext a{display:block;text-decoration:none;color:var(--ink);padding:.55rem 0;border-bottom:1px solid var(--line);
+    font-size:.94rem;break-inside:avoid;transition:color .15s}
+  .ext a:hover{color:var(--wheat-deep)}
+  .ext a::after{content:" ↗";color:var(--stone-lt);font-size:.8em}
+  @media (max-width:820px){.ext{columns:2}}
+  @media (max-width:520px){.ext{columns:1}}
+
+  /* ---------- contact ---------- */
+  .contact{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(2rem,5vw,4rem);align-items:start}
+  .cinfo dl{display:grid;grid-template-columns:auto 1fr;gap:.5rem 1rem;margin:1.4rem 0 0}
+  .cinfo dt{font-family:var(--ff-mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--wheat-deep);padding-top:.2rem}
+  .cinfo dd{margin:0;font-weight:500}
+  .cinfo dd a{color:var(--sky);text-decoration:underline;text-decoration-color:var(--wheat);text-underline-offset:3px}
+  .cinfo dd small{display:block;color:var(--stone);font-weight:400;font-size:.86rem}
+
+  .form{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:1.7rem;box-shadow:var(--shadow)}
+  .form__row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+  .field{margin-bottom:1rem;display:flex;flex-direction:column}
+  .field label{font-family:var(--ff-mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);margin-bottom:.4rem}
+  .field input,.field select,.field textarea{font-family:var(--ff-body);font-size:1rem;color:var(--ink);
+    background:var(--paper);border:1.5px solid var(--line);border-radius:var(--radius);padding:.7rem .8rem;transition:border-color .15s,background .15s}
+  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--wheat);background:#fff}
+  .field textarea{resize:vertical;min-height:120px}
+  .hp{position:absolute;left:-9999px}
+  .form__note{font-size:.82rem;color:var(--stone);margin-top:.8rem}
+  .form__msg{display:none;margin-top:1rem;padding:.85rem 1rem;border-radius:var(--radius);font-size:.92rem;font-weight:500}
+  .form__msg--ok{display:block;background:rgba(95,112,80,.15);color:var(--field-deep);border:1px solid rgba(95,112,80,.35)}
+  .form__msg--err{display:block;background:rgba(216,169,58,.15);color:#8a4a1e;border:1px solid rgba(216,169,58,.4)}
+  @media (max-width:520px){.form__row{grid-template-columns:1fr}}
+  @media (max-width:820px){.contact{grid-template-columns:1fr}}
+
+  /* ---------- footer ---------- */
+  .foot{background:var(--sky-deep);color:#aeb7c6;padding-block:clamp(2.6rem,5vw,3.6rem) 1.6rem;font-size:.9rem}
+  .foot__top{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2rem;padding-bottom:2rem;border-bottom:1px solid var(--line-dk)}
+  .foot__brand .brand__name{font-size:1.15rem}
+  .foot__brand p{margin:1rem 0 0;max-width:34ch;font-size:.86rem;line-height:1.55}
+  .foot h5{font-family:var(--ff-mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--wheat);margin:0 0 .9rem}
+  .foot ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.5rem}
+  .foot a{color:#c3cbd8;text-decoration:none}
+  .foot a:hover{color:#fff}
+  .foot__hours{font-family:var(--ff-mono);font-size:.82rem;line-height:1.7;color:#c3cbd8}
+  .foot__bot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem;padding-top:1.4rem;font-size:.8rem;color:#7f899a}
+  @media (max-width:720px){.foot__top{grid-template-columns:1fr 1fr}.foot__brand{grid-column:1/-1}}
+  @media (max-width:460px){.foot__top{grid-template-columns:1fr}}
+
+  /* reveal */
+  .rv{opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+  .rv.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- benchmark disk symbol (reused) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="benchmark" viewBox="0 0 200 200">
+    <defs>
+      <path id="arcTop" d="M100,100 m-74,0 a74,74 0 1,1 148,0" fill="none"/>
+      <path id="arcBot" d="M100,178 m0,0 a78,78 0 0,1 -78,-78 M100,178 a78,78 0 0,0 78,-78" fill="none"/>
+      <path id="arcBot2" d="M26,100 a74,74 0 0,0 148,0" fill="none"/>
+    </defs>
+    <circle cx="100" cy="100" r="94" fill="#1b2636" stroke="#d8a93a" stroke-width="2.5"/>
+    <circle cx="100" cy="100" r="80" fill="none" stroke="#d8a93a" stroke-width="1.3" opacity=".8"/>
+    <circle cx="100" cy="100" r="40" fill="none" stroke="#d8a93a" stroke-width="1.1" opacity=".55"/>
+    <!-- tick marks -->
+    <g stroke="#d8a93a" stroke-width="1.3" opacity=".7">
+      <line x1="100" y1="20" x2="100" y2="30"/>
+      <line x1="100" y1="170" x2="100" y2="180"/>
+      <line x1="20" y1="100" x2="30" y2="100"/>
+      <line x1="170" y1="100" x2="180" y2="100"/>
+    </g>
+    <!-- center survey mark -->
+    <path d="M100 74 L100 126 M74 100 L126 100" stroke="#d8a93a" stroke-width="1.4" opacity=".7"/>
+    <path d="M100 70 L108 88 L92 88 Z" fill="#d8a93a"/>
+    <circle cx="100" cy="100" r="4.5" fill="#d8a93a"/>
+    <text font-family="Space Mono,monospace" font-size="11.5" font-weight="700" letter-spacing="3" fill="#e6c675">
+      <textPath href="#arcTop" startOffset="50%" text-anchor="middle">CITY OF CONDON</textPath>
+    </text>
+    <text font-family="Space Mono,monospace" font-size="8.5" font-weight="700" letter-spacing="2.5" fill="#d8a93a">
+      <textPath href="#arcBot2" startOffset="50%" text-anchor="middle">GILLIAM COUNTY · OREGON</textPath>
+    </text>
+    <text x="100" y="118" text-anchor="middle" font-family="Space Mono,monospace" font-size="7.5" font-weight="700" letter-spacing="1" fill="#9fb0c7">45.234°N 120.183°W</text>
+    <text x="100" y="132" text-anchor="middle" font-family="Space Mono,monospace" font-size="7" font-weight="400" letter-spacing="1.5" fill="#7f8ea6">ELEV 2844 FT · EST 1893</text>
+  </symbol>
+</svg>
+
+<!-- ============ HEADER ============ -->
+<header class="top">
+  <div class="wrap top__in">
+    <a class="brand" href="#top" aria-label="City of Condon home">
+      <svg class="brand__disk" viewBox="0 0 200 200" aria-hidden="true"><use href="#benchmark"/></svg>
+      <span class="brand__txt">
+        <span class="brand__name">City of Condon</span>
+        <span class="brand__sub">EASTERN OREGON</span>
+      </span>
+    </a>
+    <button class="navtoggle" aria-expanded="false" aria-controls="nav" aria-label="Open menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+    <nav class="nav" id="nav" aria-label="Primary">
+      <a href="#services">Services</a>
+      <a href="#government">Government</a>
+      <a href="#departments">Departments</a>
+      <a href="#parks">Parks &amp; Rec</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a class="btn btn--gold" href="https://cityofcondon.com/pay-now/">Pay Now</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<span id="top"></span>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero__grid" aria-hidden="true"></div>
+  <div class="hero__glow" aria-hidden="true"></div>
+  <div class="wrap hero__in">
+    <div>
+      <p class="hero__eyebrow">County Seat · Gilliam County · Pop. 711</p>
+      <h1>Where the wheat fields meet a <em>wide-open sky.</em></h1>
+      <p class="hero__lede">A century-old farming town on the Eastern Oregon high plateau — with a historic Main Street, friendly neighbors, and a what's-your-hurry way of life. Everything you need from City Hall, in one place.</p>
+      <div class="hero__cta">
+        <a class="btn btn--gold" href="https://cityofcondon.com/pay-now/">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+          Pay a bill
+        </a>
+        <a class="btn btn--ghost" href="#services">City services</a>
+      </div>
+    </div>
+    <svg class="hero__disk" viewBox="0 0 200 200" role="img" aria-label="City of Condon survey benchmark: 45.234°N 120.183°W, elevation 2,844 ft"><use href="#benchmark"/></svg>
+  </div>
+  <svg class="hero__fields" viewBox="0 0 1440 320" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,180 C240,120 420,150 720,140 C1020,130 1200,165 1440,120 L1440,320 L0,320 Z" fill="#47563b" opacity=".55"/>
+    <path d="M0,220 C280,175 520,205 780,190 C1040,175 1240,210 1440,180 L1440,320 L0,320 Z" fill="#5f7050" opacity=".7"/>
+    <path d="M0,262 C320,232 560,258 860,248 C1120,240 1280,262 1440,244 L1440,320 L0,320 Z" fill="#b5872a" opacity=".85"/>
+    <path d="M0,290 C360,270 640,288 980,282 C1200,278 1320,290 1440,280 L1440,320 L0,320 Z" fill="#d8a93a"/>
+  </svg>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="band band--paper" id="services">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">Get it done</p>
+      <h2 class="h-sec">City services &amp; quick links</h2>
+    </div>
+    <div class="svc rv">
+      <a class="svc__card" href="https://cityofcondon.com/pay-now/">
+        <span class="svc__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/><line x1="6" y1="15" x2="10" y2="15"/></svg></span>
+        <span class="svc__t">Pay utilities <span class="arw">→</span></span>
+        <span class="svc__d">Pay your water, sewer, and city bills online — quick and secure.</span>
+      </a>
+      <a class="svc__card" href="https://cityofcondon.com/forms/">
+        <span class="svc__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg></span>
+        <span class="svc__t">Forms &amp; permits <span class="arw">→</span></span>
+        <span class="svc__d">Utility applications, building permits, and city request forms.</span>
+      </a>
+      <a class="svc__card" href="https://cityofcondon.com/agendas-minutes/">
+        <span class="svc__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
+        <span class="svc__t">Agendas &amp; minutes <span class="arw">→</span></span>
+        <span class="svc__d">Council and Planning Commission agendas, minutes, and archives.</span>
+      </a>
+      <a class="svc__card" href="https://cityofcondon.com/ordinances/">
+        <span class="svc__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3v18M5 7l7-4 7 4M4 21h16M6 11v6M18 11v6"/></svg></span>
+        <span class="svc__t">Ordinances <span class="arw">→</span></span>
+        <span class="svc__d">Read the city's ordinances, codes, and resolutions.</span>
+      </a>
+      <a class="svc__card" href="https://cityofcondon.com/notices/">
+        <span class="svc__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></span>
+        <span class="svc__t">Public notices <span class="arw">→</span></span>
+        <span class="svc__d">Bids, hearings, vacancies, and official public notices.</span>
+      </a>
+      <a class="svc__card" href="#contact">
+        <span class="svc__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8z"/></svg></span>
+        <span class="svc__t">Contact City Hall <span class="arw">→</span></span>
+        <span class="svc__d">Questions, records requests, or report an issue in town.</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NEWS / NOTICES ============ -->
+<section class="band band--sections" id="news">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">News &amp; information</p>
+      <h2 class="h-sec">What's happening in Condon</h2>
+    </div>
+    <div class="notice-grid">
+      <div class="notices rv">
+        <div class="notice">
+          <span class="notice__tag notice__tag--alert">Hours</span>
+          <div class="notice__b">
+            <h4>City Hall now closes at 1:00 PM on Fridays</h4>
+            <p>Approved February 4, 2026 by City Council. Regular hours Monday–Thursday, 8 AM–5 PM.</p>
+          </div>
+        </div>
+        <div class="notice">
+          <span class="notice__tag">Recycling</span>
+          <div class="notice__b">
+            <h4>Summer hours: Transfer Station &amp; Recycling Center</h4>
+            <p>April 1–October 31 — Wednesdays 4–6 PM and Saturdays 9 AM–12 noon.</p>
+          </div>
+        </div>
+        <div class="notice">
+          <span class="notice__tag">Election</span>
+          <div class="notice__b">
+            <h4><a href="https://cityofcondon.com/notices/">Public notice — Election of Mayor &amp; Councilors</a></h4>
+            <p>Details and filing information are posted with the city's public notices.</p>
+          </div>
+        </div>
+        <div class="notice">
+          <span class="notice__tag">Vacancy</span>
+          <div class="notice__b">
+            <h4><a href="https://cityofcondon.com/notices/">Planning Commission vacancy</a></h4>
+            <p>The city is seeking a resident to serve on the Planning Commission.</p>
+          </div>
+        </div>
+        <div class="notice">
+          <span class="notice__tag">Pool</span>
+          <div class="notice__b">
+            <h4>Condon Community Pool is open for the season</h4>
+            <p>Questions about hours or lessons? Call the pool at (541) 384-4260.</p>
+          </div>
+        </div>
+      </div>
+
+      <aside class="docs rv" aria-label="City documents">
+        <h3>City documents</h3>
+        <p>Current reports, budgets, and resolutions (PDF).</p>
+        <a href="https://cityofcondon.com/wp-content/uploads/2026/05/2025-City-of-Condon-Consumer-Confidence-Report.pdf">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          2025 Water Quality Report
+        </a>
+        <a href="https://cityofcondon.com/wp-content/uploads/2025/06/2025-26-Approved-Budget.pdf">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          2025–2026 Approved Budget
+        </a>
+        <a href="https://cityofcondon.com/wp-content/uploads/2025/12/FINAL-CITY_OF_CONDON_COUNCIL_REPORT_06302025.pdf">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Audit — Year Ended June 30, 2025
+        </a>
+        <a href="https://cityofcondon.com/wp-content/uploads/2025/08/General-Fee-July-2025.pdf">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          General Fee Resolution 2026-01
+        </a>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DEPARTMENTS ============ -->
+<section class="band band--ink" id="departments">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">City departments</p>
+      <h2 class="h-sec">Who to reach, and for what</h2>
+      <p class="lede">City Hall — (541) 384-2711. Staff can point you to the right department for water, streets, permits, and records.</p>
+    </div>
+    <div class="dept">
+      <a class="dept__card rv" href="https://cityofcondon.com/staff/">
+        <span class="dept__num">DEPT 01</span>
+        <h3>Administration</h3>
+        <p class="dept__people"><b>Gibb Wilkins</b> — Interim City Administrator<br><b>Jessica Isley</b> — Admin. Assistant &amp; Interim City Recorder / Custodian of Records</p>
+        <span class="dept__go">Staff directory <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="dept__card rv" href="https://cityofcondon.com/public-works/">
+        <span class="dept__num">DEPT 02</span>
+        <h3>Public Works</h3>
+        <p class="dept__people"><b>Gibb Wilkins</b> — Superintendent<br>Aaron Fitzsimmons · Jake Cooper<br>Water, sewer, streets &amp; parks maintenance.</p>
+        <span class="dept__go">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="dept__card rv" href="https://cityofcondon.com/fire-police/">
+        <span class="dept__num">DEPT 03</span>
+        <h3>Fire &amp; Police</h3>
+        <p class="dept__people">Public safety services for the City of Condon.<br><b>Emergencies: dial 911.</b></p>
+        <span class="dept__go">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="dept__card rv" href="https://cityofcondon.com/planning/">
+        <span class="dept__num">DEPT 04</span>
+        <h3>Planning</h3>
+        <p class="dept__people">Land use, permits, and the Planning Commission — agendas, notices, and applications.</p>
+        <span class="dept__go">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="dept__card rv" href="https://cityofcondon.com/finance/">
+        <span class="dept__num">DEPT 05</span>
+        <h3>Finance</h3>
+        <p class="dept__people">Utility billing, budgets, and city financial reports.</p>
+        <span class="dept__go">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="dept__card rv" href="https://cityofcondon.com/recycling/">
+        <span class="dept__num">DEPT 06</span>
+        <h3>Transfer Station &amp; Recycling</h3>
+        <p class="dept__people">Jim Heidy · Bob Durham<br>Summer: Wed 4–6 PM, Sat 9 AM–noon.</p>
+        <span class="dept__go">Hours &amp; info <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GOVERNMENT + PARKS ============ -->
+<section class="band band--paper" id="government">
+  <div class="wrap split">
+    <div class="rv">
+      <p class="eyebrow">City government</p>
+      <h2 class="h-sec" style="margin-bottom:1.4rem">Your City Council</h2>
+      <div class="meet">
+        <p class="meet__k">Next council meeting</p>
+        <strong>First Wednesday · 7:00 PM</strong>
+        <span>The City Council meets the first Wednesday of each month. Meetings are open to the public.</span>
+      </div>
+      <p style="color:var(--stone);margin-bottom:1.4rem">Condon is governed by a Mayor and six Councilors and serves as the county seat of Gilliam County.</p>
+      <ul class="linklist">
+        <li><a href="https://cityofcondon.com/city-council/">City Council <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+        <li><a href="https://cityofcondon.com/agendas-minutes/">Agendas, Minutes &amp; Grievance Process <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+        <li><a href="https://cityofcondon.com/committees/">Committees <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+        <li><a href="https://cityofcondon.com/ordinances/">Ordinances &amp; Resolutions <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+        <li><a href="https://cityofcondon.com/calendar/">City Calendar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+      </ul>
+    </div>
+
+    <div class="rv" id="parks">
+      <p class="eyebrow">Parks &amp; recreation</p>
+      <h2 class="h-sec" style="margin-bottom:1.4rem">Get outside in Condon</h2>
+      <div class="parks">
+        <div class="park">
+          <span class="park__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2v20M5 9l7-7 7 7M7 14l5-5 5 5"/></svg></span>
+          <div><h4>City Park</h4><p>Shaded green space in the heart of town — host of the Fabulous Fourth.</p></div>
+          <a href="https://cityofcondon.com/park/">Details →</a>
+        </div>
+        <div class="park">
+          <span class="park__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 18V4M12 4l7 2-7 3"/><circle cx="12" cy="20" r="1.5"/></svg></span>
+          <div><h4>Golf Course</h4><p>Play a round at the city's community golf course.</p></div>
+          <a href="https://cityofcondon.com/golf/">Details →</a>
+        </div>
+        <div class="park">
+          <span class="park__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 16c2 0 2 1.5 4 1.5S10 16 12 16s2 1.5 4 1.5S18 16 22 16M2 20c2 0 2 1.5 4 1.5S10 20 12 20s2 1.5 4 1.5S18 20 22 20M8 12l4-4 3 3"/></svg></span>
+          <div><h4>Community Pool</h4><p>Open seasonally. Call (541) 384-4260 for hours &amp; lessons.</p></div>
+          <a href="https://cityofcondon.com/pool/">Details →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT / SNAPSHOT (signature) ============ -->
+<section class="band band--ink" id="about">
+  <div class="wrap snap">
+    <svg class="snap__disk" viewBox="0 0 200 200" role="img" aria-label="City of Condon survey benchmark"><use href="#benchmark"/></svg>
+    <div class="snap__body rv">
+      <p class="eyebrow">About Condon</p>
+      <h2 class="h-sec" style="margin-bottom:1.2rem">One of Oregon's best-kept secrets</h2>
+      <p>Condon sits on the high plateau of the Columbia River region, nestled between miles of rolling, golden wheat fields. We're about 38 miles south of the Columbia River, under three hours east of Portland, and at the doorstep of the Blue Mountains and Cottonwood Canyon State Park — with hiking, camping, boating, and fishing close by.</p>
+      <p>Our historic Main Street is listed on the National Register and still anchors a working business district. Every summer the whole town turns out for the Fabulous Fourth of July — a parade, soap box derby, breakfast and dinner in the park, and fireworks.</p>
+      <div class="readouts">
+        <div class="ro"><p class="ro__k">Population</p><p class="ro__v">711</p></div>
+        <div class="ro"><p class="ro__k">Elevation</p><p class="ro__v">2,844 <small>FT</small></p></div>
+        <div class="ro"><p class="ro__k">Coordinates</p><p class="ro__v" style="font-size:1.02rem">45.234°N<br>120.183°W</p></div>
+        <div class="ro"><p class="ro__k">Annual precip.</p><p class="ro__v">12–14.5 <small>IN</small></p></div>
+        <div class="ro"><p class="ro__k">Government</p><p class="ro__v" style="font-size:1.02rem">Mayor +<br>6 Councilors</p></div>
+        <div class="ro"><p class="ro__k">County</p><p class="ro__v" style="font-size:1.02rem">Gilliam Co.<br><small>COUNTY SEAT</small></p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ USEFUL LINKS ============ -->
+<section class="band band--paper">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">Around the region</p>
+      <h2 class="h-sec">Useful links</h2>
+    </div>
+    <div class="ext rv">
+      <a href="https://cityofcondon.com/place-to-sleep-eat/">Places to Sleep &amp; Eat</a>
+      <a href="http://www.condon.k12.or.us">Condon School District</a>
+      <a href="https://www.airnav.com/airport/3S9">Condon State Airport — Pauling Field</a>
+      <a href="http://oregonstateparks.org/index.cfm?do=parkPage.dsp_parkPage&parkId=195">Cottonwood Canyon State Park</a>
+      <a href="https://eova.com/">Eastern Oregon Visitors Association</a>
+      <a href="https://www.co.gilliam.or.us/">Gilliam County Government</a>
+      <a href="http://hotelcondon.com/">Historic Hotel Condon</a>
+      <a href="https://visiteasternoregon.com/john-day-river-territory/">John Day River Territory</a>
+      <a href="http://bluebook.state.or.us/default.htm">Oregon Blue Book</a>
+      <a href="http://dfw.state.or.us/">Oregon Dept. of Fish &amp; Wildlife</a>
+      <a href="https://www.oregonfrontierchamber.com/">Oregon Frontier Chamber of Commerce</a>
+      <a href="https://pioneercdc.com/">Pioneer Community Development Corp.</a>
+      <a href="https://www.portofarlington.com/home.html">Port of Arlington</a>
+      <a href="http://tripcheck.com/Pages/RCmap.asp?curRegion=0&mainNav=RoadConditions">TripCheck Travel Conditions</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="band band--sections" id="contact">
+  <div class="wrap contact">
+    <div class="cinfo rv">
+      <p class="eyebrow">Contact</p>
+      <h2 class="h-sec">Reach City Hall</h2>
+      <dl>
+        <dt>Address</dt>
+        <dd>128 South Main Street<br>PO Box 445, Condon, OR 97823<br>
+          <a href="https://maps.google.com/?q=128+S+Main+St,+Condon,+OR+97823">Get directions ↗</a></dd>
+        <dt>Phone</dt>
+        <dd><a href="tel:+15413842711">(541) 384-2711</a><small>Fax (541) 384-2700</small></dd>
+        <dt>Email</dt>
+        <dd><a href="mailto:admin@cityofcondon.com">admin@cityofcondon.com</a></dd>
+        <dt>Hours</dt>
+        <dd>Mon–Thu 8 AM – 5 PM<br>Fri 8 AM – 1 PM<small>Closed for lunch 1–2 PM</small></dd>
+      </dl>
+    </div>
+
+    <div class="rv">
+      <form class="form" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+        <!-- Replace with the City's Web3Forms access key -->
+        <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+        <input type="hidden" name="subject" value="New message from cityofcondon.com">
+        <input type="hidden" name="from_name" value="City of Condon Website">
+        <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+        <div class="form__row">
+          <div class="field">
+            <label for="name">Your name</label>
+            <input id="name" name="name" type="text" required autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required autocomplete="email">
+          </div>
+        </div>
+        <div class="form__row">
+          <div class="field">
+            <label for="phone">Phone <span style="text-transform:none;letter-spacing:0">(optional)</span></label>
+            <input id="phone" name="phone" type="tel" autocomplete="tel">
+          </div>
+          <div class="field">
+            <label for="topic">Topic</label>
+            <select id="topic" name="topic">
+              <option>General question</option>
+              <option>Utility billing</option>
+              <option>Public Works (water/sewer/streets)</option>
+              <option>Planning &amp; permits</option>
+              <option>Records request</option>
+              <option>Report an issue</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required placeholder="How can the city help?"></textarea>
+        </div>
+        <button class="btn btn--ink" type="submit" style="width:100%;justify-content:center">Send message</button>
+        <p class="form__note">This form goes to City Hall staff. For emergencies, always call 911. Records requests may take up to statutory response time.</p>
+        <p class="form__msg" id="formMsg" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__top">
+      <div class="foot__brand">
+        <a class="brand" href="#top" style="margin:0" aria-label="City of Condon home">
+          <svg class="brand__disk" viewBox="0 0 200 200" aria-hidden="true"><use href="#benchmark"/></svg>
+          <span class="brand__txt"><span class="brand__name">City of Condon</span><span class="brand__sub">EASTERN OREGON</span></span>
+        </a>
+        <p>128 S. Main St · PO Box 445 · Condon, OR 97823 · Ph (541) 384-2711 · Fax (541) 384-2700</p>
+      </div>
+      <div>
+        <h5>City</h5>
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#government">Government</a></li>
+          <li><a href="#departments">Departments</a></li>
+          <li><a href="#parks">Parks &amp; Recreation</a></li>
+          <li><a href="https://cityofcondon.com/notices/">Public Notices</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Office hours</h5>
+        <p class="foot__hours">Mon – Thu&nbsp;&nbsp;8:00 AM – 5:00 PM<br>Friday&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8:00 AM – 1:00 PM<br>Lunch&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1:00 – 2:00 PM</p>
+      </div>
+    </div>
+    <div class="foot__bot">
+      <span>© <span id="yr"></span> City of Condon, Oregon · County Seat of Gilliam County</span>
+      <span><a href="#contact">Contact</a> · <a href="https://cityofcondon.com/pay-now/">Pay Now</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // year
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // mobile nav
+  (function(){
+    var btn=document.querySelector('.navtoggle'), nav=document.getElementById('nav');
+    btn.addEventListener('click',function(){
+      var open=nav.getAttribute('data-open')==='true';
+      nav.setAttribute('data-open',String(!open));
+      btn.setAttribute('aria-expanded',String(!open));
+    });
+    nav.addEventListener('click',function(e){
+      if(e.target.tagName==='A'){nav.setAttribute('data-open','false');btn.setAttribute('aria-expanded','false');}
+    });
+  })();
+
+  // scroll reveal (reduced-motion aware)
+  (function(){
+    var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var els=document.querySelectorAll('.rv');
+    if(reduce||!('IntersectionObserver' in window)){els.forEach(function(el){el.classList.add('in');});return;}
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});
+    },{rootMargin:'0px 0px -8% 0px',threshold:.08});
+    els.forEach(function(el){io.observe(el);});
+  })();
+
+  // contact form -> Web3Forms (progressive enhancement)
+  (function(){
+    var form=document.getElementById('contactForm'), msg=document.getElementById('formMsg');
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      var key=form.querySelector('[name=access_key]').value;
+      if(key==='YOUR_WEB3FORMS_ACCESS_KEY'){
+        msg.className='form__msg form__msg--err';
+        msg.textContent='Form not yet configured — add the city\u2019s Web3Forms access key to enable sending.';
+        return;
+      }
+      var btn=form.querySelector('button[type=submit]'); btn.disabled=true; btn.textContent='Sending…';
+      fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}})
+        .then(function(r){return r.json();})
+        .then(function(data){
+          if(data.success){
+            msg.className='form__msg form__msg--ok';
+            msg.textContent='Thanks — your message has been sent to City Hall. We\u2019ll be in touch.';
+            form.reset();
+          }else{throw new Error('fail');}
+        })
+        .catch(function(){
+          msg.className='form__msg form__msg--err';
+          msg.textContent='Something went wrong. Please call City Hall at (541) 384-2711 or email admin@cityofcondon.com.';
+        })
+        .finally(function(){btn.disabled=false; btn.textContent='Send message';});
+    });
+  })();
+</script>
+</body>
+</html>
